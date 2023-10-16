@@ -156,6 +156,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.aj01 = {
     isNormalUser = true;
+    createHome = true;
+    home = "/home/aj01";
     description = "Alex Deb";
     shell = pkgs.zsh;
     group = "users";

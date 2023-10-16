@@ -52,6 +52,11 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [ 
+     git
+     socat
+     htop
+     mc
+     telegram-desktop
      steam
      firefox
   ];
@@ -60,9 +65,24 @@
   programs.home-manager.enable = true;
   # New: Now we can use the "home.persistence" module, here's an example:
   home.persistence."/nix/persist/home/aj01" = {
-    directories = [ ".ssh" "Downloads" ".config" ];
-    files = [ ".bash_history" ];
-    allowOther = true; # TODO: check if we actually want to do this
+    directories = [ 
+      ".ssh" 
+      "Downloads" 
+      #".config" 
+      #"aj-nixos-config"
+      {
+         directory = ".local/share/Steam";
+         method = "symlink";
+      }
+    ];
+    files = [ 
+      ".bash_history" 
+      ".zsh_history"
+      ".zshrc"
+      ".config/dconf/user"
+      ".config/gnome-initial-setup-done"
+    ];
+    allowOther = true; # Useful for sudo operations
   };
 
   programs.git = {

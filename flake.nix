@@ -3,7 +3,13 @@
 
   inputs = {
     # Nixpkgs
+    #nixpkgs.follows = "master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    #master.url = "github:nixos/nixpkgs/master";
+    #stable.url = "github:nixos/nixpkgs/release-23.05";
+    #unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
@@ -44,6 +50,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.aj01 = import ./home-manager/home.nix;
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };
