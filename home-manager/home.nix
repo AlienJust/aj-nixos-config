@@ -52,6 +52,9 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [ 
+     zsh
+     oh-my-zsh
+     dconf
      git
      socat
      htop
@@ -78,7 +81,7 @@
     files = [ 
       ".bash_history" 
       ".zsh_history"
-      ".zshrc"
+#      ".zshrc"
       ".config/dconf/user"
       ".config/gnome-initial-setup-done"
     ];
@@ -90,6 +93,19 @@
     userName = "Alexey Debelov";
     userEmail = "alienjustmail@gmail.com";
   };
+
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
+  };
+
+#  programs.dconf = {
+#    enable = true;
+#  };
 
 
   # Nicely reload system units when changing configs

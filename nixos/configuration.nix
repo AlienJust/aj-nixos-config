@@ -191,6 +191,8 @@
       nano
       unzip
       man-pages
+      jq
+      file
     ];
     
     #persistence."/persist" = {
