@@ -51,30 +51,27 @@
   home = {
     username = "aj01";
     homeDirectory = "/home/aj01";
-  };
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  home.packages = with pkgs; [ 
-    zsh
-    oh-my-zsh
-    dconf
-    git
-    socat
-    htop
-    mc
-    telegram-desktop
-    steam
-    mpv
-    grim
-    slurp
-    btop
-    swaybg
-    obs-studio
+    packages = with pkgs; [ 
+      zsh
+      oh-my-zsh
+      dconf
+      git
+      socat
+      htop
+      mc
+      telegram-desktop
+      steam
+      mpv
+      grim
+      slurp
+      btop
+      swaybg
+      obs-studio
   ];
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
   # New: Now we can use the "home.persistence" module, here's an example:
   home.persistence."/nix/persist/home/aj01" = {
     directories = [ 
@@ -98,24 +95,7 @@
     allowOther = true; # Useful for sudo operations
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Alexey Debelov";
-    userEmail = "alienjustmail@gmail.com";
-  };
-
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-      theme = "robbyrussell";
-    };
-  };
-
-#  programs.dconf = {
-#    enable = true;
-#  };
+  sessionPath = [];
 
   sessionVariables = {
       BROWSER = "firefox";
@@ -130,11 +110,47 @@
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
     };
+  };
 
+  # Enable home-manager and git
+  programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Alexey Debelov";
+    userEmail = "alienjustmail@gmail.com";
+  };
+
+  # starship
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+    };
+  };
+
+  # direnv
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  # fzf
+  programs.fzf = {enable = true;};
+
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
+
 }
