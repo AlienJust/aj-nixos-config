@@ -35,6 +35,7 @@
   #};
 
   nixpkgs = {
+    hostPlatform = lib.mkDefault "x86_64-linux";
     # You can add overlays here
     overlays = [
       # If you want to use overlays exported from other flakes:
@@ -46,6 +47,9 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
     ];
     # Configure your nixpkgs instance
     config = {
