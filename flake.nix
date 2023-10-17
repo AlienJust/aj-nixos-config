@@ -54,6 +54,16 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
+    packages =
+      forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
+    formatter =
+      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
+    overlays = import ./overlays {inherit inputs;};
+
+    nixosModules = import ./modules/nixos;
+
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
@@ -62,13 +72,30 @@
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/mixos/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.aj01 = import ./home-manager/home.nix;
+            home-manager.users.aj01 = import ./users/aj01/home.nix;
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
+      };
+
+      # Virtualbox system
+      vixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        # > Our main nixos configuration file <
+        modules = [
+          ./hosts/v1ixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
           }
         ];

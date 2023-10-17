@@ -76,7 +76,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "mixos"; # Define your hostname.
+  networking.hostName = "vixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -183,16 +183,25 @@
     pathsToLink = ["/share/zsh"];
     shells = with pkgs; [zsh];
     systemPackages = with pkgs; [
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      wget
-      git
-      home-manager
-      curl
-      nano
-      unzip
-      man-pages
-      jq
       file
+      nano
+      curl
+      fd
+      git
+      man-pages
+      man-pages-posix
+      ripgrep
+      wget
+      jq
+      home-manager
+      alejandra
+      sbctl
+      ntfs3g
+      comma
+      atool
+      unzip
+      nix-output-monitor
+      edk2-uefi-shell
     ];
     
     #persistence."/persist" = {
@@ -207,6 +216,29 @@
     #};
   };
 
+  # fonts
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      noto-fonts-monochrome-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      maple-mono-NF
+      (pkgs.callPackage ../../pkgs/mplus-fonts {}) # TODO: do I really need to call it like this?
+      (pkgs.callPackage ../../pkgs/balsamiqsans {})
+    ];
+    fontconfig = {
+      enable = lib.mkDefault true;
+      defaultFonts = {
+        monospace = ["M PLUS 1 Code"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
+
+  # set cpu freq governor
+  powerManagement.cpuFreqGovernor = "performance";
 
   # programs
   programs = {

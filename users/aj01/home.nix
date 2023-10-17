@@ -18,6 +18,10 @@
 
     #impermanence
     (inputs.impermanence + "/home-manager.nix")
+
+    # Apps
+    ./applications/vscode.nix
+    ./applications/firefox
   ];
 
   # Can be used if allowGlobalPackages is false
