@@ -73,7 +73,7 @@
   ];
 
   # New: Now we can use the "home.persistence" module, here's an example:
-  home.persistence."/nix/persist/home/aj01" = {
+  persistence."/nix/persist/home/aj01" = {
     directories = [ 
       ".ssh" 
       "Downloads" 
