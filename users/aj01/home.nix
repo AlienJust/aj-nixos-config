@@ -56,16 +56,21 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [ 
-     zsh
-     oh-my-zsh
-     dconf
-     git
-     socat
-     htop
-     mc
-     telegram-desktop
-     steam
-     firefox
+    zsh
+    oh-my-zsh
+    dconf
+    git
+    socat
+    htop
+    mc
+    telegram-desktop
+    steam
+    mpv
+    grim
+    slurp
+    btop
+    swaybg
+    obs-studio
   ];
 
   # Enable home-manager and git
@@ -111,6 +116,20 @@
 #  programs.dconf = {
 #    enable = true;
 #  };
+
+  sessionVariables = {
+      BROWSER = "firefox";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+      RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
+      XCURSOR_SIZE = "16";
+      XCURSOR_THEME = "Adwaita";
+      NIXOS_OZONE_WL = "1";
+      MOZ_USE_XINPUT2 = "1";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
+    };
 
 
   # Nicely reload system units when changing configs
