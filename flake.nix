@@ -53,6 +53,8 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    systems = ["x86_64-linux"];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     packages =
       forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
