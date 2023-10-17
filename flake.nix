@@ -2,21 +2,40 @@
   description = "AJ nix config";
 
   inputs = {
-    # Nixpkgs
-    #nixpkgs.follows = "master";
+    # nixpkgs
+    nixpkgs.follows = "master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
-    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    #master.url = "github:nixos/nixpkgs/master";
-    #stable.url = "github:nixos/nixpkgs/release-23.05";
-    #unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    master.url = "github:nixos/nixpkgs/master";
+    stable.url = "github:nixos/nixpkgs/release-23.05";
+    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # anyrun
+    anyrun.url = "github:Kirottu/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
+
+    # hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+
+    # spicetify
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+
+    # lanzaboote
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";

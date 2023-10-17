@@ -71,7 +71,7 @@
     directories = [ 
       ".ssh" 
       "Downloads" 
-      #".config" 
+      ".config/dconf" 
       #"aj-nixos-config"
       {
          directory = ".local/share/Steam";
@@ -81,8 +81,9 @@
     files = [ 
       ".bash_history" 
       ".zsh_history"
-#      ".zshrc"
-      ".config/dconf/user"
+# If .zshrc is in persistence then oh-my-zsh don't apply config
+#      ".zshrc" 
+#      ".config/dconf/user"
       ".config/gnome-initial-setup-done"
     ];
     allowOther = true; # Useful for sudo operations
