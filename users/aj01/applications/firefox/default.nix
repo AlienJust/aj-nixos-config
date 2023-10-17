@@ -82,7 +82,7 @@
     };
   };
   # persistence for firefox
-  home.persistence."/persist/home/aj01" = {
+  home.persistence."/nix/persist/home/aj01" = {
     directories = [
       ".mozilla/firefox/default/storage" # fuck u, indexeddb for extension settings are vile
     ];
