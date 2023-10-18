@@ -166,11 +166,6 @@
     shell = pkgs.zsh;
     group = "users";
     extraGroups = ["wheel" "video" "audio" "realtime" "input"];
-    packages = with pkgs; [
-      firefox
-      thunderbird
-      steam
-    ];
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/"; 
 
     ## TODO: You can set an initial password for your user.
@@ -250,6 +245,12 @@
     dconf.enable = true;
     zsh.enable = true;
     fuse.userAllowOther = true; # impermanence
+  };
+
+  # security
+  security = {
+    sudo.wheelNeedsPassword = false;
+    polkit.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -55,29 +55,50 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
     packages = with pkgs; [ 
-      zsh
-      oh-my-zsh
       dconf
       git
       socat
+      
       htop
+      btop
       mc
+      
       telegram-desktop
       steam
+      
       mpv
+      obs-studio
+      imv
+
       grim
       slurp
-      btop
       swaybg
-      obs-studio
+      eww-wayland
+      wl-clipboard
+      hyprpicker
+      wlogout
+      playerctl
+
+      eza
+      nil
   ];
 
   # New: Now we can use the "home.persistence" module, here's an example:
   persistence."/nix/persist/home/aj01" = {
     directories = [ 
-      ".ssh" 
-      "Downloads" 
-      ".config/dconf" 
+      "Документы"
+      "Загрузки"
+      "Музыка"
+      "Изображения"
+      "Видео"
+      ".gnupg"
+      ".ssh"
+      ".local/share/keyrings"
+      ".local/share/direnv"
+      ".local/share/wallpapers"
+      ".local/share/TelegramDesktop/tdata" # telegram
+      "Downloads"
+      ".config/dconf"
       #"aj-nixos-config"
       {
          directory = ".local/share/Steam";
@@ -89,6 +110,7 @@
       ".zsh_history"
 # If .zshrc is in persistence then oh-my-zsh don't apply config
 #      ".zshrc" 
+# If .config/dconf/user is in persistence then gnome does not saving settings
 #      ".config/dconf/user"
       ".config/gnome-initial-setup-done"
     ];
@@ -144,6 +166,18 @@
       enable = true;
       plugins = [ "git" ];
       theme = "robbyrussell";
+    };
+  };
+
+  # xdg defaults
+  xdg = {
+    userDirs = {
+      enable = true;
+      documents = "${config.home.homeDirectory}/Документы";
+      download = "${config.home.homeDirectory}/Загрузки";
+      music = "${config.home.homeDirectory}/Музыка";
+      pictures = "${config.home.homeDirectory}/Изображения";
+      videos = "${config.home.homeDirectory}/Видео";
     };
   };
 
