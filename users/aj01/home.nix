@@ -6,8 +6,7 @@
   config,
   pkgs,
   ...
-}: 
-{
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -16,12 +15,17 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    #impermanence
+    # impermanence
     (inputs.impermanence + "/home-manager.nix")
 
     # Apps
+    ./applications/hyprland.nix
     ./applications/vscode.nix
+    ./applications/anyrun.nix
+    ./applications/wezterm.nix
     ./applications/firefox
+    ./applications/eww
+    ./applications/spicetify.nix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -52,20 +56,20 @@
     username = "aj01";
     homeDirectory = "/home/aj01";
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-    packages = with pkgs; [ 
+    # Add stuff for your user as you see fit:
+    # programs.neovim.enable = true;
+    packages = with pkgs; [
       dconf
       git
       socat
-      
+
       htop
       btop
       mc
-      
+
       telegram-desktop
       steam
-      
+
       mpv
       obs-studio
       imv
@@ -81,45 +85,45 @@
 
       eza
       nil
-  ];
-
-  # New: Now we can use the "home.persistence" module, here's an example:
-  persistence."/nix/persist/home/aj01" = {
-    directories = [ 
-      "Документы"
-      "Загрузки"
-      "Музыка"
-      "Изображения"
-      "Видео"
-      ".gnupg"
-      ".ssh"
-      ".local/share/keyrings"
-      ".local/share/direnv"
-      ".local/share/wallpapers"
-      ".local/share/TelegramDesktop/tdata" # telegram
-      "Downloads"
-      ".config/dconf"
-      #"aj-nixos-config"
-      {
-         directory = ".local/share/Steam";
-         method = "symlink";
-      }
     ];
-    files = [ 
-      ".bash_history" 
-      ".zsh_history"
-# If .zshrc is in persistence then oh-my-zsh don't apply config
-#      ".zshrc" 
-# If .config/dconf/user is in persistence then gnome does not saving settings
-#      ".config/dconf/user"
-      ".config/gnome-initial-setup-done"
-    ];
-    allowOther = true; # Useful for sudo operations
-  };
 
-  sessionPath = [];
+    # New: Now we can use the "home.persistence" module, here's an example:
+    persistence."/nix/persist/home/aj01" = {
+      directories = [
+        "Документы"
+        "Загрузки"
+        "Музыка"
+        "Изображения"
+        "Видео"
+        ".gnupg"
+        ".ssh"
+        ".local/share/keyrings"
+        ".local/share/direnv"
+        ".local/share/wallpapers"
+        ".local/share/TelegramDesktop/tdata" # telegram
+        "Downloads"
+        ".config/dconf"
+        #"aj-nixos-config"
+        {
+          directory = ".local/share/Steam";
+          method = "symlink";
+        }
+      ];
+      files = [
+        ".bash_history"
+        ".zsh_history"
+        # If .zshrc is in persistence then oh-my-zsh don't apply config
+        #      ".zshrc"
+        # If .config/dconf/user is in persistence then gnome does not saving settings
+        #      ".config/dconf/user"
+        ".config/gnome-initial-setup-done"
+      ];
+      allowOther = true; # Useful for sudo operations
+    };
 
-  sessionVariables = {
+    sessionPath = [];
+
+    sessionVariables = {
       BROWSER = "firefox";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
@@ -164,7 +168,7 @@
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = ["git"];
       theme = "robbyrussell";
     };
   };
@@ -186,5 +190,4 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
-
 }

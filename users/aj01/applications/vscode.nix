@@ -12,13 +12,14 @@
       pkief.material-product-icons
       pkief.material-icon-theme
       jnoortheen.nix-ide
+      ms-dotnettools.csharp
     ];
     userSettings = {
       "editor.fontSize" = 16;
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
-      "editor.fontFamily" = "'M PLUS 1 Code', 'Maple Mono NF', 'Noto Color Emoji', 'monospace', monospace";
-      "workbench.colorTheme" = "Rosé Pine Dawn";
+      "editor.fontFamily" = "'Iosevka Term', 'M PLUS 1 Code', 'Maple Mono NF', 'Noto Color Emoji', 'monospace', monospace";
+      "workbench.colorTheme" = "Rosé Pine Moon";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
       "workbench.productIconTheme" = "material-product-icons";

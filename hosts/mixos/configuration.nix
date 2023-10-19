@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   inputs,
   outputs,
@@ -10,7 +9,6 @@
   pkgs,
   ...
 }: {
-
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
@@ -75,12 +73,15 @@
     };
   };
 
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "vixos"; # Define your hostname.
+  # set cpu freq governor (see hardware config)
+  #powerManagement.cpuFreqGovernor = "performance";
+
+  networking.hostName = "mixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -109,20 +110,20 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  #services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "ru";
-    xkbVariant = "";
-  };
+  #services.xserver = {
+  #layout = "ru";
+  #xkbVariant = "";
+  #};
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -139,6 +140,8 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+
+    wireplumber.enable = true;
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
@@ -151,10 +154,8 @@
     #passwordAuthentication = false;
   };
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
 
   users.mutableUsers = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -166,18 +167,21 @@
     shell = pkgs.zsh;
     group = "users";
     extraGroups = ["wheel" "video" "audio" "realtime" "input"];
-    hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/"; 
+    hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
 
     ## TODO: You can set an initial password for your user.
     ## If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
     ## Be sure to change it (using passwd) after rebooting!
     #initialPassword = "correcthorsebatterystaple";
   };
-
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment = { 
+  environment = {
     binsh = "${pkgs.zsh}/bin/zsh";
     pathsToLink = ["/share/zsh"];
     shells = with pkgs; [zsh];
@@ -202,7 +206,7 @@
       nix-output-monitor
       edk2-uefi-shell
     ];
-    
+
     #persistence."/persist" = {
     #  hideMounts = true;
     #  directories = [
@@ -218,6 +222,8 @@
   # fonts
   fonts = {
     packages = with pkgs; [
+      iosevka-bin
+      openmoji-color
       noto-fonts
       noto-fonts-emoji
       noto-fonts-monochrome-emoji
@@ -230,14 +236,14 @@
     fontconfig = {
       enable = lib.mkDefault true;
       defaultFonts = {
-        monospace = ["M PLUS 1 Code"];
-        emoji = ["Noto Color Emoji"];
+        #monospace = ["M PLUS 1 Code"];
+        monospace = ["Iosevka Term"];
+
+        #emoji = ["Noto Color Emoji"];
+        emoji = ["OpenMoji Color"];
       };
     };
   };
-
-  # set cpu freq governor
-  powerManagement.cpuFreqGovernor = "performance";
 
   # programs
   programs = {
@@ -276,5 +282,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
