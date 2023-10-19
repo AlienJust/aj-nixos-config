@@ -142,8 +142,11 @@
         # region video recording
         # shift ctrl super s?
 
-        # toggle focus to floating
-        bind = SUPER, SPACE, togglefloating,
+        bind = SUPER,       SPACE,  focusurgentorlast,
+        bind = SUPER SHIFT, SPACE,  togglefloating,
+
+        bind = SUPER,       TAB, layoutmsg, cyclenext
+        bind = SUPER SHIFT, TAB, layoutmsg, cycleprev
 
         # toggle focus to pseudo tiled
         bind = SUPER, P, pseudo,
