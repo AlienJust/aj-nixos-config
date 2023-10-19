@@ -42,8 +42,10 @@
         # inputs
         input {
             kb_layout = us,ru
-            follow_mouse = 0
+            kb_options = grp:caps_toggle
+            follow_mouse = 1
             #sensitivity = -0.5 # hm
+            sensitivity = 0
             repeat_delay = 250
         }
 
@@ -55,6 +57,11 @@
             col.active_border = 0xFF8F8AA8
             col.inactive_border = 0xFF2A273F
             layout = dwindle
+            #layout = master
+
+            cursor_inactive_timeout = 5
+            resize_on_border = true
+            hover_icon_on_border = true
         }
 
         # misc
