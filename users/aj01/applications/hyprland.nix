@@ -143,7 +143,7 @@
         # shift ctrl super s?
 
         # toggle focus to floating
-        bind = SUPER, F, togglefloating,
+        bind = SUPER, SPACE, togglefloating,
 
         # toggle focus to pseudo tiled
         bind = SUPER, P, pseudo,
