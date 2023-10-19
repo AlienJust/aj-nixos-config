@@ -56,11 +56,11 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        amdvlk
-        rocm-opencl-icd
-        rocm-opencl-runtime
-      ];
+      #      extraPackages = with pkgs; [
+      #        amdvlk
+      #        rocm-opencl-icd
+      #        rocm-opencl-runtime
+      #      ];
     };
   };
 }

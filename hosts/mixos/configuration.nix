@@ -205,6 +205,7 @@
       unzip
       nix-output-monitor
       edk2-uefi-shell
+      udisks2
     ];
 
     #persistence."/persist" = {

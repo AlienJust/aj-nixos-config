@@ -85,13 +85,17 @@
 
       eza
       nil
+
+      (nerdfonts.override {fonts = ["IosevkaTerm"];})
+      (iosevka-bin.override {variant = "slab";})
+      iosevka-bin
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
     persistence."/nix/persist/home/aj01" = {
       directories = [
-        "Документы"
         "Загрузки"
+        "Документы"
         "Музыка"
         "Изображения"
         "Видео"
