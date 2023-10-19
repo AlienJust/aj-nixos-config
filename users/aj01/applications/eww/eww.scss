@@ -2,15 +2,15 @@
   all: unset;
 }
 
-$foreground: #c99eff;
+$foreground: #ffffff;
 $background: #232136;
-$border-color: #6300dd;
+$border-color: #8F8AA8;
 
 window {
   background: $background;
   border-bottom: 3px solid $border-color;
-  border-left: 3px solid $border-color;
-  border-right: 3px solid $border-color;
+  border-left: 0px solid $border-color;
+  border-right: 0px solid $border-color;
 }
 
 .bar_class {
@@ -21,6 +21,6 @@ window {
 }
 
 .workspace-entry {
-  color: #6300dd;
+  color: #8F8AA8;
   font-size: 25px;
 }

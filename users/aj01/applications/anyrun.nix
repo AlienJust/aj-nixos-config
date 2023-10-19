@@ -36,8 +36,8 @@
       }
 
       #match:selected {
-        color: #FBF1E5;
-        background: #931500;
+        color: #232136;
+        background: #5b4676;
       }
 
       #list {
@@ -54,8 +54,8 @@
       }
 
       box#main {
-        background: #E9D4B9;
-        border: 3px solid #931500;
+        background: #232136;
+        border: 3px solid #5b4676;
       }
     '';
   };
