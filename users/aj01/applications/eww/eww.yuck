@@ -13,7 +13,7 @@
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "3411px"
+                      :width "1920"
                       :height "35px"
                       :anchor "top center")
   :reserve (struts :side "top" :distance "15px")

@@ -2,9 +2,9 @@
   all: unset;
 }
 
-$foreground: #931500;
-$background: #EEDCC5;
-$border-color: #931500;
+$foreground: #c99eff;
+$background: #232136;
+$border-color: #6300dd;
 
 window {
   background: $background;
@@ -21,6 +21,6 @@ window {
 }
 
 .workspace-entry {
-  color: #931500;
+  color: #6300dd;
   font-size: 25px;
 }

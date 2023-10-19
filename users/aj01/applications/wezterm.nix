@@ -10,7 +10,7 @@
 
       -- font
       config.font =
-      wezterm.font_with_fallback { "M PLUS 1 Code", "Maple Mono NF", "Noto Color Emoji" }
+      wezterm.font_with_fallback { "Iosevka Term", "M PLUS 1 Code", "Maple Mono NF", "Noto Color Emoji" }
       config.font_size = 12
 
       -- disable things we don't really need
@@ -47,8 +47,8 @@
       config.colors = {
         selection_fg = '#f2e9e1',
         selection_bg = '#d7827e',
-        background = '#EEDCC5',
-        foreground = '#931500',
+        background = '#232136',
+        foreground = '#F6C177',
         ansi = {
           '#59473B',
           '#C54532',

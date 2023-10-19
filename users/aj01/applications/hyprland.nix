@@ -49,11 +49,11 @@
 
     # general
     general {
-        gaps_in = 10
-        gaps_out = 15
+        gaps_in = 2
+        gaps_out = 3
         border_size = 3
-        col.active_border = 0xFF931500
-        col.inactive_border = 0xFF931500
+        col.active_border = 0x6300dd00
+        col.inactive_border = 0x23213600
         layout = dwindle
     }
 
@@ -117,7 +117,7 @@
     bind = SUPER, Return, exec, wezterm
 
     # application launcher
-    bind = SUPER, Space, exec, anyrun
+    bind = SUPER, D, exec, anyrun
 
     # browser
     bind = SUPER, O, exec, firefox
@@ -126,13 +126,13 @@
     bind = SUPER, C, exec, hyprpicker -a
 
     # kill selected window
-    bind = SUPER SHIFT, W, killactive,
+    bind = SUPER SHIFT, Q, killactive,
 
     # quit hyprland
-    bind = SUPER SHIFT, M, exec, wlogout
+    bind = SUPER SHIFT, E, exec, wlogout
 
     # fullscreen screen shot
-    bind = SUPER, F11, exec, grim -o DP-1 # fix notification
+    bind = SUPER, F11, exec, grim -o HDMI-A-1 # fix notification
 
     # region screenshot
     bind = SUPER SHIFT, S, exec, grim -g "$(slurp)" # fix notification
