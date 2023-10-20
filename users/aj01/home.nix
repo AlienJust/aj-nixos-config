@@ -129,16 +129,35 @@
 
     sessionVariables = {
       BROWSER = "firefox";
+      
       QT_QPA_PLATFORMTHEME = "qt5ct";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      QT_QPA_PLATFORM = "wayland";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+
       RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
       XCURSOR_SIZE = "16";
       XCURSOR_THEME = "Adwaita";
       NIXOS_OZONE_WL = "1";
+
       MOZ_USE_XINPUT2 = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_WEBRENDER = "1";
+      MOZ_ACCELERATED = "1";
+
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
+
+      XKB_DEFAULT_LAYOUT = "us";
+      LIBSEAT_BACKEND = "logind";
+
+      CLUTTER_BACKEND = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+      GDK_BACKEND = "wayland";
     };
   };
 
@@ -176,7 +195,7 @@
       theme = "robbyrussell";
     };
   };
-
+/*
   # xdg defaults
   xdg = {
     userDirs = {
@@ -188,7 +207,7 @@
       videos = "${config.home.homeDirectory}/Видео";
     };
   };
-
+*/
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
