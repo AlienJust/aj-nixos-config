@@ -71,7 +71,7 @@
       steam
 
       mpv
-      obs-studio
+      #obs-studio
       imv
 
       grim
@@ -129,7 +129,7 @@
 
     sessionVariables = {
       BROWSER = "firefox";
-      
+
       QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_QPA_PLATFORM = "wayland";
@@ -200,7 +200,7 @@
 
   programs.mpv = {
     enable = true;
-    scripts = [pkgs.mpvScripts.mpris];
+    #scripts = [pkgs.mpvScripts.mpris];
     bindings = {
       ENTER = "playlist-next force";
       WHEEL_UP = "seek 10";
@@ -224,7 +224,8 @@
       vd-lavc-dr = false;
     };
     profiles = {
-      alsa-mm1 = {
+      /*
+        alsa-mm1 = {
         profile-desc = "Sound via alsa interface: MM-1";
         profile = "gpu-hq";
         audio-device = "alsa/iec958:CARD=MM1,DEV=0";
@@ -239,6 +240,7 @@
         profile = "gpu-hq";
         audio-device = "alsa/hdmi:CARD=PCH,DEV=0";
       };
+      */
       "extension.mkv" = {
         keep-open = true;
         volume-max = "150";
@@ -258,13 +260,13 @@
     };
   };
 
-  programs.obs-studio = {
-    enable = true;
-    plugins = [pkgs.obs-studio-plugins.wlrobs];
-  };
+  #programs.obs-studio = {
+  #enable = true;
+  #plugins = [pkgs.obs-studio-plugins.wlrobs];
+  #};
 
   programs.helix.enable = true;
-/*
+  /*
   # xdg defaults
   xdg = {
     userDirs = {
@@ -276,10 +278,10 @@
       videos = "${config.home.homeDirectory}/Видео";
     };
   };
-*/
+  */
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 }
