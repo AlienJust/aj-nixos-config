@@ -33,7 +33,7 @@
 		 :space-evenly false  
          :halign "start"
 		 :class "left_modules"
-(media)))
+(workspaces)))
 
 
 (defwidget media []
@@ -48,7 +48,7 @@
 		 :space-evenly false  
          :halign "center"
 		 :class "center_modules"
-(workspaces)))
+(media)))
 
 (defwidget workspaces []
   (box :class "workspaces"
