@@ -55,7 +55,7 @@
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaPeach;
     name = "Catppuccin-Mocha-Peach-Cursors";
-    size = 32;
+    size = 40;
     gtk.enable = true;
   };
 
@@ -94,17 +94,13 @@
       git
       socat
 
+      # tui
       htop
       btop
       mc
       neofetch
 
-      telegram-desktop
-
-      mpv
-      #obs-studio
-      imv
-
+      # wayland stuff
       grim
       slurp
       swaybg
@@ -133,22 +129,22 @@
       pavucontrol
       udisks2
 
+      # general software
       meld
       vlc
       gimp
       inkscape
       audacity
       remmina
+      avalonia-ilspy
+      mpv
+      #obs-studio
+      imv
+      telegram-desktop
 
-      #dotnet-sdk
+      # dotnet-sdk
       dotnet-sdk_7
       _7zz
-
-      # Avalonia dotnet:
-      avalonia-ilspy
-      fontconfig
-      glew
-      xwayland
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
@@ -198,7 +194,7 @@
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
       RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
-      XCURSOR_SIZE = "16";
+      XCURSOR_SIZE = "32";
       XCURSOR_THEME = "Adwaita";
       NIXOS_OZONE_WL = "1";
 
@@ -332,7 +328,7 @@
         font-bold = lib.mkForce "IosevkaTerm NFM:size=14";
       };
       mouse = {
-        hide-when-typing = true;
+        hide-when-typing = false;
       };
     };
   };
