@@ -28,10 +28,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    # stylix.url = "github:danth/stylix";
-    stylix.url = "github:airradda/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.inputs.home-manager.follows = "home-manager";
+    # stylix
+    ## stylix.url = "github:danth/stylix";
+    #stylix.url = "github:airradda/stylix";
+    #stylix.inputs.nixpkgs.follows = "nixpkgs";
+    #stylix.inputs.home-manager.follows = "home-manager";
 
     # spicetify
     spicetify-nix.url = "github:the-argus/spicetify-nix";
@@ -55,7 +56,8 @@
     nixpkgs,
     home-manager,
     impermanence,
-    stylix,
+    #stylix,
+    hyprland,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -75,9 +77,19 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
       mixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit
+            inputs
+            outputs
+            /*
+            stylix
+            */
+            
+            hyprland
+            home-manager
+            ;
+        };
         # > Our main nixos configuration file <
         modules = [
           ./hosts/mixos/configuration.nix
@@ -94,7 +106,16 @@
 
       # Virtualbox system
       vixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit
+            inputs
+            outputs
+            /*
+            stylix
+            */
+            
+            ;
+        };
         # > Our main nixos configuration file <
         modules = [
           ./hosts/vixos/configuration.nix

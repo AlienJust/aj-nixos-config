@@ -7,7 +7,7 @@
   lib,
   config,
   pkgs,
-  stylix,
+  #stylix,
   ...
 }: {
   # You can import other NixOS modules here
@@ -19,12 +19,15 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
 
+    # stylix
+    #stylix.nixosModules.stylix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
     (inputs.impermanence + "/nixos.nix")
   ];
-
+  /*
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
@@ -32,7 +35,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
     fonts.sizes.terminal = 16;
   };
-
+  */
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
     # You can add overlays here
@@ -118,17 +121,22 @@
   #services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
+
+  /*
   services.xserver = {
     layout = "ru";
     xkbVariant = "";
   };
+  */
 
+  /*
   console = {
     earlySetup = true;
     font = "ter-powerline-v24n";
     packages = [pkgs.powerline-fonts];
     useXkbConfig = true;
   };
+  */
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
@@ -155,9 +163,9 @@
     #passwordAuthentication = false;
   };
 
-  services.fstrim.enable = true;
+  #services.fstrim.enable = true;
 
-  services.fwupd.enable = true;
+  #services.fwupd.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -173,11 +181,6 @@
     group = "users";
     extraGroups = ["wheel" "video" "audio" "realtime" "input"];
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
-
-    ## TODO: You can set an initial password for your user.
-    ## If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-    ## Be sure to change it (using passwd) after rebooting!
-    #initialPassword = "correcthorsebatterystaple";
   };
   xdg.portal = {
     enable = true;

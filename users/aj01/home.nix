@@ -5,7 +5,7 @@
   lib,
   config,
   pkgs,
-  stylix,
+  #stylix,
   ...
 }: {
   # You can import other home-manager modules here
@@ -16,11 +16,11 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    # stylix.
-    stylix.homeManagerModules.stylix
-
     # impermanence
     (inputs.impermanence + "/home-manager.nix")
+
+    # stylix.
+    #stylix.homeManagerModules.stylix
 
     # Apps
     ./applications/hyprland.nix
@@ -110,6 +110,7 @@
       gimp
       inkscape
       audacity
+      remmina
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
@@ -316,6 +317,7 @@
   };
   */
 
+  /*
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
@@ -369,7 +371,7 @@
       };
     };
   };
-
+  */
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
