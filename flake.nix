@@ -35,9 +35,6 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
 
-    # spicetify
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-
     # lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
