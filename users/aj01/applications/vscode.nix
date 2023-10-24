@@ -25,6 +25,7 @@
       "workbench.productIconTheme" = "material-product-icons";
       "git.confirmSync" = false;
       "git.autofetch" = true;
+      "git.enableSmartCommit" = true;
       "window.titleBarStyle" = "custom";
       "[nix]" = {"editor.defaultFormatter" = "jnoortheen.nix-ide";};
       "nix.enableLanguageServer" = true;
