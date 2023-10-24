@@ -27,6 +27,7 @@
       "git.autofetch" = true;
       "git.enableSmartCommit" = true;
       "window.titleBarStyle" = "custom";
+      "window.zoomLevel" = "-1";
       "[nix]" = {"editor.defaultFormatter" = "jnoortheen.nix-ide";};
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";

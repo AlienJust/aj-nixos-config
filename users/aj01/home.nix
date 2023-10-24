@@ -100,7 +100,6 @@
       mc
 
       telegram-desktop
-      steam
 
       mpv
       #obs-studio
@@ -318,6 +317,7 @@
   };
 
   services.mako.enable = true;
+
   programs.foot = {
     enable = true;
     settings = {
