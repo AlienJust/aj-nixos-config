@@ -23,10 +23,8 @@
     ./applications/hyprland.nix
     ./applications/vscode.nix
     ./applications/anyrun.nix
-    #./applications/wezterm.nix
     ./applications/firefox
     ./applications/eww
-    #./applications/spicetify.nix
     #./applications/stylix.nix
   ];
 
