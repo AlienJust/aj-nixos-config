@@ -82,6 +82,8 @@
           inherit
             inputs
             outputs
+            stylix
+            hyprland
             ;
         };
         # > Our main nixos configuration file <
