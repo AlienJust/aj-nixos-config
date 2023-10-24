@@ -7,7 +7,6 @@
   lib,
   config,
   pkgs,
-  #stylix,
   ...
 }: {
   # You can import other NixOS modules here
@@ -20,14 +19,14 @@
     # ./users.nix
 
     # stylix
-    #stylix.nixosModules.stylix
+    inputs.stylix.nixosModules.stylix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
     (inputs.impermanence + "/nixos.nix")
   ];
-  /*
+
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
@@ -35,7 +34,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
     fonts.sizes.terminal = 16;
   };
-  */
+
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
     # You can add overlays here
@@ -121,22 +120,18 @@
   #services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-
-  /*
   services.xserver = {
-    layout = "ru";
-    xkbVariant = "";
+    xkbModel = "pc105";
+    layout = "us,ru";
+    xkbOptions = "grp:caps_toggle";
   };
-  */
 
-  /*
   console = {
     earlySetup = true;
     font = "ter-powerline-v24n";
     packages = [pkgs.powerline-fonts];
     useXkbConfig = true;
   };
-  */
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;

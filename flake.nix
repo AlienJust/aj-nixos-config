@@ -29,10 +29,10 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # stylix
-    ## stylix.url = "github:danth/stylix";
-    #stylix.url = "github:airradda/stylix";
-    #stylix.inputs.nixpkgs.follows = "nixpkgs";
-    #stylix.inputs.home-manager.follows = "home-manager";
+    # stylix.url = "github:danth/stylix";
+    stylix.url = "github:airradda/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.inputs.home-manager.follows = "home-manager";
 
     # spicetify
     spicetify-nix.url = "github:the-argus/spicetify-nix";
@@ -57,7 +57,7 @@
     home-manager,
     impermanence,
     #stylix,
-    hyprland,
+    #hyprland,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -82,12 +82,6 @@
           inherit
             inputs
             outputs
-            /*
-            stylix
-            */
-            
-            hyprland
-            home-manager
             ;
         };
         # > Our main nixos configuration file <
@@ -110,10 +104,6 @@
           inherit
             inputs
             outputs
-            /*
-            stylix
-            */
-            
             ;
         };
         # > Our main nixos configuration file <

@@ -5,7 +5,6 @@
   lib,
   config,
   pkgs,
-  #stylix,
   ...
 }: {
   # You can import other home-manager modules here
@@ -19,9 +18,6 @@
     # impermanence
     (inputs.impermanence + "/home-manager.nix")
 
-    # stylix.
-    #stylix.homeManagerModules.stylix
-
     # Apps
     ./applications/hyprland.nix
     ./applications/vscode.nix
@@ -30,6 +26,7 @@
     ./applications/firefox
     ./applications/eww
     ./applications/spicetify.nix
+    ./applications/stylix.nix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -114,9 +111,9 @@
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
-    /*
-      persistence."/nix/persist/home/aj01" = {
-      directories = [
+    persistence."/nix/persist/home/aj01" = {
+      /*
+        directories = [
         "Загрузки"
         "Документы"
         "Музыка"
@@ -145,9 +142,10 @@
         #      ".config/dconf/user"
         ".config/gnome-initial-setup-done"
       ];
+      */
       allowOther = true; # Useful for sudo operations
     };
-    */
+
     sessionPath = [];
 
     sessionVariables = {
@@ -317,61 +315,6 @@
   };
   */
 
-  /*
-  stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-
-    image = pkgs.fetchurl {
-      url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
-      sha256 = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
-    };
-
-    # https://www.reddit.com/r/NixOS/comments/3jqd2u/anyone_want_a_wallpaper/
-    # also check: https://github.com/NixOS/nixos-artwork/tree/master/wallpapers
-    # image = pkgs.fetchurl {
-    #   url = "http://reign-studios.com/wallpapers/nixos/wallpaper.svg";
-    #   sha256 = "sha256-vXbw39v0sA+aR/9Gg0NOPgL3QHuw0Wl+ACbn9VJ8Fyg=";
-    # };
-
-    # image = pkgs.fetchurl {
-    #   url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-    #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-    # };
-
-    # image = pkgs.fetchurl {
-    #   url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
-    #   sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
-    # };
-
-    fonts = {
-      serif = {
-        package = pkgs.iosevka-bin.override {variant = "etoile";};
-        name = "Iosevka Etoile";
-      };
-
-      sansSerif = {
-        package = pkgs.iosevka-bin.override {variant = "aile";};
-        name = "Iosevka Aile";
-      };
-
-      monospace = {
-        package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
-        name = "Iosevka Term";
-      };
-
-      emoji = {
-        name = "OpenMoji Color";
-        package = pkgs.openmoji-color;
-      };
-
-      sizes = {
-        desktop = 10;
-        applications = 12;
-        terminal = 16;
-      };
-    };
-  };
-  */
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
