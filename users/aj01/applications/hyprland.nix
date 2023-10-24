@@ -65,9 +65,16 @@
             layout = dwindle
             #layout = master
 
-            cursor_inactive_timeout = 5
+            cursor_inactive_timeout = 0
             resize_on_border = true
             hover_icon_on_border = true
+        }
+
+        # dwindle layout
+        dwindle {
+            pseudotile = no
+            preserve_split = no
+            force_split = yes
         }
 
         # misc
@@ -80,14 +87,10 @@
 
         # animations (why)
         animations {
-            enabled = true
+            enabled = false
         }
 
-        # dwindle layout
-        dwindle {
-            pseudotile = yes
-            preserve_split = yes
-        }
+
 
         # windows rules
         # fix telegram media preview
@@ -239,5 +242,7 @@
   '';
 
   # enable hyprland
-  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+  };
 }
