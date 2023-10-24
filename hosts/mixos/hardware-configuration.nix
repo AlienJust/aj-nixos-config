@@ -20,7 +20,7 @@
     "mitigations=off"
     "initcall_blacklist=acpi_cpufreq_init"
     "quiet"
-    #"udev.log_level=3"
+    "udev.log_level=0"
   ];
   boot.extraModulePackages = [];
 
