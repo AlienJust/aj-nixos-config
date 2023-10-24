@@ -27,12 +27,16 @@
         workspace = name:4, monitor:HDMI-A-1
         workspace = name:5, monitor:HDMI-A-1
         workspace = name:6, monitor:HDMI-A-1
+        workspace = name:7, monitor:HDMI-A-1
+        workspace = name:8, monitor:HDMI-A-1
+        workspace = name:9, monitor:HDMI-A-1
+
 
         # set wallpapers
         # wallpaper ultrawide
         # exec-once = swaybg -o DP-1 -i ~/.local/share/wallpapers/bg1.jpg -m fill
         # wallpaper portrait
-        exec-once = swaybg -o HDMI-A-1 -i ~/.local/share/wallpapers/bg2.jpg -m fill
+        exec-once = swaybg -o HDMI-A-1 -i ~/wall.jpg -m fill
 
         # panel
         exec-once = eww daemon && eww open bar

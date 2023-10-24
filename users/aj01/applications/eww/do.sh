@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -z "$1" || "$1" == "help" ]]; then
 	echo "Available: toggle_music, music, system"
@@ -32,11 +32,11 @@ elif [[ "$1" == "system" ]]; then
 	fi
 elif [[ "$1" == "keyboard" ]]; then
 	if [[ "$2" == "layout" ]]; then
-		hyprctl devices | grep 'active keymap:' | sed -n '4p' | awk '{print $3}'
+		hyprctl devices | grep 'active keymap:' | sed -n '7p' | awk '{print $3}'
 	elif [[ "$2" == "change" ]]; then
 		# 0 = us
-		# 1 = tr
+		# 1 = ru
 		# 2 = tr,ku
-		hyprctl  switchxkblayout semico---usb-gaming-keyboard- "$3"
+		hyprctl  switchxkblayout --usb-keyboard "$3"
 	fi
 fi

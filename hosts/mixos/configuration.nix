@@ -32,9 +32,25 @@
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
+
     # Either image or base16Scheme is required
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-    fonts.sizes.terminal = 14;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    #fonts.sizes.terminal = 12;
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "hack nerd font mono";
+      };
+
+      sizes = {
+        terminal = 10;
+      };
+    };
+
+    opacity = {
+      terminal = 0.9;
+    };
   };
 
   nixpkgs = {
@@ -216,6 +232,7 @@
       edk2-uefi-shell
       udisks2
       fontconfig
+      xwayland
     ];
 
     #persistence."/persist" = {

@@ -83,7 +83,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "aj01";
     homeDirectory = "/home/aj01";
@@ -98,6 +97,7 @@
       htop
       btop
       mc
+      neofetch
 
       telegram-desktop
 
@@ -143,6 +143,12 @@
       #dotnet-sdk
       dotnet-sdk_7
       _7zz
+
+      # Avalonia dotnet:
+      avalonia-ilspy
+      fontconfig
+      glew
+      xwayland
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:

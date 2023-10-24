@@ -9,6 +9,7 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     master.url = "github:nixos/nixpkgs/master";
     stable.url = "github:nixos/nixpkgs/release-23.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -29,8 +30,8 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     # stylix
-    # stylix.url = "github:danth/stylix";
-    stylix.url = "github:airradda/stylix";
+    stylix.url = "github:danth/stylix";
+    #stylix.url = "github:airradda/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
 

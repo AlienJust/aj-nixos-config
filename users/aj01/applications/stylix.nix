@@ -12,9 +12,25 @@
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
+    /*
     image = pkgs.fetchurl {
       url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
       sha256 = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
+    };
+    */
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "hack nerd font mono";
+      };
+
+      sizes = {
+        terminal = 17;
+      };
+    };
+
+    opacity = {
+      terminal = 0.8;
     };
 
     # https://www.reddit.com/r/NixOS/comments/3jqd2u/anyone_want_a_wallpaper/
