@@ -56,8 +56,8 @@
     nixpkgs,
     home-manager,
     impermanence,
-    #stylix,
-    #hyprland,
+    stylix,
+    hyprland,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -86,7 +86,9 @@
         };
         # > Our main nixos configuration file <
         modules = [
+          #stylix.nixosModules.stylix
           ./hosts/mixos/configuration.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

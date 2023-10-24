@@ -6,9 +6,9 @@
 }: {
   imports = [
     # stylix
-    #inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeManagerModules.stylix
   ];
-  /*
+
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
@@ -62,5 +62,4 @@
       };
     };
   };
-  */
 }

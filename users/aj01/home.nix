@@ -16,7 +16,8 @@
     # ./nvim.nix
 
     # impermanence
-    (inputs.impermanence + "/home-manager.nix")
+    inputs.impermanence.nixosModules.home-manager.impermanence
+    #(inputs.impermanence + "/home-manager.nix")
 
     # Apps
     ./applications/hyprland.nix
@@ -26,7 +27,7 @@
     ./applications/firefox
     ./applications/eww
     ./applications/spicetify.nix
-    ./applications/stylix.nix
+    #./applications/stylix.nix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -51,6 +52,36 @@
   #    allowUnfreePredicate = _: true;
   #  };
   #};
+  home.pointerCursor = {
+    package = pkgs.catppuccin-cursors.mochaPeach;
+    name = "Catppuccin-Mocha-Peach-Cursors";
+    size = 32;
+    gtk.enable = true;
+  };
+
+  gtk = {
+    enable = true;
+    font = {
+      package = pkgs.nerdfonts.override {fonts = ["Mononoki"];};
+      name = "Mononoki Nerd Font Regular";
+      size = 12;
+    };
+    iconTheme = {
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "peach";
+      };
+      name = "Papirus-Dark";
+    };
+    theme = {
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["peach"];
+        size = "standard";
+        variant = "mocha";
+      };
+      name = "Catppuccin-Mocha-Standard-Peach-Dark";
+    };
+  };
 
   # TODO: Set your username
   home = {
@@ -101,6 +132,7 @@
       mangohud
       intel-gpu-tools
       pavucontrol
+      udisks2
 
       meld
       vlc
@@ -108,6 +140,10 @@
       inkscape
       audacity
       remmina
+
+      #dotnet-sdk
+      dotnet-sdk_7
+      _7zz
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:

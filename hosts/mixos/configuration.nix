@@ -24,7 +24,9 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    (inputs.impermanence + "/nixos.nix")
+    # Impermanence
+    inputs.impermanence.nixosModules.impermanence
+    #(inputs.impermanence + "/nixos.nix")
   ];
 
   stylix = {
@@ -209,6 +211,7 @@
       nix-output-monitor
       edk2-uefi-shell
       udisks2
+      fontconfig
     ];
 
     #persistence."/persist" = {
