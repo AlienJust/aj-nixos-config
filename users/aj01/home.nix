@@ -83,12 +83,29 @@
       wlogout
       playerctl
 
+      waybar
+      mako
+      sway
+      foot
+      swaylock
+      swayidle
+
       eza
       nil
 
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
       iosevka-bin
+
+      mangohud
+      intel-gpu-tools
+      pavucontrol
+
+      meld
+      vlc
+      gimp
+      inkscape
+      audacity
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
@@ -257,6 +274,20 @@
       "protocol.dvd" = {
         profile-desc = "profile for dvd:// streams";
         alang = "en";
+      };
+    };
+  };
+
+  services.mako.enable = true;
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        font = lib.mkForce "IosevkaTerm NFM Light:size=16";
+        font-bold = lib.mkForce "IosevkaTerm NFM:size=16";
+      };
+      mouse = {
+        hide-when-typing = true;
       };
     };
   };
