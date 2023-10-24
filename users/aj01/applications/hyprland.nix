@@ -45,7 +45,7 @@
         input {
             kb_layout = us,ru
             kb_options = grp:caps_toggle
-            follow_mouse = 1
+            follow_mouse = 0
             #sensitivity = -0.5 # hm
             sensitivity = 0
             repeat_delay = 250
@@ -58,10 +58,10 @@
             border_size = 3
             col.active_border = 0xFF8F8AA8
             col.inactive_border = 0xFF2A273F
-            #layout = dwindle
-            layout = master
+            layout = dwindle
+            #layout = master
 
-            cursor_inactive_timeout = 5
+            cursor_inactive_timeout = 0
             resize_on_border = true
             hover_icon_on_border = true
         }
@@ -76,7 +76,7 @@
 
         # animations (why)
         animations {
-            enabled = false
+            enabled = true
         }
 
         # dwindle layout
@@ -123,7 +123,7 @@
 
         # bindings
         # terminal
-        bind = SUPER, Return, exec, wezterm
+        bind = SUPER, Return, exec, foot
 
         # application launcher
         bind = SUPER, D, exec, anyrun

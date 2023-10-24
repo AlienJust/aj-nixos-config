@@ -23,10 +23,10 @@
     ./applications/hyprland.nix
     ./applications/vscode.nix
     ./applications/anyrun.nix
-    ./applications/wezterm.nix
+    #./applications/wezterm.nix
     ./applications/firefox
     ./applications/eww
-    ./applications/spicetify.nix
+    #./applications/spicetify.nix
     #./applications/stylix.nix
   ];
 
@@ -322,8 +322,8 @@
     enable = true;
     settings = {
       main = {
-        font = lib.mkForce "IosevkaTerm NFM Light:size=16";
-        font-bold = lib.mkForce "IosevkaTerm NFM:size=16";
+        font = lib.mkForce "IosevkaTerm NFM Light:size=14";
+        font-bold = lib.mkForce "IosevkaTerm NFM:size=14";
       };
       mouse = {
         hide-when-typing = true;
