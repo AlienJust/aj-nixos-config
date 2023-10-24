@@ -45,7 +45,7 @@
         input {
             kb_layout = us,ru
             kb_options = grp:caps_toggle
-            follow_mouse = 0
+            follow_mouse = 1
             #sensitivity = -0.5 # hm
             sensitivity = 0
             repeat_delay = 250
@@ -55,13 +55,13 @@
         general {
             gaps_in = 0
             gaps_out = 0
-            border_size = 3
+            border_size = 2
             col.active_border = 0xFF8F8AA8
             col.inactive_border = 0xFF2A273F
             layout = dwindle
             #layout = master
 
-            cursor_inactive_timeout = 0
+            cursor_inactive_timeout = 5
             resize_on_border = true
             hover_icon_on_border = true
         }
