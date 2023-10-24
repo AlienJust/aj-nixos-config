@@ -28,6 +28,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
+    # stylix.url = "github:danth/stylix";
+    stylix.url = "github:airradda/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.inputs.home-manager.follows = "home-manager";
+
     # spicetify
     spicetify-nix.url = "github:the-argus/spicetify-nix";
 
@@ -50,6 +55,7 @@
     nixpkgs,
     home-manager,
     impermanence,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;

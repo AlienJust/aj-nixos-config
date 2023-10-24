@@ -7,6 +7,7 @@
   lib,
   config,
   pkgs,
+  stylix,
   ...
 }: {
   # You can import other NixOS modules here
@@ -24,13 +25,13 @@
     (inputs.impermanence + "/nixos.nix")
   ];
 
-  #home-manager = {
-  #  extraSpecialArgs = { inherit inputs outputs; };
-  #  users = {
-  #    # Import your home-manager configuration
-  #    aj01 = import ../home-manager/home.nix;
-  #  };
-  #};
+  stylix = {
+    homeManagerIntegration.followSystem = false;
+    homeManagerIntegration.autoImport = false;
+    # Either image or base16Scheme is required
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    fonts.sizes.terminal = 16;
+  };
 
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
@@ -117,10 +118,17 @@
   #services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  #services.xserver = {
-  #layout = "ru";
-  #xkbVariant = "";
-  #};
+  services.xserver = {
+    layout = "ru";
+    xkbVariant = "";
+  };
+
+  console = {
+    earlySetup = true;
+    font = "ter-powerline-v24n";
+    packages = [pkgs.powerline-fonts];
+    useXkbConfig = true;
+  };
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
@@ -134,13 +142,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-
     wireplumber.enable = true;
   };
 
@@ -153,6 +154,10 @@
     ## Use keys only. Remove if you want to SSH using password (not recommended)
     #passwordAuthentication = false;
   };
+
+  services.fstrim.enable = true;
+
+  services.fwupd.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -221,6 +226,7 @@
   };
 
   # fonts
+  /*
   fonts = {
     packages = with pkgs; [
       iosevka-bin
@@ -245,6 +251,7 @@
       };
     };
   };
+  */
 
   # programs
   programs = {
