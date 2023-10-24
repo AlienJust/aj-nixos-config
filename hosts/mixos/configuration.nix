@@ -35,7 +35,6 @@
 
     # Either image or base16Scheme is required
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    #fonts.sizes.terminal = 12;
 
     fonts = {
       monospace = {
@@ -265,6 +264,7 @@
       (pkgs.callPackage ../../pkgs/mplus-fonts {}) # TODO: do I really need to call it like this?
       (pkgs.callPackage ../../pkgs/balsamiqsans {})
     ];
+    /*
     fontconfig = {
       enable = lib.mkDefault true;
       defaultFonts = {
@@ -275,6 +275,7 @@
         emoji = ["OpenMoji Color"];
       };
     };
+    */
     fontDir.enable = true;
   };
 

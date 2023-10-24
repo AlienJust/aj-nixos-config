@@ -10,7 +10,7 @@
   ];
 
   stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
     /*
     image = pkgs.fetchurl {
@@ -18,6 +18,8 @@
       sha256 = "sha256-SykeFJXCzkeaxw06np0QkJCK28e0k30PdY8ZDVcQnh4=";
     };
     */
+
+    /*
     fonts = {
       monospace = {
         package = pkgs.nerdfonts;
@@ -25,14 +27,14 @@
       };
 
       sizes = {
-        terminal = 17;
+        terminal = 12;
       };
     };
 
     opacity = {
-      terminal = 0.8;
+      terminal = 0.9;
     };
-
+    */
     # https://www.reddit.com/r/NixOS/comments/3jqd2u/anyone_want_a_wallpaper/
     # also check: https://github.com/NixOS/nixos-artwork/tree/master/wallpapers
     # image = pkgs.fetchurl {

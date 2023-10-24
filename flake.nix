@@ -4,8 +4,10 @@
   inputs = {
     # nixpkgs
     nixpkgs.follows = "master";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +30,9 @@
     # hyprland
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland-contrib.url = "github:hyprwm/contrib";
+    hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
 
     # stylix
     stylix.url = "github:danth/stylix";

@@ -26,7 +26,6 @@
     ./applications/firefox
     ./applications/eww
     #./applications/stylix.nix
-    #inputs.stylix.homeManagerModules.stylix
   ];
 
   # Can be used if allowGlobalPackages is false
