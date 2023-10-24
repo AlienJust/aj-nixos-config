@@ -21,6 +21,7 @@
     "initcall_blacklist=acpi_cpufreq_init"
     "quiet"
     "udev.log_level=0"
+    "loglevel=3"
   ];
   boot.extraModulePackages = [];
 

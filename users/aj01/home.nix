@@ -26,6 +26,7 @@
     ./applications/firefox
     ./applications/eww
     #./applications/stylix.nix
+    #inputs.stylix.homeManagerModules.stylix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -50,6 +51,7 @@
   #    allowUnfreePredicate = _: true;
   #  };
   #};
+
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaPeach;
     name = "Catppuccin-Mocha-Peach-Cursors";

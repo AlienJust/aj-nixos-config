@@ -231,9 +231,12 @@
   };
 
   # fonts
-  /*
+
   fonts = {
     packages = with pkgs; [
+      (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "DroidSansMono"];})
+      fira-code
+      fira-code-symbols
       iosevka-bin
       openmoji-color
       noto-fonts
@@ -255,8 +258,8 @@
         emoji = ["OpenMoji Color"];
       };
     };
+    fontDir.enable = true;
   };
-  */
 
   # programs
   programs = {
