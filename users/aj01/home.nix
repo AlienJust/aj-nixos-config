@@ -92,7 +92,8 @@
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
-    persistence."/nix/persist/home/aj01" = {
+    /*
+      persistence."/nix/persist/home/aj01" = {
       directories = [
         "Загрузки"
         "Документы"
@@ -124,7 +125,7 @@
       ];
       allowOther = true; # Useful for sudo operations
     };
-
+    */
     sessionPath = [];
 
     sessionVariables = {

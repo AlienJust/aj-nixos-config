@@ -33,6 +33,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/f38bf05d-a15d-4d42-afa3-d4bfab038d9f";
+    fsType = "ext4";
+  };
+
   fileSystems."/etc/nixos" = {
     device = "/nix/persist/etc/nixos";
     fsType = "none";
