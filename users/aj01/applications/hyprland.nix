@@ -30,6 +30,15 @@
         workspace = name:7, monitor:HDMI-A-1
         workspace = name:8, monitor:HDMI-A-1
         workspace = name:9, monitor:HDMI-A-1
+        workspace = name:10, monitor:HDMI-A-1
+        workspace = name:11, monitor:HDMI-A-1
+        workspace = name:12, monitor:HDMI-A-1
+        workspace = name:13, monitor:HDMI-A-1
+        workspace = name:14, monitor:HDMI-A-1
+        workspace = name:15, monitor:HDMI-A-1
+        workspace = name:16, monitor:HDMI-A-1
+        workspace = name:17, monitor:HDMI-A-1
+        workspace = name:18, monitor:HDMI-A-1
 
 
         # set wallpapers
@@ -200,6 +209,14 @@
         bind = SUPER, 8, workspace, 8
         bind = SUPER, 9, workspace, 9
         bind = SUPER, 0, workspace, 10
+        bind = SUPER, F1, workspace, 11
+        bind = SUPER, F2, workspace, 12
+        bind = SUPER, F3, workspace, 13
+        bind = SUPER, F4, workspace, 14
+        bind = SUPER, F5, workspace, 15
+        bind = SUPER, F6, workspace, 16
+        bind = SUPER, F7, workspace, 17
+        bind = SUPER, F8, workspace, 18
 
         # send active window to given workspace
         bind = SUPER SHIFT, 1, movetoworkspacesilent, 1
