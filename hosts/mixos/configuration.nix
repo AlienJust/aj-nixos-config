@@ -116,13 +116,13 @@
   networking.networkmanager.enable = true;
   networking.wg-quick.interfaces = {
     wg0 = {
-      address = [ "10.66.66.2/32" "fd42:42:42::2/128 ];
+      address = [ "10.66.66.2/32" "fd42:42:42::2/128" ];
       # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
       privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
       
       peers = [
         {
-          publicKey = "{AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=}";
+          publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
           presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer0_key";
           allowedIPs = [ "192.168.167.0/24" "192.168.11.0/24" ];
           endpoint = "79.172.45.20:40414";
