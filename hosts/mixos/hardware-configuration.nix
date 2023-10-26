@@ -24,7 +24,7 @@
     "udev.log_level=0"
     "loglevel=3"
   ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 
   fileSystems."/" = {
     device = "none";
