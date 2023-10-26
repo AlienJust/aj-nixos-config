@@ -68,9 +68,9 @@
         general {
             gaps_in = 0
             gaps_out = 0
-            border_size = 2
+            border_size = 3
             col.active_border = 0xFF8F8AA8
-            col.inactive_border = 0xFF2A273F
+            col.inactive_border = 0xFF232136
             layout = dwindle
             #layout = master
 
