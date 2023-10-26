@@ -122,7 +122,7 @@
       
       peers = [
         {
-          publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
+          publicKey = "{AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=}";
           presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer0_key";
           allowedIPs = [ "192.168.167.0/24" "192.168.11.0/24" ];
           endpoint = "79.172.45.20:40414";
