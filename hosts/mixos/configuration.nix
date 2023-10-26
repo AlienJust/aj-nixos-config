@@ -116,7 +116,7 @@
   networking.networkmanager.enable = true;
   networking.wg-quick.interfaces = {
     wg0 = {
-      address = [ 10.66.66.2/32" "fd42:42:42::2/128 ];
+      address = [ "10.66.66.2/32" "fd42:42:42::2/128 ];
       # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
       privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
       
