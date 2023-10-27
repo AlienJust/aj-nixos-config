@@ -101,6 +101,8 @@
       dconf
       git
       socat
+      curl
+      wget
 
       # tui
       htop
@@ -247,6 +249,16 @@
     enable = true;
     userName = "Alexey Debelov";
     userEmail = "alienjustmail@gmail.com";
+    extraConfig = {
+      http = {
+        "https://188.226.43.56:62328" = {
+          sslCAInfo = "/home/aj01/gitea.crt";
+        };
+        "https://192.168.11.20:50589" = {
+          sslCAInfo = "/home/aj01/gitlab.crt";
+        };
+      };
+    };
   };
 
   # starship - an customizable prompt for any shell
