@@ -19,7 +19,7 @@
     # ./users.nix
 
     # stylix
-    inputs.stylix.nixosModules.stylix
+    # inputs.stylix.nixosModules.stylix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -29,6 +29,7 @@
     #(inputs.impermanence + "/nixos.nix")
   ];
 
+  /*
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
@@ -51,6 +52,7 @@
       terminal = 0.9;
     };
   };
+  */
 
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
@@ -116,15 +118,15 @@
   networking.networkmanager.enable = true;
   networking.wg-quick.interfaces = {
     wg0 = {
-      address = [ "10.66.66.2/32" "fd42:42:42::2/128" ];
+      address = ["10.66.66.2/32" "fd42:42:42::2/128"];
       # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
       privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
-      
+
       peers = [
         {
           publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
           presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer0_key";
-          allowedIPs = [ "192.168.167.0/24" "192.168.11.0/24" ];
+          allowedIPs = ["192.168.167.0/24" "192.168.11.0/24"];
           endpoint = "79.172.45.20:40414";
           persistentKeepalive = 25;
         }
@@ -157,12 +159,16 @@
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
+  # Configure X11.
+  #services.xserver.enable = true;
   services.xserver = {
+    videoDrivers = ["amdgpu"];
     xkbModel = "pc105";
     layout = "us,ru";
     xkbOptions = "grp:caps_toggle";
   };
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
 
   console = {
     earlySetup = true;
@@ -196,13 +202,13 @@
     #passwordAuthentication = false;
   };
 
-  #services.fstrim.enable = true;
-
   #services.fwupd.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # Disks.
+  services.fstrim.enable = true;
+  services.udisks2.enable = true;
 
+  # Users
   users.mutableUsers = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.aj01 = {
@@ -215,6 +221,7 @@
     extraGroups = ["wheel" "video" "audio" "realtime" "input"];
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
   };
+
   xdg.portal = {
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-hyprland];
@@ -312,10 +319,26 @@
 
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = false;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    package = pkgs.steam.override {
+      extraLibraries = p:
+        with p; [
+          (lib.getLib networkmanager)
+          (lib.getLib xwayland)
+        ];
+    };
   };
   programs.gamemode.enable = true;
+
+  # Thunar
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  programs.thunar.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
