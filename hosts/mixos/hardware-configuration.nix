@@ -22,6 +22,7 @@
     "mitigations=off"
     "initcall_blacklist=acpi_cpufreq_init"
     "quiet"
+    "loglevel=-1"
     "udev.log_level=0"
     "loglevel=3"
   ];

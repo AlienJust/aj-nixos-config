@@ -21,10 +21,12 @@
 
     # Apps
     ./applications/hyprland.nix
-    ./applications/vscode.nix
-    ./applications/anyrun.nix
-    ./applications/firefox
     ./applications/eww
+    ./applications/anyrun.nix
+    ./applications/foot.nix
+
+    ./applications/vscode.nix
+    ./applications/firefox
     #./applications/stylix.nix
   ];
 
@@ -58,11 +60,18 @@
     gtk.enable = true;
   };
 
+  # set cursor size and dpi for 4k monitor
+  xresources.properties = {
+    "Xcursor.size" = 16;
+    #"Xft.dpi" = 172;
+  };
+
   gtk = {
     enable = true;
     font = {
       package = pkgs.nerdfonts.override {fonts = ["Mononoki"];};
-      name = "Mononoki Nerd Font Regular";
+      #name = "Mononoki Nerd Font Regular";
+      name = "Noto Sans";
       size = 12;
     };
     iconTheme = {
@@ -98,6 +107,19 @@
       btop
       mc
       neofetch
+      iftop
+
+      # system call monitoring
+      strace # system call monitoring
+      ltrace # library call monitoring
+      lsof # list open files
+
+      # system tools
+      sysstat
+      lm_sensors # for `sensors` command
+      ethtool
+      pciutils # lspci
+      usbutils # lsusb
 
       # wayland stuff
       grim
@@ -227,11 +249,34 @@
     userEmail = "alienjustmail@gmail.com";
   };
 
-  # starship
+  # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
+    # custom settings
     settings = {
       add_newline = false;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+      /*
+      format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+      shlvl = {
+        disabled = false;
+        symbol = "ﰬ";
+        style = "bright-red bold";
+      };
+      shell = {
+        disabled = false;
+        format = "$indicator";
+        fish_indicator = "";
+        bash_indicator = "[BASH](bright-white) ";
+        zsh_indicator = "[ZSH](bright-white) ";
+      };
+      username = {
+        style_user = "bright-white bold";
+        style_root = "bright-red bold";
+      };
+      */
     };
   };
 
@@ -318,43 +363,6 @@
   };
 
   services.mako.enable = true;
-
-  programs.foot = {
-    enable = true;
-    settings = {
-      main = {
-        font = lib.mkForce "IosevkaTerm NFM Light:size=12";
-        font-bold = lib.mkForce "IosevkaTerm NFM:size=12";
-      };
-      mouse = {
-        hide-when-typing = false;
-      };
-      colors = {
-        foreground = "ffffff";
-        background = "2e3440";
-        regular0 = "000000";
-        regular1 = "ff0000";
-        regular2 = "37dd21";
-        regular3 = "fee409";
-        regular4 = "1460d2";
-        regular5 = "ff005d";
-        regular6 = "00bbbb";
-        regular7 = "bbbbbb";
-        bright0 = "545454";
-        bright1 = "f40d17";
-        bright2 = "3bcf1d";
-        bright3 = "ecc809";
-        bright4 = "5555ff";
-        bright5 = "ff55ff";
-        bright6 = "6ae3f9";
-        bright7 = "ffffff";
-        alpha = 0.85;
-      };
-      cursor = {
-        color = "122637 f0cb09";
-      };
-    };
-  };
 
   #programs.obs-studio = {
   #enable = true;

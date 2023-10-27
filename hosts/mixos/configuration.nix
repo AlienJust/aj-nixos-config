@@ -70,13 +70,29 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+
+      # Steam missing deps
+      (final: prev: {
+        steam = prev.steam.override ({extraPkgs ? pkgs': [], ...}: {
+          extraPkgs = pkgs':
+            (extraPkgs pkgs')
+            ++ (with pkgs'; [
+              libgdiplus
+              xwayland
+            ]);
+        });
+      })
     ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
   };
+
+  # Unfree packages.
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-original"
+      "steam-run"
+    ];
 
   nix = {
     # This will add each flake input as a registry
@@ -256,6 +272,10 @@
       udisks2
       fontconfig
       xwayland
+      dxvk
+      vkd3d
+      vkd3d-proton
+      inputs.nix-gaming.packages.${pkgs.system}.proton-ge
     ];
 
     #persistence."/persist" = {

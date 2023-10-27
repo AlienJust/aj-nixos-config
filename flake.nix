@@ -40,6 +40,9 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
 
+    # Games
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     # lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
