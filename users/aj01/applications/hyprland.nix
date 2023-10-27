@@ -99,8 +99,6 @@
             enabled = false
         }
 
-
-
         # windows rules
         # fix telegram media preview
         windowrulev2 = float, class:org.telegram.desktop, title:Media viewer
@@ -155,6 +153,9 @@
 
         # quit hyprland
         bind = SUPER SHIFT, E, exec, wlogout
+
+        # quit hyprland
+        bind = CTRL ALT, L, exec, wlogout
 
         # fullscreen screen shot
         bind = SUPER, F11, exec, grim -o HDMI-A-1 # fix notification
