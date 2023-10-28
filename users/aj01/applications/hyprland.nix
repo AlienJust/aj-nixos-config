@@ -261,12 +261,15 @@
     submap = reset
 
     # volume control
-    bindl =, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
-    bindl =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    bindl = SUPER, F9,  exec, wpctl set-mute        @DEFAULT_AUDIO_SINK@   toggle
+    bindl = SUPER, F11, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@   5%+
+    bindl = SUPER, F10, exec, wpctl set-volume      @DEFAULT_AUDIO_SINK@   5%-
+    #bindl =, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+    #bindl =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
     # media
-    bindl =, XF86AudioNext, exec, playerctl next -i chromium
-    bindl =, XF86AudioPrev, exec, playerctl previous -i chromium
-    bindl =, XF86AudioPlay, exec, playerctl play-pause -i chromium
+    #bindl =, XF86AudioNext, exec, playerctl next -i chromium
+    #bindl =, XF86AudioPrev, exec, playerctl previous -i chromium
+    #bindl =, XF86AudioPlay, exec, playerctl play-pause -i chromium
 
     # toggle keyboard layout
     bind=, XF86Calculator, exec, hyprctl switchxkblayout kbdfans-kbd67mkiirgb-v2 next
