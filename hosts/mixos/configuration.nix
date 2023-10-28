@@ -123,7 +123,42 @@
   # set cpu freq governor (see hardware config)
   #powerManagement.cpuFreqGovernor = "performance";
 
-  networking.hostName = "mixos"; # Define your hostname.
+  networking = {
+    hostName = "nixos";
+    useDHCP = false;
+    firewall.enable = false;
+  };
+
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "br0" = {
+        netdevConfig = {
+          Name = "br0";
+          Kind = "bridge";
+        };
+      };
+    };
+    networks = {
+      # Add all adapters to br0 bridge
+      "br0_en-all" = {
+        matchConfig.Name = "en*";
+        networkConfig = {
+          Bridge = "br0";
+        };
+      };
+
+      "br0" = {
+        matchConfig.Name = "br0";
+        networkConfig = {
+          Address = "192.168.1.33/24";
+          IPForward = true;
+          Gateway = "192.168.1.1";
+        };
+      };
+    };
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -131,7 +166,8 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
+
   networking.wg-quick.interfaces = {
     wg0 = {
       address = ["10.66.66.2/32" "fd42:42:42::2/128"];
@@ -345,7 +381,6 @@
     package = pkgs.steam.override {
       extraLibraries = p:
         with p; [
-          (lib.getLib networkmanager)
           (lib.getLib xwayland)
         ];
     };
