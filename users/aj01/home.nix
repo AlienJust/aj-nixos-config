@@ -27,6 +27,7 @@
 
     ./applications/vscode.nix
     ./applications/firefox
+    ./applications/mpd.nix
     #./applications/stylix.nix
   ];
 
