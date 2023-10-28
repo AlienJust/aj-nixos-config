@@ -123,6 +123,13 @@
   # set cpu freq governor (see hardware config)
   #powerManagement.cpuFreqGovernor = "performance";
 
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  # networking.networkmanager.enable = true;
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking = {
     hostName = "nixos";
     useDHCP = false;
@@ -162,16 +169,6 @@
       };
     };
   };
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  # networking.networkmanager.enable = true;
-
   networking.wg-quick.interfaces = {
     wg0 = {
       address = ["10.66.66.2/32" "fd42:42:42::2/128"];
