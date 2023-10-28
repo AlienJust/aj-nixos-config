@@ -145,7 +145,9 @@
         matchConfig.Name = "en*";
         networkConfig = {
           Bridge = "br0";
+          LinkLocalAddressing = "no";
         };
+        linkConfig.RequiredForOnline = "no";
       };
 
       "br0" = {
@@ -154,7 +156,9 @@
           Address = "192.168.1.33/24";
           IPForward = true;
           Gateway = "192.168.1.1";
+          LinkLocalAddressing = "no";
         };
+        #linkConfig.RequiredForOnline = "no";
       };
     };
   };
