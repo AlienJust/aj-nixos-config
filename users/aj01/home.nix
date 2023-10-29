@@ -28,6 +28,7 @@
     ./applications/vscode.nix
     ./applications/firefox
     ./applications/mpd.nix
+    ./applications/starship.nix
     #./applications/stylix.nix
   ];
 
@@ -259,37 +260,6 @@
           sslCAInfo = "/home/aj01/gitlab.crt";
         };
       };
-    };
-  };
-
-  # starship - an customizable prompt for any shell
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-      /*
-      format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
-      shlvl = {
-        disabled = false;
-        symbol = "ﰬ";
-        style = "bright-red bold";
-      };
-      shell = {
-        disabled = false;
-        format = "$indicator";
-        fish_indicator = "";
-        bash_indicator = "[BASH](bright-white) ";
-        zsh_indicator = "[ZSH](bright-white) ";
-      };
-      username = {
-        style_user = "bright-white bold";
-        style_root = "bright-red bold";
-      };
-      */
     };
   };
 
