@@ -56,7 +56,8 @@
   (label :text "${workspaces}${current_workspace}" :visible false)
   (for workspace in workspaces
       (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-        (label :text "${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
+        ;(label :text "${workspace.id}${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
+        (label :text "${workspace.id}${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
         )
     )
   )
