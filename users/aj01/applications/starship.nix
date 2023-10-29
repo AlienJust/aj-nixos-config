@@ -5,7 +5,7 @@
 
     settings = {
       add_newline = false;
-
+      /*
       directory = {
         style = "purple";
         read_only = " ro";
@@ -70,6 +70,7 @@
       rust.symbol = "rust ";
       scala.symbol = "scala ";
       swift.symbol = "swift ";
+      */
     };
   };
 }
