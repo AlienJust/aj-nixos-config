@@ -25,8 +25,8 @@
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "1920"
-                      :height "32px"
+                      :width "1920px"
+                      :height "26px"
                       :anchor "top center")
   :reserve (struts :side "top" :distance "15px")
   (bar :screen 0))
@@ -34,7 +34,7 @@
 (defwidget bar []
   (box :class "bar_class"
        :orientation "h"
-       :valign "center"
+       :valign "stretch"
   (left)
   (center)
   (right)
@@ -51,13 +51,16 @@
   (box :class "workspaces"
        :orientation "h"
        :space-evenly true
-       :halign "center"
-       :spacing 10
+       :halign "left"
+       :spacing 0
   (label :text "${workspaces}${current_workspace}" :visible false)
   (for workspace in workspaces
-      (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-        ;(label :text "${workspace.id}${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
-        (label :text "${workspace.id}${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
+      (box
+        :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+        :visible { workspace.windows > 0 || workspace.id == current_workspace } ; ? true : false
+        ; (label :text "${workspace.id}${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
+        ; (label :text "${workspace.id}${workspace.windows > 0 ? "${workspace.id == current_workspace ? "" : ""}" : "${workspace.id == current_workspace ? "" : ""}"}")
+        (label :text "${workspace.id}" )
         )
     )
   )
