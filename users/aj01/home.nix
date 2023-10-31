@@ -153,6 +153,7 @@
       intel-gpu-tools
       pavucontrol
       udisks2
+      ffmpeg
 
       # general software
       meld
@@ -166,6 +167,8 @@
       #obs-studio
       imv
       telegram-desktop
+      keepassxc
+      thunderbird
 
       # dotnet-sdk
       dotnet-sdk_7
