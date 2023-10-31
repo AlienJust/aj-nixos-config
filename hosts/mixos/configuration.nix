@@ -135,14 +135,14 @@
     useDHCP = false;
     firewall.enable = false;
   };
-  networking.nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+  networking.nameservers = ["192.168.1.1#one.one.one.one" "8.8.8.8.#google"];
   services.resolved = {
     enable = true;
-    dnssec = "true";
+    dnssec = "false";
     domains = ["~."];
     fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
     extraConfig = ''
-      DNSOverTLS=yes
+      DNSOverTLS=no
     '';
   };
   systemd.network = {
