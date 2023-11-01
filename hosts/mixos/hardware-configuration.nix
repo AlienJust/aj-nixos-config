@@ -15,16 +15,17 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
   #boot.initrd.kernelModules = [];
   boot.initrd.kernelModules = ["amdgpu"];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.kernelModules = ["kvm-intel"];
   boot.kernelParams = [
     "preempt=full"
     "mitigations=off"
     "initcall_blacklist=acpi_cpufreq_init"
-    "quiet"
-    "loglevel=-1"
-    "udev.log_level=0"
-    "loglevel=3"
+    #    "quiet"
+    #    "loglevel=-1"
+    #    "udev.log_level=0"
+    #    "loglevel=3"
   ];
 
   fileSystems."/" = {
@@ -60,13 +61,16 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
+  #networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s20f0u6.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware = {
+    enableRedistributableFirmware = true;
+    cpu.intel.updateMicrocode = true;
     opengl = {
       enable = true;
       driSupport = true;
