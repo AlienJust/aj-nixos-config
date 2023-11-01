@@ -252,7 +252,7 @@
       _JAVA_AWT_WM_NONREPARENTING = "1";
       GDK_BACKEND = "wayland";
 
-      DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+      #DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
   };
 
