@@ -175,6 +175,7 @@
       keepassxc
       thunderbird
       qbittorrent
+      teamspeak_client
 
       # dotnet-sdk
       dotnet-sdk_7
@@ -250,6 +251,8 @@
 
       _JAVA_AWT_WM_NONREPARENTING = "1";
       GDK_BACKEND = "wayland";
+
+      DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
   };
 
