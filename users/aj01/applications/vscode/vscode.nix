@@ -6,8 +6,17 @@
 }: {
   programs.vscode = {
     enable = true;
-    # needed for rust lang server and rust-analyzer extension
-    package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
+
+    package = pkgs.vscode.fhsWithPackages (ps:
+      with ps; [
+        # needed for rust lang server and rust-analyzer extension
+        rustup
+        zlib
+        openssl.dev
+        pkg-config
+        # for dotnet
+        dotnet-sdk_7
+      ]);
     extensions = with pkgs.vscode-extensions;
       [
         mvllow.rose-pine
