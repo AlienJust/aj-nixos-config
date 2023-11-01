@@ -174,6 +174,7 @@
       telegram-desktop
       keepassxc
       thunderbird
+      qbittorrent
 
       # dotnet-sdk
       dotnet-sdk_7

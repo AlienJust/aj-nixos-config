@@ -314,6 +314,7 @@
       comma
       atool
       unzip
+      zip
       nix-output-monitor
       edk2-uefi-shell
       udisks2

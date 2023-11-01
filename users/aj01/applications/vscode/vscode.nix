@@ -6,15 +6,25 @@
 }: {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      mvllow.rose-pine
-      eamodio.gitlens
-      pkief.material-product-icons
-      pkief.material-icon-theme
-      jnoortheen.nix-ide
-      ms-dotnettools.csharp
-      # ms-dotnettools.csdevkit
-    ];
+    extensions = with pkgs.vscode-extensions;
+      [
+        mvllow.rose-pine
+        eamodio.gitlens
+        pkief.material-product-icons
+        pkief.material-icon-theme
+        jnoortheen.nix-ide
+        ms-dotnettools.csharp
+        # pflannery.vscode-versionlens
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "csdevkit";
+          publisher = "ms-dotnettools";
+          version = "1.0.12";
+          sha256 = "756a724277acb4babe8060240c332612a57cded9523cfca666865255ae561f05";
+          sourceRoot = ".";
+        }
+      ];
     userSettings = {
       "editor.fontSize" = 16;
       "editor.fontLigatures" = true;
