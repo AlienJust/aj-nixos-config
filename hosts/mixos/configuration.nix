@@ -72,6 +72,7 @@
       outputs.overlays.unstable-packages
 
       # Steam missing deps
+      /*
       (final: prev: {
         steam = prev.steam.override ({extraPkgs ? pkgs': [], ...}: {
           extraPkgs = pkgs':
@@ -82,6 +83,7 @@
             ]);
         });
       })
+      */
     ];
   };
 
@@ -393,6 +395,7 @@
     gamescopeSession.enable = false;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    /*
     package = pkgs.steam.override {
       extraLibraries = p:
         with p; [
@@ -401,6 +404,7 @@
           (lib.getLib gvfs)
         ];
     };
+    */
   };
   programs.gamemode.enable = true;
 
