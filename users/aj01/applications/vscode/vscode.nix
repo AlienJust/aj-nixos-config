@@ -13,7 +13,7 @@
       pkief.material-icon-theme
       jnoortheen.nix-ide
       ms-dotnettools.csharp
-      ms-dotnettools.csdevkit
+      # ms-dotnettools.csdevkit
     ];
     userSettings = {
       "editor.fontSize" = 16;

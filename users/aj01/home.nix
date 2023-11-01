@@ -31,7 +31,6 @@
 
     ./applications/vscode/vscode-files.nix
     ./applications/vscode/vscode.nix
-    ./applications/vscode.nix
     ./applications/firefox
     ./applications/mpd.nix
     ./applications/starship.nix
