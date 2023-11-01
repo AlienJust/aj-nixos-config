@@ -20,6 +20,7 @@
     #(inputs.impermanence + "/home-manager.nix")
 
     # Mutability (VSCode error saving settings)
+    # See https://github.com/nix-community/home-manager/issues/1800#issuecomment-1633095126
     ./mutability.nix
 
     # Apps
