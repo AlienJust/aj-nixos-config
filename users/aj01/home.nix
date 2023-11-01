@@ -19,6 +19,9 @@
     inputs.impermanence.nixosModules.home-manager.impermanence
     #(inputs.impermanence + "/home-manager.nix")
 
+    # Mutability (VSCode error saving settings)
+    ./mutability.nix
+
     # Apps
     ./applications/hyprland.nix
     ./applications/eww
