@@ -1,46 +1,57 @@
 {
-  config,
-  pkgs,
+  inputs,
   lib,
+  pkgs,
   ...
-}: let
-  # Path logic from:
-  # https://github.com/nix-community/home-manager/blob/3876cc613ac3983078964ffb5a0c01d00028139e/modules/programs/vscode.nix
-  cfg = config.programs.vscode;
+}: {
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      mvllow.rose-pine
+      eamodio.gitlens
+      pkief.material-product-icons
+      pkief.material-icon-theme
+      jnoortheen.nix-ide
+      ms-dotnettools.csharp
+      ms-dotnettools.csdevkit
+    ];
+    userSettings = {
+      "editor.fontSize" = 16;
+      "editor.fontLigatures" = true;
+      "editor.formatOnSave" = true;
+      "editor.fontFamily" = "'Iosevka Term', 'Noto Color Emoji', 'monospace', monospace";
+      "workbench.colorTheme" = "Rosé Pine Moon";
+      "workbench.iconTheme" = "material-icon-theme";
+      "workbench.startupEditor" = "none";
+      "workbench.productIconTheme" = "material-product-icons";
+      "git.confirmSync" = false;
+      "git.autofetch" = true;
+      "git.enableSmartCommit" = true;
+      "window.titleBarStyle" = "custom";
+      "window.zoomLevel" = "-1";
+      "[nix]" = {"editor.defaultFormatter" = "jnoortheen.nix-ide";};
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            "command" = ["alejandra"];
+          };
+        };
+      };
 
-  vscodePname = cfg.package.pname;
-
-  configDir =
-    {
-      "vscode" = "Code";
-      "vscode-insiders" = "Code - Insiders";
-      "vscodium" = "VSCodium";
-    }
-    .${vscodePname};
-
-  userDir =
-    if pkgs.stdenv.hostPlatform.isDarwin
-    then "Library/Application Support/${configDir}/User"
-    else "${config.xdg.configHome}/${configDir}/User";
-
-  configFilePath = "${userDir}/settings.json";
-  tasksFilePath = "${userDir}/tasks.json";
-  keybindingsFilePath = "${userDir}/keybindings.json";
-
-  snippetDir = "${userDir}/snippets";
-
-  pathsToMakeWritable = lib.flatten [
-    (lib.optional (cfg.userTasks != {}) tasksFilePath)
-    (lib.optional (cfg.userSettings != {}) configFilePath)
-    (lib.optional (cfg.keybindings != {}) keybindingsFilePath)
-    (lib.optional (cfg.globalSnippets != {})
-      "${snippetDir}/global.code-snippets")
-    (lib.mapAttrsToList (language: _: "${snippetDir}/${language}.json")
-      cfg.languageSnippets)
-  ];
-in {
-  home.file = lib.genAttrs pathsToMakeWritable (_: {
-    force = true;
-    mutable = true;
-  });
+      "omnisharp.enableAsyncCompletion" = true;
+      "omnisharp.enableLspDriver" = true;
+      "omnisharp.organizeImportsOnFormat" = true;
+      "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes" = true;
+      "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation" = true;
+      "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes" = true;
+      "csharp.inlayHints.enableInlayHintsForTypes" = true;
+      "dotnet.inlayHints.enableInlayHintsForIndexerParameters" = true;
+      "dotnet.inlayHints.enableInlayHintsForLiteralParameters" = true;
+      "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters" = true;
+      "dotnet.inlayHints.enableInlayHintsForOtherParameters" = true;
+      "dotnet.inlayHints.enableInlayHintsForParameters" = true;
+    };
+  };
 }
