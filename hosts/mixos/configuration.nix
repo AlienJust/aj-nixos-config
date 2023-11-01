@@ -324,6 +324,7 @@
       vkd3d
       vkd3d-proton
       inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      steam-run
 
       vscode.fhs
     ];
@@ -396,6 +397,8 @@
       extraLibraries = p:
         with p; [
           (lib.getLib xwayland)
+          (lib.getLib dconf)
+          (lib.getLib gvfs)
         ];
     };
   };
