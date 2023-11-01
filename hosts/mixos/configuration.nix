@@ -324,6 +324,8 @@
       vkd3d
       vkd3d-proton
       inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+
+      vscode.fhs
     ];
 
     #persistence."/persist" = {
