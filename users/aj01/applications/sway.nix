@@ -33,12 +33,7 @@
   default-gaps-inner = 0;
   default-gaps-outer = 0;
 in {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
-  # home.packages = with pkgs; [jaq xorg.xprop];
-
-  programs.sway = {enable = true;};
+  # programs.sway = {enable = true;};
 
   wayland.windowManager.sway = {
     enable = true;
@@ -100,7 +95,7 @@ in {
         };
       };
 
-      focus_follows_mouse = false;
+      focus.followMouse = "no";
 
       colors = {
         focused = {
