@@ -1,0 +1,357 @@
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
+  modifier = "Mod4";
+  terminal = "foot";
+  qterm = "foot -T \"Floating Terminal\"";
+  menu = "wofi -i --show drun";
+  menu_console = "exec foot --class 'launcher' -e sway-launcher-desktop";
+
+  darkred = "#cc241d";
+  red = "#fb4934";
+  darkgreen = "#98971a";
+  green = "#b8bb26";
+  darkyellow = "#d79921";
+  yellow = "#fabd2f";
+  darkblue = "#458588";
+  blue = "#83a598";
+  darkmagenta = "#b16286";
+  magenta = "#d3869b";
+  darkcyan = "#689d6a";
+  darkwhite = "#a89984";
+  cyan = "#8ec07c";
+  white = "#ebdbb2";
+  black = "#073642";
+  darkblack = "#002b36";
+  transparent = "#00000000";
+
+  height = 34;
+
+  default-gaps-inner = 0;
+  default-gaps-outer = 0;
+in {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
+  # home.packages = with pkgs; [jaq xorg.xprop];
+
+  programs.sway = {enable = true;};
+
+  wayland.windowManager.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraSessionCommands = with pkgs; ''
+      export _JAVA_AWT_WM_NONREPARENTING=1;
+      export SDL_VIDEODRIVER=wayland;
+      export QT_QPA_PLATFORM=wayland;
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1";
+      export HASS_SERVER="http://homeassistant.local:8123";
+      export MOZ_ENABLE_WAYLAND="1";
+      export MOZ_DBUS_REMOTE="1";
+      export XDG_SESSION_TYPE="wayland";
+      export XDG_CURRENT_DESKTOP="sway";
+    '';
+    #      export MC_SKIN=$HOME/.config/mc/selenized.ini;
+    #      export XDG_DATA_DIRS="${gnome.adwaita-icon-theme}/share:$XDG_DATA_DIRS";
+    #    '';
+    extraConfig = ''
+      exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
+      exec --no-startup-id mako &
+      exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
+
+      # TODO: move to config.
+      no_focus [app_id="^mpv"]
+      no_focus [title="^Картинка в картинке"]
+
+      # TODO:
+      # Cursor
+      #
+      # seat seat0 xcursor_theme capitaine-cursors 24
+
+      # TODO:
+      # Polkit
+      # SOV
+    '';
+    #      exec --no-startup-id kdeconnect-indicator &
+    #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+    #    '';
+    config = {
+      modifier = modifier;
+      terminal = terminal;
+      menu = menu;
+      workspaceAutoBackAndForth = true;
+
+      # TODO: fonts.
+      fonts = {
+        names = ["pango:Hack" "FontAwesome"];
+        size = 12.0;
+      };
+
+      output = {"*" = {bg = "~/wall.jpg fill";};};
+
+      input = {
+        "*" = {
+          xkb_layout = "us,ru";
+          xkb_options = "grp:caps_toggle";
+          xkb_numlock = "enable";
+        };
+      };
+
+      focus_follows_mouse = false;
+
+      colors = {
+        focused = {
+          border = "#6272A4";
+          background = "#44475A";
+          text = "#F8F8F2";
+          indicator = "#6272A4";
+          childBorder = "#6272A4";
+        };
+        unfocused = {
+          border = "#282A36";
+          background = "#282A36";
+          text = "#BFBFBF";
+          indicator = "#282A36";
+          childBorder = "#282A36";
+        };
+        focusedInactive = {
+          border = "#44475A";
+          background = "#44475A";
+          text = "#F8F8F2";
+          indicator = "#44475A";
+          childBorder = "#44475A";
+        };
+        urgent = {
+          border = "#44475A";
+          background = "#FF5555";
+          text = "#F8F8F2";
+          indicator = "#FF5555";
+          childBorder = "#FF5555";
+        };
+        #background = black;
+      };
+
+      floating = {
+        border = 3;
+        criteria = [
+          {
+            window_role = "pop-up";
+          }
+          {
+            window_role = "bubble";
+          }
+          {
+            window_role = "task_dialog";
+          }
+          {
+            window_role = "Preferences";
+          }
+          {
+            window_type = "dialog";
+          }
+          {
+            window_type = "popup_menu";
+          }
+          {
+            window_type = "menu";
+          }
+
+          {
+            title = "(?:Open|Save) (?:File|Folder|As)";
+          }
+
+          {
+            app_id = "imv";
+          }
+          {
+            app_id = "galculator";
+          }
+          {
+            class = "Pavucontrol";
+          }
+          {
+            app_id = "foot";
+            title = "Floating Terminal";
+          }
+
+          # JBIDE
+          {
+            title = "win0";
+          }
+        ];
+      };
+
+      window = {
+        border = 3;
+        commands = [
+          {
+            command = "resize set 800 600";
+            criteria.title = "(?:Open|Save) (?:File|Folder|As)";
+          }
+          # TODO: remove?
+          {
+            command = "floating enable";
+            criteria.app_id = "foot";
+            criteria.title = "Floating Terminal";
+          }
+          # TODO: no focus for MPV
+          {
+            command = "floating enable, resize set 640 400, sticky enable";
+            criteria.app_id = "^mpv";
+            criteria.title = "Floating Terminal";
+          }
+
+          # TODO: no focus for Picture in picture mode
+          {
+            command = "floating enable, resize set 640 400, sticky enable";
+            criteria.app_id = "^Картинка в картинке";
+            criteria.title = "Floating Terminal";
+          }
+
+          #WTF?
+          {
+            command = "move scratchpad";
+            criteria.class = "KDE Connect";
+          }
+          {
+            command = "scratchpad show";
+            criteria.class = "KDE Connect";
+          }
+        ];
+      };
+
+      gaps = {
+        inner = 0;
+        outer = 0;
+        smartBorders = "on";
+      };
+
+      # TODO: border
+
+      modes = {
+        resize = {
+          Left = "resize shrink width 10 px or 1 ppt";
+          Down = "resize grow height 10 px or 1 ppt";
+          Up = "resize shrink height 10 px or 1 ppt";
+          Right = "resize grow width 10 px or 1 ppt";
+          Return = ''mode "default"'';
+          Escape = ''mode "default"'';
+
+          "Shift+Left" = "resize shrink width 20 px or 5 ppt";
+          "Shift+Down" = "resize grow height 20 px or 5 ppt";
+          "Shift+Up" = "resize shrink height 20 px or 5 ppt";
+          "Shift+Right" = "resize grow width 20 px or 5 ppt";
+        };
+      };
+
+      bindkeysToCode = true;
+      keybindings = lib.mkOptionDefault {
+        "${modifier}+Return" = "exec ${terminal}";
+        "${modifier}+Shift+Return" = "exec ${terminal}";
+        "${modifier}+Shift+q" = "kill";
+        "${modifier}+d" = "exec ${menu}";
+        "${modifier}+Shift+c -- to-code" = "reload";
+        "${modifier}+c" = ''mode "chat"'';
+        "${modifier}+r" = ''mode "resize"'';
+
+        # Notifications
+        "${modifier}+n" = ''exec --no-startup-id "makoctl dismiss"'';
+        "${modifier}+Shift+n" = ''exec --no-startup-id "makoctl dismiss --all"'';
+        # Screenshots
+        Print = ''exec IMG=~/Изображения/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim $IMG && wl-copy < $IMG'';
+        "${modifier}+Print" = ''exec IMG=~/Downloads/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG'';
+
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
+
+        "Mod1+Control+l" = "exec --no-startup-id wlogout";
+
+        "${modifier}+F11" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0";
+        "${modifier}+F10" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0";
+        "${modifier}+F9" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        #        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        #        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
+        #        "XF86AudioPlay" = "exec playerctl play-pause";
+        #        "XF86AudioNext" = "exec playerctl next";
+        #        "XF86AudioPrev" = "exec playerctl previous";
+        "${modifier}+Left" = "focus left";
+        "${modifier}+Up" = "focus up";
+        "${modifier}+Down" = "focus down";
+        "${modifier}+Right" = "focus right";
+
+        "${modifier}+Shift+Left" = "move left";
+        "${modifier}+Shift+Up" = "move up";
+        "${modifier}+Shift+Down" = "move down";
+        "${modifier}+Shift+Right" = "move right";
+
+        "${modifier}+1" = "workspace number 1";
+        "${modifier}+2" = "workspace number 2";
+        "${modifier}+3" = "workspace number 3";
+        "${modifier}+4" = "workspace number 4";
+        "${modifier}+5" = "workspace number 5";
+        "${modifier}+6" = "workspace number 6";
+        "${modifier}+7" = "workspace number 7";
+        "${modifier}+8" = "workspace number 8";
+        "${modifier}+9" = "workspace number 9";
+        "${modifier}+0" = "workspace number 10";
+        "${modifier}+F1" = "workspace number 11";
+        "${modifier}+F2" = "workspace number 12";
+        "${modifier}+F3" = "workspace number 13";
+        "${modifier}+F4" = "workspace number 14";
+        "${modifier}+F5" = "workspace number 15";
+        "${modifier}+F6" = "workspace number 16";
+        "${modifier}+F7" = "workspace number 17";
+        "${modifier}+F8" = "workspace number 18";
+        "${modifier}+F12" = "workspace number 22";
+
+        "${modifier}+Shift+1" = "move container to workspace number 1";
+        "${modifier}+Shift+2" = "move container to workspace number 2";
+        "${modifier}+Shift+3" = "move container to workspace number 3";
+        "${modifier}+Shift+4" = "move container to workspace number 4";
+        "${modifier}+Shift+5" = "move container to workspace number 5";
+        "${modifier}+Shift+6" = "move container to workspace number 6";
+        "${modifier}+Shift+7" = "move container to workspace number 7";
+        "${modifier}+Shift+8" = "move container to workspace number 8";
+        "${modifier}+Shift+9" = "move container to workspace number 9";
+        "${modifier}+Shift+0" = "move container to workspace number 10";
+        "${modifier}+Shift+F1" = "move container to workspace number 11";
+        "${modifier}+Shift+F2" = "move container to workspace number 12";
+        "${modifier}+Shift+F3" = "move container to workspace number 13";
+        "${modifier}+Shift+F4" = "move container to workspace number 14";
+        "${modifier}+Shift+F5" = "move container to workspace number 15";
+        "${modifier}+Shift+F6" = "move container to workspace number 16";
+        "${modifier}+Shift+F7" = "move container to workspace number 17";
+        "${modifier}+Shift+F8" = "move container to workspace number 18";
+        "${modifier}+Shift+F12" = "move container to workspace number 22";
+
+        "${modifier}+Tab" = ''exec "echo 1 > /tmp/sovpipe"'';
+        "${modifier}+q" = ''exec "echo 0 > /tmp/sovpipe"'';
+
+        "${modifier}+b" = "splith";
+        "${modifier}+v" = "splitv";
+
+        "${modifier}+s" = "layout stacking";
+        "${modifier}+w" = "layout tabbed";
+        "${modifier}+e" = "layout toggle split";
+
+        "${modifier}+f" = "fullscreen";
+        "${modifier}+Shift+f" = "fullscreen global";
+
+        "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+space" = "focus mode_toggle";
+        "${modifier}+a" = "focus parent";
+
+        # TODO: warpd bindings
+        # TODO: volume control notifications
+      };
+
+      # TODO: floating criteria
+      # floating = {criteria = [{class = "SpeedCrunch";}];};
+
+      bars = [{command = "waybar";}];
+    };
+  };
+}

@@ -25,6 +25,8 @@
 
     # Apps
     ./applications/hyprland.nix
+    ./applications/sway.nix
+
     ./applications/eww
     ./applications/anyrun.nix
     ./applications/foot.nix
