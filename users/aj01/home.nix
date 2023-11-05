@@ -112,6 +112,7 @@
       socat
       curl
       wget
+      dos2unix
 
       # tui
       htop
@@ -141,13 +142,13 @@
       hyprpicker
       wlogout
       playerctl
-
       waybar
       mako
-      sway
       foot
       swaylock
       swayidle
+      wofi
+      swayest-workstyle
 
       eza
       nil
@@ -178,6 +179,8 @@
       thunderbird
       qbittorrent
       teamspeak_client
+      winbox
+      libreoffice-fresh
 
       # dotnet-sdk
       dotnet-sdk_7
@@ -225,20 +228,21 @@
     sessionVariables = {
       BROWSER = "firefox";
 
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      QT_QPA_PLATFORM = "wayland";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      # TODO: init env vars in hyprland config
+      # QT_QPA_PLATFORMTHEME = "qt5ct";
+      # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      # QT_QPA_PLATFORM = "wayland";
+      # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
       RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
-      XCURSOR_SIZE = "32";
-      XCURSOR_THEME = "Adwaita";
-      NIXOS_OZONE_WL = "1";
+      # XCURSOR_SIZE = "32";
+      # XCURSOR_THEME = "Adwaita";
+      # NIXOS_OZONE_WL = "1";
 
-      MOZ_USE_XINPUT2 = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      MOZ_WEBRENDER = "1";
-      MOZ_ACCELERATED = "1";
+      # MOZ_USE_XINPUT2 = "1";
+      # MOZ_ENABLE_WAYLAND = "1";
+      # MOZ_WEBRENDER = "1";
+      # MOZ_ACCELERATED = "1";
 
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -248,11 +252,11 @@
       XKB_DEFAULT_LAYOUT = "us";
       LIBSEAT_BACKEND = "logind";
 
-      CLUTTER_BACKEND = "wayland";
-      SDL_VIDEODRIVER = "wayland";
+      # CLUTTER_BACKEND = "wayland";
+      # SDL_VIDEODRIVER = "wayland";
 
-      _JAVA_AWT_WM_NONREPARENTING = "1";
-      GDK_BACKEND = "wayland";
+      # _JAVA_AWT_WM_NONREPARENTING = "1";
+      # GDK_BACKEND = "wayland";
 
       #DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };

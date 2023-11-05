@@ -39,15 +39,28 @@ in {
     enable = true;
     wrapperFeatures.gtk = true;
     extraSessionCommands = with pkgs; ''
-      export _JAVA_AWT_WM_NONREPARENTING=1;
-      export SDL_VIDEODRIVER=wayland;
       export QT_QPA_PLATFORM=wayland;
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1";
-      export HASS_SERVER="http://homeassistant.local:8123";
+      export QT_QPA_PLATFORMTHEME = "qt5ct";
+      export QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+
       export MOZ_ENABLE_WAYLAND="1";
       export MOZ_DBUS_REMOTE="1";
-      export XDG_SESSION_TYPE="wayland";
+      export MOZ_USE_XINPUT2 = "1";
+      export MOZ_WEBRENDER = "1";
+      export MOZ_ACCELERATED = "1";
+
+      export XDG_SESSION_TYPE="x11";
       export XDG_CURRENT_DESKTOP="sway";
+      export XCURSOR_SIZE = "32";
+      export XCURSOR_THEME = "Adwaita";
+
+      export NIXOS_OZONE_WL = "1";
+
+      export CLUTTER_BACKEND = "wayland";
+      export SDL_VIDEODRIVER = "wayland";
+      export _JAVA_AWT_WM_NONREPARENTING = "1";
+      export GDK_BACKEND = "wayland";
     '';
     #      export MC_SKIN=$HOME/.config/mc/selenized.ini;
     #      export XDG_DATA_DIRS="${gnome.adwaita-icon-theme}/share:$XDG_DATA_DIRS";
@@ -56,6 +69,7 @@ in {
       exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
       exec --no-startup-id mako &
       exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
+      exec sworkstyle &> /tmp/sworkstyle.log
 
       # TODO: move to config.
       no_focus [app_id="^mpv"]
@@ -180,6 +194,7 @@ in {
       };
 
       window = {
+        titlebar = false;
         border = 3;
         commands = [
           {
@@ -248,7 +263,7 @@ in {
         "${modifier}+Shift+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";
         "${modifier}+d" = "exec ${menu}";
-        "${modifier}+Shift+c -- to-code" = "reload";
+        "${modifier}+Shift+c" = "reload";
         "${modifier}+c" = ''mode "chat"'';
         "${modifier}+r" = ''mode "resize"'';
 
