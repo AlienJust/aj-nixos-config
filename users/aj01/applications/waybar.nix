@@ -359,7 +359,9 @@
           on-click = "pavucontrol";
           tooltip = true;
         };
-
+        "sway/language" = {
+          format = "{flag} {shortDescription}";
+        };
         #      temperature = {
         #        critical-threshold = 80;
         #        format = "{temperatureC}°C {icon}";
