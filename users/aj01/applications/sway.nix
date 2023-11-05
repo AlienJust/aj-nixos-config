@@ -361,8 +361,8 @@ in {
       # TODO: floating criteria
       # floating = {criteria = [{class = "SpeedCrunch";}];};
 
-      # bars = [{command = "waybar";}];
-      bars = [];
+      bars = [{command = "waybar";}];
+      # bars = [];
     };
   };
 }
