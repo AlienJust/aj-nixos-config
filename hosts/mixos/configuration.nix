@@ -347,16 +347,22 @@
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "DroidSansMono"];})
+      (nerdfonts.override {fonts = ["Iosevka" "Hack" "FiraCode" "DroidSansMono"];})
+      iosevka-bin
+
+      hack
+
       fira-code
       fira-code-symbols
-      iosevka-bin
-      openmoji-color
+
       noto-fonts
-      noto-fonts-emoji
-      noto-fonts-monochrome-emoji
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
+
+      noto-fonts-emoji
+      noto-fonts-monochrome-emoji
+      openmoji-color
+
       maple-mono-NF
       (pkgs.callPackage ../../pkgs/mplus-fonts {}) # TODO: do I really need to call it like this?
       (pkgs.callPackage ../../pkgs/balsamiqsans {})

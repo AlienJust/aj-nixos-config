@@ -24,8 +24,9 @@
     ./mutability.nix
 
     # Apps
-    ./applications/hyprland.nix
+    # ./applications/hyprland.nix
     ./applications/sway.nix
+    ./applications/waybar.nix
 
     ./applications/eww
     ./applications/anyrun.nix
