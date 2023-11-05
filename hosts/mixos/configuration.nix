@@ -350,7 +350,7 @@
       (nerdfonts.override {fonts = ["Iosevka" "Hack" "FiraCode" "DroidSansMono"];})
       iosevka-bin
 
-      hack
+      hack-font
 
       fira-code
       fira-code-symbols
