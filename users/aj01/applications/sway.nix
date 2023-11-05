@@ -37,7 +37,9 @@ in {
 
   wayland.windowManager.sway = {
     enable = true;
+    systemd.enable = true;
     wrapperFeatures.gtk = true;
+    swaynag.enable = true;
     extraSessionCommands = with pkgs; ''
       export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
@@ -64,28 +66,6 @@ in {
     '';
     #      export MC_SKIN=$HOME/.config/mc/selenized.ini;
     #      export XDG_DATA_DIRS="${gnome.adwaita-icon-theme}/share:$XDG_DATA_DIRS";
-    #    '';
-    extraConfig = ''
-      exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
-      exec --no-startup-id mako &
-      exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
-      exec sworkstyle &> /tmp/sworkstyle.log
-
-      # TODO: move to config.
-      no_focus [app_id="^mpv"]
-      no_focus [title="^Картинка в картинке"]
-
-      # TODO:
-      # Cursor
-      #
-      # seat seat0 xcursor_theme capitaine-cursors 24
-
-      # TODO:
-      # Polkit
-      # SOV
-    '';
-    #      exec --no-startup-id kdeconnect-indicator &
-    #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
     #    '';
     config = {
       modifier = modifier;
@@ -144,6 +124,7 @@ in {
       };
 
       floating = {
+        titlebar = false;
         border = 3;
         criteria = [
           {
@@ -361,8 +342,30 @@ in {
       # TODO: floating criteria
       # floating = {criteria = [{class = "SpeedCrunch";}];};
 
-      bars = [{command = "waybar";}];
-      # bars = [];
+      #bars = [{command = "waybar";}];
+      bars = [];
     };
+    extraConfig = ''
+      exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
+      exec --no-startup-id mako &
+      exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
+      exec sworkstyle &> /tmp/sworkstyle.log
+
+      # TODO: move to config.
+      no_focus [app_id="^mpv"]
+      no_focus [title="^Картинка в картинке"]
+
+      # TODO:
+      # Cursor
+      #
+      # seat seat0 xcursor_theme capitaine-cursors 24
+
+      # TODO:
+      # Polkit
+      # SOV
+    '';
+    #      exec --no-startup-id kdeconnect-indicator &
+    #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+    #    '';
   };
 }

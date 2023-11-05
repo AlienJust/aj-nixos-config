@@ -7,6 +7,7 @@
   programs.waybar = {
     enable = true;
     systemd.enable = true;
+    systemd.target = "sway-session.target";
     #    style = ''
     #      ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
     #      window#waybar {
@@ -240,8 +241,8 @@
           "pulseaudio"
           "memory"
           "clock"
-          "custom/keyboard-layout"
-          # "sway/language"
+          # "custom/keyboard-layout"
+          "sway/language"
         ]; # ++ (if config.hostId == "yoga" then [ "battery" ] else [ ])
         #      ++ [
         #        "clock"
