@@ -363,6 +363,9 @@ in {
       # TODO:
       # Polkit
       # SOV
+
+      # Switching at workspace 1 on start.
+      workspace 1
     '';
     #      exec --no-startup-id kdeconnect-indicator &
     #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
