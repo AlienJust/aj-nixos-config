@@ -40,7 +40,8 @@
       "editor.fontSize" = 16;
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
-      "editor.fontFamily" = "'Iosevka Term', 'Noto Color Emoji', 'monospace', monospace";
+      "editor.fontFamily" = "'Iosevka Nerd Font', 'Noto Color Emoji', 'monospace', monospace";
+      "editor.wordWrap" = true;
       "workbench.colorTheme" = "Rosé Pine Moon";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
