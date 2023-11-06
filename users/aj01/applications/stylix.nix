@@ -10,6 +10,7 @@
   ];
 
   stylix = {
+    autoEnable = true;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
     /*
@@ -47,10 +48,12 @@
     #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     # };
 
-    image = pkgs.fetchurl {
-      url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
-      sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
-    };
+    image = ../wall.jpg;
+
+    #image = pkgs.fetchurl {
+    #  url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
+    #  sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
+    #};
 
     fonts = {
       serif = {
@@ -75,13 +78,16 @@
 
       sizes = {
         desktop = 10;
-        applications = 12;
-        terminal = 14;
+        applications = 10;
+        terminal = 12;
       };
     };
 
     opacity = {
       terminal = 0.9;
+      popups = 0.9;
     };
+
+    polarity = "dark";
   };
 }

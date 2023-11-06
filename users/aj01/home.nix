@@ -114,6 +114,7 @@
   };
   */
 
+  /*
   qt = {
     enable = true;
     # platformTheme = "breeze";
@@ -123,6 +124,7 @@
       package = pkgs.libsForQt5.breeze-qt5;
     };
   };
+  */
 
   home = {
     username = "aj01";

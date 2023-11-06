@@ -37,10 +37,10 @@
         }
       ];
     userSettings = {
-      "editor.fontSize" = 16;
+      #"editor.fontSize" = 16;
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
-      "editor.fontFamily" = "'Iosevka Nerd Font', 'Noto Color Emoji', 'monospace', monospace";
+      #"editor.fontFamily" = "'Iosevka Nerd Font', 'Noto Color Emoji', 'monospace', monospace";
       "editor.wordWrap" = true;
       #"workbench.colorTheme" = "Rosé Pine Moon";
       "workbench.iconTheme" = "material-icon-theme";
@@ -50,7 +50,7 @@
       "git.autofetch" = true;
       "git.enableSmartCommit" = true;
       "window.titleBarStyle" = "custom";
-      "window.zoomLevel" = -1;
+      #"window.zoomLevel" = -1;
       "[nix]" = {"editor.defaultFormatter" = "jnoortheen.nix-ide";};
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
