@@ -65,18 +65,24 @@
   #  };
   #};
 
+  /*
   home.pointerCursor = {
-    package = pkgs.catppuccin-cursors.mochaPeach;
-    name = "Catppuccin-Mocha-Peach-Cursors";
+    #package = pkgs.catppuccin-cursors.mochaPeach;
+    #name = "Catppuccin-Mocha-Peach-Cursors";
+    package = pkgs.capitaine-cursors;
+    name = "capitaine-cursors";
     size = 24;
     gtk.enable = true;
   };
+  */
 
   # set cursor size and dpi for 4k monitor
-  xresources.properties = {
+  /*
+    xresources.properties = {
     "Xcursor.size" = 16;
     #"Xft.dpi" = 172;
   };
+  */
 
   gtk = {
     #enalbe = true;
