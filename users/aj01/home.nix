@@ -101,6 +101,25 @@
     };
   };
 
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
+
+  qt = {
+    enable = true;
+    # platformTheme = "breeze";
+    # style.name = "qt5ct";
+    style = {
+      name = "Breeze-Dark";
+      package = pkgs.libsForQt5.breeze-qt5;
+    };
+  };
+
   home = {
     username = "aj01";
     homeDirectory = "/home/aj01";
@@ -108,7 +127,6 @@
     # Add stuff for your user as you see fit:
     # programs.neovim.enable = true;
     packages = with pkgs; [
-      dconf
       git
       socat
       curl
@@ -372,6 +390,7 @@
   #};
 
   programs.helix.enable = true;
+
   /*
   # xdg defaults
   xdg = {

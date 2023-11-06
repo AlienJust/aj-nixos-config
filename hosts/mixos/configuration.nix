@@ -285,9 +285,12 @@
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
   };
 
+  services.dbus.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
   };
 
   # List packages installed in system profile. To search, run:
@@ -308,7 +311,9 @@
       ripgrep
       wget
       jq
+
       home-manager
+
       alejandra
       sbctl
       ntfs3g
@@ -320,7 +325,7 @@
       edk2-uefi-shell
       udisks2
       fontconfig
-      xwayland
+
       dxvk
       vkd3d
       vkd3d-proton
@@ -330,6 +335,8 @@
       vscode.fhs
 
       libsForQt5.qtstyleplugins
+
+      xwayland
     ];
 
     #persistence."/persist" = {

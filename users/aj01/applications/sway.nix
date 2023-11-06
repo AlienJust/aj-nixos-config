@@ -344,12 +344,32 @@ in {
 
       #bars = [{command = "waybar";}];
       bars = [];
+      startup = [
+        {
+          command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP";
+          always = false;
+        }
+        # Mako startup
+        {
+          command = "mako";
+          always = false;
+        }
+        # Swokstyle
+        {
+          command = "sworkstyle &> /tmp/sworkstyle.log";
+          always = true;
+        }
+        {
+          command = "sworkstyle &> /tmp/sworkstyle.log";
+          always = false;
+        }
+      ];
     };
     extraConfig = ''
-      exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
-      exec --no-startup-id mako &
-      exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
-      exec sworkstyle &> /tmp/sworkstyle.log
+      #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
+      #exec --no-startup-id mako &
+      #exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
+      #exec sworkstyle &> /tmp/sworkstyle.log
 
       # TODO: move to config.
       no_focus [app_id="^mpv"]
