@@ -19,7 +19,7 @@
     # ./users.nix
 
     # stylix
-    # inputs.stylix.nixosModules.stylix
+    inputs.stylix.nixosModules.stylix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -28,31 +28,6 @@
     inputs.impermanence.nixosModules.impermanence
     #(inputs.impermanence + "/nixos.nix")
   ];
-
-  /*
-  stylix = {
-    homeManagerIntegration.followSystem = false;
-    homeManagerIntegration.autoImport = false;
-
-    # Either image or base16Scheme is required
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-
-    fonts = {
-      monospace = {
-        package = pkgs.nerdfonts;
-        name = "hack nerd font mono";
-      };
-
-      sizes = {
-        terminal = 10;
-      };
-    };
-
-    opacity = {
-      terminal = 0.9;
-    };
-  };
-  */
 
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
@@ -165,6 +140,30 @@
           Bridge = "br0";
           LinkLocalAddressing = "no";
         };
+        /*
+        stylix = {
+          homeManagerIntegration.followSystem = false;
+          homeManagerIntegration.autoImport = false;
+
+          # Either image or base16Scheme is required
+          base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+
+          fonts = {
+            monospace = {
+              package = pkgs.nerdfonts;
+              name = "hack nerd font mono";
+            };
+
+            sizes = {
+              terminal = 10;
+            };
+          };
+
+          opacity = {
+            terminal = 0.9;
+          };
+        };
+        */
         linkConfig.RequiredForOnline = "no";
       };
 
@@ -329,6 +328,8 @@
       steam-run
 
       vscode.fhs
+
+      libsForQt5.qtstyleplugins
     ];
 
     #persistence."/persist" = {
@@ -380,6 +381,34 @@
     };
     */
     fontDir.enable = true;
+  };
+  qt = {
+    enable = true;
+    style = lib.mkForce "gtk2";
+    platformTheme = lib.mkForce "gtk2";
+  };
+
+  stylix = {
+    homeManagerIntegration.followSystem = false;
+    homeManagerIntegration.autoImport = false;
+
+    # Either image or base16Scheme is required
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "Hack nerd font mono";
+      };
+
+      sizes = {
+        terminal = 10;
+      };
+    };
+
+    opacity = {
+      terminal = 0.9;
+    };
   };
 
   # programs
