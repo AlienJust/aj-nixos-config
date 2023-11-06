@@ -143,10 +143,12 @@
         /*
         stylix = {
           homeManagerIntegration.followSystem = false;
-          homeManagerIntegration.autoImport = false;
+          homeManagerIntegration.autoImport = true;
 
           # Either image or base16Scheme is required
-          base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+          # ls /nix/store/kn5syvn01z6bx59ibchnraa8hnl68ny3-base16-schemes-unstable-2023-05-02/share/themes/
+          #base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+          base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark-terminal.yaml";
 
           fonts = {
             monospace = {
@@ -336,7 +338,7 @@
       vscode.fhs
 
       # Qt.
-      libsForQt5.qtstyleplugins
+      #libsForQt5.qtstyleplugins
 
       xwayland
     ];
@@ -391,13 +393,13 @@
     */
     fontDir.enable = true;
   };
-
+  /*
   qt = {
     enable = true;
     style = lib.mkForce "gtk2";
     platformTheme = lib.mkForce "gtk2";
   };
-
+  */
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;

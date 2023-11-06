@@ -39,7 +39,7 @@
     ./applications/mpd.nix
     ./applications/starship.nix
 
-    ./applications/qt.nix
+    #./applications/qt.nix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -68,7 +68,7 @@
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaPeach;
     name = "Catppuccin-Mocha-Peach-Cursors";
-    size = 40;
+    size = 24;
     gtk.enable = true;
   };
 
@@ -78,6 +78,16 @@
     #"Xft.dpi" = 172;
   };
 
+  gtk = {
+    #enalbe = true;
+    iconTheme = {
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "peach";
+      };
+      name = "Papirus-Dark";
+    };
+  };
   /*
   gtk = {
     enable = true;
@@ -115,6 +125,12 @@
     };
   };
   */
+
+  qt = {
+    enable = true;
+    #Platform theme can has value: "gtk", "gnome", "qtct", "kde" or nil
+    platformTheme = "kde";
+  };
 
   home = {
     username = "aj01";

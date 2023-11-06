@@ -13,6 +13,12 @@
     autoEnable = true;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
+    #cursor = {
+    #  package = pkgs.catppuccin-cursors.mochaPeach;
+    #  name = "Catppuccin-Mocha-Peach-Cursors";
+    #  size = 32;
+    #};
+
     /*
     image = pkgs.fetchurl {
       url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";
@@ -31,11 +37,8 @@
         terminal = 12;
       };
     };
-
-    opacity = {
-      terminal = 0.9;
-    };
     */
+
     # https://www.reddit.com/r/NixOS/comments/3jqd2u/anyone_want_a_wallpaper/
     # also check: https://github.com/NixOS/nixos-artwork/tree/master/wallpapers
     # image = pkgs.fetchurl {

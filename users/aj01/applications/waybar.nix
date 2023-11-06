@@ -29,7 +29,7 @@
 
     settings = [
       {
-        height = 26;
+        height = lib.mkForce 26;
         layer = "top";
         position = "top";
         tray = {spacing = 10;};

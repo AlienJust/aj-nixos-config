@@ -44,7 +44,7 @@ in {
     extraSessionCommands = with pkgs; ''
       export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-
+      export QT_QPA_PLATFORMTHEME="kde"
       export QT_AUTO_SCREEN_SCALE_FACTOR="1"
 
       export MOZ_ENABLE_WAYLAND="1"
@@ -55,7 +55,7 @@ in {
 
       export XDG_SESSION_TYPE="x11"
       export XDG_CURRENT_DESKTOP="sway"
-      export XCURSOR_SIZE="32"
+      export XCURSOR_SIZE=32
       export XCURSOR_THEME="Adwaita"
 
       export NIXOS_OZONE_WL="1"
@@ -383,7 +383,7 @@ in {
       # TODO:
       # Cursor
       #
-      # seat seat0 xcursor_theme capitaine-cursors 24
+      seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
 
       # TODO:
       # Polkit
