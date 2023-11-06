@@ -47,10 +47,10 @@
     #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     # };
 
-    # image = pkgs.fetchurl {
-    #   url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
-    #   sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
-    # };
+    image = pkgs.fetchurl {
+      url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
+      sha256 = "tAX6qTm1/7v/auvCHrmRswJsScNieSWpXV6TCBhRP7Y=";
+    };
 
     fonts = {
       serif = {
@@ -78,6 +78,10 @@
         applications = 12;
         terminal = 14;
       };
+    };
+
+    opacity = {
+      terminal = 0.9;
     };
   };
 }

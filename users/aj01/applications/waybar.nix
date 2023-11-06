@@ -26,6 +26,7 @@
     #      }
     #      }
     #    '';
+
     style = ''
       * {
           border: none;
@@ -360,7 +361,7 @@
           tooltip = true;
         };
         "sway/language" = {
-          format = "{flag} {shortDescription}";
+          format = "{flag} {shortDescription} ";
         };
         #      temperature = {
         #        critical-threshold = 80;

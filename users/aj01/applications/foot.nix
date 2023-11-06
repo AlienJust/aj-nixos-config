@@ -2,6 +2,7 @@
   programs.foot = {
     enable = true;
     settings = {
+      /*
       main = {
         font = lib.mkForce "IosevkaTerm NFM Light:size=12";
         font-bold = lib.mkForce "IosevkaTerm NFM:size=12";
@@ -33,6 +34,7 @@
       cursor = {
         color = "122637 f0cb09";
       };
+      */
     };
   };
 }

@@ -27,6 +27,7 @@
     # ./applications/hyprland.nix
     ./applications/sway.nix
     ./applications/waybar.nix
+    ./applications/stylix.nix
 
     ./applications/eww
     ./applications/anyrun.nix
@@ -37,7 +38,6 @@
     ./applications/firefox
     ./applications/mpd.nix
     ./applications/starship.nix
-    #./applications/stylix.nix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -76,6 +76,7 @@
     #"Xft.dpi" = 172;
   };
 
+  /*
   gtk = {
     enable = true;
     font = {
@@ -100,7 +101,9 @@
       name = "Catppuccin-Mocha-Standard-Peach-Dark";
     };
   };
+  */
 
+  /*
   dconf = {
     enable = true;
     settings = {
@@ -109,6 +112,7 @@
       };
     };
   };
+  */
 
   qt = {
     enable = true;

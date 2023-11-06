@@ -42,7 +42,7 @@
       "editor.formatOnSave" = true;
       "editor.fontFamily" = "'Iosevka Nerd Font', 'Noto Color Emoji', 'monospace', monospace";
       "editor.wordWrap" = true;
-      "workbench.colorTheme" = "Rosé Pine Moon";
+      #"workbench.colorTheme" = "Rosé Pine Moon";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
       "workbench.productIconTheme" = "material-product-icons";

@@ -74,12 +74,14 @@ in {
       workspaceAutoBackAndForth = true;
 
       # TODO: fonts.
-      fonts = {
+      /*
+        fonts = {
         names = ["pango:Hack" "FontAwesome"];
         size = 12.0;
       };
+      */
 
-      output = {"*" = {bg = "~/wall.jpg fill";};};
+      #output = {"*" = {bg = "~/wall.jpg fill";};};
 
       input = {
         "*" = {
@@ -91,6 +93,7 @@ in {
 
       focus.followMouse = "no";
 
+      /*
       colors = {
         focused = {
           border = "#6272A4";
@@ -122,6 +125,7 @@ in {
         };
         #background = black;
       };
+      */
 
       floating = {
         titlebar = false;
