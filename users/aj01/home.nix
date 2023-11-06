@@ -38,6 +38,8 @@
     ./applications/firefox
     ./applications/mpd.nix
     ./applications/starship.nix
+
+    ./applications/qt.nix
   ];
 
   # Can be used if allowGlobalPackages is false
@@ -110,18 +112,6 @@
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
       };
-    };
-  };
-  */
-
-  /*
-  qt = {
-    enable = true;
-    # platformTheme = "breeze";
-    # style.name = "qt5ct";
-    style = {
-      name = "Breeze-Dark";
-      package = pkgs.libsForQt5.breeze-qt5;
     };
   };
   */
@@ -210,6 +200,12 @@
       # dotnet-sdk
       dotnet-sdk_7
       _7zz
+
+      # Qt
+      (catppuccin-kvantum.override {
+        accent = "Mauve";
+        variant = "Mocha";
+      })
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:

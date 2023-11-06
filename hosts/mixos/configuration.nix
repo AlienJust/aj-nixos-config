@@ -332,8 +332,10 @@
       inputs.nix-gaming.packages.${pkgs.system}.proton-ge
       steam-run
 
+      # For vscode extensions proper work.
       vscode.fhs
 
+      # Qt.
       libsForQt5.qtstyleplugins
 
       xwayland
@@ -389,6 +391,7 @@
     */
     fontDir.enable = true;
   };
+
   qt = {
     enable = true;
     style = lib.mkForce "gtk2";
