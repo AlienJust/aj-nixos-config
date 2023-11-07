@@ -405,7 +405,8 @@
     homeManagerIntegration.autoImport = false;
 
     # Either image or base16Scheme is required
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
 
     fonts = {
       monospace = {
