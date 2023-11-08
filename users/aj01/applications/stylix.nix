@@ -13,7 +13,7 @@
     autoEnable = true;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
     cursor = {
       package = pkgs.catppuccin-cursors.mochaPeach;
@@ -55,7 +55,7 @@
     #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     # };
 
-    image = ../wall.jpg;
+    image = ../wall3.png;
 
     #image = pkgs.fetchurl {
     #  url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
