@@ -339,7 +339,7 @@
 
       # Qt.
       #libsForQt5.qtstyleplugins
-      libsForQt5.qtstyleplugin-kvantum
+      #libsForQt5.qtstyleplugin-kvantum
 
       xwayland
     ];
@@ -406,8 +406,10 @@
     homeManagerIntegration.autoImport = false;
 
     # Either image or base16Scheme is required
+    # ls /nix/store/kn5syvn01z6bx59ibchnraa8hnl68ny3-base16-schemes-unstable-2023-05-02/share/themes/
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
     fonts = {
       monospace = {

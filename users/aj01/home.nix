@@ -432,6 +432,7 @@
 
   programs.helix.enable = true;
 
+  # https://git.sr.ht/~fd/nix-configs/tree/main/item/home/common/wayland/theme.nix
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig" = {
       enable = true;

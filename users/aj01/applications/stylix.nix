@@ -12,7 +12,8 @@
   stylix = {
     autoEnable = true;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
     cursor = {
       package = pkgs.catppuccin-cursors.mochaPeach;
