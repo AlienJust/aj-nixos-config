@@ -148,6 +148,7 @@
     platformTheme = "gnome";
     style = {
       name = lib.mkForce "kvantum-dark";
+      #name = "kvantum-dark";
       package = [
         pkgs.libsForQt5.qtstyleplugin-kvantum
         pkgs.qt6Packages.qtstyleplugin-kvantum

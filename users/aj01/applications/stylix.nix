@@ -12,8 +12,21 @@
   stylix = {
     autoEnable = true;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/material-darker.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/materia.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml"; #nice
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml"; #nice black
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-dark.yaml"; #nice
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/synth-midnight-dark.yaml"; #nice black
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night-eighties.yaml"; #nice warm scheme
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/tango.yaml"; #sane defaul warm scheme
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml"; #nice
 
     cursor = {
       package = pkgs.catppuccin-cursors.mochaPeach;
@@ -55,7 +68,8 @@
     #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     # };
 
-    image = ../wall3.png;
+    # image = ../wall3.png;
+    image = ../wall.jpg;
 
     #image = pkgs.fetchurl {
     #  url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
