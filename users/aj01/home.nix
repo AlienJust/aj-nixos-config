@@ -132,10 +132,27 @@
   };
   */
 
+  /*
   qt = {
     enable = true;
-    #Platform theme can has value: "gtk", "gnome", "qtct", "kde" or nil
-    platformTheme = "kde";
+    #Platform theme can has value: "gtk", "gnome", "qtct", "kde" or null
+    platformTheme = "qtct";
+    style = {
+      package = lib.mkForce pkgs.catppuccin-kvantum;
+      name = lib.mkForce "kvantum";
+    };
+  };
+  */
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = {
+      name = lib.mkForce "kvantum-dark";
+      package = [
+        pkgs.libsForQt5.qtstyleplugin-kvantum
+        pkgs.qt6Packages.qtstyleplugin-kvantum
+      ];
+    };
   };
 
   home = {
@@ -414,6 +431,20 @@
   #};
 
   programs.helix.enable = true;
+
+  xdg.configFile = {
+    "Kvantum/kvantum.kvconfig" = {
+      enable = true;
+      text = ''
+        [General]
+        theme=KvArcDark
+      '';
+    };
+    "Kvantum/KvArcDark#/KvArcDark#.kvconfig" = {
+      enable = true;
+      source = ./KvArcDark.kvconfig;
+    };
+  };
 
   /*
   # xdg defaults

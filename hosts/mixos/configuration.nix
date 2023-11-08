@@ -339,6 +339,7 @@
 
       # Qt.
       #libsForQt5.qtstyleplugins
+      libsForQt5.qtstyleplugin-kvantum
 
       xwayland
     ];
