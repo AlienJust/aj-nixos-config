@@ -11,6 +11,9 @@
 }: {
   # You can import other NixOS modules here
   imports = [
+    # If you want to use modules your own flake exports (from modules/nixos):
+    # outputs.nixosModules.example
+    outputs.nixosModules.virtualisation
     # If you want to use modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -28,7 +31,7 @@
     inputs.impermanence.nixosModules.impermanence
     #(inputs.impermanence + "/nixos.nix")
 
-    ../../modules/virtualization.nix
+    #../../modules/virtualization.nix
   ];
 
   nixpkgs = {
@@ -285,7 +288,7 @@
     description = "Alex Deb";
     shell = pkgs.zsh;
     group = "users";
-    extraGroups = ["wheel" "video" "audio" "realtime" "input"];
+    extraGroups = ["wheel" "video" "audio" "realtime" "input" "qemu-libvirtd" "libvirtd"];
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
   };
 
@@ -344,6 +347,18 @@
       #libsForQt5.qtstyleplugin-kvantum
 
       xwayland
+
+      qemu
+      swtpm
+      edk2
+      OVMF
+      virt-manager
+      virt-viewer
+      spice
+      spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
     ];
 
     #persistence."/persist" = {

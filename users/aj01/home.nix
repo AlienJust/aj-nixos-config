@@ -246,6 +246,19 @@
         accent = "Mauve";
         variant = "Mocha";
       })
+
+      # Virt
+      qemu
+      swtpm
+      edk2
+      OVMF
+      virt-manager
+      virt-viewer
+      spice
+      spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
