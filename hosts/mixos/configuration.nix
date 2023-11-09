@@ -27,6 +27,8 @@
     # Impermanence
     inputs.impermanence.nixosModules.impermanence
     #(inputs.impermanence + "/nixos.nix")
+
+    ../../modules/virtualization.nix
   ];
 
   nixpkgs = {
