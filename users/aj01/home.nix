@@ -168,6 +168,7 @@
       curl
       wget
       dos2unix
+      proxychains-ng
 
       # tui
       htop
