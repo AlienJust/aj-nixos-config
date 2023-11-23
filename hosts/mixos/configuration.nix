@@ -279,6 +279,10 @@
   services.fstrim.enable = true;
   services.udisks2.enable = true;
 
+  # Android.
+  programs.adb.enable = true;
+  # For Android emulator.
+  systemd.enableUnifiedCgroupHierarchy = lib.mkForce true;
   # Users
   users.mutableUsers = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -289,7 +293,7 @@
     description = "Alex Deb";
     shell = pkgs.zsh;
     group = "users";
-    extraGroups = ["wheel" "video" "audio" "realtime" "input" "qemu-libvirtd" "libvirtd"];
+    extraGroups = ["wheel" "video" "audio" "realtime" "input" "qemu-libvirtd" "libvirtd" "adbusers"];
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
   };
 
@@ -297,8 +301,9 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    config.common.default = "*";
     # gtk portal needed to make gtk apps happy
-    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   # List packages installed in system profile. To search, run:
@@ -349,6 +354,7 @@
 
       xwayland
 
+      bridge-utils
       qemu
       swtpm
       edk2
@@ -360,6 +366,8 @@
       spice-protocol
       win-virtio
       win-spice
+
+      android-studio
     ];
 
     #persistence."/persist" = {
@@ -556,17 +564,6 @@
           })
           .fd
         ];
-        /*
-          ovmf.packages = [
-          pkgs.OVMFFull.override
-          {
-            secureBoot = true;
-            csmSupport = false;
-            httpSupport = true;
-            tpmSupport = true;
-          }
-        ];
-        */
       };
     };
     spiceUSBRedirection.enable = true;

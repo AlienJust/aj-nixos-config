@@ -121,16 +121,25 @@
   };
   */
 
-  /*
+  #programs.virt-manager.enable = true;
   dconf = {
     enable = true;
+
     settings = {
-      "org/gnome/desktop/interface" = {
+      # Virt-manager settings.
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+
+      /*
+        # UI settings handled by stylix.
+        "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
       };
+      */
     };
   };
-  */
 
   /*
   qt = {
@@ -249,6 +258,7 @@
       })
 
       # Virt
+      bridge-utils
       qemu
       swtpm
       edk2
@@ -359,6 +369,7 @@
   # direnv
   programs.direnv = {
     enable = true;
+    enableZshIntegration = true;
     nix-direnv.enable = true;
   };
 
