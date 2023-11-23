@@ -2,6 +2,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
+      #package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {ExtensionSettings = {};};
     };
     profiles.default = {
@@ -12,9 +13,6 @@
         sidebery
         stylus
         languagetool
-        enhancer-for-youtube
-        augmented-steam
-        seventv-nightly # why does this hate me XD
       ];
       settings = {
         # disable about:config warning because we're adults
@@ -82,6 +80,7 @@
     };
   };
   # persistence for firefox
+  /*
   home.persistence."/nix/persist/home/aj01" = {
     directories = [
       ".mozilla/firefox/default/storage" # fuck u, indexeddb for extension settings are vile
@@ -93,4 +92,5 @@
       ".mozilla/firefox/default/formhistory.sqlite" # form history
     ];
   };
+  */
 }
