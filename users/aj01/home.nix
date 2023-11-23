@@ -249,6 +249,7 @@
 
       # dotnet-sdk
       dotnet-sdk_7
+      dotnet-sdk_8
       _7zz
 
       # Qt
