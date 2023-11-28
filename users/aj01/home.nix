@@ -247,6 +247,7 @@
       teamspeak_client
       winbox
       libreoffice-fresh
+      anydesk
 
       # dotnet-sdk
       # dotnet-sdk_7
