@@ -165,7 +165,7 @@ in {
             app_id = "galculator";
           }
           {
-            class = "Pavucontrol";
+            app_id = "pavucontrol";
           }
           {
             app_id = "foot";
@@ -246,7 +246,7 @@ in {
       bindkeysToCode = true;
       keybindings = lib.mkOptionDefault {
         "${modifier}+Return" = "exec ${terminal}";
-        "${modifier}+Shift+Return" = "exec ${terminal}";
+        "${modifier}+Shift+Return" = "exec ${qterm}";
         "${modifier}+Shift+q" = "kill";
         "${modifier}+d" = "exec ${menu}";
         "${modifier}+Shift+c" = "reload";
