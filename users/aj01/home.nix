@@ -239,6 +239,7 @@
       mpv
       #obs-studio
       imv
+      wf-recorder
       telegram-desktop
       keepassxc
       thunderbird
@@ -248,7 +249,7 @@
       libreoffice-fresh
 
       # dotnet-sdk
-      dotnet-sdk_7
+      # dotnet-sdk_7
       dotnet-sdk_8
       _7zz
 
