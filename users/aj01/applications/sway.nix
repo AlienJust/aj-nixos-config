@@ -196,8 +196,7 @@ in {
           # TODO: no focus for MPV
           {
             command = "floating enable, resize set 640 400, sticky enable";
-            criteria.app_id = "^mpv";
-            criteria.title = "Floating Terminal";
+            criteria.app_id = "mpv";
           }
 
           # TODO: no focus for Picture in picture mode

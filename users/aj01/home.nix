@@ -401,7 +401,7 @@
     };
     defaultProfiles = ["gpu-hq"];
     config = {
-      fullscreen = true;
+      fullscreen = false;
       sub-auto = "fuzzy";
 
       vo = "gpu-next";
