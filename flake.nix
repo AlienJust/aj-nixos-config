@@ -42,16 +42,20 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # gpt4all
+    #gpt4all.url = "github:polygon/gpt4all-nix";
+    #gpt4all.inputs.nixpkgs.follows = "nixpkgs";
+
     # anyrun
-    anyrun.url = "github:Kirottu/anyrun";
-    anyrun.inputs.nixpkgs.follows = "nixpkgs";
+    #anyrun.url = "github:Kirottu/anyrun";
+    #anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
     # hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    #hyprland.url = "github:hyprwm/Hyprland";
+    #hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland-contrib.url = "github:hyprwm/contrib";
-    hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
+    #hyprland-contrib.url = "github:hyprwm/contrib";
+    #hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
 
     # stylix
     stylix.url = "github:danth/stylix";
@@ -82,7 +86,7 @@
     home-manager,
     impermanence,
     stylix,
-    hyprland,
+    #hyprland,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -108,7 +112,8 @@
             inputs
             outputs
             stylix
-            hyprland
+            #hyprland
+            
             ;
         };
         # > Our main nixos configuration file <

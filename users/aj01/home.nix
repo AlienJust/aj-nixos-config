@@ -30,7 +30,7 @@
     ./applications/stylix.nix
 
     ./applications/eww
-    ./applications/anyrun.nix
+    #./applications/anyrun.nix
     ./applications/foot.nix
 
     ./applications/vscode/vscode-files.nix
@@ -248,6 +248,8 @@
       winbox
       libreoffice-fresh
       anydesk
+      #gpt4all-chat
+      (pkgs.callPackage ../../pkgs/gpt4all {})
 
       # dotnet-sdk
       # dotnet-sdk_7
