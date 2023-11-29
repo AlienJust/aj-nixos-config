@@ -249,7 +249,6 @@
       libreoffice-fresh
       anydesk
       #gpt4all-chat
-      (pkgs.callPackage ../../pkgs/gpt4all {})
 
       # dotnet-sdk
       # dotnet-sdk_7
