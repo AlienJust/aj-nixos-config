@@ -32,6 +32,7 @@
     ./applications/eww
     #./applications/anyrun.nix
     ./applications/foot.nix
+    ./applications/htop.nix
 
     ./applications/vscode/vscode-files.nix
     ./applications/vscode/vscode.nix
@@ -180,7 +181,7 @@
       proxychains-ng
 
       # tui
-      htop
+      # htop
       btop
       mc
       neofetch
