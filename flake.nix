@@ -43,7 +43,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # gpt4all
-    #gpt4all.url = "github:polygon/gpt4all-nix";
+    gpt4all.url = "github:polygon/gpt4all-nix";
     #gpt4all.inputs.nixpkgs.follows = "nixpkgs";
 
     # anyrun
