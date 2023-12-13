@@ -15,7 +15,7 @@
         openssl.dev
         pkg-config
         # for dotnet
-        dotnet-sdk_7
+        dotnet-sdk_8
       ]);
     extensions = with pkgs.vscode-extensions;
       [
