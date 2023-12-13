@@ -202,8 +202,12 @@ in {
           # TODO: no focus for Picture in picture mode
           {
             command = "floating enable, resize set 640 400, sticky enable";
-            criteria.app_id = "^Картинка в картинке";
-            criteria.title = "Floating Terminal";
+            criteria.title = "^Картинка в картинке";
+          }
+
+          {
+            command = "floating enable, resize set 640 400, sticky enable";
+            criteria.title = "^Picture-in-Picture";
           }
 
           #WTF?
