@@ -146,32 +146,6 @@
           Bridge = "br0";
           LinkLocalAddressing = "no";
         };
-        /*
-        stylix = {
-          homeManagerIntegration.followSystem = false;
-          homeManagerIntegration.autoImport = true;
-
-          # Either image or base16Scheme is required
-          # ls /nix/store/kn5syvn01z6bx59ibchnraa8hnl68ny3-base16-schemes-unstable-2023-05-02/share/themes/
-          #base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-          base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark-terminal.yaml";
-
-          fonts = {
-            monospace = {
-              package = pkgs.nerdfonts;
-              name = "hack nerd font mono";
-            };
-
-            sizes = {
-              terminal = 10;
-            };
-          };
-
-          opacity = {
-            terminal = 0.9;
-          };
-        };
-        */
         linkConfig.RequiredForOnline = "no";
       };
 
@@ -240,7 +214,32 @@
   };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  /*
+  stylix = {
+    homeManagerIntegration.followSystem = false;
+    homeManagerIntegration.autoImport = true;
 
+    # Either image or base16Scheme is required
+    # ls /nix/store/kn5syvn01z6bx59ibchnraa8hnl68ny3-base16-schemes-unstable-2023-05-02/share/themes/
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark-terminal.yaml";
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "hack nerd font mono";
+      };
+
+      sizes = {
+        terminal = 10;
+      };
+    };
+
+    opacity = {
+      terminal = 0.9;
+    };
+  };
+  */
   console = {
     earlySetup = true;
     font = "ter-powerline-v24n";
