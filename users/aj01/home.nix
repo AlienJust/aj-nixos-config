@@ -237,6 +237,7 @@
       inkscape
       #audacity
       remmina
+      galculator
       avalonia-ilspy
       mpv
       #obs-studio
