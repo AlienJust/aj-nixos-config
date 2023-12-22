@@ -36,8 +36,8 @@
 
     ./applications/vscode/vscode-files.nix
     ./applications/vscode/vscode.nix
-    ./applications/firefox
-    #./applications/firefox-dev-edition
+    #./applications/firefox
+    ./applications/firefox-dev-edition
     ./applications/mpd.nix
     ./applications/starship.nix
 
