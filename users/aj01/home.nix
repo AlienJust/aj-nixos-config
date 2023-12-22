@@ -37,6 +37,7 @@
     ./applications/vscode/vscode-files.nix
     ./applications/vscode/vscode.nix
     ./applications/firefox
+    #./applications/firefox-dev-edition
     ./applications/mpd.nix
     ./applications/starship.nix
 
@@ -224,7 +225,7 @@
       iosevka-bin
 
       mangohud
-      intel-gpu-tools
+      #intel-gpu-tools
       pavucontrol
       udisks2
       ffmpeg
@@ -234,7 +235,7 @@
       vlc
       gimp
       inkscape
-      audacity
+      #audacity
       remmina
       avalonia-ilspy
       mpv

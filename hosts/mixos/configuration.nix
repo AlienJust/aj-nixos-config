@@ -488,7 +488,7 @@
   programs.gamemode.enable = true;
 
   # Thunar
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  #services.gvfs.enable = true; # Mount, trash, and other functionalities
   programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
