@@ -1,7 +1,20 @@
 {pkgs, ...} @ args: {
+  /*
   defaultApplications.browser = {
     cmd = "${pkgs.pkgs.wrapFirefox}/bin/firefox";
     desktop = "firefox";
+  };
+  */
+
+  home = {
+    sessionVariables = {
+      BROWSER = "firefox";
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_USE_XINPUT2 = "1";
+      MOZ_DBUS_REMOTE = "1";
+      MOZ_WEBRENDER = "1";
+      MOZ_ACCELERATED = "1";
+    };
   };
 
   programs.firefox = {

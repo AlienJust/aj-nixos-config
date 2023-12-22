@@ -15,10 +15,21 @@
     sha256 = "sha256-e6L3xq4AXv3V3LV7Os9ZE04R7U8vxdRornBP5x4DWm8=";
   };
 in {
+  /*
+  defaultApplications.browser = {
+    cmd = "${pkgs.pkgs.wrapFirefox}/bin/firefox";
+    desktop = "firefox";
+  };
+  */
+
   home = {
     sessionVariables = {
       BROWSER = "firefox";
       MOZ_ENABLE_WAYLAND = "1";
+      MOZ_USE_XINPUT2 = "1";
+      MOZ_DBUS_REMOTE = "1";
+      MOZ_WEBRENDER = "1";
+      MOZ_ACCELERATED = "1";
     };
   };
   programs.firefox = {
@@ -42,17 +53,21 @@ in {
       settings = {
         "browser.startup.homepage" = "file://${homepage}";
         "browser.aboutConfig.showWarning" = false;
+
         # newtab shenanigans
         "browser.newtabpage.enabled" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.default.sites" = false;
+
         # disable recommendation pane in about:addons
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "browser.discovery.enabled" = false;
+
         # disable pocket
         "extensions.pocket.enabled" = false;
+
         # disable telemetry
         "datareporting.policy.dataSubmissionEnabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
@@ -77,16 +92,20 @@ in {
         "experiments.enabled" = false;
         "experiments.supported" = false;
         "network.allow-experiments" = false;
+
         # disable studies
         "app.shield.optoutstudies.enabled" = false;
         "app.normandy.enabled" = false;
         "app.normandy.api_url" = "";
+
         # disable crash reports
         "breakpad.reportURL" = "";
         "browser.tabs.crashReporting.sendReport" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+
         # enable style customizations (TODO: check if this is needed or setting userChrome enables this anyway)
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
         # ui looks
         "browser.uiCustomization.state" = ''
           {"placements":{"widget-overflow-fixed-list":["fxa-toolbar-menu-button","sidebar-button"],"unified-extensions-area":["moz-addon_7tv_app-browser-action","ublock0_raymondhill_net-browser-action","_3c078156-979c-498b-8990-85f7987dd929_-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","enhancerforyoutube_maximerf_addons_mozilla_org-browser-action","languagetool-webextension_languagetool_org-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","downloads-button","unified-extensions-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","ublock0_raymondhill_net-browser-action","_3c078156-979c-498b-8990-85f7987dd929_-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","profiler-button","enhancerforyoutube_maximerf_addons_mozilla_org-browser-action","languagetool-webextension_languagetool_org-browser-action","moz-addon_7tv_app-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","unified-extensions-area","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":19,"newElementCount":5}
