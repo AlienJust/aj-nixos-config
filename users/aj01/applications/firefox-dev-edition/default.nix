@@ -1,4 +1,9 @@
 {pkgs, ...} @ args: {
+  defaultApplications.browser = {
+    cmd = "${pkgs.pkgs.wrapFirefox}/bin/firefox";
+    desktop = "firefox";
+  };
+
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
@@ -25,21 +30,26 @@
       settings = {
         # disable about:config warning because we're adults
         "browser.aboutConfig.showWarning" = false;
+
         # newtab shenanigans
         "browser.newtabpage.enabled" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.default.sites" = false;
         "browser.startup.homepage" = "about:blank";
+
         # locale shenanigans, other locales are ass
         "intl.accept_languages" = "en-US, en";
         "javascript.use_us_english_locale" = true;
+
         # disable recommendation pane in about:addons
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "browser.discovery.enabled" = false;
+
         # disable pocket
         "extensions.pocket.enabled" = false;
+
         # disable telemetry
         "datareporting.policy.dataSubmissionEnabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
@@ -58,14 +68,23 @@
         "browser.ping-centre.telemetry" = false;
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
+        "toolkit.telemetry.reportingpolicy.firstRun" = false;
+
+        "experiments.activeExperiment" = false;
+        "experiments.enabled" = false;
+        "experiments.supported" = false;
+        "network.allow-experiments" = false;
+
         # disable studies
         "app.shield.optoutstudies.enabled" = false;
         "app.normandy.enabled" = false;
         "app.normandy.api_url" = "";
+
         # disable crash reports
         "breakpad.reportURL" = "";
         "browser.tabs.crashReporting.sendReport" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+
         # enable style customizations (TODO: check if this is needed or setting userChrome enables this anyway)
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         # ui looks

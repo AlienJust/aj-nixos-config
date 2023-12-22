@@ -71,6 +71,12 @@ in {
         "browser.ping-centre.telemetry" = false;
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
+        "toolkit.telemetry.reportingpolicy.firstRun" = false;
+
+        "experiments.activeExperiment" = false;
+        "experiments.enabled" = false;
+        "experiments.supported" = false;
+        "network.allow-experiments" = false;
         # disable studies
         "app.shield.optoutstudies.enabled" = false;
         "app.normandy.enabled" = false;
