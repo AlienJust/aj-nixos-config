@@ -4,6 +4,7 @@
   nixConfig = {
     experimental-features = ["nix-command" "flakes"];
     substituters = [
+      # TODO: any russian mirrors exists?
       # Replace the official cache with a mirror located in China
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
@@ -11,9 +12,12 @@
     extra-substituters = [
       # Nix community's cache server
       "https://nix-community.cachix.org"
+
+      "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
 
@@ -34,6 +38,12 @@
     master.url = "github:nixos/nixpkgs/master";
     #stable.url = "github:nixos/nixpkgs/release-23.05";
     #unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
+    # rust-overlay
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
+    # devenv
+    devenv.url = "github:cachix/devenv";
 
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
@@ -67,10 +77,10 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     # lanzaboote
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #lanzaboote = {
+    #  url = "github:nix-community/lanzaboote";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -86,6 +96,7 @@
     home-manager,
     impermanence,
     stylix,
+    rust-overlay,
     #hyprland,
     ...
   } @ inputs: let
@@ -129,6 +140,11 @@
             home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
           }
+
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [rust-overlay.overlays.default];
+            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+          })
         ];
       };
 
