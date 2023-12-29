@@ -16,6 +16,9 @@
         pkg-config
         # for dotnet
         dotnet-sdk_8
+
+        # direnv
+        direnv
       ]);
     extensions = with pkgs.vscode-extensions;
       [
