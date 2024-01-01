@@ -10,7 +10,7 @@
     package = pkgs.vscode.fhsWithPackages (ps:
       with ps; [
         # needed for rust lang server and rust-analyzer extension
-        rustup
+        #rustup
         zlib
         openssl.dev
         pkg-config
