@@ -251,6 +251,7 @@
       winbox
       libreoffice-fresh
       anydesk
+      chromium
       #gpt4all-chat
 
       # dotnet-sdk
