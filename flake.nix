@@ -23,10 +23,10 @@
 
   inputs = {
     # nixpkgs
-    nixpkgs.follows = "master";
+    master.url = "github:nixos/nixpkgs/master";
 
-    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "master";
 
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
@@ -34,10 +34,6 @@
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-
-    master.url = "github:nixos/nixpkgs/master";
-    #stable.url = "github:nixos/nixpkgs/release-23.05";
-    #unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # rust-overlay
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -100,7 +96,7 @@
     #hyprland,
     ...
   } @ inputs: let
-    inherit (self) outputs;
+    inherit (self) outputs; # The same as: outputs = self.outputs;
     systems = ["x86_64-linux"];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
