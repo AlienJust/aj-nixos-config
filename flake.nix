@@ -23,17 +23,17 @@
 
   inputs = {
     # nixpkgs
-    master.url = "github:nixos/nixpkgs/master";
+    #master.url = "github:nixos/nixpkgs/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.follows = "master";
+    #nixpkgs.follows = "master";
 
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    #nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    #nix-index-database.url = "github:nix-community/nix-index-database";
+    #nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     # rust-overlay
     rust-overlay.url = "github:oxalica/rust-overlay";
