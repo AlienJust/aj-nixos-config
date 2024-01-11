@@ -144,6 +144,38 @@
         ];
       };
 
+
+      wixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit
+            inputs
+            outputs
+            stylix
+            #hyprland
+            
+            ;
+        };
+        # > Our main nixos configuration file <
+        modules = [
+          #stylix.nixosModules.stylix
+          ./hosts/wixos/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.aj01 = import ./users/aj01/home.nix;
+            home-manager.backupFileExtension = "backup";
+          }
+
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [rust-overlay.overlays.default];
+            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+          })
+        ];
+      };
+
       # Virtualbox system
       vixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
