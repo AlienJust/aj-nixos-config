@@ -30,12 +30,14 @@
         ms-dotnettools.csharp
         # pflannery.vscode-versionlens
       ]
+      # https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit
+      # a308e33f116c319578657700b02c8c69f975db4212d5f1e8ca9acd4db93d3eda  /nix/store/ri7yc2gfjwz1sjh8z4djins1jcqnik6f-ms-dotnettools-csdevkit.zip
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "csdevkit";
           publisher = "ms-dotnettools";
-          version = "1.0.12";
-          sha256 = "756a724277acb4babe8060240c332612a57cded9523cfca666865255ae561f05";
+          version = "1.3.2";
+          sha256 = "a308e33f116c319578657700b02c8c69f975db4212d5f1e8ca9acd4db93d3eda";
           sourceRoot = ".";
         }
       ];
