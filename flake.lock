@@ -283,15 +283,13 @@
       "locked": {
         "lastModified": 1703858104,
         "narHash": "sha256-7ZeXxc1h0XEUgTXuhzXPqXfEXGgHqhLXDLIJW/WvmcA=",
-        "owner": "polygon",
-        "repo": "gpt4all-nix",
+        "path": "/nix/store/xnczpqrq58cq8vzkgi7bm43z53jz3my5-source",
         "rev": "47f7ae407d5fdbec6d14507057ced811cc4c5185",
-        "type": "github"
+        "type": "path"
       },
       "original": {
-        "owner": "polygon",
-        "repo": "gpt4all-nix",
-        "type": "github"
+        "id": "gpt4all",
+        "type": "indirect"
       }
     },
     "gpt4all_2": {
@@ -536,6 +534,19 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1704963651,
+        "narHash": "sha256-iZ9b0H7QDARoIzAmnQwhWfgkJCR0+WyHVev1n7j6UJY=",
+        "path": "/nix/store/jbqfsqgipynkpw1l0saf30jdbnw0y050-source",
+        "rev": "7b9e67b39a3b336fe2098d2bd0e2db552480371d",
+        "type": "path"
+      },
+      "original": {
+        "id": "nur",
+        "type": "indirect"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -572,6 +583,7 @@
         "impermanence": "impermanence",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_4",
+        "nur": "nur",
         "rust-overlay": "rust-overlay",
         "stylix": "stylix"
       }

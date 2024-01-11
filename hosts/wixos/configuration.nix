@@ -388,8 +388,6 @@
       win-spice
 
       android-studio
-      #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat-avx
-      inputs.gpt4all.packages.x86_64-linux.gpt4all-chat
     ];
 
     #persistence."/persist" = {

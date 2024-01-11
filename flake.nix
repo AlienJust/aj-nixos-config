@@ -49,7 +49,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # gpt4all
-    gpt4all.url = "github:polygon/gpt4all-nix";
+    #gpt4all.url = "github:polygon/gpt4all-nix";
     #gpt4all.inputs.nixpkgs.follows = "nixpkgs";
 
     # anyrun
@@ -62,6 +62,11 @@
 
     #hyprland-contrib.url = "github:hyprwm/contrib";
     #hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
+
+    # NUR
+    #nur = {
+    #  url = "github:nix-community/NUR";
+    #};
 
     # stylix
     stylix.url = "github:danth/stylix";
@@ -94,6 +99,8 @@
     stylix,
     rust-overlay,
     #hyprland,
+    gpt4all,
+    nur,
     ...
   } @ inputs: let
     inherit (self) outputs; # The same as: outputs = self.outputs;
@@ -144,7 +151,6 @@
         ];
       };
 
-
       wixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit
@@ -164,7 +170,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {inherit inputs gpt4all;};
             home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
           }
