@@ -133,6 +133,7 @@
         # > Our main nixos configuration file <
         modules = [
           #stylix.nixosModules.stylix
+
           ./hosts/mixos/configuration.nix
 
           home-manager.nixosModules.home-manager
