@@ -372,6 +372,16 @@
       inputs.gpt4all.packages.x86_64-linux.gpt4all-chat
     ];
 
+    persistence."/nix/persist" = {
+      directories = [
+        "/etc/nixos" # bind mounted from /nix/persist/etc/nixos to /etc/nixos
+        "/var/log"
+        "/var/lib"
+      ];
+      files = [
+        "/etc/machine-id"
+      ];
+    };
     #persistence."/persist" = {
     #  hideMounts = true;
     #  directories = [
