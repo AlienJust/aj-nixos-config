@@ -227,8 +227,10 @@
       mangohud
       #intel-gpu-tools
       pavucontrol
+
       udisks2
       ffmpeg
+      cava
 
       # general software
       meld
