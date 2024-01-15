@@ -252,6 +252,7 @@
       libreoffice-fresh
       anydesk
       chromium
+      krita
       #gpt4all-chat
 
       # dotnet-sdk
