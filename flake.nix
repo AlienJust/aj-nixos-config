@@ -6,7 +6,7 @@
     substituters = [
       # TODO: any russian mirrors exists?
       # Replace the official cache with a mirror located in China
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      #"https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
     extra-substituters = [
@@ -100,7 +100,7 @@
     rust-overlay,
     #hyprland,
     gpt4all,
-    nur,
+    #nur,
     ...
   } @ inputs: let
     inherit (self) outputs; # The same as: outputs = self.outputs;
