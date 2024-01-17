@@ -27,9 +27,35 @@
     #      }
     #    '';
 
+    # config.lib.stylix.colors.base00
+    style = ''
+      * {
+          border: none;
+          border-radius: 0;
+          min-height: 0;
+      }
+
+      window#waybar {
+          transition-property: background-color;
+          transition-duration: .5s;
+      }
+
+
+      #workspaces button {
+          padding: 0 5px;
+          min-width: 16px
+      }
+
+      /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+      #workspaces button:hover {
+          box-shadow: inherit;
+      }
+    '';
+
     settings = [
       {
-        height = lib.mkForce 26;
+        #height = lib.mkForce 26;
+        height = 30;
         layer = "top";
         position = "top";
         tray = {spacing = 10;};
