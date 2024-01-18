@@ -190,8 +190,7 @@
       peers = [
         {
           publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
-          #presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer1_key";
-          allowedIPs = ["0.0.0.0/0"];
+          allowedIPs = ["192.168.50.0/24"];
           endpoint = "aj01.asuscomm.com:51820";
           persistentKeepalive = 25;
         }
