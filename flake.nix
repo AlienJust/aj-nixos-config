@@ -12,7 +12,6 @@
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
-    trusted-users = ["@wheel"];
 
     extra-substituters = [
       # Nix community's cache server
@@ -138,8 +137,13 @@
         # > Our main nixos configuration file <
         modules = [
           #stylix.nixosModules.stylix
-
           ./hosts/mixos/configuration.nix
+
+          {
+            # given the users in this list the right to specify additional substituters via:
+            #    1. `nixConfig.substituers` in `flake.nix`
+            nix.settings.trusted-users = ["@wheel"];
+          }
 
           home-manager.nixosModules.home-manager
           {
@@ -171,6 +175,12 @@
         modules = [
           #stylix.nixosModules.stylix
           ./hosts/wixos/configuration.nix
+
+          {
+            # given the users in this list the right to specify additional substituters via:
+            #    1. `nixConfig.substituers` in `flake.nix`
+            nix.settings.trusted-users = ["@wheel"];
+          }
 
           home-manager.nixosModules.home-manager
           {
