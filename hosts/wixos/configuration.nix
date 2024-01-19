@@ -481,6 +481,8 @@
     opacity = {
       terminal = 0.9;
     };
+
+    polarity = "dark";
   };
 
   # programs
