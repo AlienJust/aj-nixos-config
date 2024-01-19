@@ -99,7 +99,7 @@
     stylix,
     rust-overlay,
     #hyprland,
-    gpt4all,
+    #gpt4all,
     #nur,
     ...
   } @ inputs: let
@@ -171,7 +171,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs gpt4all;};
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
           }
