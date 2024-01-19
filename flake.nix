@@ -12,6 +12,8 @@
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
+    trusted-users = ["@wheel"];
+
     extra-substituters = [
       # Nix community's cache server
       "https://nix-community.cachix.org"
