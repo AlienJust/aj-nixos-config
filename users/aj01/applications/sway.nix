@@ -361,10 +361,12 @@ in {
           command = "sworkstyle &> /tmp/sworkstyle.log";
           always = true;
         }
-        {
+        /*
+          {
           command = "sworkstyle &> /tmp/sworkstyle.log";
           always = false;
         }
+        */
       ];
     };
     extraConfig = ''
