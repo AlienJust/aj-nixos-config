@@ -38,8 +38,8 @@
       window#waybar {
           transition-property: background-color;
           transition-duration: .5s;
+          opacity: 0.9;
       }
-
 
       #workspaces button {
           padding: 0 5px;
