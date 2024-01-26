@@ -43,8 +43,9 @@
       ./applications/starship.nix
 
       #./applications/qt.nix
+      #../../modules/home/swaylock
     ]
-    ++ [(import ../../../modules/home/swaylock)];
+    ++ [(import ../../modules/home/swaylock)];
 
   # Can be used if allowGlobalPackages is false
   #nixpkgs = {
@@ -214,7 +215,7 @@
       waybar
       mako
       foot
-      swaylock
+
       swayidle
       wofi
       swayest-workstyle
