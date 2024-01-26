@@ -8,41 +8,43 @@
   ...
 }: {
   # You can import other home-manager modules here
-  imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
+  imports =
+    [
+      # If you want to use home-manager modules from other flakes (such as nix-colors):
+      # inputs.nix-colors.homeManagerModule
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+      # You can also split up your configuration and import pieces of it here:
+      # ./nvim.nix
 
-    # impermanence
-    inputs.impermanence.nixosModules.home-manager.impermanence
-    #(inputs.impermanence + "/home-manager.nix")
+      # impermanence
+      inputs.impermanence.nixosModules.home-manager.impermanence
+      #(inputs.impermanence + "/home-manager.nix")
 
-    # Mutability (VSCode error saving settings)
-    # See https://github.com/nix-community/home-manager/issues/1800#issuecomment-1633095126
-    ./mutability.nix
+      # Mutability (VSCode error saving settings)
+      # See https://github.com/nix-community/home-manager/issues/1800#issuecomment-1633095126
+      ./mutability.nix
 
-    # Apps
-    # ./applications/hyprland.nix
-    ./applications/sway.nix
-    ./applications/waybar.nix
-    ./applications/stylix.nix
+      # Apps
+      # ./applications/hyprland.nix
+      ./applications/sway.nix
+      ./applications/waybar.nix
+      ./applications/stylix.nix
 
-    ./applications/eww
-    #./applications/anyrun.nix
-    ./applications/foot.nix
-    ./applications/htop.nix
+      ./applications/eww
+      #./applications/anyrun.nix
+      ./applications/foot.nix
+      ./applications/htop.nix
 
-    ./applications/vscode/vscode-files.nix
-    ./applications/vscode/vscode.nix
-    ./applications/firefox
-    #./applications/firefox-dev-edition
-    ./applications/mpd.nix
-    ./applications/starship.nix
+      ./applications/vscode/vscode-files.nix
+      ./applications/vscode/vscode.nix
+      ./applications/firefox
+      #./applications/firefox-dev-edition
+      ./applications/mpd.nix
+      ./applications/starship.nix
 
-    #./applications/qt.nix
-  ];
+      #./applications/qt.nix
+    ]
+    ++ [(import ../../../modules/home/swaylock)];
 
   # Can be used if allowGlobalPackages is false
   #nixpkgs = {
