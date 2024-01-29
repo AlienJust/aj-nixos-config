@@ -45,7 +45,10 @@
       #./applications/qt.nix
       #../../modules/home/swaylock
     ]
-    ++ [(import ../../modules/home/swaylock)];
+    ++ [
+      (import ../../modules/home/swaylock)
+      (import ../../modules/home/chromium)
+    ];
 
   # Can be used if allowGlobalPackages is false
   #nixpkgs = {
@@ -256,9 +259,9 @@
       winbox
       libreoffice-fresh
       anydesk
-      chromium
+      # chromium
       krita
-      #gpt4all-chat
+      # gpt4all-chat
 
       # dotnet-sdk
       # dotnet-sdk_7
