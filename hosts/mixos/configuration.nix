@@ -478,6 +478,8 @@
     sudo.wheelNeedsPassword = false;
     polkit.enable = true;
   };
+  #Swaylock cannot be unlocked with the correct password
+  security.pam.services.swaylock = {};
 
   programs.steam = {
     enable = true;
