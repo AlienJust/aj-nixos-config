@@ -11,8 +11,13 @@
     # negligible amount of space, so it's reasonable to have this always on.
     # https://chromeenterprise.google/policies/
     enable = true;
+
+    extensions = [
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+    ];
     #defaultSearchProviderEnabled = true;
     #defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
+    /*
     extraOpts = {
       "AutofillAddressEnabled" = false;
       "AutofillCreditCardEnabled" = false;
@@ -23,8 +28,7 @@
       "BrowserGuestModeEnforced" = false;
       "BrowserLabsEnabled" = false;
       "BrowserSignin" = 0;
-      #"DefaultSearchProviderName" = "DuckDuckGo";
-      "DefaultSearchProviderName" = "Google";
+      # "DefaultSearchProviderName" = "DuckDuckGo";
       # "DnsOverHttpsMode" = "secure";
       "EditBookmarksEnabled" = false;
       "EnableMediaRouter" = false;
@@ -46,5 +50,6 @@
       "SystemFeaturesDisableMode" = "hidden";
       "SystemFeaturesDisableList" = ["camera"];
     };
+    */
   };
 }
