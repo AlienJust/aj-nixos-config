@@ -125,7 +125,11 @@
     hostName = "wixos";
     useDHCP = false;
     firewall.enable = false;
+    extraHosts = ''
+      192.168.6.32 elma.horizont.local
+    '';
   };
+
   networking.nameservers = ["192.168.150.1#one.one.one.one" "8.8.8.8.#google"];
   services.resolved = {
     enable = true;
