@@ -287,6 +287,9 @@
       spice-protocol
       win-virtio
       win-spice
+
+      # native wayland support (unstable)
+      wineWowPackages.waylandFull
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
