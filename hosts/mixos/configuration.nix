@@ -125,6 +125,9 @@
     hostName = "nixos";
     useDHCP = false;
     firewall.enable = false;
+    extraHosts = ''
+      192.168.6.32 elma.horizont.local
+    '';
   };
   networking.nameservers = ["192.168.1.1#one.one.one.one" "8.8.8.8.#google"];
   services.resolved = {
@@ -179,7 +182,7 @@
         {
           publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
           presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer0_key";
-          allowedIPs = ["192.168.167.0/24" "192.168.11.0/24"];
+          allowedIPs = ["192.168.167.0/24" "192.168.11.0/24" "192.168.6.0/24"];
           endpoint = "79.172.45.20:40414";
           persistentKeepalive = 25;
         }
