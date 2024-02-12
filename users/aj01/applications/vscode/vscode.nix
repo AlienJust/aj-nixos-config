@@ -54,7 +54,8 @@
       "git.confirmSync" = false;
       "git.autofetch" = true;
       "git.enableSmartCommit" = true;
-      "window.titleBarStyle" = "custom";
+      "window.titleBarStyle" = "native";
+      "window.menuBarVisibility" = "toggle";
       "window.zoomLevel" = -1;
       "[nix]" = {"editor.defaultFormatter" = "jnoortheen.nix-ide";};
       "nix.enableLanguageServer" = true;
