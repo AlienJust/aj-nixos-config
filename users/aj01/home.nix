@@ -290,6 +290,7 @@
 
       # native wayland support (unstable)
       wineWowPackages.waylandFull
+      cabextract
     ];
 
     # New: Now we can use the "home.persistence" module, here's an example:
