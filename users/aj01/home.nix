@@ -265,7 +265,13 @@
 
       # dotnet-sdk
       # dotnet-sdk_7
-      dotnet-sdk_8
+      # dotnet-sdk_8
+      (with dotnetCorePackages;
+        combinePackages [
+          sdk_6_0
+          sdk_7_0
+          sdk_8_0
+        ])
       _7zz
 
       # Qt
