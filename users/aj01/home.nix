@@ -237,6 +237,7 @@
       udisks2
       ffmpeg
       cava
+      sacd
 
       # general software
       meld
