@@ -1,8 +1,11 @@
 {pkgs, ...} @ args: let
-  homepage = pkgs.fetchurl {
+  /*
+    homepage = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/Ruixi-rebirth/someSource/main/firefox/homepage.html";
     sha256 = "sha256-UmT5B/dMl5UCM5O+pSFWxOl5HtDV2OqsM1yHSs/ciQ4=";
   };
+  */
+  homepage = ../../links.html;
   /*
   bg = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/Ruixi-rebirth/someSource/main/firefox/bg.png";
