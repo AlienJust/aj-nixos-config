@@ -583,7 +583,14 @@
       qemu = {
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [pkgs.OVMFFull];
+        ovmf.packages = [
+          (pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          })
+          .fd
+        ];
+        #ovmf.packages = [pkgs.OVMFFull];
         /*
           ovmf.packages = [
           (pkgs.OVMFFull.override {
