@@ -220,6 +220,7 @@
   };
 
   # fonts
+  /*
   fonts = {
     packages = with pkgs; [
       iosevka-bin
@@ -244,7 +245,7 @@
       };
     };
   };
-
+  */
   # set cpu freq governor
   powerManagement.cpuFreqGovernor = "performance";
 

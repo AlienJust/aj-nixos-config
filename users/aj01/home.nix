@@ -226,9 +226,11 @@
       eza
       nil
 
+      /*
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
       (iosevka-bin.override {variant = "slab";})
       iosevka-bin
+      */
 
       mangohud
       #intel-gpu-tools

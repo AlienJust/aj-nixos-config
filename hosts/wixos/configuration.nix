@@ -428,6 +428,7 @@
   # fonts
 
   fonts = {
+    /*
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["Iosevka" "Hack" "FiraCode" "DroidSansMono"];})
       iosevka-bin
@@ -449,6 +450,7 @@
       (pkgs.callPackage ../../pkgs/mplus-fonts {}) # TODO: do I really need to call it like this?
       (pkgs.callPackage ../../pkgs/balsamiqsans {})
     ];
+    */
     /*
     fontconfig = {
       enable = lib.mkDefault true;
