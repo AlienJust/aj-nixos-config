@@ -385,6 +385,8 @@
 
       xwayland
 
+      openvpn
+
       bridge-utils
       qemu
       swtpm
