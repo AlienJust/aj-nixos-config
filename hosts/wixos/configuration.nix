@@ -603,10 +603,8 @@
         swtpm.enable = true;
         ovmf.enable = true;
         ovmf.packages = [
-          (pkgs.OVMFFull.override {
+          (pkgs.OVMF.override {
             secureBoot = true;
-            csmSupport = false;
-            httpSupport = true;
             tpmSupport = true;
           })
           .fd
