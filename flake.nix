@@ -30,6 +30,7 @@
     #master.url = "github:nixos/nixpkgs/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     #nixpkgs.follows = "master";
 
     #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
@@ -49,6 +50,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Home manager
+    #home-manager.url = "github:nix-community/home-manager";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -93,6 +95,12 @@
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
+
+    # android
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -102,6 +110,7 @@
     impermanence,
     stylix,
     rust-overlay,
+    android-nixpkgs,
     #hyprland,
     #gpt4all,
     #nur,
@@ -129,7 +138,12 @@
           inherit
             inputs
             outputs
-            stylix
+            #stylix
+            
+            #impermanence
+            
+            #android-nixpkgs
+            
             #hyprland
             
             ;
@@ -149,7 +163,14 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit
+                inputs
+                /*
+                android-nixpkgs
+                */
+                ;
+            };
             home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
           }

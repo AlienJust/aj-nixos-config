@@ -7,6 +7,8 @@
   lib,
   config,
   pkgs,
+  #stylix,
+  #impermanence,
   ...
 }: {
   # You can import other NixOS modules here
@@ -380,8 +382,8 @@
       win-virtio
       win-spice
 
-      android-studio
-      android-tools
+      #android-studio
+      #android-tools
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat-avx
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat
     ];

@@ -78,17 +78,20 @@
 
     fonts = {
       serif = {
-        package = pkgs.iosevka-bin.override {variant = "Etoile";};
+        package = pkgs.iosevka-bin.override {variant = "Etoile";}; #unstable
+        # package = pkgs.iosevka-bin.override {variant = "etoile";};
         name = "Iosevka Etoile";
       };
 
       sansSerif = {
-        package = pkgs.iosevka-bin.override {variant = "Aile";};
+        package = pkgs.iosevka-bin.override {variant = "Aile";}; #unstable
+        # package = pkgs.iosevka-bin.override {variant = "aile";};
         name = "Iosevka Aile";
       };
 
       monospace = {
-        package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";};
+        package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";}; # unstable
+        #package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
         name = "Iosevka Term";
       };
 

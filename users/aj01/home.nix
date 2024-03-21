@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  #android-nixpkgs,
   ...
 }: {
   # You can import other home-manager modules here
@@ -20,21 +21,42 @@
       inputs.impermanence.nixosModules.home-manager.impermanence
       #(inputs.impermanence + "/home-manager.nix")
 
+      # android
+      /*
+      inputs.android-nixpkgs.hmModule
+      {
+        #inherit config lib pkgs;
+        android-sdk = {
+          enable = false;
+
+          # Optional; default path is "~/.local/share/android".
+          path = "${config.home.homeDirectory}/.android/sdk";
+          #path = "/home/aj01/.android/sdk";
+
+          packages = sdk:
+            with sdk; [
+              build-tools-34-0-0
+              cmdline-tools-latest
+              emulator
+              platforms-android-34
+              sources-android-34
+            ];
+        };
+      }
+      */
+
       # Mutability (VSCode error saving settings)
       # See https://github.com/nix-community/home-manager/issues/1800#issuecomment-1633095126
       ./mutability.nix
-
       # Apps
       # ./applications/hyprland.nix
       ./applications/sway.nix
       ./applications/waybar.nix
       ./applications/stylix.nix
-
       ./applications/eww
       #./applications/anyrun.nix
       ./applications/foot.nix
       ./applications/htop.nix
-
       ./applications/vscode/vscode-files.nix
       ./applications/vscode/vscode.nix
       ./applications/firefox
@@ -46,6 +68,7 @@
       #../../modules/home/swaylock
     ]
     ++ [
+      (import ../../modules/home/android)
       (import ../../modules/home/swaylock)
       (import ../../modules/home/chromium)
     ];
@@ -91,6 +114,8 @@
     #"Xft.dpi" = 172;
   };
   */
+
+  #
 
   gtk = {
     #enalbe = true;
@@ -261,7 +286,7 @@
       teamspeak_client
       winbox
       libreoffice-fresh
-      anydesk
+      # anydesk
       # chromium
       krita
       # gpt4all-chat
