@@ -400,8 +400,8 @@
       win-virtio
       win-spice
 
-      android-studio
-      android-tools
+      #android-studio
+      #android-tools
     ];
 
     persistence."/nix/persist" = {
