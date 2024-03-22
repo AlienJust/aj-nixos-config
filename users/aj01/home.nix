@@ -241,6 +241,12 @@
       wlogout
       playerctl
       waybar
+      /*
+        (
+        waybar.override {
+          wireplumberSupport = false;
+        }
+      )*/
       mako
       foot
 
