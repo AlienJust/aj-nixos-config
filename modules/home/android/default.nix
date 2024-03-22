@@ -25,4 +25,11 @@
         sources-android-34
       ];
   };
+
+  /*
+    home.packages = with pkgs; [
+    android-studio
+    #android-sdk
+  ];
+  */
 }
