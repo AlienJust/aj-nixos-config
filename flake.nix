@@ -3,6 +3,7 @@
 
   nixConfig = {
     experimental-features = ["nix-command" "flakes"];
+    trustedUsers = ["@wheel" "aj01" "root"];
     substituters = [
       # TODO: any russian mirrors exists?
       # Replace the official cache with a mirror located in China
@@ -41,10 +42,10 @@
     #nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     # rust-overlay
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    #rust-overlay.url = "github:oxalica/rust-overlay";
 
     # devenv
-    devenv.url = "github:cachix/devenv";
+    #devenv.url = "github:cachix/devenv";
 
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
@@ -81,7 +82,7 @@
     stylix.inputs.home-manager.follows = "home-manager";
 
     # Games
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    # nix-gaming.url = "github:fufexan/nix-gaming";
 
     # lanzaboote
     #lanzaboote = {
@@ -97,10 +98,10 @@
     # nix-colors.url = "github:misterio77/nix-colors";
 
     # android
-    android-nixpkgs = {
-      url = "github:tadfisher/android-nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # android-nixpkgs = {
+    # url = "github:tadfisher/android-nixpkgs";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
@@ -109,8 +110,8 @@
     home-manager,
     impermanence,
     stylix,
-    rust-overlay,
-    android-nixpkgs,
+    #rust-overlay,
+    #android-nixpkgs,
     #hyprland,
     #gpt4all,
     #nur,
@@ -156,7 +157,7 @@
           {
             # given the users in this list the right to specify additional substituters via:
             #    1. `nixConfig.substituers` in `flake.nix`
-            nix.settings.trusted-users = ["@wheel"];
+            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
           }
 
           home-manager.nixosModules.home-manager
@@ -169,16 +170,17 @@
                 /*
                 android-nixpkgs
                 */
+                
                 ;
             };
             home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
           }
 
-          ({pkgs, ...}: {
-            nixpkgs.overlays = [rust-overlay.overlays.default];
-            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          })
+          #({pkgs, ...}: {
+          #  nixpkgs.overlays = [rust-overlay.overlays.default];
+          #  environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+          #})
         ];
       };
 
@@ -200,7 +202,7 @@
           {
             # given the users in this list the right to specify additional substituters via:
             #    1. `nixConfig.substituers` in `flake.nix`
-            nix.settings.trusted-users = ["@wheel"];
+            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
           }
 
           home-manager.nixosModules.home-manager
@@ -212,10 +214,10 @@
             home-manager.backupFileExtension = "backup";
           }
 
-          ({pkgs, ...}: {
-            nixpkgs.overlays = [rust-overlay.overlays.default];
-            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          })
+          #({pkgs, ...}: {
+          #  nixpkgs.overlays = [rust-overlay.overlays.default];
+          #  environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
+          #})
         ];
       };
 
@@ -230,6 +232,13 @@
         # > Our main nixos configuration file <
         modules = [
           ./hosts/vixos/configuration.nix
+
+          {
+            # given the users in this list the right to specify additional substituters via:
+            #    1. `nixConfig.substituers` in `flake.nix`
+            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
+          }
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

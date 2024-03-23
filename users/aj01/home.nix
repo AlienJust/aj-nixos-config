@@ -68,7 +68,7 @@
       #../../modules/home/swaylock
     ]
     ++ [
-      (import ../../modules/home/android)
+      #(import ../../modules/home/android)
       (import ../../modules/home/swaylock)
       (import ../../modules/home/chromium)
     ];
@@ -246,7 +246,8 @@
         waybar.override {
           wireplumberSupport = false;
         }
-      )*/
+      )
+      */
       mako
       foot
 
@@ -292,7 +293,7 @@
       teamspeak_client
       winbox
       libreoffice-fresh
-      anydesk
+      # anydesk
       # chromium
       krita
       # gpt4all-chat
@@ -437,15 +438,22 @@
   # fzf
   programs.fzf = {enable = true;};
 
+  /*
   programs.thefuck = {
     enable = true;
   };
+  */
 
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "thefuck"];
+      plugins = [
+        "git"
+        /*
+        "thefuck"
+        */
+      ];
       theme = "robbyrussell";
     };
   };

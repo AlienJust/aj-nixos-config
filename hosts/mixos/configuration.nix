@@ -355,7 +355,7 @@
       dxvk
       vkd3d
       vkd3d-proton
-      inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      #inputs.nix-gaming.packages.${pkgs.system}.proton-ge
       steam-run
 
       # For vscode extensions proper work.
@@ -491,10 +491,12 @@
     fuse.userAllowOther = true; # impermanence
   };
 
+  services.dbus.implementation = "broker";
+
   # security
   security = {
     sudo.wheelNeedsPassword = false;
-    polkit.enable = true;
+    #polkit.enable = true;
   };
   #Swaylock cannot be unlocked with the correct password
   security.pam.services.swaylock = {};
