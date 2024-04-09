@@ -373,7 +373,7 @@
       dxvk
       vkd3d
       vkd3d-proton
-      inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      #inputs.nix-gaming.packages.${pkgs.system}.proton-ge
       steam-run
 
       # For vscode extensions proper work.
