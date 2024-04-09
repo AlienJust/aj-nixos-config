@@ -293,7 +293,7 @@
       teamspeak_client
       winbox
       libreoffice-fresh
-      # anydesk
+      anydesk
       # chromium
       krita
       # gpt4all-chat
