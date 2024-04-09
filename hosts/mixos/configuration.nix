@@ -383,7 +383,9 @@
       win-spice
 
       #android-studio
-      #android-tools
+      android-tools
+      gvfs
+      polkit_gnome
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat-avx
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat
     ];
@@ -519,8 +521,24 @@
   };
   programs.gamemode.enable = true;
 
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
   # Thunar
-  #services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
   programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
