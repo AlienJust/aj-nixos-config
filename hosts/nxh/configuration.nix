@@ -201,7 +201,6 @@
 
   # Disks.
   services.fstrim.enable = true;
-  services.udisks2.enable = true;
 
   # Users
   users.mutableUsers = false;
@@ -242,19 +241,11 @@
 
       alejandra
       sbctl
-      ntfs3g
       comma
       atool
       unzip
       zip
       nix-output-monitor
-      edk2-uefi-shell
-      udisks2
-      fontconfig
-
-      steam-run
-
-      openvpn
 
       bridge-utils
     ];
@@ -281,53 +272,6 @@
     #};
   };
 
-  # fonts
-
-  fonts = {
-    /*
-      packages = with pkgs; [
-      (nerdfonts.override {fonts = ["Iosevka" "Hack" "FiraCode" "DroidSansMono"];})
-      iosevka-bin
-
-      hack-font
-
-      fira-code
-      fira-code-symbols
-
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-
-      noto-fonts-emoji
-      noto-fonts-monochrome-emoji
-      openmoji-color
-
-      maple-mono-NF
-      (pkgs.callPackage ../../pkgs/mplus-fonts {}) # TODO: do I really need to call it like this?
-      (pkgs.callPackage ../../pkgs/balsamiqsans {})
-    ];
-    */
-    /*
-    fontconfig = {
-      enable = lib.mkDefault true;
-      defaultFonts = {
-        #monospace = ["M PLUS 1 Code"];
-        monospace = ["Iosevka Term"];
-
-        #emoji = ["Noto Color Emoji"];
-        emoji = ["OpenMoji Color"];
-      };
-    };
-    */
-    fontDir.enable = true;
-  };
-  /*
-  qt = {
-    enable = true;
-    style = lib.mkForce "gtk2";
-    platformTheme = lib.mkForce "gtk2";
-  };
-  */
   stylix = {
     homeManagerIntegration.followSystem = false;
     homeManagerIntegration.autoImport = false;
