@@ -296,6 +296,7 @@
       anydesk
       # chromium
       krita
+      xfce.mousepad
       # gpt4all-chat
 
       # dotnet-sdk
