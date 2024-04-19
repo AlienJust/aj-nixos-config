@@ -249,6 +249,29 @@
           }
         ];
       };
+
+      # Horizont server
+      nxh = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit
+            inputs
+            outputs
+            ;
+        };
+        # > Our main nixos configuration file <
+        modules = [
+          #stylix.nixosModules.stylix
+          ./hosts/nxh/configuration.nix
+
+          ./modules/nixos/nextcloud.nix
+
+          {
+            # given the users in this list the right to specify additional substituters via:
+            #    1. `nixConfig.substituers` in `flake.nix`
+            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
+          }
+        ];
+      };
     };
   };
 }
