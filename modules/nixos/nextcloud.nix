@@ -50,7 +50,6 @@
         };
       };
 
-      environment.etc."nextcloud-admin-pass".text = "1234567890";
       config = {
         overwriteProtocol = "https";
         defaultPhoneRegion = "PT";
@@ -59,6 +58,7 @@
         adminpassFile = "/etc/nextcloud-admin-pass";
       };
     };
+    environment.etc."nextcloud-admin-pass".text = "1234567890";
 
     onlyoffice = {
       enable = true;
