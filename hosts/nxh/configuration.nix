@@ -213,7 +213,7 @@
     description = "Alex Deb";
     shell = pkgs.zsh;
     group = "users";
-    extraGroups = ["wheel" "video" "audio" "realtime" "input" "qemu-libvirtd" "libvirtd" "adbusers" "kvm"];
+    extraGroups = ["wheel" "video" "audio" "realtime" "input" "qemu-libvirtd" "libvirtd" "adbusers" "kvm" "acme"];
     hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/";
   };
 

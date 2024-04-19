@@ -5,7 +5,21 @@
   pkgs,
   ...
 }: {
+  security.acme = {
+  acceptTerms = true;
+  defaults.email = "aj001@mail.ru";
+  /*certs."mx1.example.org" = {
+    dnsProvider = "inwx";
+    # Supplying password files like this will make your credentials world-readable
+    # in the Nix store. This is for demonstration purpose only, do not use this in production.
+    environmentFile = "${pkgs.writeText "inwx-creds" ''
+      INWX_USERNAME=xxxxxxxxxx
+      INWX_PASSWORD=yyyyyyyyyy
+    ''}";
+  };*/
+};
   services = {
+    nginx.enable = true;
     nginx.virtualHosts = {
       "horizoncloud.alxedeb.ru" = {
         forceSSL = true;
@@ -34,7 +48,7 @@
       # Increase the maximum file upload size to avoid problems uploading videos.
       maxUploadSize = "2G";
       https = true;
-      enableBrokenCiphersForSSE = false;
+      #enableBrokenCiphersForSSE = false;
 
       autoUpdateApps.enable = true;
       extraAppsEnable = true;
@@ -44,25 +58,27 @@
         inherit calendar contacts mail notes onlyoffice tasks;
 
         # Custom app installation example.
-        cookbook = pkgs.fetchNextcloudApp rec {
+        /*cookbook = pkgs.fetchNextcloudApp rec {
           url = "https://github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz";
           sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
-        };
+        };*/
       };
 
+      settings.overwriteprotocol = "https";
+      settings.default_phone_region = "RU";
+      
       config = {
-        overwriteProtocol = "https";
-        defaultPhoneRegion = "PT";
         dbtype = "pgsql";
         adminuser = "admin";
         adminpassFile = "/etc/nextcloud-admin-pass";
       };
     };
-    environment.etc."nextcloud-admin-pass".text = "1234567890";
 
     onlyoffice = {
       enable = true;
       hostname = "horizonoffice.alexdeb.ru";
     };
   };
+  
+  environment.etc."nextcloud-admin-pass".text = "1234567890";
 }
