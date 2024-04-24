@@ -172,6 +172,7 @@
                 */
                 
                 ;
+              hostName = "mixos";
             };
             home-manager.users.aj01 = import ./users/aj01/home.nix;
             home-manager.backupFileExtension = "backup";
