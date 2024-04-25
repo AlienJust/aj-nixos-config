@@ -370,8 +370,9 @@ in {
         */
       ];
 
-      # TODO: If mixos
-      output = lib.mkIf (hostName == "mixos") {
+      # If mixos
+      /*
+        output = lib.mkIf (hostName == "mixos") {
         "DP-1" = {
           scale = "1";
           mode = "2560x1440@164.999Hz";
@@ -383,6 +384,35 @@ in {
           pos = "0 0";
         };
       };
+      */
+
+      output = lib.mkMerge [
+        (lib.mkIf (hostName == "mixos") {
+          "DP-1" = {
+            scale = "1";
+            mode = "2560x1440@164.999Hz";
+            pos = "1920 800";
+          };
+          "HDMI-A-1" = {
+            mode = "1920x1080@60.000Hz";
+            scale = "1";
+            pos = "0 0";
+          };
+        })
+
+        (lib.mkIf (hostName == "wixos") {
+          "DP-1" = {
+            scale = "1";
+            mode = "2560x1440@164.999Hz";
+            pos = "1920 800";
+          };
+          "HDMI-A-1" = {
+            mode = "1920x1080@60.000Hz";
+            scale = "1";
+            pos = "0 0";
+          };
+        })
+      ];
     };
 
     extraConfig = ''
