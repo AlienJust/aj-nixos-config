@@ -371,7 +371,7 @@ in {
       ];
 
       # TODO: If mixos
-      output = {
+      output = lib.mkIf (hostName == "mixos") {
         "DP-1" = {
           scale = "1";
           mode = "2560x1440@164.999Hz";
