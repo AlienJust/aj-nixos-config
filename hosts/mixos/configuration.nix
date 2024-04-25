@@ -124,7 +124,7 @@
   # networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking = {
-    hostName = "nixos";
+    hostName = "mixos";
     useDHCP = false;
     firewall.enable = false;
     extraHosts = ''
