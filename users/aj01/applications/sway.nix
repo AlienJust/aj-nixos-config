@@ -369,7 +369,22 @@ in {
         }
         */
       ];
+
+      # TODO: If mixos
+      output = {
+        "DP-1" = {
+          scale = "1";
+          mode = "2560x1440@164.999Hz";
+          pos = "1920 800";
+        };
+        "HDMI-A-1" = {
+          mode = "1920x1080@60.000Hz";
+          scale = "1";
+          pos = "0 0";
+        };
+      };
     };
+
     extraConfig = ''
       #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
       #exec --no-startup-id mako &
