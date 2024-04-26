@@ -403,13 +403,18 @@ in {
         (lib.mkIf (hostName == "wixos") {
           "DP-1" = {
             scale = "1";
-            mode = "2560x1440@164.999Hz";
-            pos = "1920 800";
+            mode = "1920x1080@60.000Hz";
+            pos = "0 0";
           };
           "HDMI-A-1" = {
             mode = "1920x1080@60.000Hz";
             scale = "1";
-            pos = "0 0";
+            pos = "1920 0";
+          };
+          "DVI-D-1" = {
+            mode = "1920x1080@60.000Hz";
+            scale = "1";
+            pos = "3840 0";
           };
         })
       ];
