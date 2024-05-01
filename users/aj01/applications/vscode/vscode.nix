@@ -11,6 +11,7 @@
       with ps; [
         # needed for rust lang server and rust-analyzer extension
         #rustup
+        /*
         zlib
         openssl.dev
         pkg-config
@@ -23,19 +24,23 @@
           ])
         # direnv
         direnv
+        */
       ]);
-    extensions = with pkgs.vscode-extensions;
-      [
-        mvllow.rose-pine
+    extensions =
+      with pkgs.vscode-extensions; [
+        #mvllow.rose-pine
+        rust-lang.rust-analyzer
         eamodio.gitlens
         pkief.material-product-icons
         pkief.material-icon-theme
         jnoortheen.nix-ide
         ms-dotnettools.csharp
+        ms-dotnettools.csdevkit
         # pflannery.vscode-versionlens
       ]
       # https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit
       # a308e33f116c319578657700b02c8c69f975db4212d5f1e8ca9acd4db93d3eda  /nix/store/ri7yc2gfjwz1sjh8z4djins1jcqnik6f-ms-dotnettools-csdevkit.zip
+      /*
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "csdevkit";
@@ -44,7 +49,9 @@
           sha256 = "a308e33f116c319578657700b02c8c69f975db4212d5f1e8ca9acd4db93d3eda";
           sourceRoot = ".";
         }
-      ];
+      ]
+      */
+      ;
     userSettings = {
       #"editor.fontSize" = 16;
       "editor.fontLigatures" = true;
