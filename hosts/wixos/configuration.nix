@@ -401,7 +401,7 @@
       win-spice
 
       #android-studio
-      #android-tools
+      android-tools
     ];
 
     persistence."/nix/persist" = {
@@ -518,26 +518,8 @@
   #Swaylock cannot be unlocked with the correct password
   security.pam.services.swaylock = {};
 
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = false;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    /*
-    package = pkgs.steam.override {
-      extraLibraries = p:
-        with p; [
-          (lib.getLib xwayland)
-          (lib.getLib dconf)
-          (lib.getLib gvfs)
-        ];
-    };
-    */
-  };
-  programs.gamemode.enable = true;
-
   # Thunar
-  #services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
   programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
