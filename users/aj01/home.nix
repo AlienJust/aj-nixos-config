@@ -427,6 +427,7 @@
         "https://192.168.11.20:50589" = {
           sslCAInfo = "/home/aj01/gitlab.crt";
         };
+        postBuffer = 524288000;
       };
     };
   };
