@@ -98,7 +98,7 @@
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 30d";
     };
     settings = {
       # Enable flakes and new 'nix' command
@@ -131,7 +131,7 @@
       192.168.6.32 elma.horizont.local
     '';
   };
-  networking.nameservers = ["192.168.1.1#one.one.one.one" "8.8.8.8.#google"];
+  networking.nameservers = ["192.168.50.1#one.one.one.one" "8.8.8.8.#google"];
   services.resolved = {
     enable = true;
     dnssec = "false";
@@ -165,7 +165,7 @@
       "br0" = {
         matchConfig.Name = "br0";
         networkConfig = {
-          Address = "192.168.1.33/24";
+          Address = ["192.168.50.33/24" "192.168.1.33/24"];
           IPForward = true;
           Gateway = "192.168.1.1";
           LinkLocalAddressing = "no";
