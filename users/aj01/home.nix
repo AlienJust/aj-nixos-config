@@ -257,6 +257,7 @@
 
       eza
       nil
+      nh
 
       /*
       (nerdfonts.override {fonts = ["IosevkaTerm"];})
