@@ -165,7 +165,12 @@
       "br0" = {
         matchConfig.Name = "br0";
         networkConfig = {
-          Address = ["192.168.50.33/24" "192.168.1.33/24"];
+          Address = [
+            /*
+            "192.168.50.33/24"
+            */
+            "192.168.1.33/24"
+          ];
           IPForward = true;
           Gateway = "192.168.1.1";
           LinkLocalAddressing = "no";
