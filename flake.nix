@@ -238,6 +238,7 @@
         };
         # > Our main nixos configuration file <
         modules = [
+          ./modules/nixos/nh.nix
           ./hosts/vixos/configuration.nix
 
           {
