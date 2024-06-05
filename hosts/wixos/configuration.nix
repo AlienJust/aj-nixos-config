@@ -96,7 +96,7 @@
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 30d";
     };
     settings = {
       # Enable flakes and new 'nix' command
@@ -202,7 +202,7 @@
       peers = [
         {
           publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
-          allowedIPs = ["192.168.50.0/24"];
+          allowedIPs = ["192.168.50.0/24" "192.168.52.0/24"];
           endpoint = "aj01.asuscomm.com:51820";
           persistentKeepalive = 25;
         }

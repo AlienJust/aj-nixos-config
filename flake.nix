@@ -201,6 +201,7 @@
         # > Our main nixos configuration file <
         modules = [
           #stylix.nixosModules.stylix
+          ./modules/nixos/nh.nix
           ./hosts/wixos/configuration.nix
 
           {
@@ -238,6 +239,7 @@
         };
         # > Our main nixos configuration file <
         modules = [
+          ./modules/nixos/nh.nix
           ./hosts/vixos/configuration.nix
 
           {
