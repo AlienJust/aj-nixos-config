@@ -30,7 +30,9 @@
 
     cursor = {
       package = pkgs.catppuccin-cursors.mochaPeach;
-      name = "Catppuccin-Mocha-Peach-Cursors";
+      #name = "Catppuccin-Mocha-Peach-Cursors";
+      name = "catppuccin-mocha-peach-cursors";
+      #name = "CatppuccinMochaPeachCursors";
       #package = pkgs.capitaine-cursors;
       #name = "capitaine-cursors";
       size = 32;

@@ -433,10 +433,9 @@ in {
       # TODO:
       # Cursor
       #
-      seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
+      #seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
 
       # TODO:
-      # Polkit
       # SOV
 
       # Switching at workspace 1 on start.
