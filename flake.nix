@@ -200,8 +200,12 @@
         };
         # > Our main nixos configuration file <
         modules = [
-          #stylix.nixosModules.stylix
+          impermanence.nixosModules.impermanence
+
+          stylix.nixosModules.stylix
+
           ./modules/nixos/nh.nix
+
           ./hosts/wixos/configuration.nix
 
           {

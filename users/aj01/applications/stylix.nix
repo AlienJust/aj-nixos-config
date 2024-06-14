@@ -10,6 +10,7 @@
   ];
 
   stylix = {
+    enable = true;
     autoEnable = true;
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
@@ -93,7 +94,7 @@
 
       monospace = {
         package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";}; # unstable
-        #package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
+        # package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
         name = "Iosevka Term";
       };
 
