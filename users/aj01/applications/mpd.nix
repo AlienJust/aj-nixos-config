@@ -1,11 +1,22 @@
 {
   config,
   pkgs,
+  lib,
+  hostName,
   ...
 }: {
   services.mpd = {
     enable = true;
-    musicDirectory = "/run/media/aj01/hdd2t/.music";
+    musicDirectory = lib.mkMerge [
+      (
+        lib.mkIf (hostName == "mixos")
+        "/run/media/aj01/hdd2t/.music"
+      )
+      (
+        lib.mkIf (hostName == "wixos")
+        "/run/media/aj01/7fbf0bcb-1aaa-4a27-b586-ef167b306d9c/music"
+      )
+    ];
     extraConfig = ''
       zeroconf_enabled   "no"
 
