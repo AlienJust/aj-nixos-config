@@ -71,10 +71,11 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
+      #driSupport = true;
+      #driSupport32Bit = true;
       extraPackages = with pkgs; [
         #        amdvlk
         #        rocm-opencl-icd
