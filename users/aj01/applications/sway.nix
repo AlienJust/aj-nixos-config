@@ -42,10 +42,11 @@ in {
     wrapperFeatures.gtk = true;
     swaynag.enable = true;
     #      export QT_QPA_PLATFORMTHEME="qt5ct"
+    #      export QT_QPA_PLATFORMTHEME="kde"
     extraSessionCommands = with pkgs; ''
       export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export QT_QPA_PLATFORMTHEME="kde"
+
       export QT_AUTO_SCREEN_SCALE_FACTOR="1"
 
       export XDG_SESSION_TYPE="x11"
