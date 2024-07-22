@@ -340,10 +340,6 @@
       # For vscode extensions proper work.
       vscode.fhs
 
-      # Qt.
-      #libsForQt5.qtstyleplugins
-      #libsForQt5.qtstyleplugin-kvantum
-
       xwayland
 
       openvpn
@@ -431,13 +427,7 @@
     */
     fontDir.enable = true;
   };
-  /*
-  qt = {
-    enable = true;
-    style = lib.mkForce "gtk2";
-    platformTheme = lib.mkForce "gtk2";
-  };
-  */
+
   stylix = {
     enable = true;
     homeManagerIntegration.followSystem = false;
