@@ -290,6 +290,28 @@
   services.fstrim.enable = true;
   services.udisks2.enable = true;
 
+  systemd.services."zapret" = {
+    enable = true;
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    path = [pkgs.iptables pkgs.gawk pkgs.procps];
+    serviceConfig = {
+      Type = "forking";
+      Restart = "no";
+      KillMode = "none";
+      GuessMainPID = "no";
+      RemainAfterExit = "no";
+      IgnoreSIGPIPE = "no";
+      TimeoutSec = "30sec";
+      ExecStart = ''
+        ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret start
+      '';
+      ExecStop = ''
+        ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret stop
+      '';
+    };
+  };
+
   # Android.
   programs.adb.enable = true;
   # For Android emulator.
@@ -379,6 +401,8 @@
 
       #android-studio
       android-tools
+
+      inputs.zapret.packages.x86_64-linux.default
     ];
 
     persistence."/nix/persist" = {

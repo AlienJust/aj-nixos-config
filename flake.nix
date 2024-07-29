@@ -55,6 +55,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    zapret.url = "github:aca/zapret-flake/main";
+
     # gpt4all
     #gpt4all.url = "github:polygon/gpt4all-nix";
     #gpt4all.inputs.nixpkgs.follows = "nixpkgs";
@@ -200,6 +202,14 @@
         };
         # > Our main nixos configuration file <
         modules = [
+          {
+            /*
+              environment.systemPackages = [
+              //inputs.zapret.packages.x86_64-linux.default
+            ];
+            */
+          }
+
           impermanence.nixosModules.impermanence
 
           stylix.nixosModules.stylix
