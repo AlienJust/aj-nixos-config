@@ -261,7 +261,22 @@
   };
 
   # Enable CUPS to print documents.
-  #services.printing.enable = true;
+  services.printing.enable = true;
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "KM0573C6";
+        location = "k251";
+        deviceUri = "ipp://192.168.66.231/ipp";
+        model = "drv:///sample.drv/generic.ppd";
+        ppdOptions = {
+          PageSize = "A4";
+        };
+      }
+    ];
+    ensureDefaultPrinter = "KM0573C6";
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
