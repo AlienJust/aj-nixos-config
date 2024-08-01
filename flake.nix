@@ -155,6 +155,8 @@
         modules = [
           #stylix.nixosModules.stylix
 
+          ./modules/nixos/spoofdpi.nix
+
           ./modules/nixos/nh.nix
 
           ./hosts/mixos/configuration.nix
