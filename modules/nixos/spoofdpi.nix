@@ -1,7 +1,7 @@
 {
+  pkgs,
   config,
   lib,
-  bonPkgs,
   ...
 }:
 with lib; let
@@ -12,8 +12,8 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = bonPkgs.spoofdpi;
-      defaultText = literalExpression "bonPkgs.spoofdpi";
+      default = pkgs.spoofdpi;
+      defaultText = literalExpression "pkgs.spoofdpi";
       description = "The package to use.";
     };
 

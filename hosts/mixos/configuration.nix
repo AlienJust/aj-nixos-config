@@ -276,6 +276,9 @@
   services.fstrim.enable = true;
   services.udisks2.enable = true;
 
+  # DPI
+  services.spoofdpi.enable = true;
+
   systemd.services."zapret" = {
     enable = true;
     wantedBy = ["multi-user.target"];
