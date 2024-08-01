@@ -123,10 +123,13 @@
   # Enable networking
   # networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
   networking = {
     hostName = "mixos";
     useDHCP = false;
-    firewall.enable = false;
+    firewall.enable = true;
+    firewall.allowedTCPPorts = [22];
     extraHosts = ''
       192.168.6.32 elma.horizont.local
     '';
@@ -171,7 +174,7 @@
             */
             "192.168.1.33/24"
           ];
-          IPForward = true;
+          IPv4Forwarding = true;
           Gateway = "192.168.1.1";
           LinkLocalAddressing = "no";
         };
@@ -269,6 +272,28 @@
   # Disks.
   services.fstrim.enable = true;
   services.udisks2.enable = true;
+
+  systemd.services."zapret" = {
+    enable = true;
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    path = [pkgs.iptables pkgs.gawk pkgs.procps];
+    serviceConfig = {
+      Type = "forking";
+      Restart = "no";
+      KillMode = "none";
+      GuessMainPID = "no";
+      RemainAfterExit = "no";
+      IgnoreSIGPIPE = "no";
+      TimeoutSec = "30sec";
+      ExecStart = ''
+        ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret start
+      '';
+      ExecStop = ''
+        ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret stop
+      '';
+    };
+  };
 
   # Android.
   programs.adb.enable = true;
