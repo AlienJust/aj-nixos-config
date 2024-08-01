@@ -128,8 +128,11 @@
   networking = {
     hostName = "mixos";
     useDHCP = false;
+
     firewall.enable = true;
     firewall.allowedTCPPorts = [22];
+    nftables.enable = false;
+
     extraHosts = ''
       192.168.6.32 elma.horizont.local
     '';
@@ -277,7 +280,14 @@
     enable = true;
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
-    path = [pkgs.iptables pkgs.gawk pkgs.procps];
+    path = [
+      pkgs.iptables
+      /*
+      pkgs.nftables
+      */
+      pkgs.gawk
+      pkgs.procps
+    ];
     serviceConfig = {
       Type = "forking";
       Restart = "no";
@@ -286,6 +296,15 @@
       RemainAfterExit = "no";
       IgnoreSIGPIPE = "no";
       TimeoutSec = "30sec";
+      /*
+        ExecStart = ''
+        ${pkgs.zapret}/bin/zapret start
+      '';
+      ExecStop = ''
+        ${pkgs.zapret}/bin/zapret stop
+      '';
+      */
+
       ExecStart = ''
         ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret start
       '';
@@ -388,6 +407,9 @@
       polkit_gnome
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat-avx
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat
+
+      inputs.zapret.packages.${pkgs.system}.default
+      #zapret
     ];
 
     persistence."/nix/persist" = {
