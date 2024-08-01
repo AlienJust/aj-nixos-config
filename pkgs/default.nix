@@ -1,4 +1,4 @@
-pkgs: {
+{pkgs, ...}: {
   # mplus-fonts = pkgs.callPackage ./mplus-fonts { };
-  spoofdpi = pkgs.callPackage ./spooddpi {};
+  spoofdpi = pkgs.callPackage ./spoofdpi {};
 }
