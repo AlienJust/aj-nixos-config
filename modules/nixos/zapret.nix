@@ -1,3 +1,11 @@
+/*
+MUST BE CALLED LIKE NIX OS MODULE:
+       (import ./modules/nixos/zapret.nix
+         {
+           wan = "br0";
+           qnum = 200;
+         })
+*/
 {
   qnum,
   wan,
@@ -31,4 +39,32 @@
       };
     };
   };
+  /*
+  systemd.services."zapret" = {
+    enable = true;
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    path = [
+      pkgs.iptables
+      pkgs.gawk
+      pkgs.procps
+    ];
+    serviceConfig = {
+      Type = "forking";
+      Restart = "no";
+      KillMode = "none";
+      GuessMainPID = "no";
+      RemainAfterExit = "no";
+      IgnoreSIGPIPE = "no";
+      TimeoutSec = "30sec";
+
+      ExecStart = ''
+        ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret start
+      '';
+      ExecStop = ''
+        ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret stop
+      '';
+    };
+  };
+  */
 }

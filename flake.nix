@@ -157,11 +157,13 @@
 
           #./modules/nixos/spoofdpi.nix
 
+          /*
           (import ./modules/nixos/zapret.nix
             {
               wan = "br0";
               qnum = 200;
             })
+          */
 
           ./modules/nixos/nh.nix
 
