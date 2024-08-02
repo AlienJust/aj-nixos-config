@@ -401,8 +401,8 @@
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat-avx
       #inputs.gpt4all.packages.x86_64-linux.gpt4all-chat
 
-      inputs.zapret.packages.${pkgs.system}.default
-      spoofdpi
+      #inputs.zapret.packages.${pkgs.system}.default
+      #spoofdpi
       #zapret
     ];
 

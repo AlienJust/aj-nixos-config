@@ -21,9 +21,9 @@
         wantedBy = ["multi-user.target"];
         requires = ["network.target"];
         serviceConfig = {
-          ExecStart = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid --dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3 --qnum=${toString qnum}";
+          ExecStart = "${pkgs.zapret}/bin/nfqws --pidfile=/tmp/nfqws.pid --dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3 --qnum=${toString qnum}";
           Type = "forking";
-          PIDFile = "/run/nfqws.pid";
+          PIDFile = "/tmp/nfqws.pid";
           ExecReload = "/bin/kill -HUP $MAINPID";
           Restart = "always";
           RestartSec = "5s";
