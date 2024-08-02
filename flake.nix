@@ -55,7 +55,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    zapret.url = "github:aca/zapret-flake/main";
+    #zapret.url = "github:aca/zapret-flake/main";
 
     # gpt4all
     #gpt4all.url = "github:polygon/gpt4all-nix";
@@ -155,7 +155,13 @@
         modules = [
           #stylix.nixosModules.stylix
 
-          ./modules/nixos/spoofdpi.nix
+          #./modules/nixos/spoofdpi.nix
+
+          ./modules/nixos/zapret
+          {
+            wan = "br0";
+            qnum = 200;
+          }
 
           ./modules/nixos/nh.nix
 

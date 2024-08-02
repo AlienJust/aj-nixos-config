@@ -277,17 +277,14 @@
   services.udisks2.enable = true;
 
   # DPI
-  services.spoofdpi.enable = true;
-
+  # services.spoofdpi.enable = true;
+  /*
   systemd.services."zapret" = {
     enable = true;
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
     path = [
       pkgs.iptables
-      /*
-      pkgs.nftables
-      */
       pkgs.gawk
       pkgs.procps
     ];
@@ -299,14 +296,6 @@
       RemainAfterExit = "no";
       IgnoreSIGPIPE = "no";
       TimeoutSec = "30sec";
-      /*
-        ExecStart = ''
-        ${pkgs.zapret}/bin/zapret start
-      '';
-      ExecStop = ''
-        ${pkgs.zapret}/bin/zapret stop
-      '';
-      */
 
       ExecStart = ''
         ${inputs.zapret.packages.x86_64-linux.default}/src/init.d/sysv/zapret start
@@ -316,6 +305,7 @@
       '';
     };
   };
+  */
 
   # Android.
   programs.adb.enable = true;

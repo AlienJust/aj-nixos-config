@@ -214,29 +214,12 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1716044191,
-        "narHash": "sha256-V/JRCf9iOKGMmmMCs/K1n+vOP01Y7ZPJntHXxDEvzWM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "fdfdc52e33e11634eb7b37f65e96e63d1beb7e45",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "stylix": "stylix",
-        "zapret": "zapret"
+        "stylix": "stylix"
       }
     },
     "stylix": {
@@ -268,25 +251,6 @@
       "original": {
         "owner": "danth",
         "repo": "stylix",
-        "type": "github"
-      }
-    },
-    "zapret": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1716049181,
-        "narHash": "sha256-dbId8kUFHB1K78Obfuacwx4fCNxbAih1m3B+uG3Dl0w=",
-        "owner": "aca",
-        "repo": "zapret-flake",
-        "rev": "8ea5b9506ba6169b710e99d9d631595fe3d54f34",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aca",
-        "ref": "main",
-        "repo": "zapret-flake",
         "type": "github"
       }
     }
