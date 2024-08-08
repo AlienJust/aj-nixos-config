@@ -329,8 +329,6 @@
 
   # Android.
   programs.adb.enable = true;
-  # For Android emulator.
-  systemd.enableUnifiedCgroupHierarchy = lib.mkForce true;
   # Users
   users.mutableUsers = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
