@@ -305,6 +305,7 @@
   services.fstrim.enable = true;
   services.udisks2.enable = true;
 
+  /*
   systemd.services."zapret" = {
     enable = true;
     wantedBy = ["multi-user.target"];
@@ -326,6 +327,7 @@
       '';
     };
   };
+  */
 
   # Android.
   programs.adb.enable = true;
@@ -415,7 +417,7 @@
       #android-studio
       android-tools
 
-      inputs.zapret.packages.x86_64-linux.default
+      #inputs.zapret.packages.x86_64-linux.default
     ];
 
     persistence."/nix/persist" = {
