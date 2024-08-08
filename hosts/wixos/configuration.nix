@@ -166,7 +166,7 @@
         matchConfig.Name = "br0";
         networkConfig = {
           Address = ["192.168.150.33/24" "192.168.1.222/24"];
-          IPForward = true;
+          IPv4Forwarding = true;
           Gateway = "192.168.150.1";
           LinkLocalAddressing = "no";
         };
