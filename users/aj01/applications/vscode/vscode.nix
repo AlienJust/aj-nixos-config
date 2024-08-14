@@ -67,7 +67,7 @@
       "git.enableSmartCommit" = true;
       "window.titleBarStyle" = "native";
       "window.menuBarVisibility" = "toggle";
-      "window.zoomLevel" = -1;
+      "window.zoomLevel" = 0;
       "[nix]" = {"editor.defaultFormatter" = "jnoortheen.nix-ide";};
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
