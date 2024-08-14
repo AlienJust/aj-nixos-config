@@ -108,7 +108,7 @@
       sizes = {
         desktop = 9; #10;
         applications = 9; #10;
-        terminal = 9; #12;
+        terminal = 11; #12;
       };
     };
 
