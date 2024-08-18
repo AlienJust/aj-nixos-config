@@ -61,6 +61,7 @@ in {
     
     swaylock.enable = config.module.sway.enable;
     wlogout.enable = config.module.sway.enable;
+    mako.enable = config.module.sway.enable;
 
     btop.enable = true;
     eza.enable = true;
