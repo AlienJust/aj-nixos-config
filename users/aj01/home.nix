@@ -187,7 +187,7 @@
   */
   qt = {
     enable = true;
-    platformTheme = "adwaita";
+    platformTheme.name = "adwaita";
     style = {
       name = lib.mkForce "kvantum-dark";
       #name = "kvantum-dark";

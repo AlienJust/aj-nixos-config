@@ -68,7 +68,11 @@ in {
           height = 30;
           layer = "top";
           position = "top";
-          tray = {spacing = 10;};
+          tray = {
+            icon-size = 18;
+            show-passive-items = true;
+            spacing = 8;
+          };
 
           modules-left = ["sway/workspaces" "sway/mode"];
           "sway/mode" = {format = ''<span style="italic">{}</span>'';};
@@ -87,6 +91,7 @@ in {
             "clock"
             # "custom/keyboard-layout"
             "sway/language"
+            "custom/notification"
           ]; # ++ (if config.hostId == "yoga" then [ "battery" ] else [ ])
           #      ++ [
           #        "clock"
@@ -135,6 +140,61 @@ in {
             tooltip-format = "{:%Y-%m-%d | %H:%M}";
             interval = 5;
           };
+          
+          memory = {
+            format = "{}% ";
+            tooltip = true;
+          };
+          #        network = {
+          #          interval = 1;
+          #          format-alt = "{ifname}: {ipaddr}/{cidr}";
+          #          format-disconnected = "Disconnected ⚠";
+          #          format-ethernet = "{ifname}: {ipaddr}/{cidr}   up: {bandwidthUpBits} down: {bandwidthDownBits}";
+          #          format-linked = "{ifname} (No IP) ";
+          #          format-wifi = "{essid} ({signalStrength}%) ";
+          #        };
+          
+          # Pulseaudio
+          /*
+          pulseaudio = {
+            format = "{volume}% {icon}";
+            format-bluetooth = "{volume}% {icon} {format_source}";
+            format-bluetooth-muted = " {icon} {format_source}";
+            format-icons = {
+              car = "";
+              default = ["" "" ""];
+              handsfree = "";
+              headphones = "";
+              headset = "";
+              phone = "";
+              portable = "";
+            };
+            format-muted = "";
+            format-source = "{volume}% ";
+            format-source-muted = "";
+            on-click = "pavucontrol";
+            tooltip = true;
+          };*/
+          
+          pulseaudio = {
+            format = "{volume} {icon} / {format_source}";
+            format-source = "󰍬";
+            format-source-muted = "󰍭";
+            format-muted = "󰖁 / {format_source}";
+            format-icons = {default = ["󰕿" "󰖀" "󰕾"];};
+            on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+            on-click-right = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+            on-scroll-up = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +1%";
+            on-scroll-down = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%";
+            tooltip = false;
+          };
+
+
+          # Keyboard layout
+          "sway/language" = {
+            format = "{flag} {shortDescription} ";
+          };
+          /*
           "custom/keyboard-layout" = {
             exec = pkgs.writeShellScript "layout" ''
               #!/bin/sh
@@ -172,45 +232,34 @@ in {
             signal = 1; # SIGHUP
             tooltip = false;
           };
-          memory = {
-            format = "{}% ";
-            tooltip = true;
-          };
-          #        network = {
-          #          interval = 1;
-          #          format-alt = "{ifname}: {ipaddr}/{cidr}";
-          #          format-disconnected = "Disconnected ⚠";
-          #          format-ethernet = "{ifname}: {ipaddr}/{cidr}   up: {bandwidthUpBits} down: {bandwidthDownBits}";
-          #          format-linked = "{ifname} (No IP) ";
-          #          format-wifi = "{essid} ({signalStrength}%) ";
-          #        };
-          pulseaudio = {
-            format = "{volume}% {icon}";
-            format-bluetooth = "{volume}% {icon} {format_source}";
-            format-bluetooth-muted = " {icon} {format_source}";
-            format-icons = {
-              car = "";
-              default = ["" "" ""];
-              handsfree = "";
-              headphones = "";
-              headset = "";
-              phone = "";
-              portable = "";
-            };
-            format-muted = "";
-            format-source = "{volume}% ";
-            format-source-muted = "";
-            on-click = "pavucontrol";
-            tooltip = true;
-          };
-          "sway/language" = {
-            format = "{flag} {shortDescription} ";
-          };
+          */
+
           #      temperature = {
           #        critical-threshold = 80;
           #        format = "{temperatureC}°C {icon}";
           #        format-icons = [ "" "" "" ];
           #      };
+
+          # Notifications
+          "custom/notification" = {
+            exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+            return-type = "json";
+            format = "{icon}  ";
+            on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+            on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
+            escape = true;
+
+            format-icons = {
+              notification = "󰂚";
+              none = "󰂜";
+              dnd-notification = "󰂛";
+              dnd-none = "󰪑";
+              inhibited-notification = "󰂛";
+              inhibited-none = "󰪑";
+              dnd-inhibited-notification = "󰂛";
+              dnd-inhibited-none = "󰪑";
+            };
+          };
         }
       ];
     };

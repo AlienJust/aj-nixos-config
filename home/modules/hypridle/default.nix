@@ -33,8 +33,10 @@ in {
           [
             {
               timeout = 300;
-              on-timeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
-              on-resume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+              #on-timeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
+              #on-resume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+              on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+              on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
             }
             {
               timeout = 600;

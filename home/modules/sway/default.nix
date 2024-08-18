@@ -66,7 +66,7 @@ in {
         }
       )
       */
-      mako
+      #mako
       foot
 
       swayidle
@@ -392,11 +392,13 @@ in {
             command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP";
             always = false;
           }
+          
           # Mako startup
-          {
-            command = "mako";
-            always = false;
-          }
+          #{
+            #command = "mako";
+            #always = false;
+          #}
+
           # Swokstyle
           {
             command = "sworkstyle &> /tmp/sworkstyle.log";

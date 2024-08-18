@@ -28,14 +28,15 @@
     };
 
     # Hyprland ecosystem
-    hyprland = {
+    /*hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.42.0";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    };*/
 
     # Unoficial users flakes
     yandex-music.url = "github:cucumber-sp/yandex-music-linux";

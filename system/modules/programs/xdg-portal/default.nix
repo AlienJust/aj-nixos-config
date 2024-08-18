@@ -21,11 +21,11 @@ in {
         common = {
           default = "*";
 
-          #"org.freedesktop.impl.portal.Screencast" = "hyprland";
-          #"org.freedesktop.impl.portal.Screenshot" = "hyprland";
+          "org.freedesktop.impl.portal.Screencast" = "hyprland";
+          "org.freedesktop.impl.portal.Screenshot" = "hyprland";
 
-          "org.freedesktop.impl.portal.Screencast" = "sway";
-          "org.freedesktop.impl.portal.Screenshot" = "sway";
+          #"org.freedesktop.impl.portal.Screencast" = "sway";
+          #"org.freedesktop.impl.portal.Screenshot" = "sway";
         };
       };
 
