@@ -10,7 +10,7 @@ in {
     #"${hostProgramModulesPath}/gnupg"
     #"${hostProgramModulesPath}/zsh"
     #"${hostProgramModulesPath}/mtr"
-    #"${hostProgramModulesPath}/dconf"
+    "${hostProgramModulesPath}/dconf"
     #"${hostProgramModulesPath}/fish"
   ];
 }
