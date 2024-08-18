@@ -13,6 +13,7 @@ in {
   ];
 
   module = {
+    console.enable = true;
     locales.enable = true;
     network.enable = true;
     security.enable = true;
@@ -28,7 +29,7 @@ in {
       printing.enable = true;
       syncthing.enable = true;
       udev.enable = true;
-      greetd-tui.enable = true;
+      greetd-tui.enable = false;
       hyprland.enable = true;
       qmk.enable = true;
 
