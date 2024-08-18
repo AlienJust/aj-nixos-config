@@ -51,6 +51,7 @@ in {
     xdg.enable = isLinux && isWorkstation;
 
     #stylix.enable =  isLinux && isWorkstation;
+    kde-theme.enable = isLinux && isWorkstation;
 
     hypridle.enable = config.module.hyprland.enable;
     hyprlock.enable = config.module.hyprland.enable;

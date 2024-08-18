@@ -1,5 +1,7 @@
 {homeModules, ...}: {
   imports = [
+    "${homeModules}/kde-theme"
+
     "${homeModules}/alacritty"
     "${homeModules}/btop"
     "${homeModules}/chrome"
