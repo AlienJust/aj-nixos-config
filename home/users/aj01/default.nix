@@ -57,11 +57,11 @@ in {
     hyprlock.enable = config.module.hyprland.enable;
     waybar.enable = config.module.hyprland.enable;
     rofi.enable = config.module.hyprland.enable;
-    #swaync.enable = config.module.hyprland.enable;
+    swaync.enable = config.module.hyprland.enable;
     
     swaylock.enable = config.module.sway.enable;
     wlogout.enable = config.module.sway.enable;
-    mako.enable = config.module.sway.enable;
+    mako.enable = false; #config.module.sway.enable;
 
     btop.enable = true;
     eza.enable = true;

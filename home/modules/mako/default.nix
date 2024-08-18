@@ -7,7 +7,7 @@ with lib; let
   cfg = config.module.mako;
 in {
   options = {
-    module.Mako.enable = mkEnableOption "Enables Mako";
+    module.mako.enable = mkEnableOption "Enables mako";
   };
 
   config = mkIf cfg.enable {
