@@ -21,8 +21,8 @@ in {
 
     opacity = {
       applications = 1.0;
-      terminal = 1.0;
-      popups = 1.0;
+      terminal = 0.9;
+      popups = 0.9;
       desktop = 1.0;
     };
 
@@ -34,10 +34,10 @@ in {
 
     fonts = {
       sizes = {
-        applications = 11;
+        applications = 9;
         terminal = 11;
         popups = 11;
-        desktop = 11;
+        desktop = 9;
       };
 
       /*

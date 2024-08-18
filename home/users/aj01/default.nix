@@ -18,7 +18,7 @@ in {
     [
       "${generalModules}"
       "${homeModules}"
-      ./stylix.nix
+      #./stylix.nix
     ]
     ++ lib.optional sshModuleExist sshModule;
 
@@ -27,10 +27,10 @@ in {
     # (import "${self}/home/overlays/rofi-emoji")
   ];
 
-  #stylix.targets = {
+  stylix.targets = {
     #vscode.enable = false;
     #helix.enable = false;
-  #};
+  };
 
   module = {
     alacritty.enable = isWorkstation;

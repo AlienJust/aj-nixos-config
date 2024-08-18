@@ -74,7 +74,7 @@
     # };
 
     # image = ../wall3.png;
-    image = ../wall.jpg;
+    image = ../../../wall.jpg;
 
     #image = pkgs.fetchurl {
     #  url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
