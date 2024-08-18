@@ -15,7 +15,9 @@ in {
     programs.waybar = {
       enable = true;
       systemd.enable = true;
-      systemd.target = "sway-session.target";
+      # systemd.target = "sway-session.target";
+      systemd.target = "graphical-session.target";
+
       #    style = ''
       #      ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
       #      window#waybar {

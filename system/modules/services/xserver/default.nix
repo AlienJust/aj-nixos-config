@@ -35,10 +35,10 @@ in {
         enable = true;
         libinput.enable = true;
 
-        xkb = {
-          layout = "us";
-          variant = "";
-        };
+        videoDrivers = ["amdgpu"];
+        xkbModel = "pc105";
+        layout = "us,ru";
+        xkbOptions = "grp:caps_toggle";
       };
     };
   };

@@ -6,6 +6,7 @@
   imports = [
     inputs.stylix.nixosModules.stylix
 
+    "${hostModules}/console"
     "${hostModules}/locales"
     "${hostModules}/network"
     "${hostModules}/programs"
