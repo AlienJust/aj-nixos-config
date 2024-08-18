@@ -86,11 +86,8 @@ in {
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 
         export QT_AUTO_SCREEN_SCALE_FACTOR="1"
-
-        export XDG_SESSION_TYPE="x11"
+        
         export XDG_CURRENT_DESKTOP="sway"
-        export XCURSOR_SIZE=32
-        export XCURSOR_THEME="Adwaita"
 
         export NIXOS_OZONE_WL="1"
 
@@ -99,6 +96,10 @@ in {
         export _JAVA_AWT_WM_NONREPARENTING="1"
         export GDK_BACKEND="wayland"
       '';
+      #      export XDG_SESSION_TYPE="x11"
+      #      export XCURSOR_SIZE=32
+      #      export XCURSOR_THEME="Adwaita"
+
       #      export MC_SKIN=$HOME/.config/mc/selenized.ini;
       #      export XDG_DATA_DIRS="${gnome.adwaita-icon-theme}/share:$XDG_DATA_DIRS";
       #    '';
