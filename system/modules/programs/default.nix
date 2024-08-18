@@ -7,10 +7,10 @@ in {
     "${hostProgramModulesPath}/nix-helper"
     #"${hostProgramModulesPath}/kdeconnect"
     "${hostProgramModulesPath}/xdg-portal"
-    #"${hostProgramModulesPath}/gnupg"
+    "${hostProgramModulesPath}/gnupg"
     #"${hostProgramModulesPath}/zsh"
     #"${hostProgramModulesPath}/mtr"
     "${hostProgramModulesPath}/dconf"
-    #"${hostProgramModulesPath}/fish"
+    "${hostProgramModulesPath}/fish"
   ];
 }
