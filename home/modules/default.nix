@@ -38,6 +38,7 @@
     "${homeModules}/swaylock"
     "${homeModules}/wlogout"
     #"${homeModules}/mako"
+    "${homeModules}/mpd"
     
     "${homeModules}/direnv"
   ];

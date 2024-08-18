@@ -63,6 +63,8 @@ in {
     wlogout.enable = config.module.sway.enable;
     #mako.enable = false; #config.module.sway.enable;
 
+    mpd.enable = isLinux && isWorkstation;
+
     btop.enable = true;
     eza.enable = true;
     git.enable = true;
