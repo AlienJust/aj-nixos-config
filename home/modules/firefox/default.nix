@@ -59,7 +59,7 @@ in {
         };
       };
       profiles.default = {
-        extensions = with (import ./addons.nix args); [
+        extensions = with (import ./addons.nix pkgs); [
           ublock-origin
           sidebery
           stylus
