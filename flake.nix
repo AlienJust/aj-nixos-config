@@ -1,312 +1,153 @@
 {
-  description = "AJ nix config";
-
-  nixConfig = {
-    experimental-features = ["nix-command" "flakes"];
-    trustedUsers = ["@wheel" "aj01" "root"];
-    substituters = [
-      # TODO: any russian mirrors exists?
-      # Replace the official cache with a mirror located in China
-      #"https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org/"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-
-    extra-substituters = [
-      # Nix community's cache server
-      "https://nix-community.cachix.org"
-
-      "https://devenv.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-    ];
-  };
+  description = "AlienJust Flake";
 
   inputs = {
-    # nixpkgs
-    #master.url = "github:nixos/nixpkgs/master";
+    # Official NixOS repo
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    #nixpkgs.follows = "master";
+    # NixOS community
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    #nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-
-    #nix-index-database.url = "github:nix-community/nix-index-database";
-    #nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-
-    # rust-overlay
-    #rust-overlay.url = "github:oxalica/rust-overlay";
-
-    # devenv
-    #devenv.url = "github:cachix/devenv";
-
-    # Impermanence
-    impermanence.url = "github:nix-community/impermanence";
-
-    # Home manager
-    #home-manager.url = "github:nix-community/home-manager";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    #zapret.url = "github:aca/zapret-flake/main";
-
-    # gpt4all
-    #gpt4all.url = "github:polygon/gpt4all-nix";
-    #gpt4all.inputs.nixpkgs.follows = "nixpkgs";
-
-    # anyrun
-    #anyrun.url = "github:Kirottu/anyrun";
-    #anyrun.inputs.nixpkgs.follows = "nixpkgs";
-
-    # hyprland
-    #hyprland.url = "github:hyprwm/Hyprland";
-    #hyprland.inputs.nixpkgs.follows = "nixpkgs";
-
-    #hyprland-contrib.url = "github:hyprwm/contrib";
-    #hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
-
-    # NUR
-    #nur = {
-    #  url = "github:nix-community/NUR";
-    #};
-
-    # stylix
+    impermanence.url = "github:/nix-community/impermanence";
     stylix.url = "github:danth/stylix";
-    #stylix.url = "github:airradda/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.inputs.home-manager.follows = "home-manager";
 
-    # Games
-    # nix-gaming.url = "github:fufexan/nix-gaming";
+    # MacOS configuration
+    darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # lanzaboote
-    #lanzaboote = {
-    #  url = "github:nix-community/lanzaboote";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    # Hyprland ecosystem
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.42.0";
+    };
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
+    xdghypr = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    # Unoficial users flakes
+    yandex-music.url = "github:cucumber-sp/yandex-music-linux";
+    any-nix-shell.url = "github:TheMaxMur/any-nix-shell";
+    cryptopro.url = "github:SomeoneSerge/pkgs";
 
-    # android
-    # android-nixpkgs = {
-    # url = "github:tadfisher/android-nixpkgs";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # Security
+    sops-nix.url = "github:Mic92/sops-nix";
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Just for pretty flake.nix
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    # Zsh plugins
+    powerlevel10k = {
+      url = "github:romkatv/powerlevel10k";
+      flake = false;
+    };
+
+    zsh-autosuggestions = {
+      url = "github:zsh-users/zsh-autosuggestions";
+      flake = false;
+    };
+
+    zsh-syntax-highlighting = {
+      url = "github:zsh-users/zsh-syntax-highlighting";
+      flake = false;
+    };
+
+    fzf-zsh-completions = {
+      url = "github:chitoku-k/fzf-zsh-completions";
+      flake = false;
+    };
+
+    zsh-history-substring-search = {
+      url = "github:zsh-users/zsh-history-substring-search";
+      flake = false;
+    };
+
+    zsh-auto-notify = {
+      url = "github:MichaelAquilina/zsh-auto-notify";
+      flake = false;
+    };
   };
 
   outputs = {
     self,
-    nixpkgs,
-    home-manager,
-    impermanence,
-    stylix,
-    #rust-overlay,
-    #android-nixpkgs,
-    #hyprland,
-    #gpt4all,
-    #nur,
+    flake-parts,
     ...
   } @ inputs: let
-    inherit (self) outputs; # The same as: outputs = self.outputs;
-    systems = ["x86_64-linux"];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    packages =
-      forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    linuxArch = "x86_64-linux";
+    linuxArmArch = "aarch64-linux";
+    darwinArch = "aarch64-darwin";
+    stateVersion = "24.11";
+    stateVersionDarwin = 4;
+    libx = import ./lib {inherit self inputs stateVersion stateVersionDarwin;};
 
-    formatter =
-      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    overlays = import ./overlays {inherit inputs;};
-
-    nixosModules = import ./modules/nixos;
-
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      mixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            outputs
-            #stylix
-            
-            #impermanence
-            
-            #android-nixpkgs
-            
-            #hyprland
-            
-            ;
-        };
-        # > Our main nixos configuration file <
-        modules = [
-          #stylix.nixosModules.stylix
-
-          #./modules/nixos/spoofdpi.nix
-
-          /*
-          (import ./modules/nixos/zapret.nix
-            {
-              wan = "br0";
-              qnum = 200;
-            })
-          */
-
-          ./modules/nixos/impermanence/default.nix
-
-          ./modules/nixos/nh.nix
-
-          ./system/machine/mixos/configuration.nix
-
-          {
-            # given the users in this list the right to specify additional substituters via:
-            #    1. `nixConfig.substituers` in `flake.nix`
-            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit
-                inputs
-                /*
-                android-nixpkgs
-                */
-                
-                ;
-              hostName = "mixos";
-            };
-            home-manager.users.aj01 = import ./users/aj01/home.nix;
-            home-manager.backupFileExtension = "backup";
-          }
-
-          #({pkgs, ...}: {
-          #  nixpkgs.overlays = [rust-overlay.overlays.default];
-          #  environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          #})
-        ];
+    hosts = {
+      pcbox = {
+        hostname = "mixos";
+        username = "aj01";
+        platform = linuxArch;
+        isWorkstation = true;
       };
-
-      wixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            outputs
-            stylix
-            #hyprland
-            
-            ;
-        };
-        # > Our main nixos configuration file <
-        modules = [
-          {
-            /*
-              environment.systemPackages = [
-              //inputs.zapret.packages.x86_64-linux.default
-            ];
-            */
-          }
-
-          impermanence.nixosModules.impermanence
-
-          stylix.nixosModules.stylix
-
-          ./modules/nixos/nh.nix
-
-          ./system/machine/wixos/configuration.nix
-
-          {
-            # given the users in this list the right to specify additional substituters via:
-            #    1. `nixConfig.substituers` in `flake.nix`
-            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              hostName = "wixos";
-            };
-            home-manager.users.aj01 = import ./users/aj01/home.nix;
-            home-manager.backupFileExtension = "backup";
-          }
-
-          #({pkgs, ...}: {
-          #  nixpkgs.overlays = [rust-overlay.overlays.default];
-          #  environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          #})
-        ];
+      /*
+      nbox = {
+        hostname = "nbox";
+        username = "maxmur";
+        platform = linuxArch;
+        isWorkstation = true;
       };
-
-      # Virtualbox system
-      vixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            outputs
-            ;
-        };
-        # > Our main nixos configuration file <
-        modules = [
-          ./modules/nixos/nh.nix
-          ./hosts/vixos/configuration.nix
-
-          {
-            # given the users in this list the right to specify additional substituters via:
-            #    1. `nixConfig.substituers` in `flake.nix`
-            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.aj01 = import ./users/aj01/home.nix;
-            home-manager.backupFileExtension = "backup";
-          }
-        ];
+      rasp = {
+        hostname = "rasp";
+        username = "maxmur";
+        platform = linuxArmArch;
+        isWorkstation = false;
       };
+      macbox = {
+        hostname = "macbox";
+        username = "maxmur";
+        platform = darwinArch;
+        isWorkstation = true;
+      };
+      */
+    };
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        linuxArch
+        linuxArmArch
+        darwinArch
+      ];
 
-      # Horizont server
-      nxh = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            outputs
-            ;
+      flake = {
+        nixosConfigurations = {
+          ${hosts.pcbox.hostname} = libx.mkHost hosts.pcbox;
+          ${hosts.nbox.hostname} = libx.mkHost hosts.nbox;
+          ${hosts.rasp.hostname} = libx.mkHost hosts.rasp;
         };
-        # > Our main nixos configuration file <
-        modules = [
-          #stylix.nixosModules.stylix
-          ./system/machine/nxh/configuration.nix
 
-          ./modules/nixos/nextcloud.nix
+        darwinConfigurations = {
+          ${hosts.macbox.hostname} = libx.mkHostDarwin hosts.macbox;
+        };
 
-          {
-            # given the users in this list the right to specify additional substituters via:
-            #    1. `nixConfig.substituers` in `flake.nix`
-            nix.settings.trusted-users = ["@wheel" "aj01" "root"];
-          }
-        ];
+        templates = import "${self}/templates" {inherit self;};
       };
     };
-  };
 }
