@@ -40,7 +40,5 @@
     #"${homeModules}/mako"
     
     "${homeModules}/direnv"
-
-    "${homeModules}/steam"
   ];
 }

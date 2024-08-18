@@ -7,6 +7,7 @@
     inputs.stylix.nixosModules.stylix
 
     "${hostModules}/console"
+    "${hostModules}/games"
     "${hostModules}/locales"
     "${hostModules}/network"
     "${hostModules}/programs"
