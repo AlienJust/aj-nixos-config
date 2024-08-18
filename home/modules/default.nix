@@ -37,8 +37,10 @@
     "${homeModules}/sway"
     "${homeModules}/swaylock"
     "${homeModules}/wlogout"
-    "${homeModules}/mako"
+    #"${homeModules}/mako"
     
     "${homeModules}/direnv"
+
+    "${homeModules}/steam"
   ];
 }

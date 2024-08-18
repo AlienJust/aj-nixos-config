@@ -61,7 +61,7 @@ in {
     
     swaylock.enable = config.module.sway.enable;
     wlogout.enable = config.module.sway.enable;
-    mako.enable = false; #config.module.sway.enable;
+    #mako.enable = false; #config.module.sway.enable;
 
     btop.enable = true;
     eza.enable = true;
@@ -78,6 +78,8 @@ in {
     fish.enable = true;
     zoxide.enable = true;
     yazi.enable = true;
+
+    steam.enable = true;
   };
 
   home = {
