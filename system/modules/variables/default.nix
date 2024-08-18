@@ -26,7 +26,7 @@ in {
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      FLAKE = "/home/${username}/Code/nixos-configuration";
+      FLAKE = "/home/${username}/src/aj-nixos-config";
       QT_QPA_PLATFORMTHEME = "gtk3";
       TDESKTOP_I_KNOW_ABOUT_GTK_INCOMPATIBILITY = "1";
     };

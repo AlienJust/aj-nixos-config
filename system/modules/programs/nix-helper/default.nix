@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     programs.nh = {
       enable = true;
-      flake = "/home/${username}/Code/nixos-configuration";
+      flake = "/home/${username}/src/aj-nixos-config";
 
       clean = {
         enable = true;
