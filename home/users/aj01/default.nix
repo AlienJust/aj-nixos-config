@@ -18,6 +18,7 @@ in {
     [
       "${generalModules}"
       "${homeModules}"
+      ./stylix.nix
     ]
     ++ lib.optional sshModuleExist sshModule;
 
@@ -46,13 +47,15 @@ in {
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
+    stylix.enable =  isLinux && isWorkstation;
+
     hypridle.enable = config.module.hyprland.enable;
     hyprlock.enable = config.module.hyprland.enable;
     waybar.enable = config.module.hyprland.enable;
     rofi.enable = config.module.hyprland.enable;
-    swaync.enable = config.module.hyprland.enable;
+    #swaync.enable = config.module.hyprland.enable;
     
-    swaylock.enable = config.sway.hyprland.enable;
+    swaylock.enable = config.module.sway.enable;
 
     btop.enable = true;
     eza.enable = true;
@@ -68,8 +71,6 @@ in {
     fish.enable = true;
     zoxide.enable = true;
     yazi.enable = true;
-
-    stylix.enable = true;
   };
 
   home = {
