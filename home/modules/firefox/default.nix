@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -12,14 +13,14 @@ with lib; let
     sha256 = "sha256-UmT5B/dMl5UCM5O+pSFWxOl5HtDV2OqsM1yHSs/ciQ4=";
   };
   */
-  homepage = ../../links.html;
+  homepage = ../../../links.html;
   /*
   bg = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/Ruixi-rebirth/someSource/main/firefox/bg.png";
     sha256 = "sha256-dpMWCAtYT3ZHLftQQ32BIg800I7SDH6SQ9ET3yiOr90=";
   };
   */
-  bg = ../../wall3.png;
+  bg = ../../../wall3.png;
   logo = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/Ruixi-rebirth/someSource/main/firefox/logo.png";
     sha256 = "sha256-e6L3xq4AXv3V3LV7Os9ZE04R7U8vxdRornBP5x4DWm8=";
