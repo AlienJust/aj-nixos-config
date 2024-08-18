@@ -101,7 +101,7 @@
     libx = import ./lib {inherit self inputs stateVersion stateVersionDarwin;};
 
     hosts = {
-      pcbox = {
+      mixos = {
         hostname = "mixos";
         username = "aj01";
         platform = linuxArch;
@@ -138,9 +138,9 @@
 
       flake = {
         nixosConfigurations = {
-          ${hosts.pcbox.hostname} = libx.mkHost hosts.pcbox;
-          ${hosts.nbox.hostname} = libx.mkHost hosts.nbox;
-          ${hosts.rasp.hostname} = libx.mkHost hosts.rasp;
+          ${hosts.mixos.hostname} = libx.mkHost hosts.mixos;
+          #${hosts.nbox.hostname} = libx.mkHost hosts.nbox;
+          #${hosts.rasp.hostname} = libx.mkHost hosts.rasp;
         };
 
         darwinConfigurations = {
