@@ -39,6 +39,7 @@
     "${homeModules}/wlogout"
     #"${homeModules}/mako"
     "${homeModules}/mpd"
+    "${homeModules}/mpv"
     
     "${homeModules}/direnv"
   ];

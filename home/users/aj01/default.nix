@@ -64,6 +64,7 @@ in {
     #mako.enable = false; #config.module.sway.enable;
 
     mpd.enable = isLinux && isWorkstation;
+    mpv.enable = isLinux && isWorkstation;
 
     btop.enable = true;
     eza.enable = true;
