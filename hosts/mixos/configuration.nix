@@ -30,8 +30,6 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    # Impermanence
-    inputs.impermanence.nixosModules.impermanence
     #(inputs.impermanence + "/nixos.nix")
 
     #../../modules/virtualization.nix
@@ -403,27 +401,6 @@
       #spoofdpi
       #zapret
     ];
-
-    persistence."/nix/persist" = {
-      directories = [
-        "/etc/nixos" # bind mounted from /nix/persist/etc/nixos to /etc/nixos
-        "/var/log"
-        "/var/lib"
-      ];
-      files = [
-        "/etc/machine-id"
-      ];
-    };
-    #persistence."/persist" = {
-    #  hideMounts = true;
-    #  directories = [
-    #    "/var/log"
-    #    "/etc/secureboot"
-    #    "/var/lib/bluetooth"
-    #    "/var/lib/nixos"
-    #    "/var/lib/systemd/coredump"
-    #  ];
-    #};
   };
 
   # fonts
@@ -499,7 +476,6 @@
     command-not-found.enable = false;
     dconf.enable = true;
     zsh.enable = true;
-    fuse.userAllowOther = true; # impermanence
   };
 
   services.dbus.implementation = "broker";

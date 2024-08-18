@@ -165,6 +165,8 @@
             })
           */
 
+          ./modules/nixos/impermanence/default.nix
+
           ./modules/nixos/nh.nix
 
           ./hosts/mixos/configuration.nix
