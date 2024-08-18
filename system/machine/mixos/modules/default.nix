@@ -7,6 +7,6 @@
 in {
   imports = [
     "${machineModulesPath}/hardware"
-    #"${machineModulesPath}/ollama"
+    "${machineModulesPath}/ollama"
   ];
 }
