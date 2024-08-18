@@ -12,6 +12,7 @@ in {
     #"${homeModules}/vscode/keybindings"
     #"${homeModules}/vscode/extentions"
     #"${homeModules}/vscode/settings"
+    ./vscode-files
   ];
 
   options = {
