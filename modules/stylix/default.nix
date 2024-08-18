@@ -5,7 +5,7 @@
   ...
 }: let
   theme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-  wallpaper = ../../wall.png;
+  wallpaper = ../../wall.jpg;
   cursorSize =
     if hostname == "mixos"
     then 32

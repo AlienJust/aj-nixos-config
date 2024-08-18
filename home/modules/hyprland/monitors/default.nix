@@ -15,22 +15,22 @@ with lib; let
     else [];
 
   workspacesSettings =
-    if hostname == "pcbox"
+    if hostname == "mixos"
     then [
-      "1, monitor:DP-2, default:true"
-      "2, monitor:DP-2, default:true"
-      "3, monitor:DP-2, default:true"
-      "4, monitor:DP-2, default:true"
-      "5, monitor:DP-2, default:true"
-      "6, monitor:DP-2, default:true"
-      "7, monitor:DP-1, default:true"
-      "8, monitor:DP-1, default:true"
-      "9, monitor:DP-1, default:true"
-      "10, monitor:DP-1, default:true"
-      "11, monitor:DP-1, default:true"
-      "12, monitor:DP-1, default:true"
+      "1, monitor:DP-1, default:true"
+      "2, monitor:DP-1, default:true"
+      "3, monitor:DP-1, default:true"
+      "4, monitor:DP-1, default:true"
+      "5, monitor:DP-1, default:true"
+      "6, monitor:DP-1, default:true"
+      "7, monitor:HDMI-A-1, default:true"
+      "8, monitor:HDMI-A-1, default:true"
+      "9, monitor:HDMI-A-1, default:true"
+      "10, monitor:HDMI-A-1, default:true"
+      "11, monitor:HDMI-A-1, default:true"
+      "12, monitor:HDMI-A-1, default:true"
     ]
-    else if hostname == "nbox"
+    else if hostname == "wixos"
     then [
       "1, monitor:eDP-1, default:true"
       "2, monitor:eDP-1, default:true"

@@ -4,6 +4,7 @@
   lib,
   pkgs,
   homeModules,
+  hostname,
   ...
 }:
 with lib; let
@@ -19,7 +20,7 @@ in {
   ];
 
   options = {
-    module.hyprland.enable = mkEnableOption "Enable Sway";
+    module.sway.enable = mkEnableOption "Enable Sway";
   };
 
   config = mkIf cfg.enable {
@@ -425,7 +426,7 @@ in {
         */
 
         output = lib.mkMerge [
-          (lib.mkIf (hostName == "mixos") {
+          (lib.mkIf (hostname == "mixos") {
             "DP-1" = {
               scale = "1";
               mode = "2560x1440@164.999Hz";
@@ -438,7 +439,7 @@ in {
             };
           })
 
-          (lib.mkIf (hostName == "wixos") {
+          (lib.mkIf (hostname == "wixos") {
             "DP-1" = {
               scale = "1";
               mode = "1920x1080@60.000Hz";

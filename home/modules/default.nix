@@ -32,5 +32,8 @@
     "${homeModules}/zoxide"
     "${homeModules}/yazi"
     "${homeModules}/swaync"
+    "${homeModules}/sway"
+    "${homeModules}/swaylock"
+    "${homeModules}/stylix"
   ];
 }

@@ -42,6 +42,7 @@ in {
     foot.enable = isLinux && isWorkstation;
     ssh.enable = isLinux && isWorkstation;
     hyprland.enable = isLinux && isWorkstation;
+    sway.enable = isLinux && isWorkstation;
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
@@ -50,6 +51,8 @@ in {
     waybar.enable = config.module.hyprland.enable;
     rofi.enable = config.module.hyprland.enable;
     swaync.enable = config.module.hyprland.enable;
+    
+    swaylock.enable = config.sway.hyprland.enable;
 
     btop.enable = true;
     eza.enable = true;
@@ -65,6 +68,8 @@ in {
     fish.enable = true;
     zoxide.enable = true;
     yazi.enable = true;
+
+    stylix.enable = true;
   };
 
   home = {
