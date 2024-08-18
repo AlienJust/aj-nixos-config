@@ -169,7 +169,7 @@
 
           ./modules/nixos/nh.nix
 
-          ./hosts/mixos/configuration.nix
+          ./system/machine/mixos/configuration.nix
 
           {
             # given the users in this list the right to specify additional substituters via:
@@ -228,7 +228,7 @@
 
           ./modules/nixos/nh.nix
 
-          ./hosts/wixos/configuration.nix
+          ./system/machine/wixos/configuration.nix
 
           {
             # given the users in this list the right to specify additional substituters via:
@@ -296,7 +296,7 @@
         # > Our main nixos configuration file <
         modules = [
           #stylix.nixosModules.stylix
-          ./hosts/nxh/configuration.nix
+          ./system/machine/nxh/configuration.nix
 
           ./modules/nixos/nextcloud.nix
 
