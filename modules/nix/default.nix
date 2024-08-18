@@ -43,7 +43,7 @@ in {
       };
 
       gc = {
-        automatic = true;
+        #automatic = true;
         options = "--delete-older-than 14d";
       };
     };

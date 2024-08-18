@@ -54,7 +54,7 @@ in {
       grim
       slurp
       swaybg
-      eww-wayland
+      eww
       wl-clipboard
       hyprpicker
       playerctl

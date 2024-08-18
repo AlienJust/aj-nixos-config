@@ -39,7 +39,7 @@ in {
       swww
       xdg-utils
       pavucontrol
-      cinnamon.nemo
+      nemo
       eww
       networkmanagerapplet
       brightnessctl

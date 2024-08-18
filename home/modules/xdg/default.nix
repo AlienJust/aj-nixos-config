@@ -24,9 +24,9 @@ in {
         "x-scheme-handler/about" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
 
-        "image/png" = "org.gnome.eog.desktop";
-        "image/jpeg" = "org.gnome.eog.desktop";
-        "image/jpg" = "org.gnome.eog.desktop";
+        "image/png" = "org.eog.desktop";
+        "image/jpeg" = "org.eog.desktop";
+        "image/jpg" = "org.eog.desktop";
 
         "application/pdf" = "org.pwmt.zathura.desktop";
       };

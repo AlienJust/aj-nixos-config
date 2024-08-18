@@ -187,7 +187,7 @@
   */
   qt = {
     enable = true;
-    platformTheme = "gnome";
+    platformTheme = "adwaita";
     style = {
       name = lib.mkForce "kvantum-dark";
       #name = "kvantum-dark";
@@ -235,7 +235,7 @@
       grim
       slurp
       swaybg
-      eww-wayland
+      eww
       wl-clipboard
       hyprpicker
       playerctl

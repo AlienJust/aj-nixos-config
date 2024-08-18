@@ -144,7 +144,7 @@ in {
         gpick
         gat
         vlc
-        gnome.eog
+        eog
       ];
   };
 }

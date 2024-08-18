@@ -75,7 +75,7 @@ in {
         fwupd-efi
 
         # Utils
-        gnome.dconf-editor
+        dconf-editor
         grim
       ];
   };

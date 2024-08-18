@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     qt = {
     enable = true;
-    platformTheme = "gnome";
+    platformTheme = "adwaita";
     style = {
       name = lib.mkForce "kvantum-dark";
       #name = "kvantum-dark";
