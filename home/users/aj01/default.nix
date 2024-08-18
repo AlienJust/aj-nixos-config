@@ -62,6 +62,7 @@ in {
     btop.enable = true;
     eza.enable = true;
     git.enable = true;
+    direnv.enable = true;
     fzf.enable = true;
     htop.enable = true;
     ripgrep.enable = true;
