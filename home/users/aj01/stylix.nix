@@ -6,7 +6,7 @@
 }: {
   imports = [
     # stylix
-    inputs.stylix.homeManagerModules.stylix
+    #inputs.stylix.homeManagerModules.stylix
   ];
   # TODO: remove when bug fixed: https://github.com/danth/stylix/issues/480
   stylix.targets.kde.enable = false;

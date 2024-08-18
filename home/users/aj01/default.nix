@@ -27,10 +27,10 @@ in {
     # (import "${self}/home/overlays/rofi-emoji")
   ];
 
-  stylix.targets = {
-    vscode.enable = false;
-    helix.enable = false;
-  };
+  #stylix.targets = {
+    #vscode.enable = false;
+    #helix.enable = false;
+  #};
 
   module = {
     alacritty.enable = isWorkstation;
@@ -47,7 +47,7 @@ in {
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
-    stylix.enable =  isLinux && isWorkstation;
+    #stylix.enable =  isLinux && isWorkstation;
 
     hypridle.enable = config.module.hyprland.enable;
     hyprlock.enable = config.module.hyprland.enable;
