@@ -34,6 +34,7 @@
     "${homeModules}/swaync"
     "${homeModules}/sway"
     "${homeModules}/swaylock"
+    "${homeModules}/wlogout"
     
     "${homeModules}/direnv"
   ];

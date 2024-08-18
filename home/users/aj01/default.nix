@@ -46,6 +46,7 @@ in {
     ssh.enable = isLinux && isWorkstation;
     hyprland.enable = isLinux && isWorkstation;
     sway.enable = isLinux && isWorkstation;
+    
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
@@ -58,6 +59,7 @@ in {
     #swaync.enable = config.module.hyprland.enable;
     
     swaylock.enable = config.module.sway.enable;
+    wlogout.enable = config.module.sway.enable;
 
     btop.enable = true;
     eza.enable = true;
