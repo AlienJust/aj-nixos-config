@@ -18,7 +18,9 @@ in {
     [
       "${generalModules}"
       "${homeModules}"
-      #./stylix.nix
+      
+      # for vscode settings r/w
+      ./mutability.nix
     ]
     ++ lib.optional sshModuleExist sshModule;
 
@@ -29,7 +31,7 @@ in {
 
   stylix.targets = {
     #vscode.enable = false;
-    #helix.enable = false;
+    helix.enable = false;
   };
 
   module = {

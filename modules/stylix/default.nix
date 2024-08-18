@@ -4,7 +4,8 @@
   hostname,
   ...
 }: let
-  theme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  #theme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
   wallpaper = ../../wall.jpg;
   cursorSize =
     if hostname == "mixos"

@@ -67,8 +67,8 @@ in {
 
       shellAliases = {
         # System
-        "flake-update" = "nix flake update /home/${username}/Code/nixos-configuration/";
-        "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/Code/nixos-configuration/";
+        "flake-update" = "nix flake update /home/${username}/src/aj-nixos-config/";
+        "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/src/aj-nixos-config/";
         "ls" = "eza";
         "ll" = "eza -l";
         "h" = "history";
