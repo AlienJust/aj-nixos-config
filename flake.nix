@@ -111,7 +111,7 @@
         isWorkstation = true;
       };
       wixos = {
-        hostname = "mixos";
+        hostname = "wixos";
         username = "aj01";
         platform = linuxArch;
         isWorkstation = true;
@@ -148,6 +148,7 @@
       flake = {
         nixosConfigurations = {
           ${hosts.mixos.hostname} = libx.mkHost hosts.mixos;
+          ${hosts.wixos.hostname} = libx.mkHost hosts.wixos;
           #${hosts.nbox.hostname} = libx.mkHost hosts.nbox;
           #${hosts.rasp.hostname} = libx.mkHost hosts.rasp;
         };
