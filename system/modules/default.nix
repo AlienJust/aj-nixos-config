@@ -14,6 +14,7 @@
     "${hostModules}/programs"
     "${hostModules}/security"
     "${hostModules}/services"
+    "${hostModules}/stylix"
     "${hostModules}/timedate"
     "${hostModules}/users"
     "${hostModules}/variables"

@@ -80,7 +80,7 @@ in {
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
-    #stylix.enable =  isLinux && isWorkstation;
+    stylix.enable = isLinux && isWorkstation;
     kde-theme.enable = isLinux && isWorkstation;
     gtk.enable = isLinux && isWorkstation;
 

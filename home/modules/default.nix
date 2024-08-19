@@ -34,6 +34,7 @@
     "${homeModules}/zathura"
     "${homeModules}/zoxide"
     "${homeModules}/yazi"
+    "${homeModules}/stylix"
     "${homeModules}/swaync"
     "${homeModules}/sway"
     "${homeModules}/swaylock"
