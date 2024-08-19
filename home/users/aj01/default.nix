@@ -33,6 +33,36 @@ in {
     #vscode.enable = false;
     helix.enable = false;
   };
+  stylix.fonts = {
+    sizes = {
+      applications = 9;
+      terminal = 11;
+      popups = 11;
+      desktop = 9;
+    };
+    serif = {
+      package = pkgs.iosevka-bin.override {variant = "Etoile";}; #unstable
+      # package = pkgs.iosevka-bin.override {variant = "etoile";};
+      name = "Iosevka Etoile";
+    };
+
+    sansSerif = {
+      package = pkgs.iosevka-bin.override {variant = "Aile";}; #unstable
+      # package = pkgs.iosevka-bin.override {variant = "aile";};
+      name = "Iosevka Aile";
+    };
+
+    monospace = {
+      package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";}; # unstable
+      # package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
+      name = "Iosevka Term";
+    };
+
+    emoji = {
+      name = "OpenMoji Color";
+      package = pkgs.openmoji-color;
+    };
+  };
 
   module = {
     alacritty.enable = isWorkstation;
