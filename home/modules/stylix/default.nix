@@ -113,6 +113,7 @@ in {
           desktop = 9; #10;
           applications = 9; #10;
           terminal = 11; #12;
+          popups = 9;
         };
       };
 
