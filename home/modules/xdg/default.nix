@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -9,8 +10,13 @@ in {
   options = {
     module.xdg.enable = mkEnableOption "Enables xdg";
   };
-
+  # https://nxoo.alexdeb.ru
   config = mkIf cfg.enable {
+    xdg.desktopEntries.firefox = {
+      name = "Firefox";
+      exec = "${pkgs.firefox}/bin/firefox";
+    };
+
     xdg.mimeApps = {
       enable = true;
 
