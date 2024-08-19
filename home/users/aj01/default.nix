@@ -139,13 +139,6 @@ in {
         telegram-desktop
         vesktop
 
-        # Office
-        #onlyoffice-bin
-        libreoffice
-
-        # Remote connection
-        remmina
-
         # Misc
         obs-studio
         dconf2nix
@@ -154,6 +147,57 @@ in {
         gat
         vlc
         eog
+
+        mangohud
+        #intel-gpu-tools
+        pavucontrol
+
+        udisks2
+        ffmpeg
+        cava
+        sacd
+
+        # general software
+        meld
+        vlc
+        gimp
+        inkscape
+        #audacity
+        remmina
+        galculator
+        avalonia-ilspy
+        mpv
+        #obs-studio
+        imv
+        wf-recorder
+        keepassxc
+        thunderbird
+        qbittorrent
+        teamspeak_client
+        winbox
+        libreoffice-fresh
+        # anydesk
+        # chromium
+        krita
+        xfce.mousepad
+
+        # Virt
+        bridge-utils
+        qemu
+        swtpm
+        edk2
+        OVMF
+        virt-manager
+        virt-viewer
+        spice
+        spice-gtk
+        spice-protocol
+        win-virtio
+        win-spice
+
+        # native wayland support (unstable)
+        wineWowPackages.waylandFull
+        cabextract
       ];
   };
 }
