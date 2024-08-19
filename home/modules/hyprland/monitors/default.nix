@@ -11,7 +11,8 @@ with lib; let
     if hostname == "mixos"
     then ["HDMI-A-1,1920x1080@60,0x0,1" "DP-1,2560x1440@165,1920x800,1"]
     else if hostname == "wixos"
-    then ["eDP-1,2880x1800@120,0x0,1.8"]
+    #then ["eDP-1,2880x1800@120,0x0,1.8"]
+    then ["DP-1,1920x1080@60,0x0,1" "HDMI-A-1,1920x1080@60,1920x0,1" "DVI-D-1,1920x1080@60,3840x0,1"]
     else [];
 
   workspacesSettings =
