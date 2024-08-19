@@ -21,7 +21,7 @@ in {
     users.enable = true;
     variables.enable = true;
     virtualisation.enable = true;
-    games.enable = true;
+    games.enable = false;
 
     services = {
       bolt.enable = true;

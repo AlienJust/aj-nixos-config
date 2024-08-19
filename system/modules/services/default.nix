@@ -16,5 +16,6 @@ in {
     "${hostServicesModulesPath}/zram"
     "${hostServicesModulesPath}/tlp"
     "${hostServicesModulesPath}/qmk"
+    "${hostServicesModulesPath}/ssh"
   ];
 }

@@ -11,6 +11,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    security.polkit.enable = true;
     security.polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
         if (

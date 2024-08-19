@@ -15,6 +15,8 @@ in {
 
     security = {
       sudo.enable = true;
+      sudo.wheelNeedsPassword = false;
+
       pam.services.swaylock = {};
 
       doas = {
@@ -22,7 +24,7 @@ in {
         extraRules = [
           {
             groups = ["wheel"];
-            noPass = false;
+            noPass = true;
             keepEnv = true;
             persist = true;
           }
