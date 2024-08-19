@@ -19,17 +19,19 @@ in {
 
       pam.services.swaylock = {};
 
+      /*
       doas = {
         enable = true;
         extraRules = [
           {
             groups = ["wheel"];
-            noPass = true;
+            noPass = false;
             keepEnv = true;
             persist = true;
           }
         ];
       };
+      */
     };
   };
 }
