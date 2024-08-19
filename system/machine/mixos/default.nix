@@ -14,6 +14,8 @@ in {
 
   module = {
     console.enable = true;
+    fonts.enable = true;
+    games.enable = true;
     locales.enable = true;
     network.enable = true;
     security.enable = true;
@@ -21,7 +23,6 @@ in {
     users.enable = true;
     variables.enable = true;
     virtualisation.enable = true;
-    games.enable = true;
 
     services = {
       bolt.enable = true;
