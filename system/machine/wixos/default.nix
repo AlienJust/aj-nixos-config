@@ -25,6 +25,7 @@ in {
 
     services = {
       bolt.enable = true;
+      fstrim.enable = true;
       fwupd.enable = true;
       polkit.enable = true;
       printing.enable = true;
