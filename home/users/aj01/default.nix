@@ -18,7 +18,7 @@ in {
     [
       "${generalModules}"
       "${homeModules}"
-      
+
       # for vscode settings r/w
       ./mutability.nix
     ]
@@ -46,19 +46,20 @@ in {
     ssh.enable = isLinux && isWorkstation;
     hyprland.enable = isLinux && isWorkstation;
     sway.enable = isLinux && isWorkstation;
-    
+
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
     #stylix.enable =  isLinux && isWorkstation;
     kde-theme.enable = isLinux && isWorkstation;
+    gtk.enable = isLinux && isWorkstation;
 
     hypridle.enable = config.module.hyprland.enable;
     hyprlock.enable = config.module.hyprland.enable;
     waybar.enable = config.module.hyprland.enable;
     rofi.enable = config.module.hyprland.enable;
     swaync.enable = config.module.hyprland.enable;
-    
+
     swaylock.enable = config.module.sway.enable;
     wlogout.enable = config.module.sway.enable;
     #mako.enable = false; #config.module.sway.enable;

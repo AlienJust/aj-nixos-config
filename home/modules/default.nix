@@ -13,6 +13,7 @@
     "${homeModules}/fish"
     "${homeModules}/fzf"
     "${homeModules}/git"
+    "${homeModules}/gtk"
     "${homeModules}/helix"
     "${homeModules}/htop"
     "${homeModules}/neofetch"
@@ -39,7 +40,7 @@
     "${homeModules}/wlogout"
     #"${homeModules}/mako"
     "${homeModules}/mpd"
-    
+
     "${homeModules}/direnv"
   ];
 }
