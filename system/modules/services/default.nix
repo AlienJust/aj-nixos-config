@@ -10,11 +10,13 @@ in {
     "${hostServicesModulesPath}/xserver"
     "${hostServicesModulesPath}/polkit"
     "${hostServicesModulesPath}/ollama"
+    "${hostServicesModulesPath}/fstrim"
     "${hostServicesModulesPath}/fwupd"
     "${hostServicesModulesPath}/udev"
     "${hostServicesModulesPath}/bolt"
     "${hostServicesModulesPath}/zram"
     "${hostServicesModulesPath}/tlp"
     "${hostServicesModulesPath}/qmk"
+    "${hostServicesModulesPath}/ssh"
   ];
 }

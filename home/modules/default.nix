@@ -13,6 +13,7 @@
     "${homeModules}/fish"
     "${homeModules}/fzf"
     "${homeModules}/git"
+    "${homeModules}/gtk"
     "${homeModules}/helix"
     "${homeModules}/htop"
     "${homeModules}/neofetch"
@@ -33,6 +34,7 @@
     "${homeModules}/zathura"
     "${homeModules}/zoxide"
     "${homeModules}/yazi"
+    "${homeModules}/stylix"
     "${homeModules}/swaync"
     "${homeModules}/sway"
     "${homeModules}/swaylock"
@@ -40,7 +42,7 @@
     #"${homeModules}/mako"
     "${homeModules}/mpd"
     "${homeModules}/mpv"
-    
+
     "${homeModules}/direnv"
   ];
 }

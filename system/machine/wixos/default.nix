@@ -15,10 +15,11 @@ in {
   module = {
     console.enable = true;
     fonts.enable = true;
-    games.enable = true;
+    games.enable = false;
     locales.enable = true;
     network.enable = true;
     security.enable = true;
+    stylix.enable = true;
     timedate.enable = true;
     users.enable = true;
     variables.enable = true;

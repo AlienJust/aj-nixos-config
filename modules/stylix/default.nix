@@ -10,7 +10,7 @@
   cursorSize =
     if hostname == "mixos"
     then 32
-    else 24;
+    else 32;
 in {
   stylix = {
     enable = true;
@@ -27,9 +27,21 @@ in {
       desktop = 1.0;
     };
 
-    cursor = {
+    /*
+      cursor = {
       name = "Vimix-cursors";
       package = pkgs.vimix-cursors;
+      size = cursorSize;
+    };
+    */
+
+    cursor = {
+      package = pkgs.catppuccin-cursors.mochaPeach;
+      #name = "Catppuccin-Mocha-Peach-Cursors";
+      name = "catppuccin-mocha-peach-cursors";
+      #name = "CatppuccinMochaPeachCursors";
+      #package = pkgs.capitaine-cursors;
+      #name = "capitaine-cursors";
       size = cursorSize;
     };
 

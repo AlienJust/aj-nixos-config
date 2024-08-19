@@ -18,7 +18,7 @@ in {
     [
       "${generalModules}"
       "${homeModules}"
-      
+
       # for vscode settings r/w
       ./mutability.nix
     ]
@@ -29,10 +29,12 @@ in {
     # (import "${self}/home/overlays/rofi-emoji")
   ];
 
+  /*
   stylix.targets = {
     #vscode.enable = false;
     helix.enable = false;
   };
+  */
 
   module = {
     alacritty.enable = isWorkstation;
@@ -46,19 +48,20 @@ in {
     ssh.enable = isLinux && isWorkstation;
     hyprland.enable = isLinux && isWorkstation;
     sway.enable = isLinux && isWorkstation;
-    
+
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
 
-    #stylix.enable =  isLinux && isWorkstation;
+    stylix.enable = isLinux && isWorkstation;
     kde-theme.enable = isLinux && isWorkstation;
+    gtk.enable = isLinux && isWorkstation;
 
     hypridle.enable = config.module.hyprland.enable;
     hyprlock.enable = config.module.hyprland.enable;
     waybar.enable = config.module.hyprland.enable;
     rofi.enable = config.module.hyprland.enable;
     swaync.enable = config.module.hyprland.enable;
-    
+
     swaylock.enable = config.module.sway.enable;
     wlogout.enable = config.module.sway.enable;
     #mako.enable = false; #config.module.sway.enable;
@@ -137,9 +140,6 @@ in {
         telegram-desktop
         vesktop
 
-        # Office
-        onlyoffice-bin
-
         # Misc
         obs-studio
         dconf2nix
@@ -148,6 +148,57 @@ in {
         gat
         vlc
         eog
+
+        mangohud
+        #intel-gpu-tools
+        pavucontrol
+
+        udisks2
+        ffmpeg
+        cava
+        sacd
+
+        # general software
+        meld
+        vlc
+        gimp
+        inkscape
+        #audacity
+        remmina
+        galculator
+        avalonia-ilspy
+        mpv
+        #obs-studio
+        imv
+        wf-recorder
+        keepassxc
+        thunderbird
+        qbittorrent
+        teamspeak_client
+        winbox
+        libreoffice-fresh
+        # anydesk
+        # chromium
+        krita
+        xfce.mousepad
+
+        # Virt
+        bridge-utils
+        qemu
+        swtpm
+        edk2
+        OVMF
+        virt-manager
+        virt-viewer
+        spice
+        spice-gtk
+        spice-protocol
+        win-virtio
+        win-spice
+
+        # native wayland support (unstable)
+        wineWowPackages.waylandFull
+        cabextract
       ];
   };
 }

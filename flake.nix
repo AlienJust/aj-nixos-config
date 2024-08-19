@@ -28,7 +28,8 @@
     };
 
     # Hyprland ecosystem
-    /*hyprland = {
+    /*
+      hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.42.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -36,7 +37,8 @@
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
-    };*/
+    };
+    */
 
     # Unoficial users flakes
     yandex-music.url = "github:cucumber-sp/yandex-music-linux";
@@ -108,6 +110,12 @@
         platform = linuxArch;
         isWorkstation = true;
       };
+      wixos = {
+        hostname = "wixos";
+        username = "aj01";
+        platform = linuxArch;
+        isWorkstation = true;
+      };
       /*
       nbox = {
         hostname = "nbox";
@@ -140,6 +148,7 @@
       flake = {
         nixosConfigurations = {
           ${hosts.mixos.hostname} = libx.mkHost hosts.mixos;
+          ${hosts.wixos.hostname} = libx.mkHost hosts.wixos;
           #${hosts.nbox.hostname} = libx.mkHost hosts.nbox;
           #${hosts.rasp.hostname} = libx.mkHost hosts.rasp;
         };

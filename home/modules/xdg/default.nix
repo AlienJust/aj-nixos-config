@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -9,20 +10,31 @@ in {
   options = {
     module.xdg.enable = mkEnableOption "Enables xdg";
   };
-
+  # https://nxoo.alexdeb.ru
   config = mkIf cfg.enable {
     xdg.mimeApps = {
       enable = true;
+
+      /*
+      associations.added = {
+        #"application/pdf" = ["org.gnome.Evince.desktop"];
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/about" = "firefox.desktop";
+        "x-scheme-handler/unknown" = "firefox.desktop";
+      };
+      */
 
       defaultApplications = {
         "text/markdown" = "nvim.desktop";
         "text/plain" = "nvim.desktop";
 
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/about" = "firefox.desktop";
-        "x-scheme-handler/unknown" = "firefox.desktop";
+        "default-web-browser" = ["firefox.desktop"];
+        "text/html" = ["firefox.desktop"];
+        "x-scheme-handler/http" = ["firefox.desktop"];
+        "x-scheme-handler/https" = ["firefox.desktop"];
+        "x-scheme-handler/about" = ["firefox.desktop"];
+        "x-scheme-handler/unknown" = ["firefox.desktop"];
 
         "image/png" = "org.eog.desktop";
         "image/jpeg" = "org.eog.desktop";
