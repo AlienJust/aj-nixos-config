@@ -140,7 +140,11 @@ in {
         vesktop
 
         # Office
-        onlyoffice-bin
+        #onlyoffice-bin
+        libreoffice
+
+        # Remote connection
+        remmina
 
         # Misc
         obs-studio
