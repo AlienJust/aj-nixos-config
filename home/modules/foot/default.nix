@@ -27,6 +27,8 @@ in {
           hide-when-typing = "no";
         };
 
+        # Swap shift+ctrl+c with ctrl+c (and vise versa) and shift+ctrl+v with ctrl+v
+        /*
         key-bindings = {
           clipboard-copy = "Control+c XF86Copy";
           clipboard-paste = "Control+v XF86Paste";
@@ -35,6 +37,7 @@ in {
         text-bindings = {
           "\\x03" = "Control+Shift+c Control+Shift+C";
         };
+        */
       };
     };
   };
