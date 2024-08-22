@@ -86,7 +86,7 @@ in {
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 
         export QT_AUTO_SCREEN_SCALE_FACTOR="1"
-        
+
         export XDG_CURRENT_DESKTOP="sway"
 
         export NIXOS_OZONE_WL="1"
@@ -392,11 +392,19 @@ in {
             command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP";
             always = false;
           }
-          
+
+          # Proper xdg working
+          # See:   https://www.reddit.com/r/NixOS/comments/1aeju6n/unable_to_set_default_browser/
+          # Also:  https://github.com/NixOS/nixpkgs/issues/189851
+          {
+            command = "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service";
+            always = false;
+          }
+
           # Mako startup
           #{
-            #command = "mako";
-            #always = false;
+          #command = "mako";
+          #always = false;
           #}
 
           # Swokstyle
