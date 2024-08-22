@@ -24,7 +24,8 @@ in {
         "x-scheme-handler/unknown" = "firefox.desktop";
       };
       */
-
+      # TODO: To make this work need to be executed:
+      # TODO: systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
       defaultApplications = {
         "text/markdown" = "nvim.desktop";
         "text/plain" = "nvim.desktop";
