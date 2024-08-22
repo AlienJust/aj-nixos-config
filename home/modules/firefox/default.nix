@@ -78,7 +78,7 @@ in {
         extensions = with (import ./addons.nix pkgs); [
           ublock-origin
           sidebery
-          stylus
+          #stylus
           languagetool
         ];
         settings = {

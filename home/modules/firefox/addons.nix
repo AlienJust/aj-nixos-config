@@ -61,10 +61,12 @@ in {
 
   "ublock-origin" = buildFirefoxXpiAddon {
     pname = "ublock-origin";
-    version = "1.52.2";
+    version = "1.59.0";
     addonId = "uBlock0@raymondhill.net";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-1.52.2.xpi";
-    sha256 = "e8ee3f9d597a6d42db9d73fe87c1d521de340755fd8bfdd69e41623edfe096d6";
+    #url = "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-1.52.2.xpi";
+    url = "https://github.com/gorhill/uBlock/releases/download/1.59.0/uBlock0_1.59.0.firefox.signed.xpi";
+    #sha256 = "e8ee3f9d597a6d42db9d73fe87c1d521de340755fd8bfdd69e41623edfe096d6";
+    sha256 = "sha256-HbnGdqB9FB+NNtu8JPnj1kpswjQNv8bISLxDlfls+xQ=";
     meta = with lib; {
       homepage = "https://github.com/gorhill/uBlock#ublock-origin";
       description = "Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.";
@@ -94,6 +96,7 @@ in {
       platforms = platforms.all;
     };
   };
+  /*
   "stylus" = buildFirefoxXpiAddon {
     pname = "stylus";
     version = "1.5.35";
@@ -120,6 +123,7 @@ in {
       platforms = platforms.all;
     };
   };
+  */
   "languagetool" = buildFirefoxXpiAddon {
     pname = "languagetool";
     version = "7.1.13";
