@@ -33,25 +33,25 @@ in {
       enable = true;
       enableUpdateCheck = false;
 
-      #package = pkgs.vscode.fhsWithPackages (ps:
-      #with ps; [
-      # needed for rust lang server and rust-analyzer extension
-      #rustup
-      /*
-      zlib
-      openssl.dev
-      pkg-config
-      # for dotnet
-      (with dotnetCorePackages;
-        combinePackages [
-          sdk_6_0
-          sdk_7_0
-          sdk_8_0
-        ])
-      # direnv
-      direnv
-      */
-      #]);
+      package = pkgs.vscode.fhsWithPackages (ps:
+        with ps; [
+          # needed for rust lang server and rust-analyzer extension
+          #rustup
+          /*
+          zlib
+          openssl.dev
+          pkg-config
+          # for dotnet
+          (with dotnetCorePackages;
+            combinePackages [
+              sdk_6_0
+              sdk_7_0
+              sdk_8_0
+            ])
+          # direnv
+          direnv
+          */
+        ]);
       extensions =
         with pkgs.vscode-extensions; [
           #mvllow.rose-pine
