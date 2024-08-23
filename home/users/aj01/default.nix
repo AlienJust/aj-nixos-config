@@ -158,6 +158,7 @@ in {
         cava
         sacd
         _7zz
+        mc
 
         # general software
         meld
