@@ -157,6 +157,7 @@ in {
         ffmpeg
         cava
         sacd
+        _7zz
 
         # general software
         meld
