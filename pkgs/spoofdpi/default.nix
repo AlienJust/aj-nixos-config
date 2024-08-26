@@ -1,9 +1,9 @@
 {
   lib,
   pkgs,
-  version ? "v0.10.2",
-  hash ? "sha256-e6TPklWp5rvNypnI0VHqOjzZhkYsZcp+jkXUlYxMBlU=",
-  vendorHash ? "sha256-kmp+8MMV1AHaSvLnvYL17USuv7xa3NnsCyCbqq9TvYE=",
+  version ? "0.10.11",
+  hash ? "sha256-yW1IwHVIGH2nMuTlGed2QenQdE0a4tNUasYmj3LuPPU=",
+  vendorHash ? "sha256-47Gt5SI6VXq4+1T0LxFvQoYNk+JqTt3DonDXLfmFBzw=",
   ...
 }:
 pkgs.buildGoModule {
