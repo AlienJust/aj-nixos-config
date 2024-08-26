@@ -18,5 +18,6 @@ in {
     "${hostServicesModulesPath}/tlp"
     "${hostServicesModulesPath}/qmk"
     "${hostServicesModulesPath}/ssh"
+    "${hostServicesModulesPath}/spoofdpi"
   ];
 }

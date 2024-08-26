@@ -37,6 +37,7 @@ in {
       hyprland.enable = true;
       qmk.enable = true;
       ssh.enable = true;
+      spoofdpi.enable = true;
 
       ollama = {
         enable = true;

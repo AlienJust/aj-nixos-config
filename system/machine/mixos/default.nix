@@ -24,6 +24,7 @@ in {
     users.enable = true;
     variables.enable = true;
     virtualisation.enable = true;
+    spoofdpi.enable = true;
 
     services = {
       bolt.enable = true;
