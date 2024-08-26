@@ -1,18 +1,21 @@
 {
+  self,
   pkgs,
   config,
   lib,
   ...
 }:
 with lib; let
-  cfg = config.services.spoofdpi;
+  cfg = config.module.services.spoofdpi;
+  spoofdpi = pkgs.callPackage "${self}/pkgs/spoofdpi" {};
 in {
-  options.services.spoofdpi = {
+  options.module.services.spoofdpi = {
     enable = mkEnableOption "SpoofDPI service";
 
     package = mkOption {
       type = types.package;
-      default = pkgs.spoofdpi;
+      #default = pkgs.spoofdpi;
+      default = spoofdpi;
       defaultText = literalExpression "pkgs.spoofdpi";
       description = "The package to use.";
     };
@@ -88,7 +91,7 @@ in {
         Restart = "on-failure";
         ExecStart = ''
           ${lib.getExe cfg.package} \
-              -no-banner \
+              -banner false \
               -addr ${cfg.address} \
               -port ${toString cfg.port} \
               -dns-addr ${cfg.dns} \
