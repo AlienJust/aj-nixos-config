@@ -16,6 +16,10 @@ in {
       server.enable = true;
 
       settings = {
+        scrollback = {
+          lines = 10000;
+        };
+
         main = {
           term = "xterm-256color";
           workers = 32;
