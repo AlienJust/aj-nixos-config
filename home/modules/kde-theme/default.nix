@@ -13,17 +13,17 @@ in {
 
   config = mkIf cfg.enable {
     qt = {
-    enable = true;
-    platformTheme.name = "adwaita";
-    style = {
-      name = lib.mkForce "kvantum-dark";
-      #name = "kvantum-dark";
-      package = [
-        pkgs.libsForQt5.qtstyleplugin-kvantum
-        pkgs.qt6Packages.qtstyleplugin-kvantum
-      ];
+      enable = true;
+      platformTheme.name = "adwaita";
+      style = {
+        name = lib.mkForce "kvantum-dark";
+        #name = "kvantum-dark";
+        package = [
+          pkgs.libsForQt5.qtstyleplugin-kvantum
+          pkgs.qt6Packages.qtstyleplugin-kvantum
+        ];
+      };
     };
-  };
 
     xdg.configFile = {
       "Kvantum/kvantum.kvconfig" = {
