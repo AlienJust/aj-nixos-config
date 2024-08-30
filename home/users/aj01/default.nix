@@ -70,7 +70,7 @@ in {
     mpv.enable = isLinux && isWorkstation;
 
     btop.enable = true;
-    eza.enable = true;
+    eza.enable = false;
     git.enable = true;
     direnv.enable = true;
     fzf.enable = true;

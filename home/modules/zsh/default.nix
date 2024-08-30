@@ -69,8 +69,8 @@ in {
         # System
         "flake-update" = "nix flake update /home/${username}/src/aj-nixos-config/";
         "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/src/aj-nixos-config/";
-        "ls" = "eza";
-        "ll" = "eza -l";
+        #"ls" = "eza";
+        #"ll" = "eza -l";
         "h" = "history";
         "c" = "clear";
         "s" = "sudo su";
