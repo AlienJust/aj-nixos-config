@@ -27,6 +27,7 @@ in {
 
     services = {
       bolt.enable = true;
+      devmon.enable = true;
       fstrim.enable = true;
       fwupd.enable = true;
       gvfs.enable = true;
@@ -44,10 +45,14 @@ in {
       spoofdpi.doh = true;
       spoofdpi.windowSize = 0;
 
+      thumbler.enable = true;
+
       ollama = {
         enable = true;
         gpuSupport.enable = config.services.ollama.enable;
       };
+
+      udisks2.enable = true;
     };
 
     programs = {
@@ -60,6 +65,7 @@ in {
       xdg-portal.enable = true;
       zsh.enable = true;
       fish.enable = false;
+      thunar.enable = true;
       systemPackages.enable = true;
     };
   };

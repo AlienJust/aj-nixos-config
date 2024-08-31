@@ -38,7 +38,6 @@
     "${homeModules}/swaync"
     "${homeModules}/sway"
     "${homeModules}/swaylock"
-    "${homeModules}/thunar"
     "${homeModules}/wlogout"
     #"${homeModules}/mako"
     "${homeModules}/mpd"

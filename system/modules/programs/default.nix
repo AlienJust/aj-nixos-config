@@ -12,5 +12,6 @@ in {
     "${hostProgramModulesPath}/mtr"
     "${hostProgramModulesPath}/dconf"
     "${hostProgramModulesPath}/fish"
+    "${hostProgramModulesPath}/thunar"
   ];
 }

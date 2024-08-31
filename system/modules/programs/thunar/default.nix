@@ -1,13 +1,14 @@
 {
+  pkgs,
   lib,
   config,
   ...
 }:
 with lib; let
-  cfg = config.module.thunar;
+  cfg = config.module.programs.thunar;
 in {
   options = {
-    module.thunar.enable = mkEnableOption "Enables thunar";
+    module.programs.thunar.enable = mkEnableOption "Enables thunar";
   };
 
   config = mkIf cfg.enable {

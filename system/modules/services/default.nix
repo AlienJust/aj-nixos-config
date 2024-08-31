@@ -3,6 +3,7 @@
 in {
   imports = [
     "${hostServicesModulesPath}/cpu-autofreq"
+    "${hostServicesModulesPath}/devmon"
     "${hostServicesModulesPath}/greetd-tui"
     "${hostServicesModulesPath}/gvfs"
     "${hostServicesModulesPath}/syncthing"
@@ -17,9 +18,11 @@ in {
     "${hostServicesModulesPath}/udev"
     "${hostServicesModulesPath}/bolt"
     "${hostServicesModulesPath}/zram"
+    "${hostServicesModulesPath}/thumbler"
     "${hostServicesModulesPath}/tlp"
     "${hostServicesModulesPath}/qmk"
     "${hostServicesModulesPath}/ssh"
     "${hostServicesModulesPath}/spoofdpi"
+    "${hostServicesModulesPath}/udisks2"
   ];
 }
