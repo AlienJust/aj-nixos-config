@@ -45,7 +45,7 @@ in {
       spoofdpi.doh = true;
       spoofdpi.windowSize = 0;
 
-      thumbler.enable = true;
+      tumbler.enable = true;
 
       ollama = {
         enable = true;

@@ -18,7 +18,7 @@ in {
     "${hostServicesModulesPath}/udev"
     "${hostServicesModulesPath}/bolt"
     "${hostServicesModulesPath}/zram"
-    "${hostServicesModulesPath}/thumbler"
+    "${hostServicesModulesPath}/tumbler"
     "${hostServicesModulesPath}/tlp"
     "${hostServicesModulesPath}/qmk"
     "${hostServicesModulesPath}/ssh"
