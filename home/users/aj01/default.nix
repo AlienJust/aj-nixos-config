@@ -84,6 +84,7 @@ in {
     fish.enable = true;
     zoxide.enable = true;
     yazi.enable = true;
+    thunar.enable = true;
   };
 
   home = {

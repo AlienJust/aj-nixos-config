@@ -29,7 +29,9 @@ in {
       bolt.enable = true;
       fstrim.enable = true;
       fwupd.enable = true;
+      gvfs.enable = true;
       polkit.enable = true;
+      polkit-gnome-agent.enable = true;
       printing.enable = true;
       syncthing.enable = true;
       udev.enable = true;
@@ -53,11 +55,11 @@ in {
       gnupg.enable = true;
       hm.enable = true;
       nh.enable = true;
-      kdeconnect.enable = true;
+      kdeconnect.enable = false;
       mtr.enable = true;
       xdg-portal.enable = true;
       zsh.enable = true;
-      fish.enable = true;
+      fish.enable = false;
       systemPackages.enable = true;
     };
   };

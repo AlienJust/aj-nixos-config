@@ -10,6 +10,7 @@ in {
     "${hostServicesModulesPath}/printing"
     "${hostServicesModulesPath}/xserver"
     "${hostServicesModulesPath}/polkit"
+    "${hostServicesModulesPath}/polkit-gnome-agent"
     "${hostServicesModulesPath}/ollama"
     "${hostServicesModulesPath}/fstrim"
     "${hostServicesModulesPath}/fwupd"
