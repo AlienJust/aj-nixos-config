@@ -12,6 +12,8 @@ in {
     "${machineModules}"
   ];
 
+  services.dbus.implementation = "broker";
+
   module = {
     console.enable = true;
     fonts.enable = true;
@@ -56,17 +58,18 @@ in {
     };
 
     programs = {
+      adb.enable = true;
       dconf.enable = true;
+      fish.enable = false;
       gnupg.enable = true;
       hm.enable = true;
-      nh.enable = true;
       kdeconnect.enable = false;
       mtr.enable = true;
+      nh.enable = true;
+      systemPackages.enable = true;
+      thunar.enable = true;
       xdg-portal.enable = true;
       zsh.enable = true;
-      fish.enable = false;
-      thunar.enable = true;
-      systemPackages.enable = true;
     };
   };
 }

@@ -2,16 +2,17 @@
   hostProgramModulesPath = "${hostModules}/programs";
 in {
   imports = [
-    "${hostProgramModulesPath}/systemPackages"
-    "${hostProgramModulesPath}/home-manager"
-    "${hostProgramModulesPath}/nix-helper"
-    "${hostProgramModulesPath}/kdeconnect"
-    "${hostProgramModulesPath}/xdg-portal"
-    "${hostProgramModulesPath}/gnupg"
-    "${hostProgramModulesPath}/zsh"
-    "${hostProgramModulesPath}/mtr"
+    "${hostProgramModulesPath}/adb"
     "${hostProgramModulesPath}/dconf"
     "${hostProgramModulesPath}/fish"
+    "${hostProgramModulesPath}/gnupg"
+    "${hostProgramModulesPath}/home-manager"
+    "${hostProgramModulesPath}/kdeconnect"
+    "${hostProgramModulesPath}/mtr"
+    "${hostProgramModulesPath}/nix-helper"
+    "${hostProgramModulesPath}/systemPackages"
     "${hostProgramModulesPath}/thunar"
+    "${hostProgramModulesPath}/xdg-portal"
+    "${hostProgramModulesPath}/zsh"
   ];
 }
