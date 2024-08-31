@@ -4,6 +4,7 @@ in {
   imports = [
     "${hostServicesModulesPath}/cpu-autofreq"
     "${hostServicesModulesPath}/greetd-tui"
+    "${hostServicesModulesPath}/gvfs"
     "${hostServicesModulesPath}/syncthing"
     "${hostServicesModulesPath}/hyprland"
     "${hostServicesModulesPath}/printing"
