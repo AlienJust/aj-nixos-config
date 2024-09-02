@@ -7,7 +7,8 @@
 }:
 with lib; let
   cfg = config.module.services.spoofdpi;
-  spoofdpi = pkgs.callPackage "${self}/pkgs/spoofdpi" {};
+  # spoofdpi = pkgs.callPackage "${self}/pkgs/spoofdpi" {};
+  spoofdpi = pkgs.spoofdpi;
 in {
   options.module.services.spoofdpi = {
     enable = mkEnableOption "SpoofDPI service";
