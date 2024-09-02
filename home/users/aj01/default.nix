@@ -46,8 +46,6 @@ in {
     firefox.enable = isLinux && isWorkstation;
     foot.enable = isLinux && isWorkstation;
     ssh.enable = isLinux && isWorkstation;
-    hyprland.enable = isLinux && isWorkstation;
-    sway.enable = isLinux && isWorkstation;
 
     impermanence.enable = isLinux && isWorkstation;
     xdg.enable = isLinux && isWorkstation;
@@ -56,12 +54,16 @@ in {
     kde-theme.enable = isLinux && isWorkstation;
     gtk.enable = isLinux && isWorkstation;
 
+    #hyprland.enable = isLinux && isWorkstation;
+    hyprland.enable = false;
     hypridle.enable = config.module.hyprland.enable;
     hyprlock.enable = config.module.hyprland.enable;
-    waybar.enable = config.module.hyprland.enable;
+    hyprpaper.enable = config.module.hyprland.enable;
     rofi.enable = config.module.hyprland.enable;
     swaync.enable = config.module.hyprland.enable;
 
+    sway.enable = isLinux && isWorkstation;
+    waybar.enable = config.module.hyprland.enable || config.module.sway.enable;
     swaylock.enable = config.module.sway.enable;
     wlogout.enable = config.module.sway.enable;
     #mako.enable = false; #config.module.sway.enable;
@@ -81,7 +83,7 @@ in {
     helix.enable = true;
     password-store.enable = true;
     zsh.enable = true;
-    fish.enable = true;
+    fish.enable = false;
     zoxide.enable = true;
     yazi.enable = true;
   };

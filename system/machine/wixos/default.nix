@@ -39,7 +39,7 @@ in {
       syncthing.enable = true;
       udev.enable = true;
       greetd-tui.enable = false;
-      hyprland.enable = true;
+      hyprland.enable = false;
       qmk.enable = true;
       ssh.enable = true;
 
