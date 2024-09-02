@@ -12,10 +12,12 @@ in {
     "${machineModules}"
   ];
 
+  services.dbus.implementation = "broker";
+
   module = {
     console.enable = true;
     fonts.enable = true;
-    games.enable = false;
+    games.enable = true;
     locales.enable = true;
     network.enable = true;
     security.enable = true;
@@ -27,9 +29,12 @@ in {
 
     services = {
       bolt.enable = true;
+      devmon.enable = true;
       fstrim.enable = true;
       fwupd.enable = true;
+      gvfs.enable = true;
       polkit.enable = true;
+      polkit-gnome-agent.enable = true;
       printing.enable = true;
       syncthing.enable = true;
       udev.enable = true;
@@ -42,23 +47,29 @@ in {
       spoofdpi.doh = true;
       spoofdpi.windowSize = 0;
 
+      tumbler.enable = true;
+
       ollama = {
         enable = true;
         gpuSupport.enable = config.services.ollama.enable;
       };
+
+      udisks2.enable = true;
     };
 
     programs = {
+      adb.enable = true;
       dconf.enable = true;
+      fish.enable = false;
       gnupg.enable = true;
       hm.enable = true;
-      nh.enable = true;
-      kdeconnect.enable = true;
+      kdeconnect.enable = false;
       mtr.enable = true;
+      nh.enable = true;
+      systemPackages.enable = true;
+      thunar.enable = true;
       xdg-portal.enable = true;
       zsh.enable = true;
-      fish.enable = true;
-      systemPackages.enable = true;
     };
   };
 }
