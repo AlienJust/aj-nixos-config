@@ -1,8 +1,8 @@
 {
   lib,
   pkgs,
-  version ? "0.10.11",
-  hash ? "sha256-yW1IwHVIGH2nMuTlGed2QenQdE0a4tNUasYmj3LuPPU=",
+  version ? "v0.11.1",
+  hash ? "sha256-p3dDRTxlOxX73dcDecEVC5E+xA9XCn5FBIeJgmcanPo=",
   vendorHash ? "sha256-47Gt5SI6VXq4+1T0LxFvQoYNk+JqTt3DonDXLfmFBzw=",
   ...
 }:
@@ -29,6 +29,6 @@ pkgs.buildGoModule {
     license = licenses.asl20;
     maintainers = with bonLib.maintainers; [L-Nafaryus];
     broken = false;
-    mainProgram = "spoof-dpi";
+    mainProgram = "spoofdpi";
   };
 }
