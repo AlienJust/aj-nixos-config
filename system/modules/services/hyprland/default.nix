@@ -15,6 +15,8 @@ in {
   config = mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
+
+      # Use package from flake:
       #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
   };
