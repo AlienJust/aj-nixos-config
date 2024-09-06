@@ -64,7 +64,7 @@ in {
 
     sway.enable = isLinux && isWorkstation;
     waybar.enable = config.module.hyprland.enable || config.module.sway.enable;
-    # swaylock.enable = config.module.sway.enable;
+    swaylock.enable = config.module.sway.enable;
     #swaylock.enable = false;
     wlogout.enable = config.module.sway.enable;
     #mako.enable = false; #config.module.sway.enable;
