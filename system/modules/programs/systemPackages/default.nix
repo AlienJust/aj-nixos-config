@@ -31,6 +31,7 @@ in {
         file
         zip
         unzip
+        unrar
         killall
 
         # Hardware utils
