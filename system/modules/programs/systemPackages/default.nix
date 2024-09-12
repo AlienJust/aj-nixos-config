@@ -56,6 +56,8 @@ in {
         mtr
         ipcalc
         cacert
+        itfop
+        openvpn
       ]
       ++ optionals isWorkstation [
         # Themes
