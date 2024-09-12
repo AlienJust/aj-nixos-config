@@ -247,11 +247,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725376059,
-        "narHash": "sha256-J+XzuXv+6t/CKnp9XOE0xmy0Kix7obD8x2YIZNCv7eM=",
+        "lastModified": 1725377834,
+        "narHash": "sha256-tqoAO8oT6zEUDXte98cvA1saU9+1dLJQe3pMKLXv8ps=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "37c83c08d1c1acc3604afb72b5c9630802af1dac",
+        "rev": "e55f9a8678adc02024a4877c2a403e3f6daf24fe",
         "type": "github"
       },
       "original": {
@@ -936,11 +936,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1725376022,
-        "narHash": "sha256-ydMFL7vnURncnHtuOJUNFe0QTYhNQ6HyWi+jLlVOdAY=",
+        "lastModified": 1725515349,
+        "narHash": "sha256-rjNn3CEzz+nYDHzR86qt6LQbjMXy63d14+3gOvHN8Mc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c0709c1614374d927ea81c83cac6fce28ae2cca6",
+        "rev": "0223e698fc4abf6f3e2ddd0657e5cb1c5d47614e",
         "type": "github"
       },
       "original": {
@@ -1469,11 +1469,11 @@
         "ymExe": "ymExe"
       },
       "locked": {
-        "lastModified": 1725008655,
-        "narHash": "sha256-M0UcnrYtlrRY1sN65UPXcgEAzcdSpKWeHn4kbLDRRaw=",
+        "lastModified": 1725496778,
+        "narHash": "sha256-c+OKyhbgpXMryc6QQH4b5cePlqyHeSfDh4kT2rU+Tpo=",
         "owner": "cucumber-sp",
         "repo": "yandex-music-linux",
-        "rev": "8d7a26f3f3095044dd08422d9bca5607aa173103",
+        "rev": "98fed92683e2e5a49999d04b5559edd02eddf627",
         "type": "github"
       },
       "original": {
@@ -1485,13 +1485,13 @@
     "ymExe": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-GBSL5XmBPkAYGqRmO3CH6HOvt8Ltq0mU/MWoPbUneSk=",
+        "narHash": "sha256-JcdIfz+evOf0D5YlQsmOEzGVkCgcGHoEpbGzTIwkmgw=",
         "type": "file",
-        "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.14.0.exe"
+        "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.15.0.exe"
       },
       "original": {
         "type": "file",
-        "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.14.0.exe"
+        "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.15.0.exe"
       }
     },
     "zsh-auto-notify": {
