@@ -57,7 +57,7 @@ in {
         mtr
         ipcalc
         cacert
-        itfop
+        iftop
         openvpn
       ]
       ++ optionals isWorkstation [
