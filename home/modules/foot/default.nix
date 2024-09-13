@@ -17,7 +17,7 @@ in {
 
       settings = {
         scrollback = {
-          lines = 10000;
+          lines = 65535;
         };
 
         main = {
