@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  version ? "v0.11.1",
+  version ? "v0.12.0",
   hash ? "sha256-GdGOnaIDy7XWWo0MOu+HfQcLrW/PDlRxf0y1jjJrZNQ=",
   vendorHash ? "sha256-47Gt5SI6VXq4+1T0LxFvQoYNk+JqTt3DonDXLfmFBzw=",
   ...

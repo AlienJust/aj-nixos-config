@@ -92,7 +92,6 @@ in {
         Restart = "on-failure";
         ExecStart = ''
           ${lib.getExe cfg.package} \
-              -banner false \
               -addr ${cfg.address} \
               -port ${toString cfg.port} \
               -dns-addr ${cfg.dns} \
@@ -100,6 +99,7 @@ in {
               ${lib.optionalString cfg.doh ''-enable-doh \''}
               -window-size ${toString cfg.windowSize} \
               -timeout ${toString cfg.timeout} \
+              -banner false \
               ${lib.optionalString (cfg.pattern != null) ''-pattern ${cfg.pattern} \''}
               ${lib.concatStringsSep " " (map (url: "-url ${url}") cfg.bypassUrls)}
         '';
