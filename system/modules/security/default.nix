@@ -7,9 +7,11 @@ with lib; let
   cfg = config.module.security;
 in {
   options = {
-    module.security.enable = mkEnableOption "Enables security";
-    enableBootOptions = mkEnableOption "Enables boot options";
-    disableIPV6 = mkEnableOption "Disable ipv6";
+    module.security = {
+      enable = mkEnableOption "Enables security";
+      enableBootOptions = mkEnableOption "Enables boot options";
+      disableIPV6 = mkEnableOption "Disable ipv6";
+    };
   };
 
   config = mkIf cfg.enable {

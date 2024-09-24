@@ -6,6 +6,7 @@
   services.dbus.implementation = "broker";
 
   module = {
+    boot.enable = true;
     console.enable = true;
     fonts.enable = true;
     games.enable = true;
@@ -40,7 +41,7 @@
       syncthing.enable = true;
       udev.enable = true;
       greetd-tui.enable = false;
-      hyprland.enable = false;
+      hyprland.enable = hyprlandEnable;
       qmk.enable = true;
       ssh.enable = true;
 
