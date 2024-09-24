@@ -70,10 +70,10 @@
     fish.enable = false;
     zoxide.enable = true;
     yazi.enable = true;
-  };
 
-  user = {
-    impermanence.enable = isLinux && isWorkstation;
-    xdg.enable = isLinux && isWorkstation;
+    user = {
+      impermanence.enable = isLinux && isWorkstation;
+      xdg.enable = isLinux && isWorkstation;
+    };
   };
 }
