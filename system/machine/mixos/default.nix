@@ -1,17 +1,8 @@
 {
-  self,
+  hyprlandEnable,
   config,
-  hostModules,
-  hostname,
   ...
-}: let
-  machineModules = "${self}/system/machine/${hostname}/modules";
-in {
-  imports = [
-    "${hostModules}"
-    "${machineModules}"
-  ];
-
+}: {
   services.dbus.implementation = "broker";
 
   module = {
@@ -20,12 +11,22 @@ in {
     games.enable = true;
     locales.enable = true;
     network.enable = true;
-    security.enable = true;
     stylix.enable = true;
     timedate.enable = true;
     users.enable = true;
     variables.enable = true;
     virtualisation.enable = true;
+
+    chaotic = {
+      enable = true;
+      schedulerType = "scx_bpfland";
+    };
+
+    security = {
+      enable = true;
+      enableBootOptions = true;
+      disableIPV6 = true;
+    };
 
     services = {
       bolt.enable = true;
@@ -46,12 +47,12 @@ in {
       spoofdpi.enable = true;
       spoofdpi.doh = true;
       spoofdpi.windowSize = 0;
-      spoofdpi.address = "0.0.0.0";
 
       tumbler.enable = true;
 
       ollama = {
-        enable = true;
+        #enable = true;
+        enable = false;
         gpuSupport.enable = config.services.ollama.enable;
       };
 
