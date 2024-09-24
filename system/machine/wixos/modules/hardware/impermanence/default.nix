@@ -1,8 +1,4 @@
-{inputs, ...}: {
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-  ];
-
+_: {
   programs.fuse.userAllowOther = true;
 
   environment.persistence = {
