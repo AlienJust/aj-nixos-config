@@ -1,48 +1,10 @@
-{homeModules, ...}: {
-  imports = [
-    "${homeModules}/kde-theme"
-
-    "${homeModules}/alacritty"
-    "${homeModules}/btop"
-    "${homeModules}/chrome"
-    "${homeModules}/eza"
-    "${homeModules}/doom-emacs"
-    "${homeModules}/firefox"
-    "${homeModules}/flameshot"
-    "${homeModules}/foot"
-    "${homeModules}/fish"
-    "${homeModules}/fzf"
-    "${homeModules}/git"
-    "${homeModules}/gtk"
-    "${homeModules}/helix"
-    "${homeModules}/htop"
-    "${homeModules}/neofetch"
-    "${homeModules}/neovim"
-    "${homeModules}/password-store"
-    "${homeModules}/ripgrep"
-    "${homeModules}/vscode"
-    "${homeModules}/zsh"
-    "${homeModules}/hyprland"
-    "${homeModules}/hyprpaper"
-    "${homeModules}/hyprlock"
-    "${homeModules}/hypridle"
-    "${homeModules}/impermanence"
-    "${homeModules}/rofi"
-    "${homeModules}/waybar"
-    "${homeModules}/dconf"
-    "${homeModules}/xdg"
-    "${homeModules}/zathura"
-    "${homeModules}/zoxide"
-    "${homeModules}/yazi"
-    "${homeModules}/stylix"
-    "${homeModules}/swaync"
-    "${homeModules}/sway"
-    "${homeModules}/swaylock"
-    "${homeModules}/wlogout"
-    #"${homeModules}/mako"
-    "${homeModules}/mpd"
-    "${homeModules}/mpv"
-
-    "${homeModules}/direnv"
-  ];
+{
+  homeModules,
+  lib,
+  ...
+}: {
+  # Read all directories from homeModules
+  imports = builtins.filter (module: lib.pathIsDirectory module) (
+    map (module: "${homeModules}/${module}") (builtins.attrNames (builtins.readDir homeModules))
+  );
 }

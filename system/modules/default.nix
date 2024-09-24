@@ -1,24 +1,10 @@
 {
-  inputs,
-  hostModules,
+  systemModules,
+  lib,
   ...
 }: {
-  imports = [
-    inputs.stylix.nixosModules.stylix
-
-    "${hostModules}/console"
-    "${hostModules}/fonts"
-    "${hostModules}/games"
-    "${hostModules}/locales"
-    "${hostModules}/network"
-    "${hostModules}/programs"
-    "${hostModules}/security"
-    "${hostModules}/services"
-    "${hostModules}/stylix"
-    "${hostModules}/timedate"
-    "${hostModules}/users"
-    "${hostModules}/variables"
-    "${hostModules}/virtualization"
-    "${hostModules}/pihole"
-  ];
+  # Read all directories from systemModules
+  imports = builtins.filter (module: lib.pathIsDirectory module) (
+    map (module: "${systemModules}/${module}") (builtins.attrNames (builtins.readDir systemModules))
+  );
 }

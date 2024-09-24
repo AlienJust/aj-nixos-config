@@ -24,31 +24,10 @@ in {
       monitors.enable = mkDefault cfg.enable;
     };
 
-    home.packages = with pkgs; [
-      imagemagick
-      grimblast
-      wl-clipboard
-      wf-recorder
-      hyprpicker
-      waypaper
-      cliphist
-      imv
-      gtk3
-      dbus
-      glib
-      swww
-      xdg-utils
-      pavucontrol
-      nemo
-      eww
-      networkmanagerapplet
-      brightnessctl
-    ];
-
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
-      #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
       systemd = {
         enable = true;
