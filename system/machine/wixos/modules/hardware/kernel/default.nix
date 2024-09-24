@@ -14,8 +14,8 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
   boot.initrd.kernelModules = ["amdgpu"];
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   #boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.kernelParams = [
