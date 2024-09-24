@@ -1,32 +1,44 @@
 {
-  pkgs,
   lib,
+  inputs,
   self,
-  generalModules,
-  hostname,
-  platform,
+  commonModules,
+  systemModules,
+  machineConfigurationPath,
+  machineConfigurationPathExist,
+  machineModulesPath,
+  machineModulesPathExist,
+  platform ? null,
   stateVersion ? null,
-  stateVersionDarwin ? null,
   ...
-}: let
-  inherit (pkgs.stdenv) isDarwin;
-  currentStateVersion =
-    if isDarwin
-    then stateVersionDarwin
-    else stateVersion;
-  machineConfigurationPath = "${self}/system/machine/${hostname}";
-  machineConfigurationPathExist = builtins.pathExists machineConfigurationPath;
-in {
+}: {
   imports =
     [
-      "${generalModules}"
+      inputs.home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix
+      inputs.impermanence.nixosModules.impermanence
+      inputs.disko.nixosModules.disko
+      inputs.lanzaboote.nixosModules.lanzaboote
+      inputs.chaotic.nixosModules.default
+      inputs.nix-topology.nixosModules.default
+
+      "${commonModules}"
+      "${systemModules}"
+      "${self}/overlays/nixpkgs"
     ]
-    ++ lib.optional machineConfigurationPathExist machineConfigurationPath;
+    ++ lib.optional machineConfigurationPathExist machineConfigurationPath
+    ++ lib.optional machineModulesPathExist machineModulesPath;
 
   module.nix-config.enable = true;
 
   # System version
-  system.stateVersion = currentStateVersion;
+  system = {inherit stateVersion;};
   # HostPlatform
-  nixpkgs.hostPlatform = platform;
+  nixpkgs = {
+    overlays = [
+      inputs.nix-topology.overlays.default
+    ];
+
+    hostPlatform = platform;
+  };
 }

@@ -1,73 +1,95 @@
 {
   self,
   inputs,
-  stateVersion,
-  stateVersionDarwin,
   ...
 }: let
   homeConfiguration = "${self}/home";
-  hostConfiguration = "${self}/system";
-  homeModules = "${homeConfiguration}/modules";
-  hostModules = "${hostConfiguration}/modules";
-  generalModules = "${self}/modules";
-in {
-  # Helper function for generating home-manager configs
-  mkHome = {
-    username ? "aj01",
-    hostname ? "nixos",
-    isWorkstation ? false,
-    platform ? "x86_64-linux",
-  }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.${platform};
-      extraSpecialArgs = {
-        inherit inputs self homeModules generalModules platform username hostname stateVersion isWorkstation;
-      };
+  systemConfiguration = "${self}/system";
 
-      modules = [
-        "${homeConfiguration}"
-      ];
-    };
+  homeModules = "${homeConfiguration}/modules";
+  systemModules = "${systemConfiguration}/modules";
+  commonModules = "${self}/modules";
 
   # Helper function for generating host configs
-  mkHost = {
-    hostname ? "nixos",
-    username ? "aj01",
-    isWorkstation ? false,
+  mkHost = machineDir: {
+    username ? "user",
+    stateVersion ? "24.05",
     platform ? "x86_64-linux",
-  }:
+    hostname ? machineDir,
+    isWorkstation ? false,
+    wm ? null,
+  }: let
+    machineConfigurationPath = "${self}/system/machine/${machineDir}";
+    machineConfigurationPathExist = builtins.pathExists machineConfigurationPath;
+    machineModulesPath = "${self}/system/machine/${machineDir}/modules";
+    machineModulesPathExist = builtins.pathExists machineModulesPath;
+
+    swayEnable = wm == "sway";
+    hyprlandEnable = wm == "hyprland";
+    wmEnable = hyprlandEnable || swayEnable;
+  in
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs self homeModules hostModules generalModules hostname username platform stateVersion isWorkstation;
+        inherit
+          inputs
+          self
+          hostname
+          username
+          stateVersion
+          platform
+          machineDir
+          isWorkstation
+          wm
+          homeModules
+          commonModules
+          systemModules
+          machineConfigurationPath
+          machineConfigurationPathExist
+          machineModulesPath
+          machineModulesPathExist
+          hyprlandEnable
+          swayEnable
+          wmEnable
+          ;
       };
 
       modules = [
-        inputs.home-manager.nixosModules.home-manager
-        "${hostConfiguration}"
+        "${systemConfiguration}"
         "${homeConfiguration}"
       ];
     };
 
   # Helper function for generating darwin host configs
-  mkHostDarwin = {
-    hostname ? "mac",
+  mkHostDarwin = hostname: {
+    username ? "user",
+    stateVersion ? 6,
     platform ? "aarch64-darwin",
   }:
     inputs.darwin.lib.darwinSystem {
       specialArgs = {
-        inherit inputs self hostModules generalModules hostname platform stateVersionDarwin;
+        inherit
+          inputs
+          self
+          hostname
+          username
+          platform
+          stateVersion
+          systemModules
+          commonModules
+          ;
       };
 
       modules = [
-        "${hostConfiguration}"
+        "${systemConfiguration}"
+        "${homeConfiguration}"
       ];
     };
+in {
+  forAllSystems = inputs.nixpkgs.lib.systems.flakeExposed;
 
-  forAllSystems = inputs.nixpkgs.lib.genAttrs [
-    "aarch64-linux"
-    "i686-linux"
-    "x86_64-linux"
-    "aarch64-darwin"
-    "x86_64-darwin"
-  ];
+  # This function just add mkHost or mkHostDarwin before hosts attrset
+  # ex: pcbox = { username = "test"; stateVersion = "24.11"; }; ->
+  # pcbox = mkHost { username = "test"; stateVersion = "24.11"; };
+  genNixos = builtins.mapAttrs mkHost;
+  genDarwin = builtins.mapAttrs mkHostDarwin;
 }

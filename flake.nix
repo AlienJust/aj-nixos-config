@@ -1,11 +1,25 @@
 {
-  description = "AlienJust Flake";
+  description = "MaxMur Flake";
 
   inputs = {
     # Official NixOS repo
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    master = {
+      url = "github:NixOS/nixpkgs/master";
+    };
+
+    unstable = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+
+    # Latest stable
+    stable = {
+      url = "github:NixOS/nixpkgs/nixos-24.05";
+    };
+
+    # Current nixpkgs branch
+    nixpkgs = {
+      follows = "unstable";
+    };
 
     # NixOS community
     home-manager = {
@@ -18,8 +32,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:/nix-community/impermanence";
-    stylix.url = "github:danth/stylix";
+    impermanence = {
+      url = "github:/nix-community/impermanence";
+    };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+    };
+
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+    };
 
     # MacOS configuration
     darwin = {
@@ -28,15 +64,8 @@
     };
 
     # Hyprland ecosystem
-
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=refs/tags/v0.42.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpaper = {
-      url = "git+https://github.com/hyprwm/Hyprpaper?submodules=1&ref=refs/tags/v0.7.1";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=c5feee1e357f3c3c59ebe406630601c627807963";
     };
 
     xdghypr = {
@@ -45,22 +74,26 @@
     };
 
     # Unoficial users flakes
-    yandex-music.url = "github:cucumber-sp/yandex-music-linux";
-    any-nix-shell.url = "github:TheMaxMur/any-nix-shell";
-    cryptopro.url = "github:SomeoneSerge/pkgs";
+    yandex-music = {
+      url = "github:cucumber-sp/yandex-music-linux";
+    };
+
+    any-nix-shell = {
+      url = "github:TheMaxMur/any-nix-shell";
+    };
+
+    cryptopro = {
+      url = "github:SomeoneSerge/pkgs";
+    };
 
     # Security
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+    };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Just for pretty flake.nix
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     # Zsh plugins
@@ -100,67 +133,27 @@
     flake-parts,
     ...
   } @ inputs: let
-    linuxArch = "x86_64-linux";
-    linuxArmArch = "aarch64-linux";
-    darwinArch = "aarch64-darwin";
-    stateVersion = "24.11";
-    stateVersionDarwin = 4;
-    libx = import ./lib {inherit self inputs stateVersion stateVersionDarwin;};
+    # Description of hosts
+    hosts = import ./hosts.nix;
 
-    hosts = {
-      mixos = {
-        hostname = "mixos";
-        username = "aj01";
-        platform = linuxArch;
-        isWorkstation = true;
-      };
-      wixos = {
-        hostname = "wixos";
-        username = "aj01";
-        platform = linuxArch;
-        isWorkstation = true;
-      };
-      /*
-      nbox = {
-        hostname = "nbox";
-        username = "maxmur";
-        platform = linuxArch;
-        isWorkstation = true;
-      };
-      rasp = {
-        hostname = "rasp";
-        username = "maxmur";
-        platform = linuxArmArch;
-        isWorkstation = false;
-      };
-      macbox = {
-        hostname = "macbox";
-        username = "maxmur";
-        platform = darwinArch;
-        isWorkstation = true;
-      };
-      */
-    };
+    # Import helper funcfions
+    libx = import ./lib {inherit self inputs;};
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        linuxArch
-        linuxArmArch
-        darwinArch
+      systems = libx.forAllSystems;
+
+      imports = [
+        ./parts
       ];
 
       flake = {
-        nixosConfigurations = {
-          ${hosts.mixos.hostname} = libx.mkHost hosts.mixos;
-          ${hosts.wixos.hostname} = libx.mkHost hosts.wixos;
-          #${hosts.nbox.hostname} = libx.mkHost hosts.nbox;
-          #${hosts.rasp.hostname} = libx.mkHost hosts.rasp;
-        };
+        # NixOS Hosts configuration
+        nixosConfigurations = libx.genNixos hosts.nixos;
 
-        darwinConfigurations = {
-          ${hosts.macbox.hostname} = libx.mkHostDarwin hosts.macbox;
-        };
+        # MacOS Hosts configuration
+        darwinConfigurations = libx.genDarwin hosts.darwin;
 
+        # Templates
         templates = import "${self}/templates" {inherit self;};
       };
     };

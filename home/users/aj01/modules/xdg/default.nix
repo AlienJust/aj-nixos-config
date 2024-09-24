@@ -1,14 +1,13 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
   cfg = config.module.xdg;
 in {
   options = {
-    module.xdg.enable = mkEnableOption "Enables xdg";
+    module.user.xdg.enable = mkEnableOption "Enables xdg";
   };
   # https://nxoo.alexdeb.ru
   config = mkIf cfg.enable {
