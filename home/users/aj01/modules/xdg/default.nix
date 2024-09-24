@@ -4,12 +4,12 @@
   ...
 }:
 with lib; let
-  cfg = config.module.xdg;
+  cfg = config.module.user.xdg;
 in {
   options = {
     module.user.xdg.enable = mkEnableOption "Enables xdg";
   };
-  # https://nxoo.alexdeb.ru
+
   config = mkIf cfg.enable {
     xdg.mimeApps = {
       enable = true;
