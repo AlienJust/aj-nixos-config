@@ -3,23 +3,33 @@
   pkgs,
   ...
 }: {
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
   boot.initrd.kernelModules = ["amdgpu"];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+
   #boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.kernelParams = [
-    "preempt=full"
-    "mitigations=off"
-    "initcall_blacklist=acpi_cpufreq_init"
+    "drm_kms_helper.poll=0"
+
+    #"preempt=full"
+    #"mitigations=off"
+    #"initcall_blacklist=acpi_cpufreq_init"
+
     #    "quiet"
     #    "loglevel=-1"
     #    "udev.log_level=0"
     #    "loglevel=3"
   ];
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
   # hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware = {

@@ -1,5 +1,9 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{lib, ...}:
+{
+  lib,
+  username,
+  ...
+}:
 with lib.hm.gvariant; {
   dconf.settings = {
     "org/cinnamon" = {

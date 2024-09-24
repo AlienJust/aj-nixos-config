@@ -15,11 +15,9 @@
       linux-firmware
     ];
 
-    /*
-      logitech.wireless = {
+    logitech.wireless = {
       enable = true;
       enableGraphical = true;
     };
-    */
   };
 }
