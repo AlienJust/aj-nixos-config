@@ -38,7 +38,7 @@ in {
             "qemu-libvirtd"
             "libvirtd"
             "kvm"
-
+            "dialout"
             "adbusers"
             #"acme"
           ];
