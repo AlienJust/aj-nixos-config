@@ -99,7 +99,7 @@ in {
               ${lib.optionalString cfg.doh ''-enable-doh \''}
               -window-size ${toString cfg.windowSize} \
               -timeout ${toString cfg.timeout} \
-              -banner false \
+              -silent \
               ${lib.optionalString (cfg.pattern != null) ''-pattern ${cfg.pattern} \''}
               ${lib.concatStringsSep " " (map (url: "-url ${url}") cfg.bypassUrls)}
         '';
