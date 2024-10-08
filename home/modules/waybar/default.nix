@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.module.waybar;
+  betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in {
   options = {
     module.waybar.enable = mkEnableOption "Enables waybar";
@@ -37,30 +38,54 @@ in {
       #      }
       #    '';
 
+      /*
+      https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect
+      workspaces button:hover {
+              box-shadow: inherit;
+              text-shadow: inherit;
+              }
+      */
+
+      /*
+      window#waybar {
+              transition-property: background-color;
+              transition-duration: .5s;
+              opacity: 0.9;
+          }
+      */
       # config.lib.stylix.colors.base00
-      style = ''
-        * {
-            border: none;
-            border-radius: 0;
-            min-height: 0;
-        }
+      style = concatStrings [
+        ''
+          * {
+              border: none;
+              border-radius: 0;
+              min-height: 0;
+          }
 
-        window#waybar {
-            transition-property: background-color;
-            transition-duration: .5s;
-            opacity: 0.9;
-        }
 
-        #workspaces button {
-            padding: 0 5px;
-            min-width: 16px
-        }
+          #workspaces button {
+              padding: 0 5px;
+              min-width: 16px
+          }
 
-        /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-        #workspaces button:hover {
-            box-shadow: inherit;
-        }
-      '';
+          #workspaces button label {
+              color: #${config.lib.stylix.colors.base0B};
+          }
+
+
+          #workspaces button:hover {
+              box-shadow: inherit;
+              text-shadow: inherit;
+
+              opacity: 0.8;
+              transition: ${betterTransition};
+              background: linear-gradient(45deg, #${config.lib.stylix.colors.base08}, #${config.lib.stylix.colors.base0D});
+          }
+          #workspaces button:hover label{
+              color: #${config.lib.stylix.colors.base00};
+          }
+        ''
+      ];
 
       settings = [
         {
@@ -140,7 +165,7 @@ in {
             tooltip-format = "{:%Y-%m-%d | %H:%M}";
             interval = 5;
           };
-          
+
           memory = {
             format = "{}% ";
             tooltip = true;
@@ -153,7 +178,7 @@ in {
           #          format-linked = "{ifname} (No IP) ";
           #          format-wifi = "{essid} ({signalStrength}%) ";
           #        };
-          
+
           # Pulseaudio
           /*
           pulseaudio = {
@@ -174,8 +199,9 @@ in {
             format-source-muted = "";
             on-click = "pavucontrol";
             tooltip = true;
-          };*/
-          
+          };
+          */
+
           pulseaudio = {
             format = "{volume} {icon} / {format_source}";
             format-source = "󰍬";
@@ -188,7 +214,6 @@ in {
             on-scroll-down = "${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%";
             tooltip = false;
           };
-
 
           # Keyboard layout
           "sway/language" = {

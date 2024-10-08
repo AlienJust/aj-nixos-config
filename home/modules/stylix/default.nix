@@ -21,6 +21,7 @@ in {
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml"; # nice
 
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
