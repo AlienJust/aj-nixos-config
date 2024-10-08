@@ -2,6 +2,48 @@
   services.homepage-dashboard = {
     enable = true;
     package = pkgs.homepage-dashboard;
+    widgets = [
+      {
+        resources = {
+          cpu = true;
+          disk = "/";
+          memory = true;
+        };
+      }
+      {
+        search = {
+          provider = "google";
+          target = "_blank";
+        };
+      }
+    ];
+
+    bookmarks = [
+      {
+        Developer = [
+          {
+            Github = [
+              {
+                abbr = "GH";
+                href = "https://github.com/";
+              }
+            ];
+          }
+        ];
+      }
+      {
+        Entertainment = [
+          {
+            YouTube = [
+              {
+                abbr = "YT";
+                href = "https://youtube.com/";
+              }
+            ];
+          }
+        ];
+      }
+    ];
   };
 
   /*
