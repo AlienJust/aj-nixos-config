@@ -8,6 +8,7 @@
 with lib; let
   cfg = config.module.stylix;
   theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
+  #theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml"; # nice
   wallpaper = ../../../wall.jpg;
   cursorSize =
     if hostname == "mixos"
@@ -27,6 +28,7 @@ in {
       image = wallpaper;
       autoEnable = true;
       polarity = "dark";
+      #polarity = "light";
 
       base16Scheme = theme;
 
