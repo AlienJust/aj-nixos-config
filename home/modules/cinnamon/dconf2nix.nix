@@ -326,8 +326,10 @@ with lib.hm.gvariant; {
       name = "Orchis-Dark-Compact";
     };
 
-    "org/gnome/desktop/interface" = {
+    /*
+      "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
+    */
   };
 }

@@ -19,7 +19,9 @@ in {
       enable = true;
       autoEnable = true;
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
+
+      #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
+
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
@@ -122,7 +124,8 @@ in {
         popups = 0.9;
       };
 
-      polarity = "dark";
+      #polarity = "dark";
+      polarity = "light";
     };
   };
 }

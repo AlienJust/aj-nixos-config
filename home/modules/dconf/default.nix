@@ -14,6 +14,7 @@ in {
     dconf = {
       enable = true;
 
+      /*
       settings = {
         "org/gnome/desktop/interface" = {
           gtk-theme = "Nordic";
@@ -21,6 +22,7 @@ in {
           color-scheme = "prefer-dark";
         };
       };
+      */
     };
   };
 }

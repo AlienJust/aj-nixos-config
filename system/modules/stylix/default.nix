@@ -20,6 +20,9 @@ in {
 
   config = mkIf cfg.enable {
     stylix = {
+      homeManagerIntegration.autoImport = true;
+      homeManagerIntegration.followSystem = false;
+
       enable = true;
       image = wallpaper;
       autoEnable = true;
