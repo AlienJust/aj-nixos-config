@@ -78,14 +78,16 @@ in {
       ".config/sworkstyle/config.toml".text = ''
         fallback = ''
         separator = ' '
-        unique = true
 
         [matching]
         'discord' = ''
         'Hexchat' = ''
         'Element' = ''
         'telegramdesktop' = ''
+
         'Steam' = ''
+        "/.*Steam/" = ""
+
         'vlc' = ''
         'org.qbittorrent.qBittorrent' = ''
         'Thunderbird' = ''
@@ -99,8 +101,11 @@ in {
         'qutebrowser' = ''
         'org.qutebrowser.qutebrowser' = ''
         'Slack' = ''
+
         'Code' = '󰨞 '
         'code-oss' = '󰨞'
+        "/.*Visual Studio Code/" = "󰨞"
+
         'jetbrains-pycharm' = ' '
         'jetbrains-goland' = ' '
         'jetbrains-webstorm' = ' '
@@ -131,13 +136,19 @@ in {
         "libreoffice-writer" = ""
         'Microsoft-edge' = '󰇩'
 
+        'krita' = { type = 'exact', value = '' }
+
 
         "mpv" = ""
         "aerc" = ""
         "org.pwmt.zathura" = ""
 
         "pavucontrol" = "󰕾"
-        "Громкость" = "󰕾"
+        "/.*Громкость/" = "󰕾"
+
+        "/.*Mousepad/" = "󰷈"
+
+        "/.*Winbox/" = "󰒄"
 
         "peek" = ""
         "qalculate-gtk" = ""
@@ -161,6 +172,7 @@ in {
 
         'VirtualBox Manager' = '󰹑'
         'VirtualBox Machine' = '󱎴'
+        'virt-manager' = { type = 'exact', value = '󱄄' }
 
         "org.freecadweb.FreeCAD"= "󱑣"
 
