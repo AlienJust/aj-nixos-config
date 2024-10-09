@@ -552,10 +552,13 @@ in {
           #}
 
           # Swokstyle
+          # exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
           {
             command = "sworkstyle &> /tmp/sworkstyle.log";
             always = true;
           }
+
+          # exec sworkstyle &> /tmp/sworkstyle.log
           /*
             {
             command = "sworkstyle &> /tmp/sworkstyle.log";
@@ -617,8 +620,6 @@ in {
       extraConfig = ''
         #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
         #exec --no-startup-id mako &
-        #exec_always --no-startup-id sworkstyle &> /tmp/sworkstyle.log
-        #exec sworkstyle &> /tmp/sworkstyle.log
 
         # TODO: move to config.
         no_focus [app_id="^mpv"]
