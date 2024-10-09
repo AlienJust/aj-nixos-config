@@ -20,8 +20,8 @@ in {
       autoEnable = true;
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
-      #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml"; # nice
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
+      #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml"; # nice
 
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
@@ -80,9 +80,9 @@ in {
       #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
       # };
 
-      # image = ../wall3.png;
-      # image = ../../../wall.jpg;
-      image = ../../../wall2.jpg;
+      # image = ../../../wall3.png;
+      image = ../../../wall.jpg;
+      # image = ../../../wall2.jpg;
 
       #image = pkgs.fetchurl {
       #  url = "https://cdnb.artstation.com/p/assets/images/images/016/252/301/4k/grady-frederick-atlantis-garbageman-v2.jpg";
@@ -126,8 +126,8 @@ in {
         popups = 0.9;
       };
 
-      #polarity = "dark";
-      polarity = "light";
+      polarity = "dark";
+      # polarity = "light";
     };
   };
 }
