@@ -74,6 +74,137 @@ in {
       swayest-workstyle
     ];
 
+    home.file = {
+      ".config/sworkstyle/config.toml".text = ''
+        fallback = ''
+        unique = true
+
+        [matching]
+        'discord' = ''
+        'Hexchat' = ''
+        'Element' = ''
+        'telegramdesktop' = ''
+        'Steam' = ''
+        'vlc' = ''
+        'org.qbittorrent.qBittorrent' = ''
+        'Thunderbird' = ''
+        'thunderbird' = ''
+        'Insomnia' = ''
+        'gnome-calendar' = ''
+        'font-manager' = ''
+        'Google-chrome' = ''
+        'Chromium' = ''
+        'Brave-browser' = ''
+        'qutebrowser' = ''
+        'org.qutebrowser.qutebrowser' = ''
+        'Slack' = ''
+        'Code' = ' '
+        'code-oss' = ' '
+        'jetbrains-pycharm' = ' '
+        'jetbrains-goland' = ' '
+        'jetbrains-webstorm' = ' '
+        'jetbrains-clion' = ' '
+        'jetbrains-idea' = ' '
+        'Spotify' = ''
+        '/(?i)Github.*Firefox/' = ' '
+        'firefox' = ' '
+        'org.mozilla.firefox' = ' '
+        'Firefox' = ' '
+        'Nightly' = ' '
+        'firefoxdeveloperedition' = ''
+        '/nvim ?\w*/' = ''
+        '/npm/' = ''
+        '/node/' = ''
+        '/yarn/' = ''
+        'org.gnome.Nautilus' = ""
+        'ranger' = ""
+        'kitty' = ''
+        'foot' = ''
+
+        'footclient' = ''
+        'org.remmina.Remmina' = '󰢹'
+        '/GNU Image Manipulation Program/' = ''
+        'FreeTube' = ''
+        'jetbrains-idea-ce' = ''
+        "libreoffice-calc" = ""
+        "libreoffice-writer" = ""
+        'Microsoft-edge' = '󰇩'
+        'Brave-browser' = '󰖟'
+
+        "mpv" = ""
+        "aerc" = ""
+        "org.pwmt.zathura" = ""
+        "pavucontrol" = ""
+        "peek" = ""
+        "qalculate-gtk" = ""
+        "signal" = ""
+        "swappy" = ""
+        "vimiv" = ""
+
+        "kitty" = ""
+
+        "dmenu" = ""
+        "dmenu-clipboard" = ""
+        "dmenu-browser" = ""
+        "dmenu-emoji" = ""
+        "dmenu-pass generator" = ""
+
+        '1Password' = ''
+        'discord' = ''
+        'WebCord' = ''
+
+        'Postman' = ''
+        'Insomnia' = ''
+        'Bitwarden' = ''
+
+        "transmission-remote-gtk" = ""
+
+        'VirtualBox Manager' = ''
+        'VirtualBox Machine' = ''
+
+        "org.freecadweb.FreeCAD"= ""
+
+        'thunar' = ''
+        'obsidian' = '󰠮'
+        'KMines' = '󰷚'
+        'KPatience' = '󱢡'
+        'VSCodium' = ''
+        'vesktop' = ' '
+
+        "private browsing" = ""
+        "google" = ""
+        "rust" = ""
+        "file manager" = ""
+        "libreoffice" = ""
+
+        '/(?i).*Locked.*KeePassXC/' = ""
+        "/.*KeePassXC/" = ""
+        "menu" = ""
+
+        "calculator" = ""
+        "galculator" = ""
+
+        "music" = ""
+
+        "disk usage" = ""
+        ".pdf" = ""
+
+        "/(?i)settings/" = ""
+        "/(?i)microsoft teams/" = ""
+
+        "Evolution" = ""
+        "zoom" = ""
+        "(?i)github" = ""
+        "(?i)jabber" = ""
+        "org.remmina.Remmina" = ""
+        "(?i)thunar" = ""
+
+        "quake" = ""
+
+        'neovide' = ""
+      '';
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       systemd.enable = true;
