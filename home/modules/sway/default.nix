@@ -178,6 +178,7 @@ in {
         "org.freecadweb.FreeCAD"= "󱑣"
 
         'thunar' = ''
+        'nemo' = { type = 'exact', value = '' }
         'obsidian' = '󰠮'
         'KMines' = '󰷚'
         'KPatience' = '󱢡'
@@ -251,7 +252,9 @@ in {
         modifier = modifier;
         terminal = terminal;
         menu = menu;
-        workspaceAutoBackAndForth = true;
+
+        #workspaceAutoBackAndForth = true;
+        workspaceAutoBackAndForth = false;
 
         # TODO: fonts.
         /*
