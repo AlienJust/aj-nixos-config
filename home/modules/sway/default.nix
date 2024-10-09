@@ -149,7 +149,7 @@ in {
 
         "/.*Mousepad/" = "󰷈"
 
-        "/.*Winbox/" = "󰒄"
+        "/.*WinBox/" = "󰒄"
 
         "peek" = ""
         "qalculate-gtk" = ""
