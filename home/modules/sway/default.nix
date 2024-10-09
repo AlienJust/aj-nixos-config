@@ -77,6 +77,7 @@ in {
     home.file = {
       ".config/sworkstyle/config.toml".text = ''
         fallback = ''
+        separator = ' '
         unique = true
 
         [matching]
@@ -91,15 +92,15 @@ in {
         'thunderbird' = ''
         'Insomnia' = ''
         'gnome-calendar' = ''
-        'font-manager' = ''
+        'font-manager' = '󰛖'
         'Google-chrome' = ''
         'Chromium' = ''
         'Brave-browser' = ''
         'qutebrowser' = ''
         'org.qutebrowser.qutebrowser' = ''
         'Slack' = ''
-        'Code' = ' '
-        'code-oss' = ' '
+        'Code' = '󰨞 '
+        'code-oss' = '󰨞'
         'jetbrains-pycharm' = ' '
         'jetbrains-goland' = ' '
         'jetbrains-webstorm' = ' '
@@ -113,9 +114,9 @@ in {
         'Nightly' = ' '
         'firefoxdeveloperedition' = ''
         '/nvim ?\w*/' = ''
-        '/npm/' = ''
-        '/node/' = ''
-        '/yarn/' = ''
+        '/npm/' = '󰎙'
+        '/node/' = '󰎙'
+        '/yarn/' = '󰎙'
         'org.gnome.Nautilus' = ""
         'ranger' = ""
         'kitty' = ''
@@ -129,19 +130,20 @@ in {
         "libreoffice-calc" = ""
         "libreoffice-writer" = ""
         'Microsoft-edge' = '󰇩'
-        'Brave-browser' = '󰖟'
+
 
         "mpv" = ""
         "aerc" = ""
         "org.pwmt.zathura" = ""
-        "pavucontrol" = ""
+
+        "pavucontrol" = "󰕾"
+        "Громкость" = "󰕾"
+
         "peek" = ""
         "qalculate-gtk" = ""
         "signal" = ""
         "swappy" = ""
         "vimiv" = ""
-
-        "kitty" = ""
 
         "dmenu" = ""
         "dmenu-clipboard" = ""
@@ -150,53 +152,51 @@ in {
         "dmenu-pass generator" = ""
 
         '1Password' = ''
-        'discord' = ''
-        'WebCord' = ''
+        'WebCord' = '󰙯'
 
         'Postman' = ''
-        'Insomnia' = ''
         'Bitwarden' = ''
 
-        "transmission-remote-gtk" = ""
+        "transmission-remote-gtk" = "󱑣"
 
-        'VirtualBox Manager' = ''
-        'VirtualBox Machine' = ''
+        'VirtualBox Manager' = '󰹑'
+        'VirtualBox Machine' = '󱎴'
 
-        "org.freecadweb.FreeCAD"= ""
+        "org.freecadweb.FreeCAD"= "󱑣"
 
         'thunar' = ''
         'obsidian' = '󰠮'
         'KMines' = '󰷚'
         'KPatience' = '󱢡'
-        'VSCodium' = ''
+        'VSCodium' = '󰨞'
         'vesktop' = ' '
 
         "private browsing" = ""
         "google" = ""
         "rust" = ""
         "file manager" = ""
-        "libreoffice" = ""
+        "libreoffice" = ""
 
-        '/(?i).*Locked.*KeePassXC/' = ""
-        "/.*KeePassXC/" = ""
-        "menu" = ""
+        '/(?i).*Locked.*KeePassXC/' = "󰣮"
+        "/.*KeePassXC/" = ""
+        "menu" = "󰍜"
 
-        "calculator" = ""
-        "galculator" = ""
+        "calculator" = ""
+        "galculator" = ""
 
-        "music" = ""
+        "music" = ""
+        "ncmpcpp" = ""
 
-        "disk usage" = ""
-        ".pdf" = ""
+        "disk usage" = ""
+        ".pdf" = ""
 
-        "/(?i)settings/" = ""
+        "/(?i)settings/" = ""
         "/(?i)microsoft teams/" = ""
 
         "Evolution" = ""
-        "zoom" = ""
+        "zoom" = ""
         "(?i)github" = ""
         "(?i)jabber" = ""
-        "org.remmina.Remmina" = ""
         "(?i)thunar" = ""
 
         "quake" = ""
