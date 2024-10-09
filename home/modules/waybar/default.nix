@@ -69,7 +69,7 @@ in {
           }
 
           #workspaces button label {
-              color: #${config.lib.stylix.colors.base0B};
+              color: #${config.lib.stylix.colors.base07};
           }
 
 
