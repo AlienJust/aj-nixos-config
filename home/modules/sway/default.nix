@@ -84,6 +84,7 @@ in {
         'Hexchat' = ''
         'Element' = ''
         'telegramdesktop' = ''
+        'org.telegram.desktop' = { type = 'exact', value = '' }
 
         'Steam' = ''
         "/.*Steam/" = ""
