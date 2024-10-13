@@ -47,7 +47,7 @@
 
       spoofdpi.enable = true;
       spoofdpi.doh = true;
-      spoofdpi.windowSize = 0;
+      spoofdpi.windowSize = 1;
 
       tumbler.enable = true;
 
