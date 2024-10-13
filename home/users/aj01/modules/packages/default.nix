@@ -35,9 +35,6 @@ in {
         sops
       ]
       ++ lib.optionals isWorkstation [
-        # Chats
-        discord
-
         # Text Editors
         obsidian
 
