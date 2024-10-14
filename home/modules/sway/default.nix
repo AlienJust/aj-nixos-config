@@ -214,6 +214,7 @@ in {
         "(?i)thunar" = ""
 
         "quake" = ""
+        "dota2" = "󱇖"
 
         'neovide' = ""
       '';
