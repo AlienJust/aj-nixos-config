@@ -35,9 +35,6 @@ in {
         sops
       ]
       ++ lib.optionals isWorkstation [
-        # Text Editors
-        obsidian
-
         # Security
         semgrep
         grype
