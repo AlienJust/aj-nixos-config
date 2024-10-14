@@ -102,10 +102,16 @@ in {
           name = "Iosevka Aile";
         };
 
-        monospace = {
+        /*
+          monospace = {
           package = pkgs.iosevka-bin.override {variant = "SGr-IosevkaTerm";}; # unstable
-          # package = pkgs.iosevka-bin.override {variant = "sgr-iosevka-term";};
           name = "Iosevka Term";
+        };
+        */
+
+        monospace = {
+          package = pkgs.nerdfonts.override {fonts = ["UbuntuMono" "JetBrainsMono" "Iosevka"];};
+          name = "Iosevka Nerd Font Mono";
         };
 
         emoji = {
