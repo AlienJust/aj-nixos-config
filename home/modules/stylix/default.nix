@@ -110,9 +110,27 @@ in {
         */
 
         monospace = {
-          package = pkgs.nerdfonts.override {fonts = ["UbuntuMono" "JetBrainsMono" "Iosevka"];};
-          name = "Iosevka Nerd Font Mono";
+          package = pkgs.nerdfonts.override {fonts = ["IosevkaTerm"];};
+          name = "IosevkaTerm Nerd Font";
         };
+
+        /*
+        serif = {
+          package = pkgs.nerdfonts.override {fonts = ["Tinos"];};
+          name = "Tinos Nerd Font";
+        };
+
+        sansSerif = {
+          package = pkgs.nerdfonts.override {fonts = ["Ubuntu"];};
+          name = "Ubuntu Nerd Font";
+        };
+
+        monospace = {
+          package = pkgs.nerdfonts.override {fonts = ["Ubuntu" "UbuntuMono" "JetBrainsMono" "IosevkaTerm" "Hack"];};
+          #name = "IosevkaTerm Nerd Font Mono";
+          name = "Hack Nerd Font";
+        };
+        */
 
         emoji = {
           name = "OpenMoji Color";
