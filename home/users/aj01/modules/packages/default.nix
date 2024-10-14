@@ -41,7 +41,7 @@ in {
         syft
 
         # Fonts
-        (nerdfonts.override {fonts = ["JetBrainsMono" "UbuntuMono" "Iosevka"];})
+        #(nerdfonts.override {fonts = ["JetBrainsMono" "UbuntuMono" "Iosevka"];})
         corefonts
       ]
       ++ lib.optionals (isLinux && isWorkstation) [
