@@ -46,24 +46,25 @@ in {
       ]
       ++ lib.optionals (isLinux && isWorkstation) [
         # Programming
-        go
-        python3
+        #go
+        #python3
 
         # DevOps Utils
         docker-compose
-        kubectl
-        kubernetes-helm
-        ansible
-        ansible-lint
-        terraform
-        vagrant
+        #kubectl
+        #kubernetes-helm
+        #ansible
+        #ansible-lint
+        #terraform
+        #vagrant
 
         # Chats
         telegram-desktop
-        vesktop
+        #vesktop
 
         # Office
-        onlyoffice-bin
+        #onlyoffice-bin
+        libreoffice-fresh
 
         # Misc
         obs-studio
@@ -103,7 +104,7 @@ in {
         qbittorrent
         teamspeak_client
         winbox
-        libreoffice-fresh
+
         # anydesk
         # chromium
         krita

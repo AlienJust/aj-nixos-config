@@ -53,11 +53,11 @@ in {
 
         plugins = [
           "git"
-          "vagrant"
-          "docker"
-          "python"
-          "pass"
-          "kubectl"
+          #"vagrant"
+          #"docker"
+          #"python"
+          #"pass"
+          #"kubectl"
         ];
 
         extraConfig = ''
