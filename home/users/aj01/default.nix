@@ -71,6 +71,8 @@
     zoxide.enable = true;
     yazi.enable = true;
 
+    minecraft.enable = true;
+
     user = {
       impermanence.enable = isLinux && isWorkstation;
       xdg.enable = isLinux && isWorkstation;

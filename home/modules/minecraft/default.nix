@@ -7,7 +7,7 @@ with lib; let
   cfg = config.module.minecraft;
 in {
   options = {
-    module.mako.enable = mkEnableOption "Enables minecraft";
+    module.minecraft.enable = mkEnableOption "Enables minecraft";
   };
 
   config = mkIf cfg.enable {
@@ -19,14 +19,16 @@ in {
         "vanilla18" = {
           minecraft.version = "1.18";
         };
+        /*
         "projectozone3" = {
           modpack.curseforge = {
             projectId = 256289;
             fileId = 3590506;
-            hash = "sha256-sm1JihpKd8OeW5t8E4+/wCgAnD8/HpDCLS+CvdcNmqY=";
+            hash = "sha256-RH9EUeFIh3a5bV8/TxR71kDuL8Xxs/5kjXR9QfKWp3Q=";
           };
           forge.hash = "sha256-5lQKotcSIgRyb5+MZIEE1U/27rSvwy8Wmb4yCagvsbs=";
         };
+        */
       };
     };
   };

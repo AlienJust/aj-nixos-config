@@ -129,7 +129,10 @@
       flake = false;
     };
 
-    nix-minecraft.url = "github:12Boti/nix-minecraft";
+    nix-minecraft = {
+      url = "github:12Boti/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
