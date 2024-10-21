@@ -61,7 +61,6 @@ in {
         [
           inputs.impermanence.nixosModules.home-manager.impermanence
           inputs.sops-nix.homeManagerModules.sops
-          inputs.nix-minecraft.nixosModules.home-manager.minecraft
 
           "${commonModules}"
           "${homeModules}"

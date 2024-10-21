@@ -128,11 +128,6 @@
       url = "github:MichaelAquilina/zsh-auto-notify";
       flake = false;
     };
-
-    nix-minecraft = {
-      url = "github:12Boti/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
