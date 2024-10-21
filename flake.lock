@@ -724,33 +724,17 @@
     },
     "master": {
       "locked": {
-        "lastModified": 1729523595,
-        "narHash": "sha256-2piteWUV5cX8r5SByNhigpccyCMQ2fbFTsa9Y/hzlpw=",
+        "lastModified": 1729526881,
+        "narHash": "sha256-JM9+35NbhjHvZDffv6gASCACtYEchUASYfrFcfBH86M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "204a1a733f1eaee1eeaf7f37aaeacf8120af566c",
+        "rev": "394fbdae02bdd42040715203423d0e0bac78e8a4",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "master",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "mcversions": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1648176147,
-        "narHash": "sha256-9xqPSKlSDZZx3z683ZoMhR6jyRd1eS6L+mIdjnqu6Cw=",
-        "owner": "yushijinhun",
-        "repo": "minecraft-version-json-history",
-        "rev": "a8487697562bf897d0688f4edb9f9fc4b2b4bbfb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yushijinhun",
-        "repo": "minecraft-version-json-history",
         "type": "github"
       }
     },
@@ -795,27 +779,6 @@
       "original": {
         "owner": "SomeoneSerge",
         "repo": "nix-gl-host",
-        "type": "github"
-      }
-    },
-    "nix-minecraft": {
-      "inputs": {
-        "mcversions": "mcversions",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1655551827,
-        "narHash": "sha256-sUdTici3FjWTMvfKtW+h9R6LFvdWrlWub/SI5pAdkAI=",
-        "owner": "12Boti",
-        "repo": "nix-minecraft",
-        "rev": "a2c657b54d86bc1c912ce99597253cfdb4042010",
-        "type": "github"
-      },
-      "original": {
-        "owner": "12Boti",
-        "repo": "nix-minecraft",
         "type": "github"
       }
     },
@@ -1157,7 +1120,6 @@
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "master": "master",
-        "nix-minecraft": "nix-minecraft",
         "nix-topology": "nix-topology",
         "nixpkgs": [
           "unstable"
