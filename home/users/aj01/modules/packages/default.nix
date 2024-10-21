@@ -67,7 +67,6 @@ in {
         libreoffice-fresh
 
         # Misc
-        obs-studio
         dconf2nix
         via
         gpick
@@ -77,7 +76,6 @@ in {
 
         mangohud
         #intel-gpu-tools
-        pavucontrol
 
         udisks2
         ffmpeg
@@ -96,7 +94,7 @@ in {
         galculator
         avalonia-ilspy
         mpv
-        #obs-studio
+        obs-studio
         imv
         wf-recorder
         keepassxc
@@ -125,7 +123,9 @@ in {
         glib
         swww
         xdg-utils
+
         pavucontrol
+
         nemo
         eww
         networkmanagerapplet
