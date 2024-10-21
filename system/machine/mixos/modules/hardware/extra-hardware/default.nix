@@ -7,9 +7,9 @@
   # Extra drivers settings
   hardware = {
     enableAllFirmware = true;
-    cpu.amd.updateMicrocode = true;
+    cpu.amd.updateMicrocode = false;
     enableRedistributableFirmware = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.intel.updateMicrocode = true;
 
     firmware = with pkgs; [
       linux-firmware
