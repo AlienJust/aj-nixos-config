@@ -19,7 +19,7 @@
     virtualisation.enable = true;
 
     chaotic = {
-      enable = false;
+      enable = true;
       schedulerType = "scx_bpfland";
     };
 
