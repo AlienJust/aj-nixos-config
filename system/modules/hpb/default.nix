@@ -17,7 +17,7 @@ in {
     #environment.systemPackages = [pkgs.netbird-ui];
 
     #ystemd.services.NetworkManager-wait-online.enable = false;
-    networking = {
+    networking.nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
       externalInterface = "br0";
@@ -29,8 +29,6 @@ in {
       privateNetwork = true;
       hostAddress = "192.168.100.10";
       localAddress = "192.168.100.11";
-      hostAddress6 = "fc00::1";
-      localAddress6 = "fc00::2";
       config = {
         config,
         pkgs,
