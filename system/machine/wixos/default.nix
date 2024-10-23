@@ -74,5 +74,7 @@
       xdg-portal.enable = true;
       zsh.enable = true;
     };
+
+    hpb.enable = true;
   };
 }

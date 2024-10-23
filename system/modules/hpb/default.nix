@@ -1,4 +1,5 @@
 {
+  self,
   lib,
   config,
   hostname,
@@ -7,6 +8,7 @@
 }:
 with lib; let
   cfg = config.module.hpb;
+  hpb = pkgs.callPackage "${self}/pkgs/hpb" {};
 in {
   options = {
     module.hpb.enable = mkEnableOption "Enables HPB";
@@ -56,7 +58,8 @@ in {
                 }
               ];
               # documentRoot = "/var/www/esther-loeffel";
-              documentRoot = "${pkgs.hpb}/index.php";
+              documentRoot = "${hpb}/index.php";
+              #documentRoot = "${spoofdpi}/index.php";
               extraConfig = ''
                 DirectoryIndex index.php
               '';
