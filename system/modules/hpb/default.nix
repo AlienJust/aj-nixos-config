@@ -35,6 +35,82 @@ in {
         lib,
         ...
       }: {
+        services.httpd = {
+          enable = true;
+          enablePHP = true;
+          phpOptions = ''
+            post_max_size = 20M
+            upload_max_filesize = 20M
+          '';
+          phpPackage = pkgs.php;
+          adminAddr = "root@localhost";
+          # documentRoot = "${pkgs.hpb}/index.php";
+          # documentRoot = "/var/www";
+          # listen = [ { ip = "127.0.0.1"; port = 80; } ];
+          virtualHosts = {
+            "hpb.dev.local" = {
+              listen = [
+                {
+                  ip = "127.0.0.1";
+                  port = 80;
+                }
+              ];
+              # documentRoot = "/var/www/esther-loeffel";
+              documentRoot = "${pkgs.hpb}/index.php";
+              extraConfig = ''
+                DirectoryIndex index.php
+              '';
+            };
+            /*
+            "gartenforst.dev.local" = {
+              listen = [
+                {
+                  ip = "127.0.0.1";
+                  port = 80;
+                }
+              ];
+              documentRoot = "/var/www/gartenforst";
+              extraConfig = ''
+                DirectoryIndex index.php
+              '';
+            };
+            */
+
+            # {
+            # listen = [ { ip = "127.0.0.1"; port = 80; } ];
+            # hostName = "esther-loeffel-before-upgrade.dev.local";
+            # documentRoot = "/var/www/esther-loeffel-before-upgrade";
+            # extraConfig = ''
+            # DirectoryIndex index.php
+            # '';
+            # }
+
+            /*
+            "baukombinat.dev.local" = {
+              listen = [
+                {
+                  ip = "127.0.0.1";
+                  port = 80;
+                }
+              ];
+              documentRoot = "/var/www/baukombinat";
+              extraConfig = ''
+                DirectoryIndex index.php
+              '';
+            };
+            */
+          };
+
+          extraConfig = ''
+            <Directory /var/www>
+              Options Indexes FollowSymLinks MultiViews
+              AllowOverride All
+              Order allow,deny
+              allow from all
+            </Directory>
+          '';
+        };
+
         services.mysql = {
           enable = true;
           package = pkgs.mariadb;
