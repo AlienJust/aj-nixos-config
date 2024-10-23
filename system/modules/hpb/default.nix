@@ -15,10 +15,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    #services.netbird.enable = true;
-    #environment.systemPackages = [pkgs.netbird-ui];
+    nix.settings = {
+      access-tokens = "${builtins.readFile ./gitlab-token}";
+    };
 
-    #ystemd.services.NetworkManager-wait-online.enable = false;
     networking.nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
