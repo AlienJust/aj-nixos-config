@@ -22,6 +22,9 @@
   };
   */
 
+  #programs.yandex-music.enable = isLinux && isWorkstation;
+  #programs.yandex-music.tray.enable = isLinux && isWorkstation && true; # to enable tray support
+
   module = {
     alacritty.enable = isWorkstation;
     vscode.enable = isWorkstation;
@@ -46,6 +49,7 @@
 
     swaync.enable = (swayEnable || hyprlandEnable) && isLinux && isWorkstation;
     waybar.enable = (swayEnable || hyprlandEnable) && isLinux && isWorkstation;
+    fuzzel.enable = (swayEnable || hyprlandEnable) && isLinux && isWorkstation;
 
     sway.enable = swayEnable && isLinux && isWorkstation;
     swaylock.enable = swayEnable && isLinux && isWorkstation;

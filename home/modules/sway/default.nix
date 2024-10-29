@@ -12,7 +12,9 @@ with lib; let
   modifier = "Mod4";
   terminal = "foot";
   qterm = "foot -T \"Floating Terminal\"";
-  menu = "wofi -i --show drun";
+  # menu = "wofi -i --show drun";
+  # menu = "fuzzel";
+  menu = "${pkgs.fuzzel}/bin/fuzzel -T ${terminal}";
 in {
   imports = [
     #"${homeModules}/sway/binds"

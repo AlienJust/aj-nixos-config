@@ -107,6 +107,8 @@ in {
         # chromium
         krita
         xfce.mousepad
+
+        #yandex-music
       ]
       ++ lib.optionals wmEnable [
         imagemagick
