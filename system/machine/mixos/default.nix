@@ -45,7 +45,7 @@
       qmk.enable = true;
       ssh.enable = true;
 
-      spoofdpi.enable = true;
+      spoofdpi.enable = false;
       spoofdpi.doh = true;
       spoofdpi.windowSize = 1;
 
@@ -58,6 +58,7 @@
       };
 
       udisks2.enable = true;
+      zapret.enable = true;
     };
 
     programs = {
