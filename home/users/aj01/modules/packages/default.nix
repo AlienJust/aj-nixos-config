@@ -109,6 +109,12 @@ in {
         xfce.mousepad
 
         #yandex-music
+
+        # games
+        clonehero
+        shattered-pixel-dungeon
+        minetest
+        openarena
       ]
       ++ lib.optionals wmEnable [
         imagemagick
