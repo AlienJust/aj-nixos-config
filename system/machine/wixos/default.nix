@@ -47,9 +47,11 @@
       qmk.enable = true;
       ssh.enable = true;
 
-      spoofdpi.enable = true;
-      spoofdpi.doh = true;
-      spoofdpi.windowSize = 1;
+      spoofdpi = {
+        enable = false;
+        doh = true;
+        windowSize = 1;
+      };
 
       tumbler.enable = true;
 
