@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  cfg = config.services.zapret;
+  cfg = config.services.zapret-custom;
 in {
   options.module.services.zapret-custom.enable = {
     enable = mkEnableOption "DPI bypass multi platform service";
@@ -70,7 +70,7 @@ in {
 
     users.groups.tpws = {};
 
-    systemd.services.zapret = {
+    systemd.services.zapret-custom = {
       after = ["network-online.target"];
       wants = ["network-online.target"];
       wantedBy = ["multi-user.target"];

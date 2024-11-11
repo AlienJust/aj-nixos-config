@@ -61,7 +61,7 @@
 
       udisks2.enable = true;
 
-      services.zapret-custom = {
+      zapret-custom = {
         enable = true;
         mode = "nfqws";
         disableIpv6 = true;
