@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}:
+}: {}
+/*
 with lib; let
   cfg = config.module.services.zapret;
 in {
@@ -40,3 +41,5 @@ in {
     };
   };
 }
+*/
+
