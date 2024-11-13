@@ -14,9 +14,8 @@ in {
 
   config = mkIf cfg.enable {
     services.zapret = {
-      /*
       enable = true;
-
+      /*
       package = (
         pkgs.zapret.overrideAttrs (
           finalAttrs: previousAttrs: {
@@ -29,20 +28,41 @@ in {
           }
         )
       );
+      */
 
       params = [
         #"--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3"
         #"--dpi-desync=fake --dpi-desync-repeats=6"
         #"--dpi-desync-any-protocol"
 
-        "--filter-tcp=80 --dpi-desync=fake,split --dpi-desync-ttl=5 --dpi-desync-fake-tls=0x00000000 --dpi-desync-repeats=10 --new --filter-tcp=443 --dpi-desync=fake,split --dpi-desync-ttl=5 --dpi-desync-fake-tls=0x00000000 --dpi-desync-repeats=10 --new --filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=10"
+        #"--filter-tcp=80 --dpi-desync=fake,split --dpi-desync-ttl=5 --dpi-desync-fake-tls=0x00000000 --dpi-desync-repeats=10 --new --filter-tcp=443 --dpi-desync=fake,split --dpi-desync-ttl=5 --dpi-desync-fake-tls=0x00000000 --dpi-desync-repeats=10 --new --filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=10"
+
+        "--filter-tcp=80"
+        "--dpi-desync=fake,split"
+        "--dpi-desync-ttl=5"
+        "--dpi-desync-fake-tls=0x00000000"
+        "--dpi-desync-repeats=10"
+
+        "--new"
+
+        "--filter-tcp=443"
+        "--dpi-desync=fake,split"
+        "--dpi-desync-ttl=5"
+        "--dpi-desync-fake-tls=0x00000000"
+        "--dpi-desync-repeats=10"
+
+        "--new"
+
+        "--filter-udp=443"
+        "--dpi-desync=fake"
+        "--dpi-desync-repeats=10"
 
         #конкретно это мой провайдер, с этими параметрами работает у меня либо все, либо почти все.
         #"--dpi-desync=split2 --dpi-desync=fake --dpi-desync-repeats=6 " # youtube
         #"--dpi-desync-any-protocol --dpi-desync=fake" # discord
       ];
-      */
 
+      /*
       enable = true;
       params = [
         "--dpi-desync-autottl=3"
@@ -54,6 +74,7 @@ in {
         "--dpi-desync-fooling=md5sig"
         "--new"
       ];
+      */
       whitelist = [
         "googlevideo.com"
         "youtu.be"
