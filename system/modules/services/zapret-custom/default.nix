@@ -20,25 +20,35 @@
       # "--dpi-desync-repeats=6"
       # "--dpi-desync-fooling=md5sig"
 
-      "--filter-tcp=80"
-      "--dpi-desync=fake,split"
+      # works on mixos
+      # "--filter-tcp=80"
+      # "--dpi-desync=fake,split"
+      # "--dpi-desync-ttl=5"
+      # "--dpi-desync-fake-tls=0x00000000"
+      # "--dpi-desync-repeats=10"
+
+      #"--new"
+      #
+      #"--filter-tcp=443"
+      #"--dpi-desync=fake,split"
+      #"--dpi-desync-ttl=5"
+      #"--dpi-desync-fake-tls=0x00000000"
+      #"--dpi-desync-repeats=10"
+      #
+      #"--new"
+      #
+      #"--filter-udp=443"
+      #"--dpi-desync=fake"
+      #"--dpi-desync-repeats=10"
+
+      "--dpi-desync=syndata,fake,split2"
+      "--dpi-desync-split-pos=1"
+      "--dpi-desync-autottl=3"
+      "--dpi-desync-fooling=md5sig"
       "--dpi-desync-ttl=5"
       "--dpi-desync-fake-tls=0x00000000"
       "--dpi-desync-repeats=10"
-
-      "--new"
-
-      "--filter-tcp=443"
-      "--dpi-desync=fake,split"
-      "--dpi-desync-ttl=5"
-      "--dpi-desync-fake-tls=0x00000000"
-      "--dpi-desync-repeats=10"
-
-      "--new"
-
-      "--filter-udp=443"
-      "--dpi-desync=fake"
-      "--dpi-desync-repeats=10"
+      "--wssize 1:6"
     ];
   };
 }
