@@ -148,7 +148,7 @@ in {
       (lib.mkIf cfg.configureFirewall {
         networking.firewall.extraCommands = ''
           iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports ${ports} -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
-          iptables -t mangle -A POSTROUTING -p udp -m multiport --dports 50000:50099 -m mark ! --mark 0x40000000/0x40000000 -m connbytes --connbytes 1:1 --connbytes-mode packets --connbytes-dir original -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
+          iptables -t mangle -A POSTROUTING -p udp -m multiport --dports 443,50000:50100 -m mark ! --mark 0x40000000/0x40000000 -m connbytes --connbytes 1:1 --connbytes-mode packets --connbytes-dir original -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
         '';
       })
     ]
