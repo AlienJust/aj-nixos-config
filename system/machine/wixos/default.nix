@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  # disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
+  #disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
 
   services.dbus.implementation = "broker";
 
@@ -63,7 +63,17 @@
 
       udisks2.enable = true;
 
-      zapret.enable = true;
+      /*
+      zapret = {
+        enable = true;
+
+        params = [
+          "--dpi-desync=fake,split2 --dpi-desync-ttl=5 --domcase --dpi-desync-fooling=md5sig"
+          "--dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-repeats=6"
+        ];
+      };
+      */
+
       /*
         zapret-custom = {
         enable = true;

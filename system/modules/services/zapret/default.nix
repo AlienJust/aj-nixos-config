@@ -3,8 +3,8 @@
   config,
   pkgs,
   ...
-}:
-# {}
+}: {}
+/*
 with lib; let
   cfg = config.module.services.zapret;
 in {
@@ -15,20 +15,19 @@ in {
   config = mkIf cfg.enable {
     services.zapret = {
       enable = true;
-      /*
-      package = (
-        pkgs.zapret.overrideAttrs (
-          finalAttrs: previousAttrs: {
-            src = pkgs.fetchFromGitHub {
-              owner = "bol-van";
-              repo = "zapret";
-              rev = "v66";
-              hash = "sha256-5CrXQ6BhAN4CDWvvGGgiBdSKdZMk4rJMSzHWp+TprGc=";
-            };
-          }
-        )
-      );
-      */
+
+      # package = (
+      #   pkgs.zapret.overrideAttrs (
+      #     finalAttrs: previousAttrs: {
+      #       src = pkgs.fetchFromGitHub {
+      #         owner = "bol-van";
+      #         repo = "zapret";
+      #         rev = "v66";
+      #         hash = "sha256-5CrXQ6BhAN4CDWvvGGgiBdSKdZMk4rJMSzHWp+TprGc=";
+      #       };
+      #     }
+      #   )
+      # );
 
       params = [
         #"--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3"
@@ -60,21 +59,29 @@ in {
         #конкретно это мой провайдер, с этими параметрами работает у меня либо все, либо почти все.
         #"--dpi-desync=split2 --dpi-desync=fake --dpi-desync-repeats=6 " # youtube
         #"--dpi-desync-any-protocol --dpi-desync=fake" # discord
+
+        # "--filter-tcp=80"
+        # "--dpi-desync=fake,split2"
+        # "--dpi-desync-fooling=md5sig"
+        # "--new"
+        # "--filter-tcp=443"
+        # "--dpi-desync=fake,disorder2"
+        # "--dpi-desync-fooling=md5sig"
+        # "--new"
+        # "--filter-udp=443"
+        # "--dpi-desync=fake"
+        # "--dpi-desync-repeats=6"
+
+        # "--dpi-desync-autottl=3"
+        # "--wssize 1:6"
+        # "--dpi-desync-fake-tls=0x00000000"
+        # "--dpi-desync-split-pos=1"
+        # "--dpi-desync=syndata,fake,split2"
+        # "--dpi-desync-repeats=6"
+        # "--dpi-desync-fooling=md5sig"
+        # "--new"
       ];
 
-      /*
-      enable = true;
-      params = [
-        "--dpi-desync-autottl=3"
-        "--wssize 1:6"
-        "--dpi-desync-fake-tls=0x00000000"
-        "--dpi-desync-split-pos=1"
-        "--dpi-desync=syndata,fake,split2"
-        "--dpi-desync-repeats=6"
-        "--dpi-desync-fooling=md5sig"
-        "--new"
-      ];
-      */
       whitelist = [
         "googlevideo.com"
         "youtu.be"
@@ -119,3 +126,5 @@ in {
     };
   };
 }
+*/
+

@@ -1,131 +1,44 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-with lib; let
-  cfg = config.module.services.zapret-custom;
-in {
-  options.module.services.zapret-custom = {
-    enable = mkEnableOption "DPI bypass multi platform service";
+{...}: {
+  disabledModules = ["services/networking/zapret.nix"];
 
-    package = mkPackageOption pkgs "zapret" {};
+  imports = [
+    ./nixpkgs.nix
+  ];
 
-    settings = mkOption {
-      type = types.lines;
-      default = "";
+  services.zapret = {
+    enable = true;
 
-      example = ''
-        TPWS_OPT="--hostspell=HOST --split-http-req=method --split-pos=3 --oob"
-        NFQWS_OPT_DESYNC="--dpi-desync-ttl=5"
-      '';
+    params = [
+      #"--dpi-desync=fake,split2 --dpi-desync-ttl=5 --domcase --dpi-desync-fooling=md5sig"
+      #"--dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-repeats=6"
 
-      description = ''
-        Rules for zapret to work. Run ```nix-shell -p zapret --command blockcheck``` to get values to pass here.
-        Config example can be found here https://github.com/bol-van/zapret/blob/master/config.default
-      '';
-    };
+      # "--dpi-desync-autottl=3"
+      # "--wssize 1:6"
+      # "--dpi-desync-fake-tls=0x00000000"
+      # "--dpi-desync-split-pos=1"
+      # "--dpi-desync=syndata,fake,split2"
+      # "--dpi-desync-repeats=6"
+      # "--dpi-desync-fooling=md5sig"
 
-    firewallType = mkOption {
-      type = types.enum [
-        "iptables"
-        "nftables"
-      ];
-      default = "iptables";
-      description = ''
-        Which firewall zapret should use
-      '';
-    };
+      "--filter-tcp=80"
+      "--dpi-desync=fake,split"
+      "--dpi-desync-ttl=5"
+      "--dpi-desync-fake-tls=0x00000000"
+      "--dpi-desync-repeats=10"
 
-    disableIpv6 = mkOption {
-      type = types.bool;
-      # recommended by upstream
-      default = true;
-      description = ''
-        Disable or enable usage of IpV6 by zapret
-      '';
-    };
+      "--new"
 
-    mode = mkOption {
-      type = types.enum [
-        "tpws"
-        "tpws-socks"
-        "nfqws"
-        "filter"
-        "custom"
-      ];
-      default = "tpws";
-      description = ''
-        Which mode zapret should use
-      '';
-    };
-  };
+      "--filter-tcp=443"
+      "--dpi-desync=fake,split"
+      "--dpi-desync-ttl=5"
+      "--dpi-desync-fake-tls=0x00000000"
+      "--dpi-desync-repeats=10"
 
-  config = mkIf cfg.enable {
-    users.users.tpws = {
-      isSystemUser = true;
-      group = "tpws";
-    };
+      "--new"
 
-    users.groups.tpws = {};
-
-    systemd.services.zapret-custom = {
-      after = ["network-online.target"];
-      wants = ["network-online.target"];
-      wantedBy = ["multi-user.target"];
-
-      path = with pkgs; [
-        (
-          if cfg.firewallType == "iptables"
-          then iptables
-          else nftables
-        )
-        gawk
-        ipset
-      ];
-
-      serviceConfig = {
-        Type = "forking";
-        Restart = "no";
-        TimeoutSec = "30sec";
-        IgnoreSIGPIPE = "no";
-        KillMode = "none";
-        GuessMainPID = "no";
-        RemainAfterExit = "no";
-        ExecStart = "${cfg.package}/bin/zapret start";
-        ExecStop = "${cfg.package}/bin/zapret stop";
-
-        EnvironmentFile = pkgs.writeText "${cfg.package.pname}-environment" (concatStrings [
-          ''
-            MODE=${cfg.mode}
-            FWTYPE=${cfg.firewallType}
-            DISABLE_IPV6=${
-              if cfg.disableIpv6
-              then "1"
-              else "0"
-            }
-          ''
-          cfg.settings
-        ]);
-
-        # hardening
-        DevicePolicy = "closed";
-        KeyringMode = "private";
-        PrivateTmp = true;
-        PrivateMounts = true;
-        ProtectHome = true;
-        ProtectHostname = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
-        ProtectSystem = "strict";
-        ProtectProc = "invisible";
-        RemoveIPC = true;
-        RestrictNamespaces = true;
-        RestrictRealtime = true;
-        RestrictSUIDSGID = true;
-        SystemCallArchitectures = "native";
-      };
-    };
+      "--filter-udp=443"
+      "--dpi-desync=fake"
+      "--dpi-desync-repeats=10"
+    ];
   };
 }
