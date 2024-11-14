@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
+  # disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
 
   services.dbus.implementation = "broker";
 
@@ -63,7 +63,9 @@
 
       udisks2.enable = true;
 
-      zapret-custom = {
+      zapret.enable = true;
+      /*
+        zapret-custom = {
         enable = true;
         mode = "nfqws";
         disableIpv6 = true;
@@ -104,6 +106,7 @@
           INIT_APPLY_FW=1
         '';
       };
+      */
     };
 
     programs = {
