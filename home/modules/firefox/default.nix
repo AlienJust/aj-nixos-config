@@ -50,6 +50,7 @@ in {
     programs.firefox = {
       #package = pkgs.wrapFirefox pkgs.firefox-unwrapped {};
       enable = true;
+      nativeMessagingHosts = [pkgs.vdhcoapp];
 
       policies = {
         DisplayBookmarksToolbar = true;
