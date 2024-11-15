@@ -11,15 +11,13 @@ _: {
       192.168.6.32 elma.horizont.local
     '';
   };
-  networking.nameservers = ["192.168.1.1#one.one.one.one" "8.8.8.8.#google"];
+  networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8.#google"];
   services.resolved = {
     enable = true;
-    dnssec = "false";
+    dnssec = "true";
     domains = ["~."];
     fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-    extraConfig = ''
-      DNSOverTLS=no
-    '';
+    dnsovertls = "true";
   };
   systemd.network = {
     enable = true;
