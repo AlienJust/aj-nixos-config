@@ -59,6 +59,10 @@ in {
         cacert
         iftop
         openvpn
+
+        # io
+        iotop
+        fatrace
       ]
       ++ optionals isWorkstation [
         # Themes

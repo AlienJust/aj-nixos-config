@@ -29,6 +29,12 @@ in {
         statix
         ffmpeg
         inputs.any-nix-shell
+        udisks2
+        cava
+        sacd
+        _7zz
+        mc
+        yt-dlp
 
         # Security
         age
@@ -76,13 +82,6 @@ in {
 
         mangohud
         #intel-gpu-tools
-
-        udisks2
-        ffmpeg
-        cava
-        sacd
-        _7zz
-        mc
 
         # general software
         meld
