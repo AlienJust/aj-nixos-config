@@ -19,7 +19,7 @@
   #boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.kernelParams = [
     "drm_kms_helper.poll=0"
-
+    "delayacct"
     #"preempt=full"
     #"mitigations=off"
     #"initcall_blacklist=acpi_cpufreq_init"
