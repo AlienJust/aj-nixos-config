@@ -6,6 +6,16 @@ _: {
     extraHosts = ''
       192.168.6.32 elma.horizont.local
     '';
+
+    wireless.iwd = {
+      enable = true;
+
+      settings = {
+        Settings = {
+          AutoConnect = true;
+        };
+      };
+    };
   };
 
   networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8.#google"];
@@ -46,6 +56,12 @@ _: {
           LinkLocalAddressing = "no";
         };
         #linkConfig.RequiredForOnline = "no";
+      };
+
+      "wlan0" = {
+        matchConfig.Name = "wlan0";
+        networkConfig.DHCP = "ipv4";
+        linkConfig.RequiredForOnline = "no";
       };
     };
   };
