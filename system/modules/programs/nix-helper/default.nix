@@ -17,7 +17,7 @@ in {
       flake = "/home/${username}/src/aj-nixos-config";
 
       clean = {
-        enable = true;
+        enable = false;
         extraArgs = "--keep-since 14d --keep 10";
       };
     };
