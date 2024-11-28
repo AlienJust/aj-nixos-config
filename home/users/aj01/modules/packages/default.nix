@@ -30,7 +30,7 @@ in {
         ffmpeg
         inputs.any-nix-shell
         udisks2
-        cava
+        #cava
         sacd
         _7zz
         mc
