@@ -4,11 +4,11 @@
   ...
 }:
 with lib; let
-  cfg = config.module.chaotic;
+  cfg = config.module.services.scx;
 in {
   options = {
-    module.chaotic = {
-      enable = mkEnableOption "Enables chaotic module";
+    module.services.scx = {
+      enable = mkEnableOption "Enables scx service module";
 
       schedulerType = mkOption {
         type = types.str;
@@ -18,7 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    chaotic.scx.enable = true;
-    chaotic.scx.scheduler = cfg.schedulerType;
+    services.scx.enable = true;
+    services.scx.scheduler = cfg.schedulerType;
   };
 }

@@ -20,11 +20,6 @@
     variables.enable = true;
     virtualisation.enable = true;
 
-    chaotic = {
-      enable = true;
-      schedulerType = "scx_bpfland";
-    };
-
     security = {
       enable = true;
       enableBootOptions = true;
@@ -32,6 +27,11 @@
     };
 
     services = {
+      scx = {
+        enable = true;
+        schedulerType = "scx_bpfland";
+      };
+
       bolt.enable = true;
       devmon.enable = true;
       fstrim.enable = true;
