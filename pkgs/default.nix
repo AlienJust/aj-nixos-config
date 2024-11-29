@@ -12,4 +12,5 @@ in rec {
   hpb = pkgs.callPackage ./hpb {
     fetchgit = fetchgit-no-verify;
   };
+  bagetter = pkgs.callPackage ./BaGetter {};
 }

@@ -27,6 +27,7 @@
     };
 
     services = {
+      bagetter.enable = true;
       scx = {
         enable = true;
         schedulerType = "scx_bpfland";
