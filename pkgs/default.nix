@@ -9,8 +9,15 @@ with pkgs; let
 in rec {
   # mplus-fonts = pkgs.callPackage ./mplus-fonts { };
   spoofdpi = pkgs.callPackage ./spoofdpi {};
-  hpb = pkgs.callPackage ./hpb {
+
+  hpb = pkgs.callPackage ./hpb {};
+
+  # fetchgit without ssl checking
+  /*
+    hpb = pkgs.callPackage ./hpb {
     fetchgit = fetchgit-no-verify;
   };
+  */
+
   bagetter = pkgs.callPackage ./BaGetter {};
 }
