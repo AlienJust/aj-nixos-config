@@ -29,6 +29,10 @@ in {
         "electron-27.3.11"
         "electron-25.9.0"
         "electron-19.1.9"
+        "dotnet-runtime-wrapped-6.0.36"
+        "dotnet-runtime-6.0.36"
+        "dotnet-sdk-wrapped-6.0.428"
+        "dotnet-sdk-6.0.428"
       ];
     };
 

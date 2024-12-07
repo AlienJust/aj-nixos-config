@@ -63,7 +63,7 @@ in {
           inputs.impermanence.nixosModules.home-manager.impermanence
           inputs.sops-nix.homeManagerModules.sops
           inputs.yandex-music.homeManagerModules.default
-          inputs.nur.nixosModules.nur
+          inputs.nur.modules.homeManager.default
 
           "${commonModules}"
           "${homeModules}"
