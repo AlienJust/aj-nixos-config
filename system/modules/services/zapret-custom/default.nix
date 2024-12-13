@@ -1,4 +1,6 @@
-{...}: {
+{...}: {}
+/*
+  {
   disabledModules = ["services/networking/zapret.nix"];
 
   imports = [
@@ -114,3 +116,5 @@
     ];
   };
 }
+*/
+

@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}: {}
-/*
+}:
 with lib; let
   cfg = config.module.services.zapret;
 in {
@@ -28,6 +27,9 @@ in {
       #     }
       #   )
       # );
+
+      udpSupport = true;
+      udpPorts = ["443"];
 
       params = [
         #"--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3"
@@ -117,51 +119,69 @@ in {
         # "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6"
 
         #"--dpi-desync=split2 --dpi-desync-split-pos=4"
+
+        "--filter-tcp=80"
+        "--dpi-desync=fake,split"
+        "--dpi-desync-ttl=5"
+        "--dpi-desync-fake-tls=0x00000000"
+        "--dpi-desync-repeats=10"
+
+        "--new"
+
+        "--filter-tcp=443"
+        "--dpi-desync=fake,split"
+        "--dpi-desync-ttl=5"
+        "--dpi-desync-fake-tls=0x00000000"
+        "--dpi-desync-repeats=10"
+
+        "--new"
+
+        "--filter-udp=443"
+        "--dpi-desync=fake"
+        "--dpi-desync-repeats=10"
       ];
 
-      # whitelist = [
-      #   "googlevideo.com"
-      #   "youtu.be"
-      #   "youtube.com"
-      #   "youtubei.googleapis.com"
-      #   "googlevideo.com"
-      #   "youtu.be"
-      #   "youtube.com"
-      #   "youtubei.googleapis.com"
-      #   "youtubeembeddedplayer.googleapis.com"
-      #   "ytimg.l.google.com"
-      #   "ytimg.com"
-      #   "jnn-pa.googleapis.com"
-      #   "youtube-nocookie.com"
-      #   "youtube-ui.l.google.com"
-      #   "yt-video-upload.l.google.com"
-      #   "wide-youtube.l.google.com"
-      #   "youtubekids.com"
-      #   "ggpht.com"
-      #   "discord.com"
-      #   "gateway.discord.gg"
-      #   "cdn.discordapp.com"
-      #   "discordapp.net"
-      #   "discordapp.com"
-      #   "discord.gg"
-      #   "media.discordapp.net"
-      #   "images-ext-1.discordapp.net"
-      #   "discord.app"
-      #   "discord.media"
-      #   "discordcdn.com"
-      #   "discord.dev"
-      #   "discord.new"
-      #   "discord.gift"
-      #   "discordstatus.com"
-      #   "dis.gd"
-      #   "discord.co"
-      #   "discord-attachments-uploads-prd.storage.googleapis.com"
-      #   "7tv.app"
-      #   "7tv.io"
-      #   "10tv.app"
-      # ];
+      whitelist = [
+        "googlevideo.com"
+        "youtu.be"
+        "youtube.com"
+        "youtubei.googleapis.com"
+        "googlevideo.com"
+        "youtu.be"
+        "youtube.com"
+        "youtubei.googleapis.com"
+        "youtubeembeddedplayer.googleapis.com"
+        "ytimg.l.google.com"
+        "ytimg.com"
+        "jnn-pa.googleapis.com"
+        "youtube-nocookie.com"
+        "youtube-ui.l.google.com"
+        "yt-video-upload.l.google.com"
+        "wide-youtube.l.google.com"
+        "youtubekids.com"
+        "ggpht.com"
+        "discord.com"
+        "gateway.discord.gg"
+        "cdn.discordapp.com"
+        "discordapp.net"
+        "discordapp.com"
+        "discord.gg"
+        "media.discordapp.net"
+        "images-ext-1.discordapp.net"
+        "discord.app"
+        "discord.media"
+        "discordcdn.com"
+        "discord.dev"
+        "discord.new"
+        "discord.gift"
+        "discordstatus.com"
+        "dis.gd"
+        "discord.co"
+        "discord-attachments-uploads-prd.storage.googleapis.com"
+        "7tv.app"
+        "7tv.io"
+        "10tv.app"
+      ];
     };
   };
 }
-*/
-
