@@ -92,7 +92,8 @@
       url = "github:SomeoneSerge/pkgs";
     };
 
-    ghostty = {
+    /*
+      ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
       inputs = {
@@ -100,6 +101,7 @@
         nixpkgs-unstable.follows = "nixpkgs";
       };
     };
+    */
 
     proxmox-nixos = {
       url = "github:SaumonNet/proxmox-nixos";
