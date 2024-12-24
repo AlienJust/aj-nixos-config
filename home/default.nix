@@ -6,9 +6,7 @@
   hostname,
   username,
   platform,
-  stateVersion,
-  homeModules,
-  commonModules,
+  hmStateVersion,
   isWorkstation ? false,
   wm ? "",
   swayEnable ? false,
@@ -19,6 +17,7 @@
   inherit (pkgs.stdenv) isDarwin;
   inherit (pkgs.stdenv) isLinux;
 
+  stateVersion = hmStateVersion;
   isRoot = username == "root";
   homeDirectory =
     if isDarwin
@@ -30,7 +29,7 @@
   userConfigurationPathExist = builtins.pathExists userConfigurationPath;
   userModulesPath = "${self}/home/users/${username}/modules";
   userModulesPathExist = builtins.pathExists userModulesPath;
-  sshModulePath = "${homeModules}/ssh";
+  sshModulePath = "${self}/home/modules/ssh";
   sshModuleExistPath = builtins.pathExists sshModulePath;
 in {
   home-manager = {
@@ -47,8 +46,6 @@ in {
         platform
         stateVersion
         isLinux
-        commonModules
-        homeModules
         isWorkstation
         wm
         swayEnable
@@ -56,6 +53,10 @@ in {
         wmEnable
         ;
     };
+
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
 
     users.${username} = {
       imports =
@@ -65,14 +66,12 @@ in {
           inputs.yandex-music.homeManagerModules.default
           inputs.nur.modules.homeManager.default
 
-          "${commonModules}"
-          "${homeModules}"
+          "${self}/modules"
+          "${self}/home/modules"
         ]
         ++ lib.optional sshModuleExistPath sshModulePath
         ++ lib.optional userConfigurationPathExist userConfigurationPath
         ++ lib.optional userModulesPathExist userModulesPath;
-
-      programs.home-manager.enable = true;
 
       home = {
         inherit username;

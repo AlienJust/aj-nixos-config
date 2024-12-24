@@ -8,6 +8,7 @@
   services.dbus.implementation = "broker";
 
   module = {
+    sound.enable = true;
     boot.enable = true;
     console.enable = true;
     fonts.enable = true;
@@ -25,6 +26,11 @@
       enableBootOptions = true;
       disableIPV6 = true;
     };
+
+    minimal.enable = true;
+    nixos-ng.enable = true;
+    plymouth.enable = true;
+    binfmt.enable = true;
 
     services = {
       scx = {

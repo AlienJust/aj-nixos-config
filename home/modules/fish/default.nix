@@ -1,13 +1,14 @@
-{
-  lib,
-  config,
-  username,
-  pkgs,
-  inputs,
-  homeModules,
-  ...
+{ self
+, lib
+, config
+, username
+, pkgs
+, ...
 }:
-with lib; let
+
+with lib;
+
+let
   cfg = config.module.fish;
 in {
   options = {
@@ -15,7 +16,7 @@ in {
   };
 
   imports = [
-    "${homeModules}/fish/starship"
+    "${self}/home/modules/fish/starship"
   ];
 
   config = mkIf cfg.enable {
@@ -24,22 +25,20 @@ in {
 
       interactiveShellInit = ''
         set fish_greeting
+        set fish_cursor_default     block      blink
+        set fish_cursor_insert      line       blink
+        set fish_cursor_replace_one underscore blink
+        set fish_cursor_visual      block
 
         function fish_user_key_bindings
-          fish_vi_key_bindings
+          fish_default_key_bindings -M insert
+          fish_vi_key_bindings --no-erase insert
         end
-
-        ${inputs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
       '';
 
       shellAliases = {
-        "flake-update" = "nix flake update /home/${username}/src/aj-nixos-config/";
-        "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/src/aj-nixos-config/";
-        "tree" = "eza --tree -L 3";
-        "ls" = "eza";
-        # "ll" = "eza -l";
-        "l" = "eza --icons -F -H --group-directories-first --git";
-        "ll" = "eza --icons -F -H --group-directories-first --git -all";
+        "flake-update" = "nix flake update --flake /home/${username}/Code/nixos-configuration/";
+        "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/Code/nixos-configuration/";
         "h" = "history";
         "c" = "clear";
         "s" = "sudo su";
@@ -65,6 +64,9 @@ in {
         "drmi" = "docker rmi";
         "drm" = "docker rm";
 
+        # Kubernetes
+        "k" = "kubectl";
+
         # Pass
         "passc" = "pass -c";
         "upass" = "pass git pull; pass git push";
@@ -72,7 +74,6 @@ in {
         # Others
         "gopenssl" = "/opt/cryptopack3/bin/openssl";
         "fuck" = "_ !!";
-        "sudo" = "doas";
       };
 
       plugins = [
@@ -88,3 +89,4 @@ in {
     };
   };
 }
+

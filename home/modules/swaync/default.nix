@@ -1,14 +1,16 @@
-{
-  lib,
-  config,
-  homeModules,
-  ...
+{ self
+, lib
+, config
+, ...
 }:
-with lib; let
+
+with lib;
+
+let
   cfg = config.module.swaync;
 in {
-  options = {
-    module.swaync.enable = mkEnableOption "Enables swaync";
+  options = { 
+    module.swaync.enable = mkEnableOption "Enables swaync";    
   };
 
   config = mkIf cfg.enable {
@@ -75,8 +77,8 @@ in {
       };
 
       # Custom style
-      # style = builtins.readFile (./. + "/style.css");
-      style = builtins.readFile "${homeModules}/swaync/style.css";
+      style = builtins.readFile "${self}/home/modules/swaync/style.css";
     };
   };
 }
+

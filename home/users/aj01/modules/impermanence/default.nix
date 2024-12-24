@@ -12,11 +12,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    /*
     home.persistence = {
       "/persist/home/${username}" = {
         allowOther = true;
-
+        /*
         directories = [
           "Code"
           "Desktop"
@@ -81,8 +80,8 @@ in {
           ".zsh_history"
           ".cache/cliphist/db"
         ];
+        */
       };
     };
-    */
   };
 }

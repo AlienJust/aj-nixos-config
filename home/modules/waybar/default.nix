@@ -1,7 +1,9 @@
 {
-  config,
+  self,
   pkgs,
+  config,
   lib,
+  wm,
   ...
 }:
 with lib; let
@@ -115,7 +117,7 @@ in {
             "memory"
             "clock"
             # "custom/keyboard-layout"
-            "sway/language"
+            "${wm}/workspaces"
             "custom/notification"
           ]; # ++ (if config.hostId == "yoga" then [ "battery" ] else [ ])
           #      ++ [
@@ -284,6 +286,20 @@ in {
               dnd-inhibited-notification = "󰂛";
               dnd-inhibited-none = "󰪑";
             };
+          };
+
+          # Workspaces
+          "hyprland/workspaces" = {
+            format = "{name}";
+            on-click = "activate";
+            disable-scroll = true;
+            all-outputs = true;
+            show-special = true;
+            persistent-workspaces = {"*" = 6;};
+          };
+          "sway/workspaces" = {
+            all-outputs = true;
+            disable-scroll = true;
           };
         }
       ];

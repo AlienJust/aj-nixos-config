@@ -1,17 +1,17 @@
 {
   inputs,
+  self,
   config,
   lib,
   pkgs,
-  homeModules,
   ...
 }:
 with lib; let
   cfg = config.module.hyprland;
 in {
   imports = [
-    "${homeModules}/hyprland/binds"
-    "${homeModules}/hyprland/monitors"
+    "${self}/home/modules/hyprland/binds"
+    "${self}/home/modules/hyprland/monitors"
   ];
 
   options = {
@@ -41,6 +41,7 @@ in {
         env = [
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_DESKTOP,Hyprland"
+          "GTK_CSD,0"
         ];
 
         animations = {

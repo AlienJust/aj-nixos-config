@@ -1,24 +1,19 @@
 {
-  inputs,
+  self,
   config,
   lib,
   pkgs,
-  homeModules,
-  hostname,
   ...
 }:
 with lib; let
   cfg = config.module.sway;
-  modifier = "Mod4";
-  terminal = "foot";
-  qterm = "foot -T \"Floating Terminal\"";
   # menu = "wofi -i --show drun";
   # menu = "fuzzel";
-  menu = "${pkgs.fuzzel}/bin/fuzzel -T ${terminal}";
+  # menu = "${pkgs.fuzzel}/bin/fuzzel -T ${terminal}";
 in {
   imports = [
-    #"${homeModules}/sway/binds"
-    #"${homeModules}/sway/monitors"
+    "${self}/home/modules/sway/keybinds"
+    "${self}/home/modules/sway/outputs"
   ];
 
   options = {
@@ -26,9 +21,21 @@ in {
   };
 
   config = mkIf cfg.enable {
-    module.hyprland = {
-      binds.enable = mkDefault cfg.enable;
-      monitors.enable = mkDefault cfg.enable;
+    module.sway = {
+      keybindings.enable = cfg.enable;
+      outputs.enable = cfg.enable;
+    };
+
+    home.sessionVariables = {
+      XDG_CURRENT_DESKTOP = "sway";
+      XDG_SESSION_DESKTOP = "sway";
+      GTK_CSD = 0;
+    };
+
+    gtk = {
+      gtk3.extraConfig = {
+        gtk-decoration-layout = ":";
+      };
     };
 
     home.packages = with pkgs; [
@@ -236,6 +243,7 @@ in {
         export QT_AUTO_SCREEN_SCALE_FACTOR="1"
 
         export XDG_CURRENT_DESKTOP="sway"
+        export XDG_SESSION_DESKTOP="sway"
 
         export NIXOS_OZONE_WL="1"
 
@@ -252,10 +260,6 @@ in {
       #      export XDG_DATA_DIRS="${gnome.adwaita-icon-theme}/share:$XDG_DATA_DIRS";
       #    '';
       config = {
-        modifier = modifier;
-        terminal = terminal;
-        menu = menu;
-
         #workspaceAutoBackAndForth = true;
         workspaceAutoBackAndForth = false;
 
@@ -270,14 +274,26 @@ in {
         #output = {"*" = {bg = "~/wall.jpg fill";};};
 
         input = {
-          "*" = {
+          "type:keyboard" = {
             xkb_layout = "us,ru";
             xkb_options = "grp:caps_toggle";
             xkb_numlock = "enable";
           };
+
+          "type:pointer" = {
+            accel_profile = "flat";
+            pointer_accel = "0.3";
+          };
+
+          "type:touchpad" = {
+            natural_scroll = "enabled";
+            tap = "enabled";
+            click_method = "button_areas";
+          };
         };
 
         focus.followMouse = "no";
+        focus.mouseWarping = "container";
 
         /*
         colors = {
@@ -415,123 +431,6 @@ in {
 
         # TODO: border
 
-        modes = {
-          resize = {
-            Left = "resize shrink width 10 px or 1 ppt";
-            Down = "resize grow height 10 px or 1 ppt";
-            Up = "resize shrink height 10 px or 1 ppt";
-            Right = "resize grow width 10 px or 1 ppt";
-            Return = ''mode "default"'';
-            Escape = ''mode "default"'';
-
-            "Shift+Left" = "resize shrink width 20 px or 5 ppt";
-            "Shift+Down" = "resize grow height 20 px or 5 ppt";
-            "Shift+Up" = "resize shrink height 20 px or 5 ppt";
-            "Shift+Right" = "resize grow width 20 px or 5 ppt";
-          };
-        };
-
-        bindkeysToCode = true;
-        keybindings = lib.mkOptionDefault {
-          "${modifier}+Return" = "exec ${terminal}";
-          "${modifier}+Shift+Return" = "exec ${qterm}";
-          "${modifier}+Shift+q" = "kill";
-          "${modifier}+d" = "exec ${menu}";
-          "${modifier}+Shift+c" = "reload";
-          "${modifier}+c" = ''mode "chat"'';
-          "${modifier}+r" = ''mode "resize"'';
-
-          # Notifications
-          "${modifier}+n" = ''exec --no-startup-id "makoctl dismiss"'';
-          "${modifier}+Shift+n" = ''exec --no-startup-id "makoctl dismiss --all"'';
-          # Screenshots
-          Print = ''exec IMG=~/Изображения/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim $IMG && wl-copy < $IMG'';
-          "${modifier}+Print" = ''exec IMG=~/Downloads/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG'';
-
-          "${modifier}+Shift+minus" = "move scratchpad";
-          "${modifier}+minus" = "scratchpad show";
-
-          "Mod1+Control+l" = "exec --no-startup-id wlogout";
-
-          "${modifier}+F11" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0";
-          "${modifier}+F10" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0";
-          "${modifier}+F9" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          #        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
-          #        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
-          #        "XF86AudioPlay" = "exec playerctl play-pause";
-          #        "XF86AudioNext" = "exec playerctl next";
-          #        "XF86AudioPrev" = "exec playerctl previous";
-          "${modifier}+Left" = "focus left";
-          "${modifier}+Up" = "focus up";
-          "${modifier}+Down" = "focus down";
-          "${modifier}+Right" = "focus right";
-
-          "${modifier}+Shift+Left" = "move left";
-          "${modifier}+Shift+Up" = "move up";
-          "${modifier}+Shift+Down" = "move down";
-          "${modifier}+Shift+Right" = "move right";
-
-          "${modifier}+1" = "workspace number 1";
-          "${modifier}+2" = "workspace number 2";
-          "${modifier}+3" = "workspace number 3";
-          "${modifier}+4" = "workspace number 4";
-          "${modifier}+5" = "workspace number 5";
-          "${modifier}+6" = "workspace number 6";
-          "${modifier}+7" = "workspace number 7";
-          "${modifier}+8" = "workspace number 8";
-          "${modifier}+9" = "workspace number 9";
-          "${modifier}+0" = "workspace number 10";
-          "${modifier}+F1" = "workspace number 11";
-          "${modifier}+F2" = "workspace number 12";
-          "${modifier}+F3" = "workspace number 13";
-          "${modifier}+F4" = "workspace number 14";
-          "${modifier}+F5" = "workspace number 15";
-          "${modifier}+F6" = "workspace number 16";
-          "${modifier}+F7" = "workspace number 17";
-          "${modifier}+F8" = "workspace number 18";
-          "${modifier}+F12" = "workspace number 22";
-
-          "${modifier}+Shift+1" = "move container to workspace number 1";
-          "${modifier}+Shift+2" = "move container to workspace number 2";
-          "${modifier}+Shift+3" = "move container to workspace number 3";
-          "${modifier}+Shift+4" = "move container to workspace number 4";
-          "${modifier}+Shift+5" = "move container to workspace number 5";
-          "${modifier}+Shift+6" = "move container to workspace number 6";
-          "${modifier}+Shift+7" = "move container to workspace number 7";
-          "${modifier}+Shift+8" = "move container to workspace number 8";
-          "${modifier}+Shift+9" = "move container to workspace number 9";
-          "${modifier}+Shift+0" = "move container to workspace number 10";
-          "${modifier}+Shift+F1" = "move container to workspace number 11";
-          "${modifier}+Shift+F2" = "move container to workspace number 12";
-          "${modifier}+Shift+F3" = "move container to workspace number 13";
-          "${modifier}+Shift+F4" = "move container to workspace number 14";
-          "${modifier}+Shift+F5" = "move container to workspace number 15";
-          "${modifier}+Shift+F6" = "move container to workspace number 16";
-          "${modifier}+Shift+F7" = "move container to workspace number 17";
-          "${modifier}+Shift+F8" = "move container to workspace number 18";
-          "${modifier}+Shift+F12" = "move container to workspace number 22";
-
-          "${modifier}+Tab" = ''exec "echo 1 > /tmp/sovpipe"'';
-          "${modifier}+q" = ''exec "echo 0 > /tmp/sovpipe"'';
-
-          "${modifier}+b" = "splith";
-          "${modifier}+v" = "splitv";
-
-          "${modifier}+s" = "layout stacking";
-          "${modifier}+w" = "layout tabbed";
-          "${modifier}+e" = "layout toggle split";
-
-          "${modifier}+f" = "fullscreen";
-          "${modifier}+Shift+f" = "fullscreen global";
-
-          "${modifier}+Shift+space" = "floating toggle";
-          "${modifier}+space" = "focus mode_toggle";
-          "${modifier}+a" = "focus parent";
-
-          # TODO: warpd bindings
-          # TODO: volume control notifications
-        };
-
         # TODO: floating criteria
         # floating = {criteria = [{class = "SpeedCrunch";}];};
 
@@ -589,62 +488,65 @@ in {
         };
         */
 
-        output = lib.mkMerge [
-          (lib.mkIf (hostname == "mixos") {
-            "DP-1" = {
-              scale = "1";
-              mode = "2560x1440@164.999Hz";
-              pos = "1920 700";
-            };
-            "HDMI-A-1" = {
-              mode = "1920x1080@60.000Hz";
-              scale = "1";
-              pos = "0 0";
-            };
-          })
+        /*
+          output = lib.mkMerge [
+            (lib.mkIf (hostname == "mixos") {
+              "DP-1" = {
+                scale = "1";
+                mode = "2560x1440@164.999Hz";
+                pos = "1920 700";
+              };
+              "HDMI-A-1" = {
+                mode = "1920x1080@60.000Hz";
+                scale = "1";
+                pos = "0 0";
+              };
+            })
 
-          (lib.mkIf (hostname == "wixos") {
-            "DP-1" = {
-              scale = "1";
-              mode = "1920x1080@60.000Hz";
-              pos = "0 0";
-            };
-            "HDMI-A-1" = {
-              mode = "1920x1080@60.000Hz";
-              scale = "1";
-              pos = "1920 0";
-            };
-            "DVI-D-1" = {
-              mode = "1920x1080@60.000Hz";
-              scale = "1";
-              pos = "3840 0";
-            };
-          })
-        ];
+            (lib.mkIf (hostname == "wixos") {
+              "DP-1" = {
+                scale = "1";
+                mode = "1920x1080@60.000Hz";
+                pos = "0 0";
+              };
+              "HDMI-A-1" = {
+                mode = "1920x1080@60.000Hz";
+                scale = "1";
+                pos = "1920 0";
+              };
+              "DVI-D-1" = {
+                mode = "1920x1080@60.000Hz";
+                scale = "1";
+                pos = "3840 0";
+              };
+            })
+          ];
+        };
+        */
+
+        extraConfig = ''
+          #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
+          #exec --no-startup-id mako &
+
+          # TODO: move to config.
+          no_focus [app_id="^mpv"]
+          no_focus [title="^Картинка в картинке"]
+
+          # TODO:
+          # Cursor
+          #
+          #seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
+
+          # TODO:
+          # SOV
+
+          # Switching at workspace 1 on start.
+          workspace 1
+        '';
+        #      exec --no-startup-id kdeconnect-indicator &
+        #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+        #    '';
       };
-
-      extraConfig = ''
-        #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
-        #exec --no-startup-id mako &
-
-        # TODO: move to config.
-        no_focus [app_id="^mpv"]
-        no_focus [title="^Картинка в картинке"]
-
-        # TODO:
-        # Cursor
-        #
-        #seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
-
-        # TODO:
-        # SOV
-
-        # Switching at workspace 1 on start.
-        workspace 1
-      '';
-      #      exec --no-startup-id kdeconnect-indicator &
-      #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-      #    '';
     };
   };
 }

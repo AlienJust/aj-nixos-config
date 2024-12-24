@@ -1,11 +1,13 @@
-{
-  lib,
-  config,
-  pkgs,
-  homeModules,
-  ...
+{ self
+, lib
+, config
+, pkgs
+, ...
 }:
-with lib; let
+
+with lib;
+
+let
   cfg = config.module.nvim;
 in {
   options = {
@@ -14,7 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     xdg.configFile."nvim" = {
-      source = "${homeModules}/neovim/config";
+      source = "${self}/home/modules/neovim/config";
       recursive = true;
     };
 
@@ -36,6 +38,7 @@ in {
         cmake-language-server
         helm-ls
         nil
+        nixd
         lua-language-server
         stylua
         pyright
@@ -43,3 +46,4 @@ in {
     };
   };
 }
+
