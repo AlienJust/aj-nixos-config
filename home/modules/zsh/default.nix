@@ -1,9 +1,9 @@
 {
   inputs,
+  self,
   lib,
   username,
   config,
-  homeModules,
   ...
 }:
 with lib; let
@@ -14,8 +14,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.file.".p10k.zsh".source = "${homeModules}/zsh/p10k.zsh";
-    home.file.".helmrc".source = "${homeModules}/zsh/helmrc";
+    home.file.".p10k.zsh".source = "${self}/home/modules/zsh/p10k.zsh";
+    home.file.".helmrc".source = "${self}/home/modules/zsh/helmrc";
 
     programs.zsh = {
       enable = true;
@@ -48,29 +48,31 @@ in {
         }
       ];
 
-      oh-my-zsh = {
+      /*
+         oh-my-zsh = {
         enable = true;
 
         plugins = [
           "git"
-          #"vagrant"
-          #"docker"
-          #"python"
-          #"pass"
-          #"kubectl"
+          "vagrant"
+          "docker"
+          "python"
+          "pass"
+          "kubectl"
         ];
 
         extraConfig = ''
           zstyle ':omz:update' mode disabled
         '';
       };
+      */
 
       shellAliases = {
         # System
-        "flake-update" = "nix flake update /home/${username}/src/aj-nixos-config/";
-        "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/src/aj-nixos-config/";
-        #"ls" = "eza";
-        #"ll" = "eza -l";
+        "flake-update" = "nix flake update /home/${username}/Code/nixos-configuration/";
+        "darwin-update" = "darwin-rebuild switch --flake /Users/${username}/Code/nixos-configuration/";
+        "ls" = "eza";
+        "ll" = "eza -l";
         "h" = "history";
         "c" = "clear";
         "s" = "sudo su";

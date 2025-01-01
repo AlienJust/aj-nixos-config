@@ -25,7 +25,7 @@ in {
         "fuzzel"
       ];
 
-      default = "wofi";
+      default = "fuzzel";
     };
 
     browser = mkOption {

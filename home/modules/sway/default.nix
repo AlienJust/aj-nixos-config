@@ -523,30 +523,31 @@ in {
           ];
         };
         */
-
-        extraConfig = ''
-          #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
-          #exec --no-startup-id mako &
-
-          # TODO: move to config.
-          no_focus [app_id="^mpv"]
-          no_focus [title="^Картинка в картинке"]
-
-          # TODO:
-          # Cursor
-          #
-          #seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
-
-          # TODO:
-          # SOV
-
-          # Switching at workspace 1 on start.
-          workspace 1
-        '';
-        #      exec --no-startup-id kdeconnect-indicator &
-        #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-        #    '';
       };
+
+      extraConfig = ''
+        #exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP
+        #exec --no-startup-id mako &
+
+        # TODO: move to config.
+        no_focus [app_id="^mpv"]
+        no_focus [title="^Картинка в картинке"]
+
+        # TODO:
+        # Cursor
+        #
+        #seat seat0 xcursor_theme Catppuccin-Mocha-Peach-Cursors 24
+
+        # TODO:
+        # SOV
+
+        # Switching at workspace 1 on start.
+        workspace 1
+      '';
+
+      #      exec --no-startup-id kdeconnect-indicator &
+      #      exec --no-startup-id swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+      #    '';
     };
   };
 }

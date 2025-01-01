@@ -75,16 +75,14 @@ in {
         # Terminal
         "${super}+Return" = "exec ${terminal}";
 
-        # Kill active window
-        "${super}+q" = "kill";
-
         # PowerMenu
         "${super}+p" = "exec ${powerMenu}/bin/powerMenu.sh";
 
-        "${super}+Return" = "exec ${terminal}";
         "${super}+Shift+Return" = "exec ${qterm}";
+
+        # Kill active window
         "${super}+Shift+q" = "kill";
-        "${super}+d" = "exec ${menu}";
+        "${super}+d" = "exec ${appLauncher}";
         "${super}+Shift+c" = "reload";
         "${super}+c" = ''mode "chat"'';
         "${super}+r" = ''mode "resize"'';
@@ -93,8 +91,8 @@ in {
         "${super}+n" = ''exec --no-startup-id "makoctl dismiss"'';
         "${super}+Shift+n" = ''exec --no-startup-id "makoctl dismiss --all"'';
         # Screenshots
-        Print = ''exec IMG=~/Изображения/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim $IMG && wl-copy < $IMG'';
-        "${super}+Print" = ''exec IMG=~/Downloads/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG'';
+        Print = ''exec IMG=~/Images/Screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim $IMG && wl-copy < $IMG'';
+        "${super}+Print" = ''exec IMG=~/Images/Screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG'';
 
         "${super}+Shift+minus" = "move scratchpad";
         "${super}+minus" = "scratchpad show";
@@ -104,6 +102,14 @@ in {
         "${super}+F11" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0";
         "${super}+F10" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.0";
         "${super}+F9" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
+        # Multimedia keys
+        "xf86audioraisevolume" = "exec ${audioControl} set-sink-volume @DEFAULT_SINK@ +5%";
+        "xf86audiolowervolume" = "exec ${audioControl} set-sink-volume @DEFAULT_SINK@ -5%";
+        "xf86audiomute" = "exec ${audioControl} set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86MonBrightnessDown" = "exec ${brightnessControl} set 5%-";
+        "XF86MonBrightnessUp" = "exec ${brightnessControl} set +5%";
+
         #        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
         #        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         #        "XF86AudioPlay" = "exec playerctl play-pause";
@@ -175,10 +181,6 @@ in {
         "${super}+Shift+space" = "floating toggle";
         "${super}+space" = "focus mode_toggle";
         "${super}+a" = "focus parent";
-
-        # PowerMenu
-        "${super}+p" = "exec ${powerMenu}/bin/powerMenu.sh";
-        "${super}+Shift+q" = "kill";
 
         # TODO: warpd bindings
         # TODO: volume control notifications

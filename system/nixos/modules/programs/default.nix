@@ -1,9 +1,9 @@
 {
-  systemModules,
+  self,
   lib,
   ...
 }: let
-  hostProgramModulesPath = "${systemModules}/programs";
+  hostProgramModulesPath = "${self}/system/nixos/modules/programs";
 in {
   # Import all program modules
   imports = builtins.filter (module: lib.pathIsDirectory module) (
