@@ -1,8 +1,4 @@
-{
-  hyprlandEnable,
-  config,
-  ...
-}: {
+{config, ...}: {
   #disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
 
   services.dbus.implementation = "broker";
@@ -37,9 +33,10 @@
         enable = true;
         schedulerType = "scx_bpfland";
       };
+      zram.enable = true;
 
       bolt.enable = true;
-      devmon.enable = true;
+      devmon.enable = false;
       fstrim.enable = true;
       fwupd.enable = true;
       gvfs.enable = true;
@@ -49,7 +46,6 @@
       syncthing.enable = true;
       udev.enable = true;
       greetd-tui.enable = false;
-      hyprland.enable = hyprlandEnable;
       qmk.enable = true;
       ssh.enable = true;
 
