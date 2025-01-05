@@ -113,7 +113,7 @@ in {
         clonehero
         shattered-pixel-dungeon
         minetest
-        openarena
+        # openarena
       ]
       ++ lib.optionals wmEnable [
         imagemagick
