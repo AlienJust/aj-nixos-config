@@ -75,7 +75,7 @@ in {
         # Misc
         dconf2nix
         via
-        gpick
+        # gpick
         gat
         vlc
         eog
