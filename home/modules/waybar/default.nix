@@ -101,7 +101,10 @@ in {
             spacing = 8;
           };
 
-          modules-left = ["sway/workspaces" "sway/mode"];
+          modules-left = [
+            "${wm}/workspaces"
+            "sway/mode"
+          ];
           "sway/mode" = {format = ''<span style="italic">{}</span>'';};
 
           modules-center = ["sway/window"];
@@ -117,7 +120,7 @@ in {
             "memory"
             "clock"
             # "custom/keyboard-layout"
-            "${wm}/workspaces"
+            "sway/language" # TODO: chose lang by wm
             "custom/notification"
           ]; # ++ (if config.hostId == "yoga" then [ "battery" ] else [ ])
           #      ++ [
@@ -298,7 +301,7 @@ in {
             persistent-workspaces = {"*" = 6;};
           };
           "sway/workspaces" = {
-            all-outputs = true;
+            all-outputs = false;
             disable-scroll = true;
           };
         }
