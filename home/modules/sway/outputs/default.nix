@@ -7,6 +7,9 @@
 with lib; let
   cfg = config.module.sway.outputs;
 
+  mixosMonitorLeftName = "HDMI-A-1";
+  mixosMonitorRightName = "DP-1";
+
   outputs = {
     default = {};
 
@@ -46,73 +49,83 @@ with lib; let
     default = [];
 
     mixos = [
+      # First monitor
       {
         workspace = "1";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "3";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "5";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "7";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "9";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "11";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "13";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "15";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
       {
         workspace = "17";
-        output = "DP-1";
+        output = mixosMonitorLeftName;
       }
+      # Second monitor.
       {
         workspace = "2";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "4";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "6";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "8";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "10";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "12";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "14";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
       }
       {
         workspace = "16";
-        output = "HDMI-A-1";
+        output = mixosMonitorRightName;
+      }
+      {
+        workspace = "18";
+        output = mixosMonitorRightName;
+      }
+      {
+        workspace = "22";
+        output = mixosMonitorRightName;
       }
     ];
 
@@ -185,6 +198,14 @@ with lib; let
       }
       {
         workspace = "17";
+        output = "DVI-D-1";
+      }
+      {
+        workspace = "18";
+        output = "DVI-D-1";
+      }
+      {
+        workspace = "22";
         output = "DVI-D-1";
       }
     ];
