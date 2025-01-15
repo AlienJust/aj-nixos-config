@@ -86,6 +86,11 @@ in {
           });
         */
         enable = true;
+        allowedBridges = [
+          # "virbr0"
+          "br0"
+        ];
+
         qemu = {
           swtpm.enable = true;
           ovmf.enable = true;
