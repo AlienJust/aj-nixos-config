@@ -5,6 +5,9 @@ _: {
     security.enable = true;
     timedate.enable = true;
     users.enable = true;
+    console.enable = true;
+    boot.enable = true;
+    stylix.enable = true;
     # pihole.enable   = true;
 
     programs = {
@@ -19,6 +22,8 @@ _: {
     };
 
     services = {
+      udev.enable = true;
+      ssh.enable = true;
       /*
       unbound.enable = true;
 
