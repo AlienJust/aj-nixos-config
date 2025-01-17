@@ -16,6 +16,13 @@
       wm = "sway";
     };
 
+    hpb-nix = {
+      username = "aj01";
+      platform = "x86_64-linux";
+      stateVersion = "24.11";
+      isWorkstation = false;
+    };
+
     rasp = {
       username = "aj01";
       platform = "aarch64-linux";
