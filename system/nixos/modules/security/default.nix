@@ -15,24 +15,19 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # environment.memoryAllocator.provider = "graphene-hardened";
-
     security = {
-      sudo.enable = true;
-      sudo.wheelNeedsPassword = false;
+      sudo.enable = false;
 
-      pam.services.swaylock = {};
+      pam.services = {
+        gtklock = {};
+        swaylock = {};
+        hyprlock = {};
+      };
 
-      doas = {
+      sudo-rs = {
         enable = true;
-        extraRules = [
-          {
-            groups = ["wheel"];
-            noPass = true;
-            keepEnv = true;
-            persist = false;
-          }
-        ];
+        execWheelOnly = true;
+        wheelNeedsPassword = true;
       };
     };
 
@@ -112,7 +107,7 @@ in {
           "net.ipv4.conf.all.send_redirects" = false;
           "net.ipv4.conf.default.send_redirects" = false;
         }
-        // optionals cfg.disableIPV6 {
+        // optionalAttrs cfg.disableIPV6 {
           # Disable ipv6
           "net.ipv6.conf.all.disable_ipv6" = true;
           "net.ipv6.conf.default.disable_ipv6" = true;
