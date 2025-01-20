@@ -17,7 +17,7 @@ _: {
     enable = true;
     networks = {
       "10-lan" = {
-        matchConfig.Name = "lan";
+        matchConfig.Name = "enp0s3";
         networkConfig.DHCP = "ipv4";
       };
     };
