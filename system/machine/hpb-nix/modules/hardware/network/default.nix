@@ -15,34 +15,10 @@ _: {
   };
   systemd.network = {
     enable = true;
-    netdevs = {
-      "br0" = {
-        netdevConfig = {
-          Name = "br0";
-          Kind = "bridge";
-        };
-      };
-    };
     networks = {
-      # Add all adapters to br0 bridge
-      "br0_en-all" = {
-        matchConfig.Name = "en*";
-        networkConfig = {
-          Bridge = "br0";
-          LinkLocalAddressing = "no";
-        };
-        linkConfig.RequiredForOnline = "no";
-      };
-
-      "br0" = {
-        matchConfig.Name = "br0";
-        networkConfig = {
-          #Address = ["192.168.167.123/24" "192.168.150.123/24"];
-          IPv4Forwarding = true;
-          #Gateway = "192.168.150.1";
-          DHCP = "ipv4";
-          LinkLocalAddressing = "no";
-        };
+      "10-lan" = {
+        matchConfig.Name = "lan";
+        networkConfig.DHCP = "ipv4";
       };
     };
   };
