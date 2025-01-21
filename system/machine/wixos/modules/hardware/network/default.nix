@@ -77,7 +77,7 @@ _: {
         {
           publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
           allowedIPs = ["192.168.50.0/24" "192.168.52.0/24"];
-          endpoint = "aj01.asuscomm.com:51820";
+          endpoint = "alexdeb.ru:51820";
           persistentKeepalive = 25;
         }
       ];
