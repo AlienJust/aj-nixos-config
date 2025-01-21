@@ -5,6 +5,7 @@ _: {
     firewall.enable = false;
     extraHosts = ''
       192.168.6.32 elma.horizont.local
+      192.168.11.20 hpb.dev.local
     '';
 
     wireless.iwd = {
