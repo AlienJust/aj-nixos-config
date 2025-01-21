@@ -172,6 +172,12 @@ in {
     services.nginx = {
       enable = true;
       virtualHosts = {
+        default = {
+          serverName = "_";
+          default = true;
+          rejectSSL = true;
+          locations."/".return = "444";
+        };
         "hpb.dev.local" = {
           serverName = "hpb.dev.local";
           forceSSL = false;
