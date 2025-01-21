@@ -164,5 +164,23 @@ in {
         services.resolved.enable = true;
       };
     };
+
+    networking.firewall.allowedTCPPorts = [
+      80
+    ];
+
+    services.nginx = {
+      enable = true;
+      virtualHosts = {
+        "hpb.dev.local" = {
+          serverName = "hpb.dev.local";
+          forceSSL = false;
+          locations."/" = {
+            recommendedProxySettings = true;
+            proxyPass = "http://hpb.dev.local:80";
+          };
+        };
+      };
+    };
   };
 }
