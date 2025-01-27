@@ -24,7 +24,7 @@
     security = {
       enable = true;
       enableBootOptions = true;
-      disableIPV6 = true;
+      disableIPV6 = false;
     };
 
     minimal.enable = true;
