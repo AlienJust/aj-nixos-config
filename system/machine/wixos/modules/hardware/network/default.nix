@@ -51,9 +51,15 @@ _: {
       "br0" = {
         matchConfig.Name = "br0";
         networkConfig = {
-          Address = ["192.168.150.33/24" "192.168.1.222/24"];
+          # Address = [
+          # "192.168.11.53/24"
+          # /*
+          # "192.168.1.222/24"
+          # */
+          # ];
+          # Gateway = "192.168.150.1";
+          DHCP = "ipv4";
           IPv4Forwarding = true;
-          Gateway = "192.168.150.1";
           LinkLocalAddressing = "no";
         };
         #linkConfig.RequiredForOnline = "no";
