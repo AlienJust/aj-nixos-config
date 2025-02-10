@@ -66,10 +66,10 @@ in {
       ]
       ++ optionals isWorkstation [
         # Themes
-        orchis-theme
-        vimix-cursors
-        tela-circle-icon-theme
-        nordic
+        # orchis-theme
+        # vimix-cursors
+        # tela-circle-icon-theme
+        # nordic
 
         # Hardware
         microcodeIntel
