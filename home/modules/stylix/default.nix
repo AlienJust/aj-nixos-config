@@ -48,6 +48,16 @@ in {
         size = 32;
       };
 
+      iconTheme = {
+        enable = true;
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "mocha";
+          accent = "peach";
+        };
+        dark = "Papirus-Dark";
+        light = "Papirus-Light";
+      };
+
       /*
       image = pkgs.fetchurl {
         url = "https://github.com/NixOS/nixos-artwork/raw/master/wallpapers/nix-wallpaper-dracula.png";

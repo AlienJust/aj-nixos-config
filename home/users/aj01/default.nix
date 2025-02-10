@@ -37,8 +37,8 @@
     ssh.enable = isLinux && isWorkstation;
 
     stylix.enable = isLinux && isWorkstation;
-    kde-theme.enable = isLinux && isWorkstation;
-    gtk.enable = isLinux && isWorkstation;
+    # kde-theme.enable = isLinux && isWorkstation;
+    # gtk.enable = isLinux && isWorkstation;
 
     #hyprland.enable = isLinux && isWorkstation;
     hyprland.enable = hyprlandEnable && isLinux && isWorkstation;
