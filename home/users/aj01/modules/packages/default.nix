@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -10,6 +11,7 @@
 with lib; let
   inherit (pkgs.stdenv) isLinux;
   cfg = config.module.user.packages;
+  sfp = pkgs.callPackage "${self}/pkgs/sfp" {};
 in {
   options.module.user.packages = {
     enable = mkEnableOption "Enable user packages";
@@ -114,6 +116,8 @@ in {
         shattered-pixel-dungeon
         minetest
         # openarena
+
+        sfp
       ]
       ++ lib.optionals wmEnable [
         imagemagick
