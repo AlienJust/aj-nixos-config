@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     # TODO: remove when bug fixed: https://github.com/danth/stylix/issues/480
-    stylix.targets.kde.enable = false;
+    # stylix.targets.kde.enable = false;
 
     stylix = {
       enable = true;
