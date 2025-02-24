@@ -28,10 +28,11 @@ in {
     */
     home.packages = with pkgs; [
       alejandra
+      #master.vscode-extensions.rust-lang.rust-analyzer
     ];
     programs.vscode = {
       enable = true;
-      enableUpdateCheck = false;
+      profiles.default.enableUpdateCheck = false;
 
       package = pkgs.vscode.fhsWithPackages (ps:
         with ps; [
@@ -52,10 +53,11 @@ in {
           direnv
           */
         ]);
-      extensions =
+      profiles.default.extensions =
         with pkgs.vscode-extensions; [
+          pkgs.master.vscode-extensions.rust-lang.rust-analyzer
           #mvllow.rose-pine
-          rust-lang.rust-analyzer
+          #rust-lang.rust-analyzer
           eamodio.gitlens
           pkief.material-product-icons
           pkief.material-icon-theme
@@ -78,7 +80,7 @@ in {
         ]
         */
         ;
-      userSettings = {
+      profiles.default.userSettings = {
         #"editor.fontSize" = 16;
         "editor.fontLigatures" = true;
         "editor.formatOnSave" = true;

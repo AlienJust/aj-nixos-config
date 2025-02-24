@@ -31,12 +31,12 @@
 
   pathsToMakeWritable = lib.flatten [
     #(lib.optional (cfg.userTasks != {}) tasksFilePath)
-    (lib.optional (cfg.userSettings != {}) configFilePath)
+    (lib.optional (cfg.profiles.default.userSettings != {}) configFilePath)
     #(lib.optional (cfg.keybindings != {}) keybindingsFilePath)
-    (lib.optional (cfg.globalSnippets != {})
+    (lib.optional (cfg.profiles.default.globalSnippets != {})
       "${snippetDir}/global.code-snippets")
     (lib.mapAttrsToList (language: _: "${snippetDir}/${language}.json")
-      cfg.languageSnippets)
+      cfg.profiles.default.languageSnippets)
   ];
 in {
   home.file = lib.genAttrs pathsToMakeWritable (_: {

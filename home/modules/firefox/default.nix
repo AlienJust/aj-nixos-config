@@ -76,7 +76,7 @@ in {
         };
       };
       profiles.default = {
-        extensions = with (import ./addons.nix pkgs); [
+        extensions.packages = with (import ./addons.nix pkgs); [
           ublock-origin
           sidebery
           #stylus
