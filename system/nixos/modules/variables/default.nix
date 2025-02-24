@@ -28,6 +28,7 @@ in {
       NIXOS_OZONE_WL = "1";
       FLAKE = "/home/${username}/src/aj-nixos-config";
       # QT_QPA_PLATFORMTHEME = "gtk3";
+      # QT_AUTO_SCREEN_SCALE_FACTOR = "auto";
       TDESKTOP_I_KNOW_ABOUT_GTK_INCOMPATIBILITY = "1";
     };
   };
