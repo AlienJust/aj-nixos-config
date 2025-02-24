@@ -65,6 +65,7 @@ in {
           inputs.sops-nix.homeManagerModules.sops
           inputs.yandex-music.homeManagerModules.default
           inputs.nur.modules.homeManager.default
+          inputs.nvf.homeManagerModules.default
 
           "${self}/modules"
           "${self}/home/modules"
