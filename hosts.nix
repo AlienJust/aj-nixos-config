@@ -8,6 +8,14 @@
       wm = "sway";
     };
 
+    kixos = {
+      username = "aj01";
+      platform = "x86_64-linux";
+      stateVersion = "25.05";
+      isWorkstation = true;
+      wm = "sway";
+    };
+
     wixos = {
       username = "aj01";
       platform = "x86_64-linux";
