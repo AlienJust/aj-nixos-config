@@ -12,7 +12,11 @@ with lib; let
 in {
   options = {
     module.nextcloud.enable = mkEnableOption "Enables nextcloud";
-    module.nextcloud.hostname = mkStringOption "Nextcloud hostname";
+    module.nextcloud.hostname = mkOption {
+      type = types.str;
+      description = "Nextcloud hostname";
+      default = "";
+    };
   };
   config = mkIf cfg.enable {
     environment.etc."nextcloud-admin-pass".text = "1234567890";

@@ -8,7 +8,11 @@ with lib; let
 in {
   options = {
     module.bagetter.enable = mkEnableOption "Enables bagetter";
-    module.bagetter.hostname = mkStringOption "Bagetter hostname";
+    module.bagetter.hostname = mkOption {
+      type = types.str;
+      description = "Bagetter hostname";
+      default = "";
+    };
   };
   config = mkIf cfg.enable {
     services.bagetter.enable = true;
