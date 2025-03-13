@@ -19,64 +19,27 @@ _: {
     fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
     dnsovertls = "true";
   };
+
+  networking.wireless.enable = true;
+
   systemd.network = {
     enable = true;
-    netdevs = {
-      "br0" = {
-        netdevConfig = {
-          Name = "br0";
-          Kind = "bridge";
-        };
-      };
-    };
+
     networks = {
       # Add all adapters to br0 bridge
-      "br0_en-all" = {
-        matchConfig.Name = "en*";
+      "10-lan-wifi" = {
+        matchConfig.Name = "wlan0";
+        # acquire a DHCP lease on link up
         networkConfig = {
-          Bridge = "br0";
-          LinkLocalAddressing = "no";
+          Address = "192.168.50.112/24";
+          Gateway = "192.168.50.1";
+          # DNS = ["8.8.8.8"];
+          # DHCP = "yes";
+          # IPv6AcceptRA = true;
         };
-        linkConfig.RequiredForOnline = "no";
+        # this port is not always connected and not required to be online
+        linkConfig.RequiredForOnline = "routable";
       };
-
-      "br0" = {
-        matchConfig.Name = "br0";
-        networkConfig = {
-          Address = [
-            /*
-            "192.168.50.33/24"
-            */
-            "192.168.1.33/24"
-          ];
-          IPv4Forwarding = true;
-          Gateway = "192.168.1.1";
-          LinkLocalAddressing = "no";
-        };
-        #linkConfig.RequiredForOnline = "no";
-      };
-    };
-  };
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      address = [
-        "10.66.66.2/32"
-        /*
-        "fd42:42:42::2/128"
-        */
-      ];
-      # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
-      privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
-
-      peers = [
-        {
-          publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
-          presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer0_key";
-          allowedIPs = ["192.168.167.0/24" "192.168.11.0/24" "192.168.6.0/24"];
-          endpoint = "79.172.45.20:40414";
-          persistentKeepalive = 25;
-        }
-      ];
     };
   };
 }
