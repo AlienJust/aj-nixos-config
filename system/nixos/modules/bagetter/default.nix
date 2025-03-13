@@ -19,7 +19,9 @@ in {
 
     security.acme = {
       acceptTerms = true;
-      ${cfg.hostname}.email = "aj001@mail.ru";
+      certs = {
+        ${cfg.hostname}.email = "aj001@mail.ru";
+      };
     };
 
     services.nginx = {
