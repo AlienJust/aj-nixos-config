@@ -6,17 +6,17 @@ _: {
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B6FC-BD5B";
+    device = "/dev/disk/by-uuid/F4EB-22AC";
     fsType = "vfat";
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/0c36a91a-f1eb-444f-94ff-06b73755c9f1";
+    device = "/dev/disk/by-uuid/94435ba3-7d58-476f-ab83-1c549cb5a8a2";
     fsType = "ext4";
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/27880442-2465-42e8-9318-6efd36123a00";
+    device = "/dev/disk/by-uuid/340b3fce-dc10-4e25-8598-41c96f52105e";
     fsType = "ext4";
   };
 
