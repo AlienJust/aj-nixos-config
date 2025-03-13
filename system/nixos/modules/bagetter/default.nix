@@ -5,17 +5,41 @@
 }:
 with lib; let
   cfg = config.module.bagetter;
+  bagetter = pkgs.callPackage "${self}/pkgs/bagetter" {};
 in {
-  options = {
-    module.bagetter.enable = mkEnableOption "Enables bagetter";
-    module.bagetter.hostname = mkOption {
+  options.module.bagetter = {
+    enable = mkEnableOption "Enables bagetter";
+    hostname = mkOption {
       type = types.str;
       description = "Bagetter hostname";
       default = "";
     };
+    package = mkOption {
+      type = types.package;
+      #default = pkgs.bagetter;
+      default = bagetter;
+      defaultText = literalExpression "pkgs.bagetter";
+      description = "The package to use";
+    };
   };
   config = mkIf cfg.enable {
-    services.bagetter.enable = true;
+    # services.bagetter.enable = true;
+    systemd.services.bagetter = {
+      wantedBy = ["multi-user.target"];
+      after = ["network.target"];
+      serviceConfig = {
+        Restart = "always";
+        WorkingDirectory = "${cfg.package}/bin";
+        ExecStart = ''
+          ${lib.getExe cfg.package}
+        '';
+        # DynamicUser = "yes";
+
+        preStart = ''
+          mkdir -p /var/bagetter
+        '';
+      };
+    };
 
     security.acme = {
       acceptTerms = true;
