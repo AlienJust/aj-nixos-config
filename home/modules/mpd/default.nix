@@ -17,6 +17,10 @@ in {
       enable = true;
       musicDirectory = lib.mkMerge [
         (
+          lib.mkIf (hostname == "kixos")
+          "/home/aj01/music"
+        )
+        (
           lib.mkIf (hostname == "mixos")
           "/run/media/aj01/hdd2t/.music"
         )
