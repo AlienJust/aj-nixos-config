@@ -13,6 +13,14 @@ with lib; let
   outputs = {
     default = {};
 
+    kixos = {
+      HDMI-A-1 = {
+        mode = "1920x1080@60.000Hz";
+        scale = "1.6";
+        pos = "0 0";
+      };
+    };
+
     mixos = {
       DP-1 = {
         scale = "1";
@@ -47,6 +55,8 @@ with lib; let
 
   workspaces = {
     default = [];
+
+    kixos = [];
 
     mixos = [
       # First monitor
