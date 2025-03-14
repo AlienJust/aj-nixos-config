@@ -7,40 +7,24 @@
     #kernelPackages = pkgs.linuxPackages_cachyos;
     kernelPackages = pkgs.linuxPackages;
 
-    /*
-      kernelModules = [
-      "amdgpu"
+    kernelModules = [
       "kvm-amd"
-      "kvm-intel"
-      "zenpower"
     ];
 
-    extraModulePackages = [
-      config.boot.kernelPackages.zenpower
-    ];
-
-    kernelParams = [
-      "drm_kms_helper.poll=0"
-      "delayacct"
-    ];
+    extraModulePackages = [];
 
     initrd = {
-      /*
       availableKernelModules = [
         "xhci_pci"
         "ahci"
+        "ehci_pci"
         "nvme"
         "usbhid"
         "usb_storage"
         "sd_mod"
       ];
-    */
 
-    /*
-        kernelModules = [
-        "amdgpu"
-      ];
+      kernelModules = [];
     };
-    */
   };
 }
