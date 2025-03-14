@@ -51,10 +51,12 @@ in {
 
     programs.ncmpcpp = {
       enable = true;
-      package = pkgs.ncmpcpp.override {
+      /*
+        package = pkgs.ncmpcpp.override {
         visualizerSupport = true;
         taglibSupport = false;
       };
+      */
       mpdMusicDir = null; # does not work (not of type `null or path')
       settings = {
         # Visualizer
