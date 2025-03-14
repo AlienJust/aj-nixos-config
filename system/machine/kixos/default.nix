@@ -6,7 +6,7 @@
   module = {
     sound.enable = true;
     boot.enable = true;
-    console.enable = true;
+    console.enable = false;
     fonts.enable = true;
 
     games.enable = false;
