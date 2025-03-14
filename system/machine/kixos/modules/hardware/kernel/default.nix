@@ -11,6 +11,14 @@
       "kvm-amd"
     ];
 
+    consoleLogLevel = 7;
+
+    kernelParams = [
+      "loglevel=7"
+      "ignore_loglevel"
+      "earlyprintk"
+    ];
+
     extraModulePackages = [];
 
     initrd = {
