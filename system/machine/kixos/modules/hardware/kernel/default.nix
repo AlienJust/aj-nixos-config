@@ -5,7 +5,7 @@
 }: {
   boot = {
     #kernelPackages = pkgs.linuxPackages_cachyos;
-    kernelPackages = pkgs.kernelPackages;
+    kernelPackages = pkgs.linuxPackages;
 
     kernelModules = [
       "amdgpu"
