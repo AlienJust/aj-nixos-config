@@ -6,13 +6,13 @@ _: {
       hideMounts = true;
 
       directories = [
-        "/etc/nixos"
+        # "/etc/nixos"
         # "/etc/NetworkManager/system-connections"
         # "/etc/wireguard"
         # "/etc/secureboot"
         # "/var/lib/bluetooth"
-        "/var/lib/nixos"
-        "/var/log"
+        # "/var/lib/nixos"
+        # "/var/log"
         # "/var/lib/docker"
         #"/var/lib/netbird"
         #"/var/lib/containers"
@@ -23,7 +23,7 @@ _: {
         #"/var/lib/chrony"
         #"/var/lib/iwd"
         #"/var/lib/libvirt"
-        "/var/lib/systemd"
+        # "/var/lib/systemd"
       ];
 
       files = [
