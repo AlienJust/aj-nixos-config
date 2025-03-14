@@ -8,14 +8,17 @@
     boot.enable = true;
     console.enable = true;
     fonts.enable = true;
-    games.enable = true;
+
+    games.enable = false;
+
     locales.enable = true;
     network.enable = true;
     stylix.enable = true;
     timedate.enable = true;
     users.enable = true;
     variables.enable = true;
-    virtualisation.enable = true;
+
+    virtualisation.enable = false;
 
     security = {
       enable = true;
@@ -87,6 +90,6 @@
       zsh.enable = true;
     };
 
-    hpb.enable = true;
+    hpb.enable = false;
   };
 }
