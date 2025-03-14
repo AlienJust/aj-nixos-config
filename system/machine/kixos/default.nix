@@ -38,10 +38,12 @@
     nextcloud.hostname = "nxoo.alexdeb.ru";
 
     services = {
-      scx = {
+      /*
+        scx = {
         enable = true;
         schedulerType = "scx_bpfland";
       };
+      */
       zram.enable = true;
 
       bolt.enable = true;
