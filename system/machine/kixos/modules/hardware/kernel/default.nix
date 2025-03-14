@@ -7,7 +7,8 @@
     #kernelPackages = pkgs.linuxPackages_cachyos;
     kernelPackages = pkgs.linuxPackages;
 
-    kernelModules = [
+    /*
+      kernelModules = [
       "amdgpu"
       "kvm-amd"
       "kvm-intel"
@@ -33,11 +34,13 @@
         "usb_storage"
         "sd_mod"
       ];
-      */
+    */
 
-      kernelModules = [
+    /*
+        kernelModules = [
         "amdgpu"
       ];
     };
+    */
   };
 }
