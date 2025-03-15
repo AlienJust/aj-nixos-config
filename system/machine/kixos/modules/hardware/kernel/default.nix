@@ -17,6 +17,7 @@
       "loglevel=7"
       "ignore_loglevel"
       "earlyprintk"
+      "debug=all"
     ];
 
     extraModulePackages = [];
