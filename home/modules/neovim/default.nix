@@ -153,10 +153,12 @@ in {
             lua.enable = true;
           };
 
-          theme = {
+          /*
+            theme = {
             enable = true;
             name = "nord";
           };
+          */
 
           notify.nvim-notify = {
             enable = true;
