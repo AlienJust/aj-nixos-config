@@ -33,6 +33,8 @@
       ];
 
       kernelModules = [];
+
+      initrd.systemd.enable = true;
     };
   };
 }

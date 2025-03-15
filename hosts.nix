@@ -11,7 +11,7 @@
     kixos = {
       username = "aj01";
       platform = "x86_64-linux";
-      stateVersion = "25.05";
+      stateVersion = "24.11";
       isWorkstation = true;
       wm = "sway";
     };
