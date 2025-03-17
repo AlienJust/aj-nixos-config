@@ -20,7 +20,8 @@ _: {
     dnsovertls = "true";
   };
 
-  networking.wireless.enable = true;
+  # networking.wireless.enable = true;
+  networking.wireless.iwd.enable = true;
 
   systemd.network = {
     enable = true;
@@ -35,6 +36,19 @@ _: {
           Gateway = "192.168.50.1";
           # DNS = ["8.8.8.8"];
           # DHCP = "yes";
+          # IPv6AcceptRA = true;
+        };
+        # this port is not always connected and not required to be online
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "20-lan-eth" = {
+        matchConfig.Name = "en*";
+        # acquire a DHCP lease on link up
+        networkConfig = {
+          # Address = "192.168.50.113/24";
+          # Gateway = "192.168.50.1";
+          # DNS = ["8.8.8.8"];
+          DHCP = "yes";
           # IPv6AcceptRA = true;
         };
         # this port is not always connected and not required to be online

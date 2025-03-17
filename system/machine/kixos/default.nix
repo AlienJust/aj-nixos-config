@@ -6,7 +6,7 @@
   module = {
     sound.enable = true;
     boot.enable = true;
-    console.enable = false;
+    console.enable = true;
     fonts.enable = true;
 
     games.enable = false;
@@ -22,7 +22,7 @@
 
     security = {
       enable = true;
-      enableBootOptions = true;
+      # enableBootOptions = true;
       disableIPV6 = false;
     };
 
@@ -38,12 +38,6 @@
     nextcloud.hostname = "nxoo.alexdeb.ru";
 
     services = {
-      /*
-        scx = {
-        enable = true;
-        schedulerType = "scx_bpfland";
-      };
-      */
       zram.enable = true;
 
       bolt.enable = true;
@@ -66,11 +60,13 @@
 
       tumbler.enable = true;
 
+      /*
       ollama = {
         #enable = true;
         enable = false;
         gpuSupport.enable = config.services.ollama.enable;
       };
+      */
 
       udisks2.enable = true;
 
@@ -91,7 +87,5 @@
       xdg-portal.enable = true;
       zsh.enable = true;
     };
-
-    hpb.enable = false;
   };
 }

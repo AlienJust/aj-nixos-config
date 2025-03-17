@@ -3,6 +3,10 @@
   config,
   ...
 }: {
+  #boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "ehci_pci" "nvme" "usbhid" "usb_storage" "sd_mod"];
+  #boot.initrd.kernelModules = [];
+  # boot.kernelModules = ["kvm-amd"];
+  # boot.extraModulePackages = [];
   boot = {
     #kernelPackages = pkgs.linuxPackages_cachyos;
     kernelPackages = pkgs.linuxPackages;
