@@ -19,6 +19,7 @@ _: {
         #"/var/lib/qemu"
         #"/var/lib/private"
         "/var/db"
+        "/var/bagetter"
         #"/var/lib/NetworkManager"
         "/var/lib/chrony"
         "/var/lib/iwd"
