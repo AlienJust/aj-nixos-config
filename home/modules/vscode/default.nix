@@ -55,9 +55,13 @@ in {
         ]);
       profiles.default.extensions =
         with pkgs.vscode-extensions; [
-          pkgs.master.vscode-extensions.rust-lang.rust-analyzer
+          # Rust-analyzer from master branch overlay (in unstable branch it was broken).
+          #pkgs.master.vscode-extensions.rust-lang.rust-analyzer
+          rust-lang.rust-analyzer
+
+          # Theme controlled now by Stylix.
           #mvllow.rose-pine
-          #rust-lang.rust-analyzer
+
           eamodio.gitlens
           pkief.material-product-icons
           pkief.material-icon-theme
