@@ -25,6 +25,7 @@ _: {
         "/var/lib/iwd"
         #"/var/lib/libvirt"
         "/var/lib/systemd"
+        "/var/lib/nextcloud"
       ];
 
       files = [
