@@ -109,7 +109,7 @@ in {
         krita
         xfce.mousepad
 
-        #yandex-music
+        yandex-music
 
         # games
         clonehero

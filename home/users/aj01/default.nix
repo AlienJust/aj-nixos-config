@@ -22,8 +22,8 @@
   };
   */
 
-  programs.yandex-music.enable = isLinux && isWorkstation;
-  programs.yandex-music.tray.enable = isLinux && isWorkstation && true; # to enable tray support
+  #programs.yandex-music.enable = isLinux && isWorkstation;
+  #programs.yandex-music.tray.enable = isLinux && isWorkstation && true; # to enable tray support
 
   module = {
     alacritty.enable = isWorkstation;
