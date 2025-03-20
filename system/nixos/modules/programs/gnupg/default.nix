@@ -2,8 +2,9 @@
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.programs.gnupg;
 in {
   options = {
@@ -14,7 +15,6 @@ in {
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      # pinentryPackage = lib.mkForce pkgs.pinentry-qt;
     };
   };
 }

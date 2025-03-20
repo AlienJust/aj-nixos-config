@@ -1,11 +1,10 @@
-{ lib
-, config
-, ...
-}:
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
 
-with lib;
-
-let
   cfg = config.module.plymouth;
 in {
   options = {
@@ -20,4 +19,3 @@ in {
     };
   };
 }
-

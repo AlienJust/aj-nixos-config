@@ -5,8 +5,9 @@
   config,
   username,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.users;
 in {
   options = {
@@ -17,13 +18,21 @@ in {
     users = {
       mutableUsers = false;
 
+      groups = {
+        ${username} = {
+          gid = 1000;
+        };
+      };
+
       users = {
         ${username} = {
-          isNormalUser = true;
-          description = "${username}";
+          uid = 1000;
           home = "/home/${username}";
-          #shell = pkgs.fish;
-          shell = pkgs.zsh;
+          shell = pkgs.fish;
+          group = "${username}";
+          createHome = true;
+          description = "${username}";
+          isSystemUser = true;
           #hashedPasswordFile = "${self}/secrets/hashes/${username}.hash";
           hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/"; # TODO: replace with hashedPasswordFile
 
@@ -37,10 +46,7 @@ in {
             "input"
             "qemu-libvirtd"
             "libvirtd"
-            "kvm"
-            "dialout"
-            "adbusers"
-            #"acme"
+            "yggdrasil"
           ];
         };
 

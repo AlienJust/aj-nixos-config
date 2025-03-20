@@ -3,8 +3,9 @@
   config,
   username,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.programs.nh;
 in {
   options = {

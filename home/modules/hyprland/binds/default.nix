@@ -4,8 +4,9 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.hyprland.binds;
 
   terminal = config.module.defaults.terminalCmd;
@@ -76,7 +77,7 @@ in {
         # Compositor commands
         "SUPER, Q, killactive"
         "SUPER, F, fullscreen, 1"
-        "SUPER, Space, togglefloating"
+        "SUPERSHIFT, F, togglefloating"
 
         # Grouped (tabbed) windows
         "SUPER, G, togglegroup"
@@ -142,7 +143,10 @@ in {
       ];
 
       # Mouse bindings
-      bindm = ["SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow"];
+      bindm = [
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
+      ];
 
       # layer rules
       layerrule = let
@@ -156,7 +160,10 @@ in {
           "swaync-notification-window"
           "waybar"
         ];
-      in ["blur, ${toRegex layers}" "ignorealpha 0.5, ${toRegex layers}"];
+      in [
+        "blur, ${toRegex layers}"
+        "ignorealpha 0.5, ${toRegex layers}"
+      ];
 
       # Window rules
       windowrulev2 = [

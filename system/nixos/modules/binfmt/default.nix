@@ -1,11 +1,10 @@
-{ config
-, lib
-, ...
-}:
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
 
-with lib;
-
-let
   cfg = config.module.binfmt;
 in {
   options.module.binfmt = {
@@ -13,7 +12,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+    boot.binfmt.emulatedSystems = ["aarch64-linux"];
   };
 }
-

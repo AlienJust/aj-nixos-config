@@ -1,6 +1,4 @@
-_:
-
-{
+_: {
   services.nginx = {
     enable = true;
 
@@ -36,4 +34,3 @@ _:
     '';
   };
 }
-

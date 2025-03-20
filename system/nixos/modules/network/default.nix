@@ -2,24 +2,55 @@
   lib,
   config,
   hostname,
-  pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    mkDefault
+    mkForce
+    ;
+
   cfg = config.module.network;
 in {
   options = {
-    module.network.enable = mkEnableOption "Enables network";
+    module.network = {
+      enable = mkEnableOption "Enables network";
+    };
   };
 
   config = mkIf cfg.enable {
-    #services.netbird.enable = true;
-    #environment.systemPackages = [pkgs.netbird-ui];
+    systemd = {
+      network.enable = true;
 
-    #ystemd.services.NetworkManager-wait-online.enable = false;
+      services = {
+        NetworkManager-wait-online.enable = false;
+        systemd-networkd-wait-online.enable = mkForce false;
+      };
+    };
+
     networking = {
-      #networkmanager.enable = true;
-      #networkmanager.wifi.macAddress = "random";
+      firewall = {
+        enable = true;
+      };
+
+      networkmanager = {
+        enable = true;
+        wifi.macAddress = "random";
+        wifi.backend = "iwd";
+      };
+
+      wireless.iwd = {
+        enable = true;
+
+        settings = {
+          Settings = {
+            AutoConnect = true;
+          };
+        };
+      };
+
       useDHCP = mkDefault true;
       hostName = hostname;
     };

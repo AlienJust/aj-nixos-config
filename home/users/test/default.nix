@@ -1,9 +1,8 @@
-{ pkgs
-, inputs
-, ...
-}:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.home-manager.enable = true;
 
   home = {
@@ -17,4 +16,3 @@
     ];
   };
 }
-

@@ -2,12 +2,12 @@
   inputs,
   self,
   lib,
-  pkgs,
   username,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.zsh;
 in {
   options = {
@@ -17,10 +17,6 @@ in {
   config = mkIf cfg.enable {
     home.file.".p10k.zsh".source = "${self}/home/modules/zsh/p10k.zsh";
     home.file.".helmrc".source = "${self}/home/modules/zsh/helmrc";
-
-    #home.packages = with pkgs; [
-    #  eza
-    #];
 
     programs.zsh = {
       enable = true;

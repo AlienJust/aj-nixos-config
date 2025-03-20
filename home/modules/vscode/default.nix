@@ -1,11 +1,11 @@
 {
   self,
-  pkgs,
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.vscode;
 in {
   imports = [

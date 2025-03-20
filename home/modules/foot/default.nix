@@ -2,9 +2,15 @@
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.foot;
+
+  serverEnable =
+    if config.module.defaults.terminal == "foot-client"
+    then true
+    else false;
 in {
   options = {
     module.foot.enable = mkEnableOption "Enables Foot";
@@ -13,29 +19,30 @@ in {
   config = mkIf cfg.enable {
     programs.foot = {
       enable = true;
-      server.enable = true;
+      server.enable = serverEnable;
 
       settings = {
-        scrollback = {
-          lines = 65535;
-        };
-
         main = {
           term = "xterm-256color";
           workers = 32;
           initial-window-size-chars = "115x24";
-          pad = "0x4";
+          pad = "4x4 center";
+        };
+
+        cursor = {
+          style = "beam";
+          beam-thickness = 1;
         };
 
         mouse = {
           hide-when-typing = "no";
         };
 
-        # Swap shift+ctrl+c with ctrl+c (and vise versa) and shift+ctrl+v with ctrl+v
         /*
         key-bindings = {
           clipboard-copy = "Control+c XF86Copy";
           clipboard-paste = "Control+v XF86Paste";
+          noop = "Mod4+space";
         };
 
         text-bindings = {

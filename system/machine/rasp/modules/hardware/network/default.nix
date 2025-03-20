@@ -1,20 +1,24 @@
-{ config
-, ...
-}:
-
 {
+  config,
+  username,
+  ...
+}: {
+  users.users.${username}.openssh.authorizedKeys.keys = config.module.defaults.ssh.pubKeys;
+
   systemd.network = {
     enable = true;
 
     networks.eth0 = {
       matchConfig.Name = "eth0";
-      address = [ "192.168.1.8/24" ];
+      address = ["192.168.1.8/24"];
     };
   };
 
   networking = {
+    nftables.enable = true;
+
     nameservers = [
-      "192.168.1.8"
+      "192.168.1.10"
     ];
 
     firewall = {
@@ -30,6 +34,7 @@
         5335
         8053
         8384
+        34561
       ];
 
       allowedUDPPorts = [
@@ -40,27 +45,16 @@
   };
 
   topology.self = {
-    services = {
-      nginx.details = {
-        "https" = { text = "0.0.0.0:443"; };
-        "gitlab ssh" = { text = "0.0.0.0:4224"; };
-        "syncthing web" = { text = "0.0.0.0:8384"; };
-      };
-
-      adguardhome.details = {
-        "dns" = { text = "192.168.1.8:53"; };
-      };
-    };
-
-    interfaces.wg0 = {
-      addresses = [ "10.200.100.3" ];
+    interfaces.wt0 = {
+      addresses = ["100.92.24.177"];
       renderer.hidePhysicalConnections = false;
       virtual = true;
       type = "wireguard";
+      network = "netbird-private";
+
       physicalConnections = [
-        (config.lib.topology.mkConnection "site" "wg0")
+        (config.lib.topology.mkConnection "vpntwvm" "wt0")
       ];
     };
   };
 }
-

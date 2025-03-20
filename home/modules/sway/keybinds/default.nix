@@ -36,7 +36,7 @@ with lib; let
   powerMenu = pkgs.writeShellScriptBin "powerMenu.sh" ''
     #!/usr/bin/env bash
 
-    op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | ${pkgs.wofi}/bin/wofi -i --dmenu | ${pkgs.gawk}/bin/awk '{print tolower($2)}')
+    op=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | ${pkgs.rofi-wayland}/bin/rofi -i -dmenu | ${pkgs.gawk}/bin/awk '{print tolower($2)}')
 
     case $op in
       poweroff)

@@ -2,8 +2,9 @@
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.timedate;
 in {
   options = {
@@ -14,6 +15,6 @@ in {
     # Time settings
     #time.timeZone = "Europe/Moscow";
     time.timeZone = "Asia/Yekaterinburg";
-    services.chrony.enable = true;
+    services.ntpd-rs.enable = true;
   };
 }

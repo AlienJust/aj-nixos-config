@@ -1,20 +1,21 @@
-{ self
-, lib
-, machineDir
-, pkgs
-, ...
-}:
-
-let
+{
+  self,
+  machineDir,
+  pkgs,
+  allDirs,
+  ...
+}: let
   machineHardwareModulesPath = "${self}/system/machine/${machineDir}/modules/hardware";
 in {
-  imports = builtins.filter (module: lib.pathIsDirectory module) (
-    map (module: "${machineHardwareModulesPath}/${module}") (builtins.attrNames (builtins.readDir machineHardwareModulesPath))
-  );
+  imports = allDirs machineHardwareModulesPath;
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "usbhid"
+      "usb_storage"
+    ];
 
     loader = {
       grub.enable = false;
@@ -26,7 +27,7 @@ in {
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
-      options = [ "noatime" ];
+      options = ["noatime"];
     };
   };
 
@@ -34,10 +35,9 @@ in {
     libraspberrypi
   ];
 
-  services.openssh = {
-    enable = true;
-  };
-
   hardware.enableRedistributableFirmware = true;
+  nix.settings.trusted-users = [
+    "maxmur"
+    "root"
+  ];
 }
-

@@ -2,8 +2,9 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.zathura;
 in {
   options = {

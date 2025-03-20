@@ -3,8 +3,9 @@
   pkgs,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.helix;
 in {
   options = {
@@ -25,8 +26,9 @@ in {
 
     programs.helix = {
       enable = true;
+
       settings = {
-        #theme = "nord";
+        # theme = "nord";
 
         editor = {
           line-number = "relative";
@@ -55,9 +57,24 @@ in {
           };
 
           statusline = {
-            left = ["mode" "spinner" "file-modification-indicator" "read-only-indicator"];
-            center = ["version-control" "file-name"];
-            right = ["diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type"];
+            left = [
+              "mode"
+              "spinner"
+              "file-modification-indicator"
+              "read-only-indicator"
+            ];
+            center = [
+              "version-control"
+              "file-name"
+            ];
+            right = [
+              "diagnostics"
+              "selections"
+              "position"
+              "file-encoding"
+              "file-line-ending"
+              "file-type"
+            ];
             separator = "│";
             mode = {
               normal = "NORMAL";

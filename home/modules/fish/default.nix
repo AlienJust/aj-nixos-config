@@ -1,14 +1,13 @@
-{ self
-, lib
-, config
-, username
-, pkgs
-, ...
-}:
+{
+  self,
+  lib,
+  config,
+  username,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
 
-with lib;
-
-let
   cfg = config.module.fish;
 in {
   options = {
@@ -89,4 +88,3 @@ in {
     };
   };
 }
-

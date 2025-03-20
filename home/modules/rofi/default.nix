@@ -3,8 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.rofi;
 in {
   options = {
@@ -44,7 +45,10 @@ in {
         };
 
         "inputbar" = {
-          children = map mkLiteral ["prompt" "entry"];
+          children = map mkLiteral [
+            "prompt"
+            "entry"
+          ];
           border-radius = mkLiteral "5px";
           padding = mkLiteral "2px";
         };

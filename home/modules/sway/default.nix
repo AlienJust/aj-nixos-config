@@ -4,12 +4,10 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.sway;
-  # menu = "wofi -i --show drun";
-  # menu = "fuzzel";
-  # menu = "${pkgs.fuzzel}/bin/fuzzel -T ${terminal}";
 in {
   imports = [
     "${self}/home/modules/sway/keybinds"

@@ -2,11 +2,23 @@
   pkgs,
   lib,
   config,
+  stateVersion,
   isWorkstation,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) optionals;
+
   cfg = config.module.programs.systemPackages;
+
+  iosevkaPackage =
+    if stateVersion == "24.11"
+    then pkgs.nerdfonts.override {fonts = ["Iosevka"];}
+    else pkgs.nerd-fonts.iosevka;
+  jbPackage =
+    if stateVersion == "24.11"
+    then pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];}
+    else pkgs.nerd-fonts.iosevka;
 in {
   options = {
     module.programs.systemPackages.enable = mkEnableOption "Enable System Software";
@@ -14,7 +26,8 @@ in {
 
   config = mkIf cfg.enable {
     fonts.packages = with pkgs; [
-      #(nerdfonts.override {fonts = ["JetBrainsMono" "UbuntuMono"];})
+      iosevkaPackage
+      jbPackage
       corefonts
     ];
 
@@ -22,7 +35,6 @@ in {
       [
         # Utils
         git
-        home-manager
         nvd
         nix-output-monitor
         curl
@@ -33,6 +45,7 @@ in {
         unzip
         unrar
         killall
+        jq
 
         # Hardware utils
         glxinfo
@@ -66,10 +79,6 @@ in {
       ]
       ++ optionals isWorkstation [
         # Themes
-        # orchis-theme
-        # vimix-cursors
-        # tela-circle-icon-theme
-        # nordic
 
         # Hardware
         microcodeIntel

@@ -2,8 +2,9 @@
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.fzf;
 in {
   options = {
@@ -14,7 +15,11 @@ in {
     programs.fzf = {
       enable = true;
       enableFishIntegration = true;
-      defaultOptions = ["--border" "--preview 'bat --color=always {}'" "--prompt 'Files> '"];
+      defaultOptions = [
+        "--border"
+        "--preview 'bat --color=always {}'"
+        "--prompt 'Files> '"
+      ];
     };
   };
 }

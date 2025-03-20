@@ -6,10 +6,6 @@
   wmEnable ? false,
   ...
 }: {
-  nixpkgs.overlays = [
-    # (import "${self}/home/overlays/rofi-calc")
-    # (import "${self}/home/overlays/rofi-emoji")
-  ];
   imports = [
     # for vscode settings r/w
     ./mutability.nix
@@ -36,23 +32,26 @@
     foot.enable = isLinux && isWorkstation;
     ssh.enable = isLinux && isWorkstation;
 
-    stylix.enable = isLinux && isWorkstation;
+    stylix.enable = isWorkstation;
     # kde-theme.enable = isLinux && isWorkstation;
     # gtk.enable = isLinux && isWorkstation;
 
     #hyprland.enable = isLinux && isWorkstation;
     hyprland.enable = hyprlandEnable && isLinux && isWorkstation;
     hyprlock.enable = hyprlandEnable && isLinux && isWorkstation;
-    hypridle.enable = hyprlandEnable && isLinux && isWorkstation;
-    hyprpaper.enable = hyprlandEnable && isLinux && isWorkstation;
-    rofi.enable = hyprlandEnable && isLinux && isWorkstation;
-
-    swaync.enable = (swayEnable || hyprlandEnable) && isLinux && isWorkstation;
-    waybar.enable = (swayEnable || hyprlandEnable) && isLinux && isWorkstation;
-    fuzzel.enable = (swayEnable || hyprlandEnable) && isLinux && isWorkstation;
 
     sway.enable = swayEnable && isLinux && isWorkstation;
     swaylock.enable = swayEnable && isLinux && isWorkstation;
+
+    #hypridle.enable = wmEnable && isLinux && isWorkstation;
+    hypridle.enable = hyprlandEnable && isLinux && isWorkstation;
+    hyprpaper.enable = hyprlandEnable && isLinux && isWorkstation;
+
+    waybar.enable = wmEnable && isLinux && isWorkstation;
+    rofi.enable = wmEnable && isLinux && isWorkstation;
+    swaync.enable = wmEnable && isLinux && isWorkstation;
+    fuzzel.enable = wmEnable && isLinux && isWorkstation;
+
     wlogout.enable = swayEnable && isLinux && isWorkstation;
     #mako.enable = false; #config.module.sway.enable;
 
@@ -77,6 +76,7 @@
 
     user = {
       impermanence.enable = isLinux && isWorkstation;
+      ssh.enable = isLinux && isWorkstation;
       xdg.enable = isLinux && isWorkstation;
 
       packages.enable = true;

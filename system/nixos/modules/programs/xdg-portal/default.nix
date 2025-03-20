@@ -2,9 +2,11 @@
   pkgs,
   lib,
   config,
+  wm,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.programs.xdg-portal;
 in {
   options = {
@@ -14,24 +16,20 @@ in {
   config = mkIf cfg.enable {
     xdg.portal = {
       enable = true;
-      xdgOpenUsePortal = true;
-      wlr.enable = true;
 
       config = {
         common = {
           default = "*";
 
-          "org.freedesktop.impl.portal.Screencast" = "hyprland";
-          "org.freedesktop.impl.portal.Screenshot" = "hyprland";
-
-          #"org.freedesktop.impl.portal.Screencast" = "sway";
-          #"org.freedesktop.impl.portal.Screenshot" = "sway";
+          "org.freedesktop.impl.portal.Screencast" = wm;
+          "org.freedesktop.impl.portal.Screenshot" = wm;
         };
       };
 
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-gnome
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gnome
       ];
     };
   };

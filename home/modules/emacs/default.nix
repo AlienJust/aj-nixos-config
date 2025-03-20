@@ -1,12 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
 
-with lib;
-
-let
   cfg = config.module.emacs;
 in {
   options = {
@@ -22,9 +21,8 @@ in {
     services.emacs = {
       inherit (config.programs.emacs) package enable;
 
-      client.enable           = true;
+      client.enable = true;
       socketActivation.enable = true;
     };
   };
 }
-

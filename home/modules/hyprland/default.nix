@@ -5,8 +5,15 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit
+    (lib)
+    mkEnableOption
+    mkDefault
+    mkBefore
+    mkIf
+    ;
+
   cfg = config.module.hyprland;
 in {
   imports = [
@@ -31,7 +38,7 @@ in {
 
       systemd = {
         enable = true;
-        extraCommands = lib.mkBefore [
+        extraCommands = mkBefore [
           "systemctl --user stop graphical-session.target"
           "systemctl --user start hyprland-session.target"
         ];
@@ -46,7 +53,10 @@ in {
 
         animations = {
           enabled = true;
-          bezier = ["md3_decel, 0.05, 0.7, 0.1, 1" "workspace,0.17, 1.17, 0.3,1"];
+          bezier = [
+            "md3_decel, 0.05, 0.7, 0.1, 1"
+            "workspace,0.17, 1.17, 0.3,1"
+          ];
 
           animation = [
             "border, 1, 2, default"

@@ -5,8 +5,9 @@
   lib,
   wm,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf concatStrings;
+
   cfg = config.module.waybar;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in {
@@ -95,13 +96,13 @@ in {
           height = 30;
           layer = "top";
           position = "top";
-          tray = {
-            icon-size = 18;
-            show-passive-items = true;
-            spacing = 8;
-          };
+          exclusive = true;
+          fixed-center = true;
+          gtk-layer-shell = true;
+          spacing = 0;
 
           modules-left = [
+            "image#nixlogo"
             "${wm}/workspaces"
             "sway/mode"
           ];
@@ -120,7 +121,7 @@ in {
             "memory"
             "clock"
             # "custom/keyboard-layout"
-            "sway/language" # TODO: chose lang by wm
+            "${wm}/language"
             "custom/notification"
           ]; # ++ (if config.hostId == "yoga" then [ "battery" ] else [ ])
           #      ++ [
@@ -138,6 +139,19 @@ in {
           #          warning = 30;
           #        };
           #      };
+
+          # Logo
+          "custom/nixlogo" = {
+            format = "";
+            tooltip = false;
+            on-click = config.module.defaults.appLauncherCmd;
+          };
+
+          "image#nixlogo" = {
+            path = "${self}/assets/Nix_Logo.svg";
+            tooltip = false;
+            on-click = config.module.defaults.appLauncherCmd;
+          };
 
           mpd = {
             format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
@@ -222,7 +236,25 @@ in {
 
           # Keyboard layout
           "sway/language" = {
+          };
+
+          # Tray
+          tray = {
+            icon-size = 15;
+            show-passive-items = true;
+            spacing = 8;
+          };
+
+          "hyprland/language" = {
+            format = "{}";
+            format-en = "US";
+            format-ru = "RU";
+          };
+
+          "sway/language" = {
             format = "{flag} {shortDescription} ";
+            format-en = "US";
+            format-ru = "RU";
           };
           /*
           "custom/keyboard-layout" = {

@@ -1,11 +1,10 @@
-{ lib
-, config
-, ...
-}:
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf mkDefault;
 
-with lib;
-
-let
   cfg = config.module.minimal;
 in {
   options = {
@@ -28,4 +27,3 @@ in {
     programs.command-not-found.enable = mkDefault false;
   };
 }
-

@@ -4,8 +4,9 @@
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.module.services.hyprland;
 in {
   options = {
@@ -15,9 +16,7 @@ in {
   config = mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
-
-      # Use package from flake:
-      #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
   };
 }

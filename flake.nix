@@ -13,7 +13,7 @@
 
     # Latest stable
     stable = {
-      url = "github:NixOS/nixpkgs/nixos-24.05";
+      url = "github:NixOS/nixpkgs/nixos-24.11";
     };
 
     # Current nixpkgs branch
@@ -33,9 +33,7 @@
     };
 
     impermanence = {
-      # https://github.com/nix-community/impermanence/issues/215
-      url = "github:nix-community/impermanence/63f4d0443e32b0dd7189001ee1894066765d18a5";
-      #url = "github:/nix-community/impermanence";
+      url = "github:/nix-community/impermanence";
     };
 
     flake-parts = {
@@ -63,6 +61,11 @@
       url = "github:nix-community/NUR";
     };
 
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # MacOS configuration
     darwin = {
       url = "github:LnL7/nix-darwin/master";
@@ -70,9 +73,9 @@
     };
 
     # Hyprland ecosystem
-    #hyprland = {
-    #url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=c5feee1e357f3c3c59ebe406630601c627807963";
-    #};
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=c5feee1e357f3c3c59ebe406630601c627807963";
+    };
 
     xdghypr = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
@@ -101,13 +104,13 @@
       };
     };
 
+    proxmox-nixos = {
+      url = "github:SaumonNet/proxmox-nixos";
+    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    proxmox-nixos = {
-      url = "github:SaumonNet/proxmox-nixos";
     };
 
     # Security
@@ -116,7 +119,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -168,6 +171,7 @@
 
       imports = [
         ./parts
+        # ./docs
       ];
 
       flake = {

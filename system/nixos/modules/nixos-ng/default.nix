@@ -1,11 +1,10 @@
-{ lib
-, config
-, ...
-}:
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
 
-with lib;
-
-let
   cfg = config.module.nixos-ng;
 in {
   options = {
@@ -18,7 +17,7 @@ in {
     boot.initrd.systemd.enable = true;
 
     services = {
-      userborn.enable     = true;
+      userborn.enable = true;
       dbus.implementation = "broker";
     };
 
@@ -28,11 +27,12 @@ in {
         enableNg = true;
       };
 
-      /* etc.overlay = {
+      /*
+      etc.overlay = {
         enable = true;
         mutable = true;
-      }; */
+      };
+      */
     };
   };
 }
-

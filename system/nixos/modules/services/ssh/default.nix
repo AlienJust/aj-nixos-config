@@ -2,15 +2,18 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) zipAttrs;
+  inherit (lib.types) attrs listOf;
+
   cfg = config.module.services.ssh;
 in {
   options.module.services.ssh = {
     enable = mkEnableOption "Enable module";
 
     listenAddresses = lib.mkOption {
-      type = lib.types.listOf lib.types.attrs;
+      type = listOf attrs;
       default = [
         {
           addr = "0.0.0.0";
@@ -28,7 +31,7 @@ in {
       [
         22
       ]
-      ++ (lib.zipAttrs cfg.listenAddresses).port;
+      ++ (zipAttrs cfg.listenAddresses).port;
 
     services.endlessh-go = {
       enable = true;
@@ -37,6 +40,7 @@ in {
 
     services.openssh = {
       inherit (cfg) listenAddresses;
+
       enable = true;
 
       settings = {

@@ -3,9 +3,12 @@
   lib,
   config,
   pkgs,
+  theme,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.generators) mkLuaInline;
+
   cfg = config.module.nvim;
 in {
   options = {
@@ -15,6 +18,7 @@ in {
   config = mkIf cfg.enable {
     programs.nvf = {
       enable = true;
+      defaultEditor = true;
 
       settings = {
         vim = {
@@ -26,7 +30,6 @@ in {
           withRuby = false;
 
           enableLuaLoader = true;
-          enableEditorconfig = true;
           useSystemClipboard = true;
           hideSearchHighlight = true;
           searchCase = "smart";
@@ -49,6 +52,7 @@ in {
 
           globals = {
             mapleader = ",";
+            editorconfig = true;
           };
 
           keymaps = [
@@ -139,26 +143,37 @@ in {
             enableTreesitter = true;
             enableExtraDiagnostics = true;
 
-            rust.enable = true;
-            nix.enable = true;
-            sql.enable = true;
+            bash.enable = true;
             clang.enable = true;
-            ts.enable = true;
-            python.enable = true;
-            zig.enable = true;
-            markdown.enable = true;
-            html.enable = true;
+            css.enable = true;
             dart.enable = true;
             go.enable = true;
+            haskell.enable = true;
+            hcl.enable = true;
+            html.enable = true;
+            java.enable = true;
+            kotlin.enable = true;
             lua.enable = true;
+            markdown.enable = true;
+            nim.enable = true;
+            nix.enable = true;
+            python.enable = true;
+            ruby.enable = true;
+            rust.enable = true;
+            scala.enable = true;
+            sql.enable = true;
+            typst.enable = true;
+            ts.enable = true;
+            terraform.enable = true;
+            yaml.enable = true;
+            zig.enable = true;
           };
 
-          /*
-            theme = {
+          theme = {
             enable = true;
-            name = "nord";
+            name = theme;
+            style = "dark";
           };
-          */
 
           notify.nvim-notify = {
             enable = true;
@@ -171,7 +186,18 @@ in {
 
           spellcheck = {
             enable = true;
-            languages = ["en"];
+            languages = [
+              "en"
+              "ru"
+            ];
+          };
+
+          terminal.toggleterm = {
+            enable = true;
+
+            setupOpts = {
+              direction = "float";
+            };
           };
 
           utility = {
@@ -224,18 +250,19 @@ in {
               setupOpts = {
                 sync_root_with_cwd = true;
                 respect_buf_cwd = true;
+                sort_by = "case_sensitive";
+                git.enable = true;
+
                 update_focused_file = {
                   enable = true;
                   update_root = true;
                 };
 
-                sort_by = "case_sensitive";
-
                 view = {
                   number = false;
                   float = {
                     enable = true;
-                    open_win_config = lib.generators.mkLuaInline ''
+                    open_win_config = mkLuaInline ''
                       function()
                         local screen_w = vim.opt.columns:get()
                         local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -257,7 +284,7 @@ in {
                     '';
                   };
 
-                  width = lib.generators.mkLuaInline ''
+                  width = mkLuaInline ''
                     function()
                       return math.floor(vim.opt.columns:get() * 0.5)
                     end
@@ -321,16 +348,16 @@ in {
 
               setupOpts = {
                 auto_session_enabled = true;
-                auto_session_root_dir = lib.generators.mkLuaInline ''
+                auto_session_root_dir = mkLuaInline ''
                   vim.fn.stdpath("data") .. "/sessions/"
                 '';
-                pre_save_cmds = lib.generators.mkLuaInline ''
+                pre_save_cmds = mkLuaInline ''
                   { close_floating_windows, close_toggleterm, "NvimTreeClose" }
                 '';
-                post_restore_cmds = lib.generators.mkLuaInline ''
+                post_restore_cmds = mkLuaInline ''
                   { clear_jumps, "NvimTreeOpen" }
                 '';
-                save_extra_cmds = lib.generators.mkLuaInline ''
+                save_extra_cmds = mkLuaInline ''
                   { "NvimTreeOpen" }
                 '';
               };

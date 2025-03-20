@@ -7,8 +7,8 @@
   isWorkstation,
   wmEnable,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf optionals;
   inherit (pkgs.stdenv) isLinux;
   cfg = config.module.user.packages;
   sfp = pkgs.callPackage "${self}/pkgs/sfp" {};
@@ -42,7 +42,7 @@ in {
         age
         sops
       ]
-      ++ lib.optionals isWorkstation [
+      ++ optionals isWorkstation [
         # Security
         semgrep
         grype
@@ -52,7 +52,7 @@ in {
         #(nerdfonts.override {fonts = ["JetBrainsMono" "UbuntuMono" "Iosevka"];})
         corefonts
       ]
-      ++ lib.optionals (isLinux && isWorkstation) [
+      ++ optionals (isLinux && isWorkstation) [
         # Programming
         #go
         #python3
@@ -119,7 +119,7 @@ in {
 
         sfp
       ]
-      ++ lib.optionals wmEnable [
+      ++ optionals wmEnable [
         imagemagick
         grim
         slurp

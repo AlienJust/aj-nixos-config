@@ -9,13 +9,16 @@
   hmStateVersion,
   isWorkstation ? false,
   wm ? "",
+  theme,
   swayEnable ? false,
   hyprlandEnable ? false,
   wmEnable ? false,
+  allDirs,
   ...
 }: let
   inherit (pkgs.stdenv) isDarwin;
   inherit (pkgs.stdenv) isLinux;
+  inherit (lib) optional;
 
   stateVersion = hmStateVersion;
   isRoot = username == "root";
@@ -29,18 +32,21 @@
   userConfigurationPathExist = builtins.pathExists userConfigurationPath;
   userModulesPath = "${self}/home/users/${username}/modules";
   userModulesPathExist = builtins.pathExists userModulesPath;
-  sshModulePath = "${self}/home/modules/ssh";
-  sshModuleExistPath = builtins.pathExists sshModulePath;
+  # sshModulePath = "${self}/home/modules/ssh";
+  # sshModuleExistPath = builtins.pathExists sshModulePath;
 in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+    backupFileExtension =
+      "backup-"
+      + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
 
     extraSpecialArgs = {
       inherit
         inputs
         self
+        allDirs
         hostname
         username
         platform
@@ -48,31 +54,26 @@ in {
         isLinux
         isWorkstation
         wm
+        theme
         swayEnable
         hyprlandEnable
         wmEnable
         ;
     };
 
-    sharedModules = [
-      inputs.sops-nix.homeManagerModules.sops
-    ];
-
     users.${username} = {
       imports =
         [
           inputs.impermanence.nixosModules.home-manager.impermanence
           inputs.sops-nix.homeManagerModules.sops
-          inputs.yandex-music.homeManagerModules.default
           inputs.nur.modules.homeManager.default
           inputs.nvf.homeManagerModules.default
 
           "${self}/modules"
           "${self}/home/modules"
         ]
-        ++ lib.optional sshModuleExistPath sshModulePath
-        ++ lib.optional userConfigurationPathExist userConfigurationPath
-        ++ lib.optional userModulesPathExist userModulesPath;
+        ++ optional userConfigurationPathExist userConfigurationPath
+        ++ optional userModulesPathExist userModulesPath;
 
       home = {
         inherit username;

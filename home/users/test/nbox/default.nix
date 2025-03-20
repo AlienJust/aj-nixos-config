@@ -1,9 +1,8 @@
-{ inputs
-, pkgs
-, ...
-}:
-
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   home = {
     homeDirectory = "/home/test";
 
@@ -31,4 +30,3 @@
     ../../../modules/git
   ];
 }
-
