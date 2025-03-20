@@ -1,7 +1,7 @@
 {
-  self,
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
