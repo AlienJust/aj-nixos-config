@@ -169,11 +169,13 @@ in {
             zig.enable = true;
           };
 
+          /*
           theme = {
             enable = true;
             name = theme;
             style = "dark";
           };
+          */
 
           notify.nvim-notify = {
             enable = true;
