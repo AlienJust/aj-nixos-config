@@ -64,7 +64,7 @@ in {
         visualizer_in_stereo = "yes";
         visualizer_look = "+|";
         visualizer_output_name = "fifo";
-        visualizer_type = "spectrum";
+        # visualizer_type = "spectrum";
 
         # Song list formatting
         song_columns_list_format = builtins.concatStringsSep " " [
