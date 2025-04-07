@@ -134,7 +134,7 @@ in {
 
           lsp = {
             enable = true;
-            lsplines.enable = true;
+            # lsplines.enable = true;
           };
 
           languages = {
