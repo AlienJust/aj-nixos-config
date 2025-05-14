@@ -107,7 +107,7 @@ in {
         #"sudo" = "doas";
       };
 
-      initExtraFirst = ''
+      initContent = lib.mkBefore ''
         ${inputs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
       '';
 

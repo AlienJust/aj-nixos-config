@@ -19,7 +19,7 @@ in {
     };
 
     environment.sessionVariables = {
-      FLAKE = "/home/${username}/src/aj-nixos-config";
+      NH_FLAKE = "/home/${username}/src/aj-nixos-config";
     };
   };
 }
