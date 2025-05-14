@@ -45,7 +45,7 @@
       gvfs.enable = true;
       polkit.enable = true;
       polkit-gnome-agent.enable = true;
-      printing.enable = true;
+      # printing.enable = true;
       syncthing.enable = true;
       udev.enable = true;
       greetd-tui.enable = false;
