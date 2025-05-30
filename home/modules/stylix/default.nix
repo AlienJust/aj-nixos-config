@@ -93,7 +93,7 @@ in {
       # };
 
       # image = ../../../wall3.png;
-      # image = ../../../wall.jpg;
+      image = ../../../wall.jpg;
       # image = ../../../wall2.jpg;
 
       #image = pkgs.fetchurl {
