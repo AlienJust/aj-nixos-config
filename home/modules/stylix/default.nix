@@ -18,6 +18,8 @@ in {
     stylix = {
       enable = true;
       autoEnable = true;
+      targets.firefox.profileNames = ["my-profile"];
+
       #base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
       base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
@@ -91,7 +93,7 @@ in {
       # };
 
       # image = ../../../wall3.png;
-      image = ../../../wall.jpg;
+      # image = ../../../wall.jpg;
       # image = ../../../wall2.jpg;
 
       #image = pkgs.fetchurl {

@@ -30,7 +30,7 @@ in {
           withRuby = false;
 
           enableLuaLoader = true;
-          useSystemClipboard = true;
+          # useSystemClipboard = true;
           hideSearchHighlight = true;
           searchCase = "smart";
 

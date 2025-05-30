@@ -9,7 +9,7 @@ with lib; let
   cfg = config.module.stylix;
   theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml"; # nice
   #theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml"; # nice
-  wallpaper = ../../../wall.jpg;
+  wallpaper = ../../../../wall.jpg;
   cursorSize =
     if hostname == "mixos"
     then 32

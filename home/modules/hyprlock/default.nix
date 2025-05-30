@@ -33,6 +33,7 @@ in {
           {
             monitor = "";
             path = "${self}/wall.jpg";
+            # path = ../../../wall.jpg;
             color = "rgba(25, 20, 20, 1.0)";
             blur_size = 8;
             blur_passes = 2;

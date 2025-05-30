@@ -75,12 +75,12 @@ in {
           "media.ffmpeg.vaapi.enabled" = true;
         };
       };
-      profiles.default = {
+      profiles.my-profile = {
         extensions.packages = with (import ./addons.nix pkgs); [
           ublock-origin
           sidebery
-          #stylus
-          languagetool
+          # stylus
+          # languagetool
         ];
         settings = {
           "browser.startup.homepage" = "file://${homepage}";
