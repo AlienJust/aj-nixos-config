@@ -66,7 +66,7 @@ in {
       bindkeysToCode = true;
 
       assigns = {
-        "workspace number 2" = [{app_id = "org.telegram.desktop";}];
+        # "workspace number 2" = [{app_id = "org.telegram.desktop";}];
         "4" = [{app_id = "obsidian";}];
         "8" = [{app_id = "vesktop";}];
       };

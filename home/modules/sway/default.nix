@@ -291,7 +291,8 @@ in {
         };
 
         focus.followMouse = "no";
-        focus.mouseWarping = "container";
+        #focus.mouseWarping = "container";
+        focus.mouseWarping = false;
 
         /*
         colors = {
