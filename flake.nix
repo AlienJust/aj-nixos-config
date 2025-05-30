@@ -83,9 +83,11 @@
     };
 
     # Unoficial users flakes
+    /*
     yandex-music = {
       url = "github:cucumber-sp/yandex-music-linux";
     };
+    */
 
     any-nix-shell = {
       url = "github:TheMaxMur/any-nix-shell";
@@ -95,6 +97,7 @@
       url = "github:SomeoneSerge/pkgs";
     };
 
+    /*
     ghostty = {
       url = "github:ghostty-org/ghostty";
 
@@ -103,6 +106,7 @@
         nixpkgs-unstable.follows = "nixpkgs";
       };
     };
+    */
 
     proxmox-nixos = {
       url = "github:SaumonNet/proxmox-nixos";
