@@ -26,7 +26,9 @@ in {
       docker.enable = true;
       podman.enable = true;
 
-      virtualbox.host.enable = true;
+      # to use vbox: sudo modprobe -r kvm_intel
+      #              sudo modprobe -r kvm
+      virtualbox.host.enable = false;
 
       vmVariant = {
         virtualisation = {
