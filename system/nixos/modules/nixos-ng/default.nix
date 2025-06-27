@@ -23,8 +23,8 @@ in {
 
     system = {
       switch = {
-        enable = false;
-        enableNg = true;
+        enable = true;
+        #enableNg = true;
       };
 
       /*
