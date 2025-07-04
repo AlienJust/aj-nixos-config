@@ -45,6 +45,7 @@ in {
             "video"
             "realtime"
             "input"
+            "dialout"
             "qemu-libvirtd"
             "libvirtd"
             "yggdrasil"
