@@ -5,9 +5,9 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "hpb";
-  version = "1.0.2";
+  version = "1.0.3";
   dontConfigue = true;
-  src = ./hpb-d959c04f8c58d3e2d5b3a44ba9077c42b67ec160.tar.gz;
+  src = ./hpb-1.0.3.tar.gz;
   /*
   src = fetchgit {
     url = "https://192.168.11.20:50589/sitandra/hpb.git";
