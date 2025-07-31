@@ -47,7 +47,7 @@ in {
             upload_max_filesize = 20M
             memory_limit = 1G
           '';
-          phpPackage = pkgs.php83;
+          phpPackage = pkgs.php84;
           adminAddr = "root@localhost";
           # documentRoot = "${pkgs.hpb}/index.php";
           # documentRoot = "/var/www";
