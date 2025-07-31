@@ -1,8 +1,8 @@
-_: {
+{lib}: {
   networking = {
     hostName = "hpb-nix";
     useDHCP = false;
-    firewall.enable = false;
+    firewall.enable = lib.mkForce false;
   };
 
   networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8.#google"];
