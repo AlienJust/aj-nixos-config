@@ -1,4 +1,4 @@
-{lib}: {
+_: {
   networking = {
     hostName = "hpb-nix";
     useDHCP = false;
