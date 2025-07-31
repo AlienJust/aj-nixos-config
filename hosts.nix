@@ -27,6 +27,15 @@
       theme = "nord";
     };
 
+    hpb-nix = {
+      username = "aj01";
+      platform = "x86_64-linux";
+      stateVersion = "25.05";
+      isWorkstation = false;
+      #wm = "sway";
+      #theme = "nord";
+    };
+
     rasp = {
       username = "aj01";
       platform = "aarch64-linux";
