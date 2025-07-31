@@ -5,7 +5,7 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "hpb";
-  version = "1.0.4";
+  version = "1.0.5";
   dontConfigue = true;
   src = ./hpb-1.0.5.tar.gz;
   /*
