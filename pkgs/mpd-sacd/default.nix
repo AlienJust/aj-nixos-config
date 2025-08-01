@@ -2,7 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  fetchGit,
+  fetchgit,
   meson,
   ninja,
   pkg-config,
@@ -203,7 +203,7 @@
       };
       */
 
-      src = fetchGit {
+      src = fetchgit {
         url = "https://git.code.sf.net/p/sacddecoder/mpd/MPD sacddecoder-mpd-MPD";
         branchName = "master";
         rev = "191ad0e58b9efba8757aed8f8c454ce5f6a9ab08";
