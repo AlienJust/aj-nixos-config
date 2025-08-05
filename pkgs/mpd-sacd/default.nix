@@ -271,6 +271,18 @@
           "-Dtest=true"
           "-Dmanpages=true"
           "-Dhtml_manual=true"
+
+          "-Dadplug=disabled"
+          # interferes with detection of alsa devices
+          "-Dsndio=disabled"
+          # not in an official repo
+          "-Dshine=disabled"
+          # not in official repo
+          "-Dtremor=disabled"
+          # not in official repo (and not libsidplayfp)
+          "-Dsidplay=disabled"
+          # temporary disabled (why? will test when able)
+          "-Ddvdaiso=false"
         ]
         ++ map (x: "-D${x}=enabled") features_
         ++ map (x: "-D${x}=disabled") (lib.subtractLists features_ knownFeatures)
