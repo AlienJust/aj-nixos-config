@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     services.mpd = {
       enable = true;
-      package = mpd-sacd;
+      package = mpd-sacd.mpd;
       musicDirectory = lib.mkMerge [
         (
           lib.mkIf (hostname == "kixos")

@@ -203,12 +203,16 @@
       };
       */
 
-      src = fetchgit {
-        url = "https://git.code.sf.net/p/sacddecoder/mpd/MPD sacddecoder-mpd-MPD";
+      /*
+        src = fetchgit {
+        url = "https://git.code.sf.net/p/sacddecoder/mpd/MPD%20sacddecoder-mpd-MPD";
         branchName = "master";
-        rev = "191ad0e58b9efba8757aed8f8c454ce5f6a9ab08";
+        rev = "191ad0";
         sha256 = "sha256-OugBw+zW98ECg2PhSMLyOLaBzzWUv2hCMzLpXye/yCQ=";
       };
+      */
+      #src = ./sacddecoder-mpd-MPD-191ad0e58b9efba8757aed8f8c454ce5f6a9ab08.tar.gz;
+      src = ./mpd-sacd-0.25.tar.gz;
 
       buildInputs =
         [
