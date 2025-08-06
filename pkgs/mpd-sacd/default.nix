@@ -236,6 +236,8 @@
           meson
           ninja
           pkg-config
+
+          sacd
         ]
         ++ concatAttrVals features_ nativeFeatureDependencies;
 
