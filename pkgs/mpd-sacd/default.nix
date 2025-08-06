@@ -66,6 +66,7 @@
   # For tests
   gtest,
   zip,
+  sacd,
 }: let
   concatAttrVals = nameList: set: lib.concatMap (x: set.${x} or []) nameList;
 
@@ -142,6 +143,7 @@
       avahi
       dbus
     ];
+    #sacd = [sacd];
   };
 
   nativeFeatureDependencies = {
@@ -224,6 +226,8 @@
           #    Run-time dependency GTest found: YES 1.10.0
           gtest
           libupnp
+
+          sacd
         ]
         ++ concatAttrVals features_ featureDependencies;
 
