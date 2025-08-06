@@ -241,7 +241,7 @@
         ]
         ++ concatAttrVals features_ nativeFeatureDependencies;
 
-      depsBuildBuild = [buildPackages.stdenv.cc];
+      depsBuildBuild = [buildPackages.stdenv.cc sacd];
 
       postPatch =
         lib.optionalString
@@ -255,7 +255,7 @@
       # Otherwise, the meson log says:
       #
       #    Program zip found: NO
-      nativeCheckInputs = [zip];
+      nativeCheckInputs = [zip sacd];
 
       doCheck = true;
 
