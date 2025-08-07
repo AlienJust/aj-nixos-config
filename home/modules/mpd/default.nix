@@ -8,7 +8,7 @@
 }:
 with lib; let
   cfg = config.module.mpd;
-  mpd-sacd = pkgs.callPackage "${self}/pkgs/mpd-sacd" {};
+  # mpd-sacd = pkgs.callPackage "${self}/pkgs/mpd-sacd" {};
 in {
   options = {
     module.mpd.enable = mkEnableOption "Enables mpd";
@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     services.mpd = {
       enable = true;
-      package = mpd-sacd.mpd;
+      # package = mpd-sacd.mpd;
       musicDirectory = lib.mkMerge [
         (
           lib.mkIf (hostname == "kixos")
