@@ -33,6 +33,8 @@
     binfmt.enable = true;
 
     services = {
+      rudpt.enable = true;
+
       bagetter.enable = true;
       scx = {
         enable = true;
