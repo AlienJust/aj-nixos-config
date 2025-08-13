@@ -15,12 +15,21 @@ rustPlatform.buildRustPackage rec {
     runHook preInstall
 
     mkdir -p $out/bin
-    # cp rudpt/target/release/rudpt $out/bin/
-    find target/release -maxdepth 1 -executable -type f -exec cp "{}" $out/bin \;
+    # cp target/release/rudpt $out/bin/
+    cp target/x86_64-unknown-linux-gnu/release/rudpt $out/bin/
+    # ls -alh
+    # ls src -alh
+    # ls target -alh
+    # ls target/release -alh
+    # ls target/release/build -alh
+    # ls target/x86_64-unknown-linux-gnu -alh
+    # ls target/x86_64-unknown-linux-gnu/release -alh
+    # ls $out -alh
+    # find target/release -maxdepth 1 -executable -type f -exec cp "{}" $out/bin \;
 
     # Копируем config.toml в /share/rudpt
     mkdir -p $out/share/rudpt
-    cp rudpt/src/config.toml $out/share/rudpt/config.toml
+    cp src/config.toml $out/share/rudpt/config.toml
 
     runHook postInstall
   '';
