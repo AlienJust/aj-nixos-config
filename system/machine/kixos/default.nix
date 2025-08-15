@@ -38,6 +38,8 @@
     nextcloud.hostname = "nxoo.alexdeb.ru";
 
     services = {
+      rudpt.enable = true;
+
       zram.enable = true;
 
       bolt.enable = true;
