@@ -34,15 +34,18 @@ in {
       wantedBy = ["multi-user.target"];
 
       serviceConfig = {
-        ExecStartPre = ''
-          ${pkgs.coreutils}/bin/mkdir -p /var/lib/rudpt
-          ${pkgs.coreutils}/bin/cp -n ${rudpt}/share/rudpt/config.toml /var/lib/rudpt/config.toml
-        '';
+        ExecStartPre = [
+          #pkgs.writeShellScript ''
+          "${pkgs.coreutils}/bin/mkdir -p /var/lib/rudpt"
+          "${pkgs.coreutils}/bin/cp -n ${rudpt}/share/rudpt/config.toml /var/lib/rudpt/config.toml"
+        ];
+        #'';
         # ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /var/lib/rudpt";
         ExecStart = "${rudpt}/bin/rudpt ${concatStringsSep " " config.module.services.rudpt.extraArgs}";
         Restart = "on-failure";
         RestartSec = 5;
         # Если нужна рабочая директория:
+        #StateDirectory = "/var/lib/rudpt";
         WorkingDirectory = "/var/lib/rudpt";
         # Можно добавить окружение:
         Environment = [
@@ -56,7 +59,7 @@ in {
 
     # Создадим директорию данных
     systemd.tmpfiles.rules = [
-      "d /var/lib/my-rust-app 0755 root root -"
+      "d /var/lib/rudpt 0755 root root -"
     ];
   };
 }
