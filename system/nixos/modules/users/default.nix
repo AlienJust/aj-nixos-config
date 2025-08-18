@@ -34,8 +34,7 @@ in {
           createHome = true;
           description = "${username}";
           isSystemUser = true;
-          #hashedPasswordFile = "${self}/secrets/hashes/${username}.hash";
-          hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/"; # TODO: replace with hashedPasswordFile
+          hashedPasswordFile = "${self}/secrets/hashes/${username}.hash";
 
           extraGroups = [
             "audio"
@@ -54,8 +53,7 @@ in {
 
         root = {
           shell = pkgs.zsh;
-          #hashedPasswordFile = "${self}/secrets/hashes/root.hash";
-          hashedPassword = "$6$1gwYNpV/QLfIgPn5$ITN4dMnTAq78kWMthv/SJoeuoWKUmzVIqbNHFFo.CrhWrCR5qnLniOBKdzfc9Mb/qH60EeG7/CcYi/6os5lJJ/"; # TODO: replace with hashedPasswordFile
+          hashedPasswordFile = "${self}/secrets/hashes/root.hash";
         };
       };
     };
