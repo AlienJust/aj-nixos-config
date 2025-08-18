@@ -11,8 +11,8 @@ with lib; let
   #theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml"; # nice
   wallpaper = ../../../../wall.jpg;
   cursorSize =
-    if hostname == "mixos"
-    then 32
+    if hostname == "kixos"
+    then 64
     else 32;
 in {
   options = {
