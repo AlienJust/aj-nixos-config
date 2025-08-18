@@ -19,22 +19,22 @@
     vms = {
       dnsvm = {
         flake = self;
-        updateFlake = "git+file:///home/${username}/Code/nixos-configuration";
+        updateFlake = "git+file:///home/${username}/src/aj-nixos-config/nixos-configuration";
       };
 
       dbvm = {
         flake = self;
-        updateFlake = "git+file:///home/${username}/Code/nixos-configuration";
+        updateFlake = "git+file:///home/${username}/src/aj-nixos-config/nixos-configuration";
       };
 
       gitvm = {
         flake = self;
-        updateFlake = "git+file:///home/${username}/Code/nixos-configuration";
+        updateFlake = "git+file:///home/${username}/src/aj-nixos-config/nixos-configuration";
       };
 
       vaultvm = {
         flake = self;
-        updateFlake = "git+file:///home/${username}/Code/nixos-configuration";
+        updateFlake = "git+file:///home/${username}/src/aj-nixos-config/nixos-configuration";
       };
     };
   };
