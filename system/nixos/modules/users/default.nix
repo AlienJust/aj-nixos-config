@@ -15,6 +15,13 @@ in {
   };
 
   config = mkIf cfg.enable {
+    sops.secrets = {
+      hash = {
+        neededForUsers = true;
+        sopsFile = ../../../../secrets/secrets.yaml;
+      };
+    };
+
     users = {
       mutableUsers = false;
 
@@ -34,7 +41,8 @@ in {
           createHome = true;
           description = "${username}";
           isSystemUser = true;
-          hashedPasswordFile = "${self}/secrets/hashes/${username}.hash";
+          hashedPasswordFile = config.sops.secrets.hash.path;
+          # hashedPasswordFile = "${self}/secrets/hashes/${username}.hash";
 
           extraGroups = [
             "audio"
@@ -53,7 +61,8 @@ in {
 
         root = {
           shell = pkgs.zsh;
-          hashedPasswordFile = "${self}/secrets/hashes/root.hash";
+          #hashedPasswordFile = "${self}/secrets/hashes/root.hash";
+          hashedPasswordFile = config.sops.secrets.hash.path;
         };
       };
     };

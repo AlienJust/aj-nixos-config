@@ -1,0 +1,16 @@
+keys:
+  - &mixos_aj01_sshrsa 61e1e69c4e32f5fda9c3e558943594c38b70075c
+  - &mixos_aj01_age age1phla80tww0rnfgju60l86u8jwcld9gzlkx3x9nghc7lwedm2q4lq4m747w
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *mixos_aj01_sshrsa
+      age:
+      - *mixos_aj01_age
+  - path_regex: secrets/mixos/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *mixos_aj01_sshrsa
+      age:
+      - *mixos_aj01_age
