@@ -25,7 +25,7 @@ in {
       network.enable = true;
 
       services = {
-        NetworkManager-wait-online.enable = false;
+        # NetworkManager-wait-online.enable = false;
         systemd-networkd-wait-online.enable = mkForce false;
       };
     };
@@ -35,11 +35,13 @@ in {
         enable = true;
       };
 
+      /*
       networkmanager = {
         enable = true;
         wifi.macAddress = "random";
         wifi.backend = "iwd";
       };
+      */
 
       wireless.iwd = {
         enable = true;
