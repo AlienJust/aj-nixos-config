@@ -15,12 +15,34 @@ in {
   };
 
   config = mkIf cfg.enable {
-    sops.secrets = {
-      hash = {
-        neededForUsers = true;
-        sopsFile = ../../../../secrets/secrets.yaml;
+    sops = {
+      age = {
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        keyFile = "/nix/persist/var/lib/sops-nix/key.txt";
+        generateKey = true;
+      };
+      secrets = {
+        hash = {
+          neededForUsers = true;
+          sopsFile = ../../../../secrets/secrets.yaml;
+        };
       };
     };
+
+    # DEBUG.
+    /*
+    environment.etc = {
+      # Creates /etc/my-config.conf
+      "my-config.conf" = {
+        text = ''
+          # This is the content of my-config.conf
+          setting1 = ${config.sops.secrets.hash.path}
+          setting2 = value2
+        '';
+        mode = "0644"; # Permissions for the file
+      };
+    };
+    */
 
     users = {
       mutableUsers = false;
@@ -42,7 +64,6 @@ in {
           description = "${username}";
           isSystemUser = true;
           hashedPasswordFile = config.sops.secrets.hash.path;
-          # hashedPasswordFile = "${self}/secrets/hashes/${username}.hash";
 
           extraGroups = [
             "audio"
@@ -61,7 +82,6 @@ in {
 
         root = {
           shell = pkgs.zsh;
-          #hashedPasswordFile = "${self}/secrets/hashes/root.hash";
           hashedPasswordFile = config.sops.secrets.hash.path;
         };
       };
