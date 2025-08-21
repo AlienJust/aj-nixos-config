@@ -23,6 +23,7 @@ _: {
         "/var/lib/chrony"
         "/var/lib/iwd"
         "/var/lib/libvirt"
+        "/var/lib/sops-nix"
         "/var/lib/systemd"
       ];
 
