@@ -13,7 +13,7 @@ in {
     #"${self}/home/modules/vscode/extentions"
     #"${self}/home/modules/vscode/settings"
 
-    #./vscode-files
+    ./vscode-files
   ];
 
   options = {
