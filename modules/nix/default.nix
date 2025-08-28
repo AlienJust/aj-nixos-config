@@ -38,6 +38,8 @@ in {
         "dotnet-runtime-6.0.36"
         "dotnet-sdk-wrapped-6.0.428"
         "dotnet-sdk-6.0.428"
+        #teamspeak_client:
+        "qtwebengine-5.15.19"
       ];
     };
 
