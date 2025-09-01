@@ -69,6 +69,7 @@
           proxmox-nixos.nixosModules.proxmox-ve
           sops-nix.nixosModules.sops
           nur.modules.nixos.default
+          nix-sweep.nixosModules.default
         ]
         ++ constructors;
     };

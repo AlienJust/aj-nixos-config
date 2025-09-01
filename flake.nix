@@ -157,6 +157,11 @@
       url = "github:MichaelAquilina/zsh-auto-notify";
       flake = false;
     };
+
+    # Helpers
+    nix-sweep = {
+      url = "github:jzbor/nix-sweep";
+    };
   };
 
   outputs = {
