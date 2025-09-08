@@ -33,6 +33,7 @@
     binfmt.enable = true;
 
     services = {
+      cs16.enable = true;
       rudpt.enable = false;
 
       bagetter.enable = true;
