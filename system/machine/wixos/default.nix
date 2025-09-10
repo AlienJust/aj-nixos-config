@@ -33,7 +33,22 @@
     binfmt.enable = true;
 
     services = {
-      cs16.enable = true;
+      cs16-server = {
+        enable = true;
+        buildImageLocally = true;
+        port = 27015;
+        disableVAC = true;
+        maxPlayers = 20;
+        defaultMap = "de_dust2";
+        serverName = "My NixOS CS 1.6 Server";
+        serverPassword = "myserverpass";
+        rconPassword = "adminpass";
+        dataDir = "/var/lib/cs16-server";
+        extraDockerOptions = [
+          "--env=TZ=Europe/Moscow"
+          "--restart=unless-stopped"
+        ];
+      };
       rudpt.enable = false;
 
       bagetter.enable = true;

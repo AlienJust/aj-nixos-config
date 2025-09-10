@@ -5,10 +5,10 @@
   ...
 }:
 with lib; let
-  cfg = config.module.services.cs16;
+  cfg = config.module.services.cs16-server;
 in {
-  options.module.services.cs16 = {
-    enable = mkEnableOption "Counter-Strike 1.6 Docker container";
+  options.module.services.cs16-server = {
+    enable = mkEnableOption "Counter-Strike 1.6 Server from kriansa/cs-16-server";
 
     buildImageLocally = mkOption {
       type = types.bool;
@@ -31,7 +31,7 @@ in {
     disableVAC = mkOption {
       type = types.bool;
       default = true;
-      description = "Disable Steam VAC (Valve Anti-Cheat)";
+      description = "Disable Steam VAC (Valve Anti-Cheat) using -insecure flag";
     };
 
     maxPlayers = mkOption {
@@ -49,7 +49,7 @@ in {
     lanMode = mkOption {
       type = types.bool;
       default = false;
-      description = "Enable LAN mode (sv_lan)";
+      description = "Enable LAN mode (sv_lan 1)";
     };
 
     serverPassword = mkOption {
@@ -64,26 +64,52 @@ in {
       description = "RCON password (optional)";
     };
 
+    serverName = mkOption {
+      type = types.str;
+      default = "NixOS CS 1.6 Server";
+      description = "Server name that appears in server browser";
+    };
+
     autoRemove = mkOption {
       type = types.bool;
       default = false;
       description = "Automatically remove the container when it exits";
     };
 
+    dataDir = mkOption {
+      type = types.str;
+      default = "/var/lib/cs16-server";
+      description = "Directory for persistent server data";
+    };
+
     extraDockerOptions = mkOption {
       type = types.listOf types.str;
       default = [];
-      example = ["--volume=/path/to/maps:/opt/hlds/cstrike/maps"];
+      example = ["--env=TZ=Europe/Moscow" "--restart=unless-stopped"];
       description = "Extra options to pass to the docker run command";
+    };
+
+    useDockerCompose = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Use docker-compose instead of direct docker run";
     };
   };
 
   config = mkIf cfg.enable {
     virtualisation.docker.enable = true;
-    environment.systemPackages = with pkgs; [git docker];
+    environment.systemPackages = with pkgs; [git docker] ++ optional cfg.useDockerCompose docker-compose;
 
-    systemd.services.cstrike-docker = {
-      description = "Counter-Strike 1.6 Docker Container";
+    # Создаем директорию для данных
+    system.activationScripts.cs16-server-dirs = ''
+      mkdir -p ${cfg.dataDir}/cstrike
+      mkdir -p ${cfg.dataDir}/cstrike/{maps,logs,addons}
+      chmod 755 ${cfg.dataDir}
+      chmod -R 755 ${cfg.dataDir}/cstrike
+    '';
+
+    systemd.services.cs16-server = mkIf (!cfg.useDockerCompose) {
+      description = "Counter-Strike 1.6 Server from kriansa/cs-16-server";
       after = ["network.target" "docker.service"];
       requires = ["docker.service"];
       wantedBy = ["multi-user.target"];
@@ -98,16 +124,16 @@ in {
 
       preStart = ''
         # Удаляем старый контейнер если существует
-        if docker ps -a --filter "name=cstrike-server" --format "{{.Names}}" | grep -q "cstrike-server"; then
-          echo "Stopping and removing existing cstrike-server container..."
-          docker stop cstrike-server || true
-          docker rm cstrike-server || true
+        if docker ps -a --filter "name=cs16-server" --format "{{.Names}}" | grep -q "cs16-server"; then
+          echo "Stopping and removing existing cs16-server container..."
+          docker stop cs16-server || true
+          docker rm cs16-server || true
         fi
 
         # Удаляем старый образ если собираем локально
-        if ${boolToString cfg.buildImageLocally} && docker images --format "{{.Repository}}" | grep -q "cstrike-server"; then
-          echo "Removing old cstrike-server image..."
-          docker rmi cstrike-server:latest || true
+        if ${boolToString cfg.buildImageLocally} && docker images --format "{{.Repository}}" | grep -q "cs16-server"; then
+          echo "Removing old cs16-server image..."
+          docker rmi cs16-server:latest || true
         fi
       '';
 
@@ -124,51 +150,138 @@ in {
             then "1"
             else "0"
           }"
+          "+hostname \"${cfg.serverName}\""
           (optionalString (cfg.serverPassword != null) "+sv_password ${cfg.serverPassword}")
           (optionalString (cfg.rconPassword != null) "+rcon_password ${cfg.rconPassword}")
         ];
+        serverParamsStr = toString serverParams;
       in
         if cfg.buildImageLocally
         then ''
-          # Собираем образ локально
-          echo "Building CS 1.6 server image from GitHub..."
+          # Собираем образ локально из kriansa/cs-16-server
+          echo "Building CS 1.6 server image from kriansa/cs-16-server..."
 
           BUILD_DIR=$(mktemp -d)
           cd "$BUILD_DIR"
-          git clone https://github.com/CajuCLC/cstrike-docker.git .
+          git clone https://github.com/kriansa/cs-16-server.git .
 
           # Собираем Docker образ
-          docker build -t cstrike-server:latest .
+          docker build -t cs16-server:latest .
 
           cd /
           rm -rf "$BUILD_DIR"
 
-          # Запускаем контейнер с отключенным VAC
+          # Запускаем контейнер
           docker run \
-            --name cstrike-server \
+            --name cs16-server \
             --hostname "${cfg.hostname}" \
             -p ${toString cfg.port}:27015/udp \
             -p ${toString cfg.port}:27015/tcp \
+            -v ${cfg.dataDir}/cstrike:/opt/hlds/cstrike \
             ${optionalString cfg.autoRemove "--rm"} \
             ${concatStringsSep " " cfg.extraDockerOptions} \
-            cstrike-server:latest \
-            ${insecureFlag} -game cstrike ${toString serverParams}
+            cs16-server:latest \
+
         ''
+        #${insecureFlag} -game cstrike ${serverParamsStr}
         else ''
           # Используем образ из DockerHub
           docker run \
-            --name cstrike-server \
+            --name cs16-server \
             --hostname "${cfg.hostname}" \
             -p ${toString cfg.port}:27015/udp \
             -p ${toString cfg.port}:27015/tcp \
+            -v ${cfg.dataDir}/cstrike:/opt/hlds/cstrike \
             ${optionalString cfg.autoRemove "--rm"} \
             ${concatStringsSep " " cfg.extraDockerOptions} \
-            cajuclc/cstrike:latest \
-            ${insecureFlag} -game cstrike ${toString serverParams}
+            kriansa/cs-16-server:latest \
+            ${insecureFlag} -game cstrike ${serverParamsStr}
         '';
 
       preStop = ''
-        docker stop cstrike-server || true
+        docker stop cs16-server || true
+      '';
+    };
+
+    # Docker-compose вариант
+    systemd.services.cs16-server-compose = mkIf cfg.useDockerCompose {
+      description = "Counter-Strike 1.6 Server with docker-compose";
+      after = ["network.target" "docker.service"];
+      requires = ["docker.service"];
+      wantedBy = ["multi-user.target"];
+
+      path = with pkgs; [git docker docker-compose];
+
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        WorkingDirectory = "${cfg.dataDir}";
+      };
+
+      preStart = ''
+        mkdir -p ${cfg.dataDir}
+        cd ${cfg.dataDir}
+
+        # Создаем docker-compose.yml
+        cat > docker-compose.yml << EOF
+        version: '3.8'
+        services:
+          cs16-server:
+            ${
+          if cfg.buildImageLocally
+          then ''            build:
+                              context: .
+                              dockerfile: Dockerfile''
+          else ''image: kriansa/cs-16-server:latest''
+        }
+            container_name: cs16-server
+            hostname: "${cfg.hostname}"
+            ports:
+              - "${toString cfg.port}:27015/udp"
+              - "${toString cfg.port}:27015/tcp"
+            volumes:
+              - "${cfg.dataDir}/cstrike:/opt/hlds/cstrike"
+            restart: unless-stopped
+            command: [
+              ${
+          if cfg.disableVAC
+          then "\"-insecure\","
+          else ""
+        }
+              "-game", "cstrike",
+              "+maxplayers", "${toString cfg.maxPlayers}",
+              "+map", "${cfg.defaultMap}",
+              "+sv_lan", "${
+          if cfg.lanMode
+          then "1"
+          else "0"
+        }",
+              "+hostname", "${cfg.serverName}"
+              ${optionalString (cfg.serverPassword != null) '', "+sv_password", "${cfg.serverPassword}"''}
+              ${optionalString (cfg.rconPassword != null) '', "+rcon_password", "${cfg.rconPassword}"''}
+            ]
+            ${concatStringsSep "\n    " cfg.extraDockerOptions}
+        EOF
+
+        # Клонируем репозиторий если собираем локально
+        if ${boolToString cfg.buildImageLocally} && [ ! -d .git ]; then
+          git clone https://github.com/kriansa/cs-16-server.git .
+        elif ${boolToString cfg.buildImageLocally}; then
+          git pull origin main
+        fi
+
+        # Останавливаем старый контейнер
+        docker-compose down || true
+      '';
+
+      script = ''
+        cd ${cfg.dataDir}
+        docker-compose up -d ${optionalString cfg.buildImageLocally "--build"}
+      '';
+
+      postStop = ''
+        cd ${cfg.dataDir}
+        docker-compose down
       '';
     };
 
