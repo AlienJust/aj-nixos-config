@@ -6,9 +6,31 @@
 }:
 with lib; let
   cfg = config.module.services.cs16-server;
+
+  # Создаем скрипт для запуска сервера с правильными параметрами
+  startupScript = pkgs.writeShellScript "cs16-start" ''
+    #!/bin/sh
+    #cd /opt/hlds
+
+    # Базовые параметры
+    PARAMS="-game cstrike +maxplayers ${toString cfg.maxPlayers} +map ${cfg.defaultMap} +sv_lan ${
+      if cfg.lanMode
+      then "1"
+      else "0"
+    } +hostname '${cfg.serverName}'"
+
+    # Добавляем опциональные параметры
+    ${optionalString (cfg.serverPassword != null) "PARAMS=\"\$PARAMS +sv_password ${cfg.serverPassword}\""}
+    ${optionalString (cfg.rconPassword != null) "PARAMS=\"\$PARAMS +rcon_password ${cfg.rconPassword}\""}
+    ${optionalString cfg.disableVAC "PARAMS=\"-insecure \$PARAMS\""}
+
+    # Запускаем сервер
+    echo "Starting CS 1.6 server with parameters: \$PARAMS"
+    exec ./hlds_run \$PARAMS
+  '';
 in {
   options.module.services.cs16-server = {
-    enable = mkEnableOption "Counter-Strike 1.6 Server from kriansa/cs-16-server";
+    enable = mkEnableOption "Counter-Strike 1.6 Server from AlienJust/cs-16-server";
 
     buildImageLocally = mkOption {
       type = types.bool;
@@ -109,7 +131,7 @@ in {
     '';
 
     systemd.services.cs16-server = mkIf (!cfg.useDockerCompose) {
-      description = "Counter-Strike 1.6 Server from kriansa/cs-16-server";
+      description = "Counter-Strike 1.6 Server from AlienJust/cs-16-server";
       after = ["network.target" "docker.service"];
       requires = ["docker.service"];
       wantedBy = ["multi-user.target"];
@@ -158,12 +180,16 @@ in {
       in
         if cfg.buildImageLocally
         then ''
-          # Собираем образ локально из kriansa/cs-16-server
-          echo "Building CS 1.6 server image from kriansa/cs-16-server..."
+          # Собираем образ локально из AlienJust/cs-16-server
+          echo "Building CS 1.6 server image from AlienJust/cs-16-server..."
 
           BUILD_DIR=$(mktemp -d)
           cd "$BUILD_DIR"
-          git clone https://github.com/kriansa/cs-16-server.git .
+          git clone https://github.com/AlienJust/cs-16-server.git .
+
+          # Копируем скрипт запуска в Dockerfile директорию
+          cp ${startupScript} start_server.sh
+          chmod +x start_server.sh
 
           # Собираем Docker образ
           docker build -t cs16-server:latest .
@@ -178,12 +204,16 @@ in {
             -p ${toString cfg.port}:27015/udp \
             -p ${toString cfg.port}:27015/tcp \
             -v ${cfg.dataDir}/cstrike:/opt/hlds/cstrike \
+            -v ${startupScript}:/start_server.sh \
             ${optionalString cfg.autoRemove "--rm"} \
             ${concatStringsSep " " cfg.extraDockerOptions} \
-            cs16-server:latest \
-
+            cs16-server:latest
         ''
-        #${insecureFlag} -game cstrike ${serverParamsStr}
+        # cs16-server:latest \
+        # /bin/sh /start_server.sh
+        # /bin/sh /opt/hlds/start_server.sh
+        # cs16-server:latest \
+        # ${insecureFlag} -game cstrike ${serverParamsStr}
         else ''
           # Используем образ из DockerHub
           docker run \
@@ -194,7 +224,7 @@ in {
             -v ${cfg.dataDir}/cstrike:/opt/hlds/cstrike \
             ${optionalString cfg.autoRemove "--rm"} \
             ${concatStringsSep " " cfg.extraDockerOptions} \
-            kriansa/cs-16-server:latest \
+            AlienJust/cs-16-server:latest \
             ${insecureFlag} -game cstrike ${serverParamsStr}
         '';
 
@@ -232,7 +262,7 @@ in {
           then ''            build:
                               context: .
                               dockerfile: Dockerfile''
-          else ''image: kriansa/cs-16-server:latest''
+          else ''image: AlienJust/cs-16-server:latest''
         }
             container_name: cs16-server
             hostname: "${cfg.hostname}"
@@ -265,7 +295,7 @@ in {
 
         # Клонируем репозиторий если собираем локально
         if ${boolToString cfg.buildImageLocally} && [ ! -d .git ]; then
-          git clone https://github.com/kriansa/cs-16-server.git .
+          git clone https://github.com/AlienJust/cs-16-server.git .
         elif ${boolToString cfg.buildImageLocally}; then
           git pull origin main
         fi
