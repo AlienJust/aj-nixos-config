@@ -1,4 +1,4 @@
-_: {
+{config}: {
   networking = {
     #hostName = "mixos";
     useDHCP = false;
@@ -47,10 +47,10 @@ _: {
             /*
             "192.168.50.33/24"
             */
-            "192.168.1.33/24"
+            "192.168.50.249/24"
           ];
           IPv4Forwarding = true;
-          Gateway = "192.168.1.1";
+          Gateway = "192.168.50.1";
           LinkLocalAddressing = "no";
         };
         #linkConfig.RequiredForOnline = "no";
@@ -66,12 +66,13 @@ _: {
         */
       ];
       # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
-      privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
+      # privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
+      privateKeyFile = config.sops.secrets.work_privatekey.path;
 
       peers = [
         {
           publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
-          presharedKeyFile = "/home/aj01/wireguard-keys/preshared_from_peer0_key";
+          presharedKeyFile = config.sops.secrets.work_presharedk.path;
           allowedIPs = ["192.168.167.0/24" "192.168.11.0/24" "192.168.6.0/24"];
           endpoint = "79.172.45.20:40414";
           persistentKeepalive = 25;
