@@ -6,7 +6,11 @@
       generateKey = true;
     };
     secrets = {
-      home_privatekey = {
+      work_privatekey = {
+        neededForUsers = false;
+        sopsFile = ../../../../../../secrets/secrets.yaml;
+      };
+      work_presharedk = {
         neededForUsers = false;
         sopsFile = ../../../../../../secrets/secrets.yaml;
       };
