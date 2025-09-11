@@ -1,4 +1,18 @@
-{config}: {
+{config, ...}: {
+  sops = {
+    age = {
+      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+      keyFile = "/nix/persist/var/lib/sops-nix/key.txt";
+      generateKey = true;
+    };
+    secrets = {
+      home_privatekey = {
+        neededForUsers = false;
+        sopsFile = ../../../../../../secrets/secrets.yaml;
+      };
+    };
+  };
+
   networking = {
     #hostName = "mixos";
     useDHCP = false;
