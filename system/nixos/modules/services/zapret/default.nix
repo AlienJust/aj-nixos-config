@@ -120,6 +120,8 @@ in {
 
         #"--dpi-desync=split2 --dpi-desync-split-pos=4"
 
+        /*
+
         "--filter-tcp=80"
         "--dpi-desync=fake,split"
         "--dpi-desync-ttl=5"
@@ -139,6 +141,11 @@ in {
         "--filter-udp=443"
         "--dpi-desync=fake"
         "--dpi-desync-repeats=10"
+        */
+        "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        "--filter-tcp=80 --dpi-desync=fake,multisplit --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig"
+        "--filter-tcp=443 --dpi-desync=fakedsplit --dpi-desync-split-pos=1 --dpi-desync-autottl --dpi-desync-fooling=badseq --dpi-desync-repeats=8"
+        "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
       ];
 
       whitelist = [
