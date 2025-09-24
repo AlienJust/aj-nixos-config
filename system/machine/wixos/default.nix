@@ -87,7 +87,7 @@
 
       udisks2.enable = true;
 
-      zapret.enable = false;
+      zapret.enable = true;
     };
 
     programs = {
