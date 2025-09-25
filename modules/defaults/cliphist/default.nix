@@ -16,7 +16,6 @@ in {
 
       cliphistExecs = {
         rofi = createExec "${pkgs.rofi}/bin/rofi -dmenu";
-        rofi-wayland = createExec "${pkgs.rofi-wayland}/bin/rofi -dmenu";
         wofi = createExec "${pkgs.wofi}/bin/wofi --show dmenu";
         fuzzel = createExec "${pkgs.fuzzel}/bin/fuzzel -d";
       };

@@ -14,17 +14,15 @@ in {
       type = enum [
         "wofi"
         "rofi"
-        "rofi-wayland"
         "fuzzel"
       ];
 
-      default = "rofi-wayland";
+      default = "rofi";
     };
 
     appLauncherCmd = let
       appLauncherExecs = {
         rofi = "${pkgs.rofi}/bin/rofi -show drun";
-        rofi-wayland = "${pkgs.rofi-wayland}/bin/rofi -show drun";
         wofi = "${pkgs.wofi}/wofi --show drun";
         fuzzel = "${pkgs.fuzzel}/fuzzel --show drun";
       };

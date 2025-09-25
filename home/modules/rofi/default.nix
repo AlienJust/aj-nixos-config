@@ -16,7 +16,7 @@ in {
     programs.rofi = {
       enable = true;
       cycle = false;
-      package = pkgs.rofi-wayland;
+      package = pkgs.rofi;
       location = "center";
       terminal = "foot";
 
