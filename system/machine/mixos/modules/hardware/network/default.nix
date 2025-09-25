@@ -27,6 +27,7 @@
 
     extraHosts = ''
       192.168.6.32 elma.horizont.local
+      192.168.11.20 hpb.dev.local
     '';
   };
   networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8.#google"];

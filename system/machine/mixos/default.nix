@@ -126,6 +126,6 @@
       zsh.enable = true;
     };
 
-    hpb.enable = true;
+    hpb.enable = false;
   };
 }
