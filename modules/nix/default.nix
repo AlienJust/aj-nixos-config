@@ -78,6 +78,8 @@ in {
           "proxmox-nixos:nveXDuVVhFDRFx8Dn19f1WDEaNRJjPrF2CPD2D+m1ys="
           "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
           "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+          # Own mixos nix-serve
+          "cache.example.org-1:tGMdYUcCxjE/iE6znSHlThLBYK+2k5Ko0Hw+EIeeB0M="
         ];
       };
     };
