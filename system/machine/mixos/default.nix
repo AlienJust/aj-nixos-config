@@ -1,11 +1,25 @@
 {config, ...}: {
   #disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
+  sops = {
+    age = {
+      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+      keyFile = "/nix/persist/var/lib/sops-nix/key.txt";
+      generateKey = true;
+    };
+    secrets = {
+      nix-serve-privatekey = {
+        neededForUsers = false;
+        sopsFile = ../../../secrets/secrets.yaml;
+      };
+    };
+  };
 
   services.dbus.implementation = "broker";
 
   services.nix-serve = {
     enable = true;
     port = 5000;
+    secretKeyFile = config.sops.secrets.nix-serve-privatekey.path;
   };
 
   module = {
