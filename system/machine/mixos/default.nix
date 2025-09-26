@@ -3,6 +3,11 @@
 
   services.dbus.implementation = "broker";
 
+  services.nix-serve = {
+    enable = true;
+    port = 5000;
+  };
+
   module = {
     sound.enable = true;
     boot.enable = true;
