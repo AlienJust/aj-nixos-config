@@ -69,6 +69,8 @@ in {
           "https://cache.saumon.network/proxmox-nixos"
           "https://nixpkgs-python.cachix.org"
           "https://devenv.cachix.org"
+          # MixOS nix-serve
+          "http://192.168.50.249:5000"
         ];
 
         trusted-public-keys = [
