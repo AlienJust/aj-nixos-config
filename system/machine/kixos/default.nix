@@ -34,7 +34,7 @@
     bagetter.enable = true;
     bagetter.hostname = "nuget.alexdeb.ru";
 
-    nextcloud.enable = false;
+    nextcloud.enable = true;
     nextcloud.hostname = "nxoo.alexdeb.ru";
 
     services = {
