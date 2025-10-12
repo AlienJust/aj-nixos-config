@@ -31,6 +31,7 @@ in {
           sopsFile = ../../../../secrets/secrets.yaml;
         };
       };
+    };
 
     environment.etc."nextcloud-admin-pass".text = config.sops.secrets.nextcloud_admin_pass.path;
     services.nextcloud = {
