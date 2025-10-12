@@ -19,7 +19,20 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    environment.etc."nextcloud-admin-pass".text = "1234567890";
+    sops = {
+      age = {
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        keyFile = "/nix/persist/var/lib/sops-nix/key.txt";
+        generateKey = true;
+      };
+      secrets = {
+        nextcloud_admin_pass = {
+          neededForUsers = false;
+          sopsFile = ../../../../secrets/secrets.yaml;
+        };
+      };
+
+    environment.etc."nextcloud-admin-pass".text = config.sops.secrets.nextcloud_admin_pass.path;
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud31;
