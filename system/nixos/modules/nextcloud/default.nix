@@ -27,7 +27,7 @@ in {
       };
       secrets = {
         nextcloud_admin_pass = {
-          neededForUsers = false;
+          neededForUsers = true;
           sopsFile = ../../../../secrets/secrets.yaml;
         };
       };
