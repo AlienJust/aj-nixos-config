@@ -99,4 +99,10 @@
       ];
     };
   };
+  systemd.services.wg-quick-wg0 = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+    # Add a delay if needed
+    preStart = "sleep 5";
+  };
 }
