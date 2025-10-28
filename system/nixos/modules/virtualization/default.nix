@@ -96,9 +96,8 @@ in {
         qemu = {
           swtpm.enable = true;
           # The 'virtualisation.libvirtd.qemu.ovmf' submodule has been removed. All OVMF images distributed with QEMU are now available by default.
-
-          ovmf.enable = true;
           /*
+          ovmf.enable = true;
           ovmf.packages = [
             (pkgs.OVMF.override {
               secureBoot = true;
