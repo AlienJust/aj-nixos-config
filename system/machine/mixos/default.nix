@@ -8,6 +8,7 @@
     };
     secrets = {
       nix-serve-privatekey = {
+        owner = "nix-serve";
         neededForUsers = false;
         sopsFile = ../../../secrets/secrets.yaml;
       };
