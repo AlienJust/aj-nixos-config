@@ -81,7 +81,7 @@ in {
           "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
           "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
           # Own mixos nix-serve
-          "cache.example.org-1:tGMdYUcCxjE/iE6znSHlThLBYK+2k5Ko0Hw+EIeeB0M="
+          "192.168.50.249:ug3Lf2u8+GHntuwT2aTduu1zsZNeD3IAjuhlVMbtJTc="
         ];
       };
     };
