@@ -68,7 +68,7 @@
       udev.enable = true;
       greetd-tui.enable = false;
       hyprland.enable = hyprlandEnable;
-      qmk.enable = true;
+      qmk.enable = false;
       ssh.enable = true;
 
       spoofdpi = {

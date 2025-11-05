@@ -101,7 +101,7 @@ in {
         keepassxc
         thunderbird
         qbittorrent
-        teamspeak_client
+        #teamspeak_client
         winbox
 
         # anydesk
@@ -114,7 +114,7 @@ in {
         # games
         clonehero
         shattered-pixel-dungeon
-        minetest
+        luanti
         # openarena
 
         sfp

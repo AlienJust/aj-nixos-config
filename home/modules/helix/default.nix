@@ -17,7 +17,7 @@ in {
       yaml-language-server
       marksman
       gopls
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       cmake-language-server
       nodePackages_latest.bash-language-server
       helm-ls

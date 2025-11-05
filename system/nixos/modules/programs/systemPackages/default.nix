@@ -48,7 +48,7 @@ in {
         jq
 
         # Hardware utils
-        glxinfo
+        mesa-demos
         pciutils
         usbutils
         powertop
@@ -81,7 +81,7 @@ in {
         # Themes
 
         # Hardware
-        microcodeIntel
+        microcode-intel
         libGL
 
         # Hardware utils

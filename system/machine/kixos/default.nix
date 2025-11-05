@@ -53,7 +53,7 @@
       syncthing.enable = true;
       udev.enable = true;
       greetd-tui.enable = false;
-      qmk.enable = true;
+      qmk.enable = false;
       ssh.enable = true;
 
       spoofdpi.enable = false;

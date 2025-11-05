@@ -20,7 +20,7 @@
       libva
       libva-utils
       vdpauinfo
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };

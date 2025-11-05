@@ -35,8 +35,14 @@ in {
 
     programs.git = {
       enable = true;
-      userName = "Alexey Debelov";
-      userEmail = "alienjustmail@gmail.com";
+      settings = {
+        user = {
+          name = "Alexey Debelov";
+          email = "alienjustmail@gmail.com";
+        };
+      };
+      #userName = "Alexey Debelov";
+      #userEmail = "alienjustmail@gmail.com";
       extraConfig = {
         http = {
           "https://188.226.43.56:62328" = {
