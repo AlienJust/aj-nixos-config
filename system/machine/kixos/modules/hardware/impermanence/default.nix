@@ -27,6 +27,7 @@ _: {
         "/var/lib/systemd"
         "/var/lib/nextcloud"
         "/var/lib/forgejo"
+        "/var/lib/acme"
       ];
 
       files = [
