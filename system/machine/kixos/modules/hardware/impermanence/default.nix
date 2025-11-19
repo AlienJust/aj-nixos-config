@@ -26,6 +26,7 @@ _: {
         #"/var/lib/libvirt"
         "/var/lib/systemd"
         "/var/lib/nextcloud"
+        "/var/lib/forgejo"
       ];
 
       files = [
