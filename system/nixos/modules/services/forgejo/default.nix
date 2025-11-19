@@ -48,9 +48,11 @@ in {
     services.nginx.virtualHosts.${config.module.services.forgejo.domain} = {
       forceSSL = true;
       enableACME = true;
-
+      extraConfig = ''
+        client_max_body_size 512M;
+      '';
       locations."/" = {
-        proxyPass = "http://10.0.0.4:3000";
+        proxyPass = "http://localhost:3000";
       };
     };
 
@@ -58,7 +60,8 @@ in {
       inherit (cfg) database stateDir;
 
       enable = true;
-
+      # Enable support for Git Large File Storage
+      lfs.enable = true;
       settings = let
         gcArgs = "--aggressive --no-cruft --prune=now";
         gcTimeout = 600;
