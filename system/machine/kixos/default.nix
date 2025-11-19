@@ -89,7 +89,7 @@
           type = "postgres";
           user = "forgejo";
           host = "127.0.0.1";
-          passwordFile = config.sops.secrets.forgejo_db_pass.path.path;
+          passwordFile = config.sops.secrets.forgejo_db_pass.path;
         };
       };
 
