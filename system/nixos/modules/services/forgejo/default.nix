@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf mkOption;
@@ -11,6 +12,12 @@ in {
   options = {
     module.services.forgejo = {
       enable = mkEnableOption "Enable forgejo";
+
+      package = mkOption {
+        type = str;
+        default = pkgs.forgejo;
+        description = "Forgejo package";
+      };
 
       stateDir = mkOption {
         type = str;
