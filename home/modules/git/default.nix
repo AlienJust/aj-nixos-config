@@ -40,10 +40,6 @@ in {
           name = "Alexey Debelov";
           email = "alienjustmail@gmail.com";
         };
-      };
-      #userName = "Alexey Debelov";
-      #userEmail = "alienjustmail@gmail.com";
-      extraConfig = {
         http = {
           "https://188.226.43.56:62328" = {
             sslCAInfo = "/home/aj01/gitea.crt";
