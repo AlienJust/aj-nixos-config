@@ -74,6 +74,7 @@ in {
       inherit (cfg) database stateDir;
 
       enable = true;
+      package = cfg.package;
       # Enable support for Git Large File Storage
       lfs.enable = true;
       settings = let
