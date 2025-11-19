@@ -91,6 +91,7 @@ in {
         "repository.issue".MAX_PINNED = 99999;
         "repository.pull-request".DEFAULT_MERGE_STYLE = "rebase";
         "service".DISABLE_REGISTRATION = true;
+        "service".REQUIRE_SIGNIN_VIEW = true;
 
         "server" = {
           DOMAIN = cfg.domain;
@@ -116,8 +117,8 @@ in {
         };
 
         "repository" = {
-          DEFAULT_PRIVATE = "private";
-          DEFAULT_PUSH_CREATE_PRIVATE = true;
+          #DEFAULT_PRIVATE = "private";
+          #DEFAULT_PUSH_CREATE_PRIVATE = true;
         };
 
         "cron" = {
