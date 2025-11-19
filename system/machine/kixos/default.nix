@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   #disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
 
   sops = {
@@ -82,6 +86,8 @@
         domain = "git.alexdeb.ru";
         httpAddr = "0.0.0.0";
         sshPort = 4224;
+
+        package = pkgs.forgejo;
 
         database = {
           createDatabase = true;
