@@ -14,7 +14,7 @@ in {
       enable = mkEnableOption "Enable forgejo";
 
       package = mkOption {
-        type = str;
+        type = lib.types.package;
         default = pkgs.forgejo;
         description = "Forgejo package";
       };
