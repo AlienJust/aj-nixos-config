@@ -45,6 +45,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.nginx.virtualHosts.${config.module.services.forgejo.domain} = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://10.0.0.4:3000";
+      };
+    };
+
     services.forgejo = {
       inherit (cfg) database stateDir;
 

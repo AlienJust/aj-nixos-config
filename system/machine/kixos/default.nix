@@ -62,6 +62,23 @@
 
       tumbler.enable = true;
 
+      fail2ban.enable = true;
+      forgejo = {
+        enable = true;
+        domain = "git.alexdeb.ru";
+        httpAddr = "0.0.0.0";
+        sshPort = 4224;
+
+        database = {
+          createDatabase = true;
+          name = "forgejo";
+          type = "postgres";
+          user = "forgejo";
+          host = "10.0.0.3";
+          passwordFile = "/run/secrets/db/forgejo/user";
+        };
+      };
+
       /*
       ollama = {
         #enable = true;
