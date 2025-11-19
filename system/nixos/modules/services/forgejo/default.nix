@@ -92,6 +92,7 @@ in {
         "repository.pull-request".DEFAULT_MERGE_STYLE = "rebase";
         "service".DISABLE_REGISTRATION = true;
         "service".REQUIRE_SIGNIN_VIEW = true;
+        "service"."explore".REQUIRE_SIGNIN_VIEW = true;
 
         "server" = {
           DOMAIN = cfg.domain;
