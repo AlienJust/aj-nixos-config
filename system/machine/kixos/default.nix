@@ -10,7 +10,7 @@
     secrets = {
       forgejo_db_pass = {
         neededForUsers = false;
-        sopsFile = ../../../../secrets/secrets.yaml;
+        sopsFile = ../../../secrets/secrets.yaml;
       };
     };
   };
