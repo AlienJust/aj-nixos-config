@@ -132,5 +132,31 @@ in {
         };
       };
     };
+
+    sops = {
+      age = {
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        keyFile = "/nix/persist/var/lib/sops-nix/key.txt";
+        generateKey = true;
+      };
+      secrets = {
+        forgejo_alienjust_pass = {
+          neededForUsers = false;
+          sopsFile = ../../../../../secrets/secrets.yaml;
+        };
+      };
+    };
+
+    sops.secrets.forgejo_alienjust_pass.owner = "forgejo";
+
+    systemd.services.forgejo.preStart = let
+      adminCmd = "${lib.getExe cfg.package} admin user";
+      pwd = config.sops.secrets.forgejo_alienjust_pass;
+      user = "alienjust"; # Note, Forgejo doesn't allow creation of an account named "admin"
+    in ''
+      ${adminCmd} create --admin --email "root@localhost" --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
+      ## uncomment this line to change an admin user which was already created
+      # ${adminCmd} change-password --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
+    '';
   };
 }
