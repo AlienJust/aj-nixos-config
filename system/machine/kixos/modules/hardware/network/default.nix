@@ -4,7 +4,7 @@ _: {
     useDHCP = false;
 
     firewall.enable = true;
-    firewall.allowedTCPPorts = [22];
+    firewall.allowedTCPPorts = [22 4224];
     nftables.enable = false;
 
     extraHosts = ''
