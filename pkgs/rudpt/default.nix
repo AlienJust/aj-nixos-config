@@ -7,8 +7,8 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "rudpt";
-  version = "0.1.1";
-  src = ./rudpt-0.1.1.tar.gz;
+  version = "0.1.2";
+  src = ./rudpt-0.1.2.tar.gz;
   cargoLock.lockFile = ./Cargo.lock;
 
   installPhase = ''
