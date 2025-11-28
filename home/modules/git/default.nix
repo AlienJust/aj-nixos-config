@@ -47,7 +47,11 @@ in {
           "https://192.168.11.20:50589" = {
             sslCAInfo = "/home/aj01/gitlab.crt";
           };
-          postBuffer = 524288000;
+          #postBuffer = 524288000;
+          postBuffer = 2097152000;
+          version = "HTTP/1.1";
+          lowSpeedLimit = 300;
+          lowSpeedTime = 200;
         };
       };
     };
