@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   #disabledModules = ["services/networking/zapret.nix"]; # необходимо если версия nixpkgs новее 5a5c04d
   sops = {
     age = {
@@ -18,6 +22,7 @@
   services.dbus.implementation = "broker";
 
   services.nix-serve = {
+    package = pkgs.nix-serve-ng;
     enable = true;
     port = 5000;
     secretKeyFile = config.sops.secrets.nix-serve-privatekey.path;
