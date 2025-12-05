@@ -180,7 +180,7 @@ in {
       in
         if cfg.buildImageLocally
         then ''
-          # Собираем образ локально из https://github.com/AlienJust/cs-16-server.git
+          # Building image locally from https://github.com/AlienJust/cs-16-server.git
           echo "Building CS 1.6 server image from https://github.com/AlienJust/cs-16-server.git..."
 
           BUILD_DIR=$(mktemp -d)
