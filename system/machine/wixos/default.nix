@@ -34,7 +34,7 @@
 
     services = {
       cs16-server = {
-        enable = true;
+        enable = false;
         buildImageLocally = true;
         port = 27015;
         disableVAC = true;
