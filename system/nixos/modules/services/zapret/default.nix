@@ -29,7 +29,8 @@ in {
       # );
 
       udpSupport = true;
-      udpPorts = ["443"];
+      udpPorts = ["443" "19294-19344" "50000-50100"];
+      #tcpPorts = ["443" "2053" "2083" "2087" "2096" "8443"];
 
       params = [
         #"--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3"
@@ -170,13 +171,13 @@ in {
         "--new"
         "--filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord=${./bin/quic_initial_www_google_com.bin} --dpi-desync-fake-stun=${./bin/quic_initial_www_google_com.bin} --dpi-desync-repeats=6"
         "--new"
-        "--filter-l3=ipv4 --filter-tcp=443,2053,2083,2087,2096,8443,%GameFilter% --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=syndata,multidisorder"
+        "--filter-l3=ipv4 --filter-tcp=443,2053,2083,2087,2096,8443 --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=syndata,multidisorder"
         "--new"
         "--filter-udp=443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
         "--new"
-        "--filter-udp=%GameFilter% --ipset=${./lists/ipset-all.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-autottl=2 --dpi-desync-repeats=14 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${./bin/quic_initial_www_google_com.bin} --dpi-desync-cutoff=n3"
+        #"--filter-udp=%GameFilter% --ipset=${./lists/ipset-all.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-autottl=2 --dpi-desync-repeats=14 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${./bin/quic_initial_www_google_com.bin} --dpi-desync-cutoff=n3"
       ];
-
+      /*
       whitelist = [
         "googlevideo.com"
         "youtu.be"
@@ -218,6 +219,7 @@ in {
         "7tv.io"
         "10tv.app"
       ];
+      */
     };
   };
 }
