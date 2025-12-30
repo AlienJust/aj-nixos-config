@@ -29,7 +29,8 @@ in {
       # );
 
       udpSupport = true;
-      udpPorts = ["443" "19294-19344" "50000-50100"];
+      #udpPorts = ["443" "19294-19344" "50000-50100"];
+      udpPorts = ["443"];
       #tcpPorts = ["443" "2053" "2083" "2087" "2096" "8443"];
 
       params = [
@@ -122,7 +123,6 @@ in {
         #"--dpi-desync=split2 --dpi-desync-split-pos=4"
 
         /*
-
         "--filter-tcp=80"
         "--dpi-desync=fake,split"
         "--dpi-desync-ttl=5"
@@ -144,16 +144,14 @@ in {
         "--dpi-desync-repeats=10"
         */
 
-        /*
         # ALT3
-        "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
-        "--new"
-        "--filter-tcp=80 --dpi-desync=fake,multisplit --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig"
-        "--new"
-        "--filter-tcp=443 --dpi-desync=fakedsplit --dpi-desync-split-pos=1 --dpi-desync-autottl --dpi-desync-fooling=badseq --dpi-desync-repeats=8"
-        "--new"
-        "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
-        */
+        #"--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        #"--new"
+        #"--filter-tcp=80 --dpi-desync=fake,multisplit --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig"
+        #"--new"
+        #"--filter-tcp=443 --dpi-desync=fakedsplit --dpi-desync-split-pos=1 --dpi-desync-autottl --dpi-desync-fooling=badseq --dpi-desync-repeats=8"
+        #"--new"
+        #"--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
 
         # ALT4
         /*
@@ -167,13 +165,20 @@ in {
         */
 
         # ALT5
-        "--filter-udp=443 --hostlist=${./lists/list-general.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        "--filter-udp=443 --hostlist=${./lists/list-general.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=16 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
         "--new"
-        "--filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord=${./bin/quic_initial_www_google_com.bin} --dpi-desync-fake-stun=${./bin/quic_initial_www_google_com.bin} --dpi-desync-repeats=6"
+        #from alt4
+        #"--filter-udp=443 --hostlist=${./lists/list-google.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=16 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        #"--new"
+        # from alt6
+        #"--filter-tcp=443 --hostlist=${./lists/list-google.txt} --ip-id=zero --dpi-desync=multisplit --dpi-desync-split-seqovl=681 --dpi-desync-split-pos=1 --dpi-desync-split-seqovl-pattern=${./bin/tls_clienthello_www_google_com.bin}"
+        #"--new"
+        # alt5 ongoing
+        "--filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord=${./bin/quic_initial_www_google_com.bin} --dpi-desync-fake-stun=${./bin/quic_initial_www_google_com.bin} --dpi-desync-repeats=16"
         "--new"
         "--filter-l3=ipv4 --filter-tcp=443,2053,2083,2087,2096,8443 --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=syndata,multidisorder"
         "--new"
-        "--filter-udp=443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        "--filter-udp=443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=16 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
         "--new"
         #"--filter-udp=%GameFilter% --ipset=${./lists/ipset-all.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-autottl=2 --dpi-desync-repeats=14 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${./bin/quic_initial_www_google_com.bin} --dpi-desync-cutoff=n3"
       ];
