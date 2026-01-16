@@ -107,11 +107,13 @@ in {
         #"sudo" = "doas";
       };
 
-      initContent = lib.mkBefore ''
-        ${inputs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
-      '';
+      #initContent = lib.mkBefore ''
+      #${inputs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+      #'';
 
-      initExtra = ''
+      initContent = ''
+        ${inputs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+
         POWERLEVEL9K_MODE="nerdfont-complete"
         export PATH=$PATH:$ANDROID_HOME/tools
         export PATH=$PATH:$ANDROID_HOME/tools/bin

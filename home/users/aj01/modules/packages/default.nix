@@ -107,7 +107,7 @@ in {
         # anydesk
         # chromium
         krita
-        xfce.mousepad
+        mousepad
 
         # yandex-music
 
