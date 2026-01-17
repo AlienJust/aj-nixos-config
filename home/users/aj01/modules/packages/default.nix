@@ -92,7 +92,7 @@ in {
         inkscape
         #audacity
         remmina
-        galculator
+        #galculator
         avalonia-ilspy
         mpv
         obs-studio
