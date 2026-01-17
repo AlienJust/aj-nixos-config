@@ -7,8 +7,8 @@
 with lib; let
   cfg = config.module.sway.outputs;
 
-  mixosMonitorLeftName = "HDMI-A-1";
-  mixosMonitorRightName = "DP-1";
+  #mixosMonitorLeftName = "HDMI-A-1";
+  #mixosMonitorRightName = "DP-1";
 
   outputs = {
     default = {};
@@ -25,6 +25,12 @@ with lib; let
       DP-1 = {
         scale = "1";
         mode = "2560x1440@164.999Hz";
+        pos = "0 0";
+      };
+      /*
+      DP-1 = {
+        scale = "1";
+        mode = "2560x1440@164.999Hz";
         pos = "1920 700";
       };
       HDMI-A-1 = {
@@ -32,6 +38,7 @@ with lib; let
         scale = "1";
         pos = "0 0";
       };
+      */
     };
 
     wixos = {
@@ -58,6 +65,8 @@ with lib; let
 
     kixos = [];
 
+    mixos = [];
+    /*
     mixos = [
       # First monitor
       {
@@ -138,6 +147,7 @@ with lib; let
         output = mixosMonitorRightName;
       }
     ];
+    */
 
     wixos = [
       {
