@@ -113,7 +113,6 @@
     };
 
     programs = {
-      adb.enable = true;
       dconf.enable = true;
       fish.enable = false;
       gnupg.enable = true;
