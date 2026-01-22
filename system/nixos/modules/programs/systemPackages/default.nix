@@ -76,6 +76,9 @@ in {
         # io
         iotop
         fatrace
+
+        #
+        android-tools
       ]
       ++ optionals isWorkstation [
         # Themes

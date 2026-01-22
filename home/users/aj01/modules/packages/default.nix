@@ -92,7 +92,7 @@ in {
         inkscape
         #audacity
         remmina
-        galculator
+        #galculator
         avalonia-ilspy
         mpv
         obs-studio
@@ -107,7 +107,7 @@ in {
         # anydesk
         # chromium
         krita
-        xfce.mousepad
+        mousepad
 
         # yandex-music
 
