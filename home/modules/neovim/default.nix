@@ -16,6 +16,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    /*
     programs.nvf = {
       enable = true;
       defaultEditor = true;
@@ -167,13 +168,13 @@ in {
             zig.enable = true;
           };
 
-          /*
-          theme = {
-            enable = true;
-            name = theme;
-            style = "dark";
-          };
-          */
+
+          # theme = {
+            # enable = true;
+            # name = theme;
+            # style = "dark";
+          # };
+          #
 
           notify.nvim-notify = {
             enable = true;
@@ -400,5 +401,6 @@ in {
         };
       };
     };
+    */
   };
 }

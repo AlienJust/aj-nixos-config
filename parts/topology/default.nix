@@ -4,13 +4,15 @@
   ...
 }: {
   imports = [
-    inputs.nix-topology.flakeModule
-    ./timeweb
-    ./home
+    #inputs.nix-topology.flakeModule
+    #./timeweb
+    #./home
   ];
 
   perSystem = _: {
     # For nix topology
+
+    /*
     topology.modules = [
       (
         {config, ...}: let
@@ -31,5 +33,6 @@
         }
       )
     ];
+    */
   };
 }

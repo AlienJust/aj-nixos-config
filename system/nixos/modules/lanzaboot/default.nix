@@ -15,6 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     # Bootloader settings
+    /*
     boot = {
       loader.systemd-boot.enable = mkForce false;
       loader.efi.canTouchEfiVariables = true;
@@ -24,5 +25,6 @@ in {
         pkiBundle = "/etc/secureboot";
       };
     };
+    */
   };
 }

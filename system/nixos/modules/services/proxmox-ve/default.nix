@@ -19,9 +19,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    /*
     services.proxmox-ve = {
       enable = true;
       inherit (cfg) ipAddress;
     };
+    */
   };
 }

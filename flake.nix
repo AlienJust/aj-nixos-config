@@ -27,10 +27,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # disko = {
+    # url = "github:nix-community/disko";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     impermanence = {
       url = "github:/nix-community/impermanence";
@@ -48,23 +48,28 @@
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
     };
-
-    chaotic = {
+    /*
+      chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     };
+    */
 
-    nix-topology = {
-      url = "github:oddlama/nix-topology";
-    };
+    # nix-cachyos-kernel = {
+    # url = "github:xddxdd/nix-cachyos-kernel/release";
+    # };
 
-    nur = {
-      url = "github:nix-community/NUR";
-    };
+    # nix-topology = {
+    # url = "github:oddlama/nix-topology";
+    # };
 
-    microvm = {
-      url = "github:astro/microvm.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nur = {
+    # url = "github:nix-community/NUR";
+    # };
+
+    # microvm = {
+    # url = "github:astro/microvm.nix";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # MacOS configuration
     darwin = {
@@ -73,14 +78,14 @@
     };
 
     # Hyprland ecosystem
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=c5feee1e357f3c3c59ebe406630601c627807963";
-    };
+    # hyprland = {
+    # url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=c5feee1e357f3c3c59ebe406630601c627807963";
+    # };
 
-    xdghypr = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # xdghypr = {
+    # url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Unoficial users flakes
     /*
@@ -93,9 +98,9 @@
       url = "github:TheMaxMur/any-nix-shell";
     };
 
-    cryptopro = {
-      url = "github:SomeoneSerge/pkgs";
-    };
+    # cryptopro = {
+    # url = "github:SomeoneSerge/pkgs";
+    # };
 
     /*
     ghostty = {
@@ -108,24 +113,24 @@
     };
     */
 
-    proxmox-nixos = {
-      url = "github:SaumonNet/proxmox-nixos";
-    };
+    # proxmox-nixos = {
+    # url = "github:SaumonNet/proxmox-nixos";
+    # };
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvf = {
+    # url = "github:notashelf/nvf";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Security
     sops-nix = {
       url = "github:Mic92/sops-nix";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lanzaboote = {
+    # url = "github:nix-community/lanzaboote/v0.4.2";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Zsh plugins
     powerlevel10k = {

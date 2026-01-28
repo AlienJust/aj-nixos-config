@@ -31,9 +31,10 @@ in {
     hostPlatform = platform;
 
     overlays = [
-      inputs.nix-topology.overlays.default
-      inputs.proxmox-nixos.overlays.${platform}
-      inputs.nur.overlays.default
+      #inputs.nix-topology.overlays.default
+      #inputs.proxmox-nixos.overlays.${platform}
+      #inputs.nur.overlays.default
+      #inputs.nix-cachyos-kernel.overlays.pinned
     ];
   };
 }
