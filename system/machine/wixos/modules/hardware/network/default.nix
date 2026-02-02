@@ -16,6 +16,11 @@
   networking = {
     hostName = "wixos";
     useDHCP = false;
+
+    firewall.enable = true;
+    firewall.allowedTCPPorts = [22 2222 30000];
+    firewall.allowedUDPPorts = [30000];
+
     extraHosts = ''
       192.168.6.32 elma.horizont.local
       192.168.11.20 hpb.dev.local
