@@ -58,7 +58,11 @@ in {
     security.acme = {
       acceptTerms = true;
       certs = {
-        ${config.services.nextcloud.hostName}.email = "aj001@mail.ru";
+        ${config.services.nextcloud.hostName} = {
+          email = "aj001@mail.ru";
+          #domain = "*.${config.services.nextcloud.hostName}";
+          domain = "*.${config.services.nextcloud.hostName}";
+        };
       };
     };
   };
