@@ -48,26 +48,26 @@ in {
 
       hostName = cfg.hostname;
       https = true;
-      nginx.enable = true;
     };
 
     services.nginx.virtualHosts.${cfg.hostName} = {
       forceSSL = true;
       enableACME = true;
-      useACMEHost = cfg.hostname;
+      #useACMEHost = cfg.hostname;
     };
-
+    /*
     security.acme = {
       acceptTerms = true;
       certs = {
         ${cfg.hostName} = {
           email = "aj001@mail.ru";
           #domain = "*.${config.services.nextcloud.hostName}";
-          domain = cfg.hostName;
-          group = config.services.nginx.group;
-          extraDomainNames = [cfg.hostName];
+          #domain = cfg.hostName;
+          #group = config.services.nginx.group;
+          #extraDomainNames = [cfg.hostName];
         };
       };
     };
+    */
   };
 }

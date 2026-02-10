@@ -52,12 +52,14 @@ in {
   };
 
   config = mkIf cfg.enable {
+    /*
     security.acme = {
       acceptTerms = true;
       certs = {
         ${config.module.services.forgejo.domain}.email = "aj001@mail.ru";
       };
     };
+    */
 
     services.nginx.virtualHosts.${config.module.services.forgejo.domain} = {
       forceSSL = true;

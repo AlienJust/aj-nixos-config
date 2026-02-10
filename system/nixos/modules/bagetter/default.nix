@@ -45,12 +45,14 @@ in {
 
     networking.firewall.allowedTCPPorts = [80 443];
 
+    /*
     security.acme = {
       acceptTerms = true;
       certs = {
         ${cfg.hostname}.email = "aj001@mail.ru";
       };
     };
+    */
 
     services.nginx = {
       enable = true;
