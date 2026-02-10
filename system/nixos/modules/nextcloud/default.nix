@@ -48,6 +48,7 @@ in {
 
       hostName = cfg.hostname;
       https = true;
+      nginx.enable = true;
     };
 
     services.nginx.virtualHosts.${cfg.hostName} = {
