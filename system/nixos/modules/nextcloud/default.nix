@@ -61,7 +61,9 @@ in {
         ${config.services.nextcloud.hostName} = {
           email = "aj001@mail.ru";
           #domain = "*.${config.services.nextcloud.hostName}";
-          domain = "*.${config.services.nextcloud.hostName}";
+          domain = config.services.nextcloud.hostName;
+          group = config.services.nginx.group;
+          extraDomainNames = [config.services.nextcloud.hostName];
         };
       };
     };
