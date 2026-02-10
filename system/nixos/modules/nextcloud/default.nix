@@ -50,7 +50,7 @@ in {
       https = true;
     };
 
-    services.nginx.virtualHosts.${cfg.hostName} = {
+    services.nginx.virtualHosts.${cfg.hostname} = {
       forceSSL = true;
       enableACME = true;
       #useACMEHost = cfg.hostname;
