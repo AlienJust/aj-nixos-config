@@ -78,7 +78,9 @@
       spoofdpi.doh = true;
       spoofdpi.windowSize = 1;
 
+      murmur.enable = true;
       teamspeak-server.enable = true;
+
       tumbler.enable = true;
 
       fail2ban.enable = true;

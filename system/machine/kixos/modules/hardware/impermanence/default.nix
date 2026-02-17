@@ -29,6 +29,7 @@ _: {
         "/var/lib/forgejo"
         "/var/lib/acme"
         "/var/lib/teamspeak3-server"
+        "/var/lib/murmur"
       ];
 
       files = [
