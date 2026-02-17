@@ -28,6 +28,7 @@ _: {
         "/var/lib/nextcloud"
         "/var/lib/forgejo"
         "/var/lib/acme"
+        "/var/lib/teamspeak3-server"
       ];
 
       files = [
