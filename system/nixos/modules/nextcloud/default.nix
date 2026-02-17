@@ -50,20 +50,24 @@ in {
       https = true;
     };
 
-    services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    services.nginx.virtualHosts.${cfg.hostname} = {
       forceSSL = true;
       enableACME = true;
+      #useACMEHost = cfg.hostname;
     };
-
+    /*
     security.acme = {
       acceptTerms = true;
       certs = {
-        ${config.services.nextcloud.hostName} = {
+        ${cfg.hostName} = {
           email = "aj001@mail.ru";
           #domain = "*.${config.services.nextcloud.hostName}";
-          domain = "*.${config.services.nextcloud.hostName}";
+          #domain = cfg.hostName;
+          #group = config.services.nginx.group;
+          #extraDomainNames = [cfg.hostName];
         };
       };
     };
+    */
   };
 }
