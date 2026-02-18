@@ -1,13 +1,17 @@
 {
   lib,
   stdenvNoCC,
-  fetchgit,
+  #fetchgit,
 }:
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation
+/*
+rec
+*/
+{
   pname = "hpb";
-  version = "1.2.0";
+  version = "1.3.0";
   dontConfigue = true;
-  src = ./hpb-release_1.2.tar.gz;
+  src = ./hpb-release_1.3.tar.gz;
   /*
   src = fetchgit {
     url = "https://192.168.11.20:50589/sitandra/hpb.git";
