@@ -46,6 +46,8 @@ in {
             post_max_size = 20M
             upload_max_filesize = 20M
             memory_limit = 1G
+            error_reporting = E_ALL & ~E_WARNING & ~E_NOTICE
+            display_errors = Off
           '';
           phpPackage = pkgs.php84;
           adminAddr = "root@localhost";
