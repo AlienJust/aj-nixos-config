@@ -23,7 +23,7 @@
 
     extraHosts = ''
       192.168.6.32 elma.horizont.local
-      192.168.11.20 hpb.dev.local
+      192.168.10.20 hpb.dev.horizont.local
     '';
 
     wireless.iwd = {
