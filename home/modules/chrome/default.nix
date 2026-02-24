@@ -7,6 +7,7 @@
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.module.chrome;
+  homepage = ../../../links.html;
 in {
   options = {
     module.chrome.enable = mkEnableOption "Enables Chromium";
@@ -15,15 +16,27 @@ in {
   config = mkIf cfg.enable {
     programs.chromium = {
       enable = true;
-      package = pkgs.ungoogled-chromium;
+      #package = pkgs.ungoogled-chromium;
+
+      #homepageLocation = "file://${homepage}";
+      /*
+        initialPrefs = {
+        "first_run_tabs" = [
+          "file://${homepage}"
+        ];
+      };
+      */
 
       extensions = [
         "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
         "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
         "jghecgabfgfdldnmbfkhmffcabddioke" # Volume Master
+        "ponfpcnoihfmfllpaingbgckeeldkhle" # Enhancer for YouTube™
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
       ];
 
       commandLineArgs = [
+        "file://${homepage}"
         # Wayland
         "--ozone-platform=wayland"
         "--ozone-platform-hint=auto"
@@ -55,9 +68,9 @@ in {
         # Disable sync
         "--disable-sync"
         # Disable autofill
-        "AutofillPaymentCardBenefits"
-        "AutofillPaymentCvcStorage"
-        "AutofillPaymentCardBenefits"
+        #"AutofillPaymentCardBenefits"
+        #"AutofillPaymentCvcStorage"
+        #"AutofillPaymentCardBenefits"
       ];
     };
   };

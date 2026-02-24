@@ -102,7 +102,8 @@ in {
           spacing = 0;
 
           modules-left = [
-            "image#nixlogo"
+            #"image/nixlogo"
+            "custom/nixlogo"
             "${wm}/workspaces"
             "sway/mode"
           ];
@@ -142,12 +143,12 @@ in {
 
           # Logo
           "custom/nixlogo" = {
-            format = "";
+            format = "  ";
             tooltip = false;
             on-click = config.module.defaults.appLauncherCmd;
           };
 
-          "image#nixlogo" = {
+          "image/nixlogo" = {
             path = "${self}/assets/Nix_Logo.svg";
             tooltip = false;
             on-click = config.module.defaults.appLauncherCmd;

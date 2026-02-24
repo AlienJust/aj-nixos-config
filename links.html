@@ -2,6 +2,194 @@
 
 <head>
   <style>
+    /* Default light mode styles */
+    :root {
+      /* Light mode */
+      --bg: #ffffff;
+      --surface: #f8f9fa;
+      --text: #212529;
+      --border: #dee2e6;
+
+      /* Link colors */
+      --link: #0d6efd;
+      --link-hover: #0a58ca;
+      --link-visited: #6f42c1;
+      --link-success: #198754;
+      --link-danger: #dc3545;
+      --link-warning: #ffc107;
+      --link-info: #0dcaf0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #212529;
+        --surface: #2b3035;
+        --text: #f8f9fa;
+        --border: #495057;
+
+        /* Link colors - adjusted for dark mode */
+        --link: #6ea8fe;
+        --link-hover: #9ec5fe;
+        --link-visited: #cf9eff;
+        --link-success: #75b798;
+        --link-danger: #ea868f;
+        --link-warning: #ffda6a;
+        --link-info: #6edff6;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    /* Standard links */
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.2s, text-decoration-thickness 0.2s;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration-thickness: 2px;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    /* Link variants */
+    .link-success {
+      color: var(--link-success);
+    }
+
+    .link-success:hover {
+      color: var(--link-success);
+      filter: brightness(1.2);
+    }
+
+    .link-danger {
+      color: var(--link-danger);
+    }
+
+    .link-warning {
+      color: var(--link-warning);
+    }
+
+    .link-info {
+      color: var(--link-info);
+    }
+
+    /* Navigation links */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--border);
+      color: var(--link);
+    }
+
+    .nav-links a.active {
+      color: var(--link);
+      border-bottom: 2px solid var(--link);
+    }
+
+    /* Card with links */
+    .card {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .card-title {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    /* Button-style links */
+    .btn-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--link);
+      color: var(--bg);
+      text-decoration: none;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    .btn-link:hover {
+      background-color: var(--link-hover);
+      color: var(--bg);
+      text-decoration: none;
+    }
+
+    .btn-link:visited {
+      color: var(--bg);
+    }
+
+    /* Underline animation */
+    .animated-link {
+      position: relative;
+      text-decoration: none;
+    }
+
+    .animated-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .animated-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
     table,
     tr,
     td {
@@ -27,6 +215,7 @@
       align-content: flex-start;
     }
   </style>
+  <title>Homepage</title>
 </head>
 
 <body>
@@ -63,7 +252,7 @@
       <td>
         <a target="_blank" href="https://bfm.ru">BFM</a>
         <a target="_blank" href="https://kommersant.ru">Kommersant</a>
-        <a target="_blank" href="https://pikabu.ru/tag/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0?r=4">Pikabu
+        <a target="_blank" href="https://pikabu.ru/tag/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0?r=6">Pikabu
           Политика</a>
         <a target="_blank" href="https://www.vedomosti.ru" />Ведомости</a>
         <a target="_blank" href="https://lenta.ru">Lenta</a>
