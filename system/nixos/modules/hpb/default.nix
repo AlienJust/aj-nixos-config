@@ -26,7 +26,7 @@ in {
       # Lazy IPv6 connectivity for the container
     };
     networking.extraHosts = lib.mkAfter ''
-      192.168.100.11 hpb.dev.local
+      192.168.100.11 hpb.dev.horizont.local
     '';
     containers.hpb4 = {
       autoStart = true;
@@ -53,7 +53,7 @@ in {
           # documentRoot = "/var/www";
           # listen = [ { ip = "127.0.0.1"; port = 80; } ];
           virtualHosts = {
-            "hpb.dev.local" = {
+            "hpb.dev.horizont.local" = {
               listen = [
                 {
                   ip = "192.168.100.11";
@@ -179,12 +179,12 @@ in {
           rejectSSL = true;
           locations."/".return = "444";
         };
-        "hpb.dev.local" = {
-          serverName = "hpb.dev.local";
+        "hpb.dev.horizont.local" = {
+          serverName = "hpb.dev.horizont.local";
           forceSSL = false;
           locations."/" = {
             recommendedProxySettings = true;
-            proxyPass = "http://hpb.dev.local:80";
+            proxyPass = "http://hpb.dev.horizont.local:80";
           };
         };
       };
