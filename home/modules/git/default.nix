@@ -44,7 +44,7 @@ in {
           "https://188.226.43.56:62328" = {
             sslCAInfo = "/home/aj01/gitea.crt";
           };
-          "https://192.168.11.20:50589" = {
+          "https://192.168.10.20:50589" = {
             sslCAInfo = "/home/aj01/gitlab.crt";
           };
           #postBuffer = 524288000;
