@@ -9,9 +9,9 @@ rec
 */
 {
   pname = "hpb";
-  version = "1.3.0";
+  version = "0.1.3-1";
   dontConfigue = true;
-  src = ./hpb-release_1.3.tar.gz;
+  src = ./hpb-release_0.1.3a.tar.gz;
   /*
   src = fetchgit {
     url = "https://192.168.11.20:50589/sitandra/hpb.git";
@@ -30,7 +30,7 @@ rec
   '';
   meta = with lib; {
     description = "Horizon protocol builder";
-    homepage = "https://192.168.11.20:50589/sitandra/hpb";
+    homepage = "https://192.168.10.20:50589/sitandra/hpb";
     #maintainers = with maintainers; [gyaru];
     platforms = platforms.all;
     license = licenses.ofl;
