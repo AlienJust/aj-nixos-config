@@ -27,6 +27,15 @@
       theme = "nord";
     };
 
+    diana-nix = {
+      username = "aj01";
+      platform = "x86_64-linux";
+      stateVersion = "25.11";
+      isWorkstation = false;
+      #wm = "sway";
+      #theme = "nord";
+    };
+
     hpb-nix = {
       username = "aj01";
       platform = "x86_64-linux";
