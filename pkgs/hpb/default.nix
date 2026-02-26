@@ -29,7 +29,7 @@ rec
     runHook postInstall
   '';
   meta = with lib; {
-    description = "Horizon protocol builder";
+    description = "Horizon protocol builder v 0.1.3b";
     homepage = "https://192.168.10.20:50589/sitandra/hpb";
     #maintainers = with maintainers; [gyaru];
     platforms = platforms.all;
