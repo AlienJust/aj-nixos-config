@@ -9,9 +9,9 @@ rec
 */
 {
   pname = "hpb";
-  version = "0.1.3-1";
+  version = "0.1.3-2";
   dontConfigue = true;
-  src = ./hpb-release_0.1.3a.tar.gz;
+  src = ./hpb-release_0.1.3b.tar.gz;
   /*
   src = fetchgit {
     url = "https://192.168.11.20:50589/sitandra/hpb.git";
