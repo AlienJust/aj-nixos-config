@@ -30,6 +30,9 @@
     */
 
     devShells.default = pkgs.mkShellNoCC {
+      name = "flake-template";
+      meta.description = "DevShell for Flake";
+
       packages = with pkgs; [
         nixd
         cachix
