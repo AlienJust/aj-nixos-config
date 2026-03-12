@@ -46,9 +46,10 @@ in {
           # for dotnet
           (with dotnetCorePackages;
             combinePackages [
-              sdk_6_0
-              sdk_7_0
+              #sdk_6_0
+              #sdk_7_0
               sdk_8_0
+              sdk_10_0
             ])
           # direnv
           direnv
@@ -58,6 +59,7 @@ in {
         with pkgs.vscode-extensions; [
           # Rust-analyzer from master branch overlay (in unstable branch it was broken).
           #pkgs.master.vscode-extensions.rust-lang.rust-analyzer
+
           rust-lang.rust-analyzer
 
           # Theme controlled now by Stylix.
@@ -69,6 +71,7 @@ in {
           jnoortheen.nix-ide
           ms-dotnettools.csharp
           ms-dotnettools.csdevkit
+
           # pflannery.vscode-versionlens
         ]
         # https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit
@@ -76,7 +79,7 @@ in {
         /*
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
-            name = "csdevkit";
+          name = "csdevkit";
             publisher = "ms-dotnettools";
             version = "1.3.2";
             sha256 = "a308e33f116c319578657700b02c8c69f975db4212d5f1e8ca9acd4db93d3eda";
@@ -124,6 +127,7 @@ in {
         "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters" = true;
         "dotnet.inlayHints.enableInlayHintsForOtherParameters" = true;
         "dotnet.inlayHints.enableInlayHintsForParameters" = true;
+        "extensions.autoCheckUpdates" = false;
       };
     };
   };
