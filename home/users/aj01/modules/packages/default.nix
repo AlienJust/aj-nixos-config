@@ -11,7 +11,7 @@
   inherit (lib) mkEnableOption mkIf optionals;
   inherit (pkgs.stdenv) isLinux;
   cfg = config.module.user.packages;
-  sfp = pkgs.callPackage "${self}/pkgs/sfp" {};
+  # sfp = pkgs.callPackage "${self}/pkgs/sfp" {};
 in {
   options.module.user.packages = {
     enable = mkEnableOption "Enable user packages";
@@ -93,7 +93,7 @@ in {
         #audacity
         remmina
         #galculator
-        avalonia-ilspy
+        #avalonia-ilspy
         mpv
         obs-studio
         imv
@@ -117,7 +117,7 @@ in {
         luanti
         # openarena
 
-        sfp
+        #sfp
       ]
       ++ optionals wmEnable [
         imagemagick
