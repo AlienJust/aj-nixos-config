@@ -20,7 +20,7 @@ in {
       enable = true;
       systemd.enable = true;
       # systemd.target = "sway-session.target";
-      systemd.target = "graphical-session.target";
+      systemd.targets = ["graphical-session.target"];
 
       #    style = ''
       #      ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
