@@ -30,13 +30,17 @@
       192.168.10.20 hpb.dev.horizont.local
     '';
   };
-  networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8#google"];
+  networking.nameservers = ["192.168.50.1#one.one.one.one"]; # "8.8.8.8#google"
+
+  services.resolved.enable = true;
   services.resolved.settings.Resolve = {
     enable = true;
-    DNSSEC = "true";
+    #DNSSEC = "true";
+    DNSSEC = "false";
     Domains = ["~."];
-    FallbackDNS = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-    DNSOverTLS = "true";
+    FallbackDNS = ["192.168.50.1#one.one.one.one"]; # "1.0.0.1#one.one.one.one"
+    #DNSOverTLS = "true";
+    DNSOverTLS = "false";
   };
   systemd.network = {
     enable = true;
