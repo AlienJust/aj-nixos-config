@@ -36,7 +36,7 @@ in {
     environment.etc."nextcloud-admin-pass".text = config.sops.secrets.nextcloud_admin_pass.path;
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud32;
+      package = pkgs.nextcloud33;
       config.adminpassFile = "/etc/nextcloud-admin-pass";
 
       config.dbtype = "sqlite";
