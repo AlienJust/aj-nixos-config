@@ -70,13 +70,26 @@ in {
       locations."/" = {
         proxyPass = "http://127.0.0.1:9980";
         proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
       };
     };
 
     services.collabora-online = {
       enable = true;
-      # Ограничение доступа только для вашего экземпляра Nextcloud
-      settings.storage.wopi.host = "nxoo.alexdeb.ru";
+      settings = {
+        # Очень важно для работы за Nginx
+        ssl = {
+          enable = false; # Внутренний SSL выключен
+          termination = true; # Мы говорим сервису, что SSL терминируется на Nginx
+        };
+        # Разрешаем подключения
+        storage.wopi.host = ["nextcloud\\.alexdeb\\.ru"]; # Обратите внимание на экранирование точек
+      };
     };
     /*
     security.acme = {
