@@ -12,7 +12,7 @@
       "alexdeb.ru" = {
         # ВАЖНО: Убираем *.alexdeb.ru из алиасов, если используем webroot.
         # Можно добавить конкретные поддомены, например: "www.alexdeb.ru"
-        serverAliases = ["git.alexdeb.ru" "nxoo.alexdeb.ru" "nuget.alexdeb.ru"];
+        serverAliases = ["git.alexdeb.ru" "nxoo.alexdeb.ru" "nuget.alexdeb.ru" "oo.alexdeb.ru"];
 
         # Настройка для отдачи файлов проверки Let's Encrypt
         locations."/.well-known/acme-challenge" = {
@@ -38,7 +38,7 @@
       "alexdeb.ru" = {
         webroot = "/var/lib/acme/.challenges";
         # Wildcard (*.) ТУТ БЫТЬ НЕ ДОЛЖНО. Только конкретные имена:
-        extraDomainNames = ["git.alexdeb.ru" "nxoo.alexdeb.ru" "nuget.alexdeb.ru"];
+        extraDomainNames = ["git.alexdeb.ru" "nxoo.alexdeb.ru" "nuget.alexdeb.ru" "oo.alexdeb.ru"];
         #dnsProvider = "timewebcloud";
         #credentialsFile = config.sops.secrets."dns/token".path;
         #webroot = null;

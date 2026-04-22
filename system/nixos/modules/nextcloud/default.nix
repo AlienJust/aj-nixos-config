@@ -44,6 +44,13 @@ in {
       configureRedis = true;
 
       extraAppsEnable = true;
+      extraApps = {
+        inherit (config.services.nextcloud.package.packages.apps) richdocuments;
+      };
+
+      # Автоматическая настройка URL сервера (необязательно, можно сделать в UI)
+      settings.wopi_url = "https://office.example.com";
+
       maxUploadSize = "4G";
 
       hostName = cfg.hostname;
@@ -53,7 +60,23 @@ in {
     services.nginx.virtualHosts.${cfg.hostname} = {
       forceSSL = true;
       enableACME = true;
-      #useACMEHost = cfg.hostname;
+    };
+
+    # Настройка Nginx для Collabora
+    services.nginx.virtualHosts."oo.alexdeb.ru" = {
+      forceSSL = true;
+      enableACME = true;
+      # Проксирование запросов к локальному серверу Collabora (порт по умолчанию 9980)
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:9980";
+        proxyWebsockets = true;
+      };
+    };
+
+    services.collabora-online = {
+      enable = true;
+      # Ограничение доступа только для вашего экземпляра Nextcloud
+      settings.storage.wopi.host = "nxoo.alexdeb.ru";
     };
     /*
     security.acme = {
