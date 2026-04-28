@@ -67,12 +67,6 @@ in {
               #documentRoot = "${spoofdpi}/index.php";
               extraConfig = ''
                 DirectoryIndex index.php
-
-                Alias /adminer "${pkgs.adminer}/adminer.php"
-                <Files "${pkgs.adminer}/adminer.php">
-                  Require all granted
-                  SetHandler lbphp-handler
-                </Files>
               '';
             };
           };
