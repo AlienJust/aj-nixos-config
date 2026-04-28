@@ -68,9 +68,9 @@ in {
               extraConfig = ''
                 DirectoryIndex index.php
 
-                Alias /adminer "${pkgs.adminer}/share/adminer"
+                Alias /adminer "${pkgs.adminer}"
 
-                <Directory "${pkgs.adminer}/share/adminer">
+                <Directory "${pkgs.adminer}">
                   DirectoryIndex adminer.php
                   Options FollowSymLinks
                   AllowOverride None
