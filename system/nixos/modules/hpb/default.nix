@@ -68,19 +68,15 @@ in {
               extraConfig = ''
                 DirectoryIndex index.php
 
-                Alias /adminer "${pkgs.adminer}"
+                # Алиас ведет на конкретный файл, а не на директорию
+                Alias /adminer "${pkgs.adminer}/adminer.php"
 
-                <Directory "${pkgs.adminer}">
-                  DirectoryIndex adminer.php
-                  Options FollowSymLinks
-                  AllowOverride None
+                <Files "${pkgs.adminer}/adminer.php">
+                  # Разрешаем доступ к этому конкретному файлу
                   Require all granted
-
-                  # Настройки безопасности PHP (опционально)
-                  <Files "adminer.php">
-                    AddHandler lbphp-handler .php
-                  </Files>
-                </Directory>
+                  # Указываем обработчик PHP
+                  SetHandler lbphp-handler
+                </Files>
               '';
             };
             /*
