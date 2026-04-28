@@ -39,6 +39,7 @@ in {
         lib,
         ...
       }: {
+        environment.systemPackages = [pkgs.adminer];
         services.httpd = {
           enable = true;
           enablePHP = true;
@@ -66,44 +67,14 @@ in {
               #documentRoot = "${spoofdpi}/index.php";
               extraConfig = ''
                 DirectoryIndex index.php
+
+                Alias /adminer "${pkgs.adminer}/adminer.php"
+                <Files "${pkgs.adminer}/adminer.php">
+                  Require all granted
+                  SetHandler lbphp-handler
+                </Files>
               '';
             };
-            /*
-            "gartenforst.dev.local" = {
-              listen = [
-                {
-                  ip = "127.0.0.1";
-                  port = 80;
-                }
-              ];
-              documentRoot = "/var/www/gartenforst";
-              extraConfig = ''
-                DirectoryIndex index.php
-              '';
-            };
-            */
-            # {
-            # listen = [ { ip = "127.0.0.1"; port = 80; } ];
-            # hostName = "esther-loeffel-before-upgrade.dev.local";
-            # documentRoot = "/var/www/esther-loeffel-before-upgrade";
-            # extraConfig = ''
-            # DirectoryIndex index.php
-            # '';
-            # }
-            /*
-            "baukombinat.dev.local" = {
-              listen = [
-                {
-                  ip = "127.0.0.1";
-                  port = 80;
-                }
-              ];
-              documentRoot = "/var/www/baukombinat";
-              extraConfig = ''
-                DirectoryIndex index.php
-              '';
-            };
-            */
           };
           extraConfig = ''
             <Directory /var/www>
