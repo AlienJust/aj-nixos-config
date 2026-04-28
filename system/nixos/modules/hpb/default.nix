@@ -39,6 +39,7 @@ in {
         lib,
         ...
       }: {
+        environment.systemPackages = [pkgs.adminer];
         services.httpd = {
           enable = true;
           enablePHP = true;
@@ -66,6 +67,20 @@ in {
               #documentRoot = "${spoofdpi}/index.php";
               extraConfig = ''
                 DirectoryIndex index.php
+
+                Alias /adminer "${pkgs.adminer}/share/adminer"
+
+                <Directory "${pkgs.adminer}/share/adminer">
+                  DirectoryIndex adminer.php
+                  Options FollowSymLinks
+                  AllowOverride None
+                  Require all granted
+
+                  # Настройки безопасности PHP (опционально)
+                  <Files "adminer.php">
+                    AddHandler lbphp-handler .php
+                  </Files>
+                </Directory>
               '';
             };
             /*
