@@ -39,7 +39,6 @@ in {
         lib,
         ...
       }: {
-        environment.systemPackages = [pkgs.adminer];
         services.httpd = {
           enable = true;
           enablePHP = true;
@@ -69,6 +68,42 @@ in {
                 DirectoryIndex index.php
               '';
             };
+            /*
+            "gartenforst.dev.local" = {
+              listen = [
+                {
+                  ip = "127.0.0.1";
+                  port = 80;
+                }
+              ];
+              documentRoot = "/var/www/gartenforst";
+              extraConfig = ''
+                DirectoryIndex index.php
+              '';
+            };
+            */
+            # {
+            # listen = [ { ip = "127.0.0.1"; port = 80; } ];
+            # hostName = "esther-loeffel-before-upgrade.dev.local";
+            # documentRoot = "/var/www/esther-loeffel-before-upgrade";
+            # extraConfig = ''
+            # DirectoryIndex index.php
+            # '';
+            # }
+            /*
+            "baukombinat.dev.local" = {
+              listen = [
+                {
+                  ip = "127.0.0.1";
+                  port = 80;
+                }
+              ];
+              documentRoot = "/var/www/baukombinat";
+              extraConfig = ''
+                DirectoryIndex index.php
+              '';
+            };
+            */
           };
           extraConfig = ''
             <Directory /var/www>
