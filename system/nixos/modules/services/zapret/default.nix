@@ -29,9 +29,9 @@ in {
       # );
 
       udpSupport = true;
-      #udpPorts = ["443" "19294-19344" "50000-50100"];
-      udpPorts = ["443"];
-      #tcpPorts = ["443" "2053" "2083" "2087" "2096" "8443"];
+      udpPorts = ["443" "19294-19344" "50000-50100"];
+      #udpPorts = ["443"];
+      tcpPorts = ["80" "443" "2053" "2083" "2087" "2096" "8443"];
 
       params = [
         #"--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3"
@@ -164,6 +164,26 @@ in {
         "--filter-udp=443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
         */
 
+        #--wf-tcp=80,443,2053,2083,2087,2096,8443,%GameFilterTCP% --wf-udp=443,19294-19344,50000-50100,%GameFilterUDP% ^
+        "--filter-udp=443 --hostlist=${./lists/list-general.txt} --hostlist=${./lists/list-general-user.txt} --hostlist-exclude=${./lists/list-exclude.txt} --hostlist-exclude=${./lists/list-exclude-user.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --ipset-exclude=${./lists/ipset-exclude-user.txt} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        "--new"
+        "--filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord=${./bin/quic_initial_dbankcloud_ru.bin}--dpi-desync-fake-stun=${./bin/quic_initial_dbankcloud_ru.bin} --dpi-desync-repeats=6"
+        "--new"
+        "--filter-tcp=2053,2083,2087,2096,8443 --hostlist-domains=discord.media --dpi-desync=fake,multisplit --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=1000 --dpi-desync-fake-tls=${./bin/tls_clienthello_www_google_com.bin}"
+        "--new"
+        "--filter-tcp=443 --hostlist=${./lists/list-google.txt} --ip-id=zero --dpi-desync=fake,multisplit --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=1000 --dpi-desync-fake-tls=${./bin/tls_clienthello_www_google_com.bin}"
+        "--new"
+        "--filter-tcp=80,443 --hostlist=${./lists/list-general.txt} --hostlist=${./lists/list-general-user.txt} --hostlist-exclude=${./lists/list-exclude.txt} --hostlist-exclude=${./lists/list-exclude-user.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --ipset-exclude=${./lists/ipset-exclude-user.txt} --dpi-desync=fake,multisplit --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=1000 --dpi-desync-fake-tls=${./bin/stun.bin} --dpi-desync-fake-tls=${./bin/tls_clienthello_www_google_com.bin} --dpi-desync-fake-http=${./bin/tls_clienthello_max_ru.bin}"
+        "--new"
+        "--filter-udp=443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --hostlist-exclude=${./lists/list-exclude-user.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --ipset-exclude=${./lists/ipset-exclude-user.txt} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
+        "--new"
+        "--filter-tcp=80,443,8443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --hostlist-exclude=${./lists/list-exclude-user.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --ipset-exclude=${./lists/ipset-exclude-user.txt} --dpi-desync=fake,multisplit --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=1000 --dpi-desync-fake-tls=${./bin/stun.bin} --dpi-desync-fake-tls=${./bin/tls_clienthello_www_google_com.bin} --dpi-desync-fake-http=${./bin/tls_clienthello_max_ru.bin}"
+        #"--new"
+        #"--filter-tcp=%GameFilterTCP% --ipset=${./lists/ipset-all.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --ipset-exclude=${./lists/ipset-exclude-user.txt} --dpi-desync=fake,multisplit --dpi-desync-repeats=6 --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n3 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=1000 --dpi-desync-fake-tls=${./bin/stun.bin} --dpi-desync-fake-tls=${./bin/tls_clienthello_www_google_com.bin} --dpi-desync-fake-http=${./bin/tls_clienthello_max_ru.bin}"
+        #"--new"
+        #"--filter-udp=%GameFilterUDP% --ipset=${./lists/ipset-all.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --ipset-exclude=${./lists/ipset-exclude-user.txt} --dpi-desync=fake --dpi-desync-repeats=10 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${./bin/quic_initial_dbankcloud_ru.bin} --dpi-desync-cutoff=n2
+
+        /*
         # ALT5
         "--filter-udp=443 --hostlist=${./lists/list-general.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=16 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
         "--new"
@@ -181,6 +201,7 @@ in {
         "--filter-udp=443 --ipset=${./lists/ipset-all.txt} --hostlist-exclude=${./lists/list-exclude.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-repeats=16 --dpi-desync-fake-quic=${./bin/quic_initial_www_google_com.bin}"
         "--new"
         #"--filter-udp=%GameFilter% --ipset=${./lists/ipset-all.txt} --ipset-exclude=${./lists/ipset-exclude.txt} --dpi-desync=fake --dpi-desync-autottl=2 --dpi-desync-repeats=14 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${./bin/quic_initial_www_google_com.bin} --dpi-desync-cutoff=n3"
+        */
       ];
       /*
       whitelist = [
