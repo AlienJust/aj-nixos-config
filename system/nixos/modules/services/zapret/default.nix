@@ -30,8 +30,9 @@ in {
 
       udpSupport = true;
       udpPorts = ["443" "19294-19344" "50000-50100"];
+
       #udpPorts = ["443"];
-      tcpPorts = ["80" "443" "2053" "2083" "2087" "2096" "8443"];
+      #tcpPorts = ["80" "443" "2053" "2083" "2087" "2096" "8443"];
 
       params = [
         #"--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3"
