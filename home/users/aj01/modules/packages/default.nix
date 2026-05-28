@@ -92,7 +92,7 @@ in {
         inkscape
         #audacity
         remmina
-        #galculator
+        galculator
         #avalonia-ilspy
         mpv
         obs-studio
@@ -112,10 +112,11 @@ in {
         # yandex-music
 
         # games
-        clonehero
+
         shattered-pixel-dungeon
         luanti
         # openarena
+        # clonehero
 
         #sfp
       ]
@@ -132,7 +133,7 @@ in {
         gtk3
         dbus
         glib
-        swww
+        awww
         xdg-utils
 
         pavucontrol
