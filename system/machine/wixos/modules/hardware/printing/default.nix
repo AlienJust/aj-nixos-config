@@ -17,7 +17,7 @@
       {
         name = "hp1606dn"; # Произвольное имя принтера
         description = "HP LaserJet P1606dn";
-        deviceUri = "socket://192.168.11.20:9100"; # Или `ipp://<IP_принтера>`
+        deviceUri = "socket://192.168.10.20:9100"; # Или `ipp://<IP_принтера>`
         # deviceUri = "hp:/net/HP_LaserJet_Professional_P1606dn?ip=192.168.11.20";
         # model = "drv:///hpcups.drv/hp-laserjet_p1606dn.ppd"; # Драйвер
         # model = "drv:///hp/hpcups.drv/hp-laserjet_pro_p1606dn.ppd";
