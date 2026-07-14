@@ -37,14 +37,16 @@
     };
   };
 
-  networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8.#google"];
-  services.resolved.settings.Resolve = {
+  networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8#dns.google"];
+
+  services.resolved = {
     enable = true;
-    DNSSEC = "true";
-    Domains = ["~."];
-    FallbackDNS = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-    DNSOverTLS = "true";
+    dnssec = "true";
+    dnsovertls = "true";
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
   };
+
   systemd.network = {
     enable = true;
     netdevs = {

@@ -20,6 +20,3 @@ youtube-ui.l.google.com
 youtube-nocookie.com
 jnn-pa.googleapis.com
 play.google.com
-googlevideo.com
-*.googlevideo.com
-nhacmp3youtube.com
