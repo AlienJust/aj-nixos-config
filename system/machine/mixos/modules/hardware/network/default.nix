@@ -30,7 +30,7 @@
       192.168.10.20 hpb.dev.horizont.local
     '';
   };
-  networking.nameservers = ["192.168.50.1#one.one.one.one"]; # "8.8.8.8#google"
+  networking.nameservers = ["192.168.3.1#one.one.one.one"]; # "8.8.8.8#google"
 
   services.resolved.enable = true;
   services.resolved.settings.Resolve = {
@@ -38,7 +38,7 @@
     #DNSSEC = "true";
     DNSSEC = "false";
     Domains = ["~."];
-    FallbackDNS = ["192.168.50.1#one.one.one.one"]; # "1.0.0.1#one.one.one.one"
+    FallbackDNS = ["192.168.3.1#one.one.one.one"]; # "1.0.0.1#one.one.one.one"
     #DNSOverTLS = "true";
     DNSOverTLS = "false";
   };
@@ -68,12 +68,12 @@
         networkConfig = {
           Address = [
             /*
-            "192.168.50.33/24"
+            "192.168.3.33/24"
             */
-            "192.168.50.249/24"
+            "192.168.3.249/24"
           ];
           IPv4Forwarding = true;
-          Gateway = "192.168.50.1";
+          Gateway = "192.168.3.1";
           LinkLocalAddressing = "no";
         };
         #linkConfig.RequiredForOnline = "no";
