@@ -10,6 +10,14 @@
         neededForUsers = false;
         sopsFile = ../../../../../../secrets/secrets.yaml;
       };
+      aj_wixos_work_privatekey = {
+        neededForUsers = false;
+        sopsFile = ../../../../../../secrets/secrets.yaml;
+      };
+      work_presharedk = {
+        neededForUsers = false;
+        sopsFile = ../../../../../../secrets/secrets.yaml;
+      };
     };
   };
 
@@ -123,7 +131,7 @@
       ];
       # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
       # privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
-      privateKeyFile = config.sops.secrets.work_privatekey.path;
+      privateKeyFile = config.sops.secrets.aj_wixos_work_privatekey.path;
 
       peers = [
         {
