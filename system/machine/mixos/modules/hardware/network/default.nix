@@ -96,7 +96,7 @@
         {
           publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
           presharedKeyFile = config.sops.secrets.work_presharedk.path;
-          allowedIPs = ["192.168.167.0/24" "192.168.10.0/24" "192.168.6.0/24"];
+          allowedIPs = ["10.66.66.0/24" "192.168.167.0/24" "192.168.10.0/24" "192.168.6.0/24"];
           endpoint = "79.172.45.20:40414";
           persistentKeepalive = 25;
         }
