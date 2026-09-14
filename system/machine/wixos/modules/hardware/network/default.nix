@@ -45,14 +45,23 @@
     };
   };
 
-  networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8#dns.google"];
+  #networking.nameservers = ["1.1.1.1#one.one.one.one" "8.8.8.8#dns.google"];
+  networking.nameservers = ["77.88.8.8" "193.58.251.251"];
 
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    dnsovertls = "true";
-    domains = ["~."];
-    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+
+    settings = {
+      Resolve = {
+        DNS = "77.88.8.8#common.dns.yandex.ru 193.58.251.251#dns.skydns.ru";
+        FallbackDNS = "77.88.8.1#common.dns.yandex.ru";
+
+        # Перенесенные и переименованные опции (регистр важен!)
+        DNSSEC = "true";
+        DNSOverTLS = "opportunistic";
+        Domains = ["~."];
+      };
+    };
   };
 
   systemd.network = {
