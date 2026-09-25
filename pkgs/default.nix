@@ -20,4 +20,6 @@ in rec {
   */
 
   bagetter = pkgs.callPackage ./BaGetter {};
+
+  rudesktop = pkgs.callPackage ./rudesktop {};
 }
