@@ -15,11 +15,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # Virtualization settings
+    programs.virt-manager.enable = true;
     environment.systemPackages = with pkgs; [
-      virt-manager
+      netcat-openbsd
     ];
 
+    users.extraGroups.libvirtd.members = [username];
     users.extraGroups.vboxusers.members = [username];
 
     virtualisation = {
