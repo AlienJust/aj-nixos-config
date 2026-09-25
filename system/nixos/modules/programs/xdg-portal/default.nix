@@ -19,7 +19,11 @@ in {
 
       config = {
         common = {
+          # Вместо "*" лучше явно указать дефолты или ограничить "gtk" для файлов
           default = "*";
+
+          # Явно заставляем файловый менеджер использовать GTK-портал
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
 
           "org.freedesktop.impl.portal.Screencast" = wm;
           "org.freedesktop.impl.portal.Screenshot" = wm;
@@ -29,7 +33,7 @@ in {
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal-wlr
-        xdg-desktop-portal-gnome
+        # xdg-desktop-portal-gnome
       ];
     };
   };

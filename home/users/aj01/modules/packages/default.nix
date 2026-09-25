@@ -72,7 +72,7 @@ in {
 
         # Office
         #onlyoffice-bin
-        libreoffice-fresh
+        libreoffice-stable
 
         # Misc
         dconf2nix

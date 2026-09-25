@@ -38,7 +38,8 @@
         cachix
         lorri
         niv
-        nixfmt-classic
+        nixfmt
+        #nixfmt-classic
         statix
         vulnix
         haskellPackages.dhall-nix
