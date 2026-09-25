@@ -14,7 +14,7 @@
         neededForUsers = false;
         sopsFile = ../../../../../../secrets/secrets.yaml;
       };
-      work_presharedk = {
+      aj_wixos_work_presharedk = {
         neededForUsers = false;
         sopsFile = ../../../../../../secrets/secrets.yaml;
       };
@@ -145,9 +145,9 @@
       peers = [
         {
           publicKey = "AHK8uBAHN29XfPYJmzh/hjhOkEGuzf/HDZRayR7RlBw=";
-          presharedKeyFile = config.sops.secrets.work_presharedk.path;
-          allowedIPs = ["192.168.167.0/24" "192.168.6.0/24"];
-          endpoint = "79.172.45.20:40414";
+          presharedKeyFile = config.sops.secrets.aj_wixos_work_presharedk.path;
+          allowedIPs = ["192.168.167.0/24" "192.168.6.0/24" "10.66.66.0/24"];
+          endpoint = "192.168.10.20:40414";
           persistentKeepalive = 25;
         }
       ];
