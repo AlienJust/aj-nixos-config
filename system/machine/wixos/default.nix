@@ -8,6 +8,7 @@
   services.dbus.implementation = "broker";
 
   module = {
+    rudesktop.enable = true;
     sound.enable = true;
     boot.enable = true;
     console.enable = true;
