@@ -63,8 +63,8 @@
     };
     networks = {
       # Add all adapters to br0 bridge
-      "br0_en-all" = {
-        matchConfig.Name = "en*";
+      "br0_enp0s20f0u6" = {
+        matchConfig.Name = "enp0s20f0u6";
         networkConfig = {
           Bridge = "br0";
           LinkLocalAddressing = "no";
@@ -76,15 +76,12 @@
         matchConfig.Name = "br0";
         networkConfig = {
           Address = [
-            /*
-            "192.168.3.33/24"
-            */
             "192.168.3.249/24"
-            #"192.168.50.249/24"
           ];
           IPv4Forwarding = true;
           Gateway = "192.168.3.1";
           LinkLocalAddressing = "no";
+          DNS = ["77.88.8.8" "193.58.251.251"];
         };
         #linkConfig.RequiredForOnline = "no";
       };
