@@ -14,6 +14,10 @@
         neededForUsers = false;
         sopsFile = ../../../../../../secrets/secrets.yaml;
       };
+      mixos_shish_privatekey = {
+        neededForUsers = false;
+        sopsFile = ../../../../../../secrets/secrets.yaml;
+      };
     };
   };
 
@@ -103,11 +107,37 @@
         }
       ];
     };
+    wg1 = {
+      address = [
+        "10.6.0.6/32"
+        /*
+        "fd42:42:42::2/128"
+        */
+      ];
+      # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
+      # privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
+      privateKeyFile = config.sops.secrets.mixos_shish_privatekey.path;
+
+      peers = [
+        {
+          publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
+          allowedIPs = ["10.6.0.6/24" "192.168.50.0/24"];
+          endpoint = "212.220.210.140:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
   };
   systemd.services.wg-quick-wg0 = {
     after = ["network-online.target"];
     wants = ["network-online.target"];
     # Add a delay if needed
     preStart = "sleep 5";
+  };
+  systemd.services.wg-quick-wg1 = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+    # Add a delay if needed
+    preStart = "sleep 10";
   };
 }
