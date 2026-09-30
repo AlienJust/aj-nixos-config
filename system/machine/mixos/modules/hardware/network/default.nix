@@ -75,7 +75,7 @@
             "192.168.3.33/24"
             */
             "192.168.3.249/24"
-            "192.168.50.249/24"
+            #"192.168.50.249/24"
           ];
           IPv4Forwarding = true;
           Gateway = "192.168.3.1";
@@ -86,6 +86,7 @@
     };
   };
   networking.wg-quick.interfaces = {
+    # Work wg
     wg0 = {
       address = [
         "10.66.66.2/32"
@@ -107,6 +108,7 @@
         }
       ];
     };
+    # Home wg
     wg1 = {
       address = [
         "10.6.0.6/32"
@@ -121,8 +123,8 @@
       peers = [
         {
           publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
-          allowedIPs = ["10.6.0.6/24" "192.168.50.0/24"];
-          endpoint = "212.220.210.140:51820";
+          allowedIPs = ["10.6.0.0/24" "192.168.50.0/24"];
+          endpoint = "alexdeb.ru:51820";
           persistentKeepalive = 25;
         }
       ];
