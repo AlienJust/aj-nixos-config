@@ -34,17 +34,22 @@
       192.168.10.20 hpb.dev.horizont.local
     '';
   };
-  networking.nameservers = ["192.168.3.1#one.one.one.one"]; # "8.8.8.8#google"
+  networking.nameservers = ["77.88.8.8" "193.58.251.251"];
 
-  services.resolved.enable = true;
-  services.resolved.settings.Resolve = {
+  services.resolved = {
     enable = true;
-    #DNSSEC = "true";
-    DNSSEC = "false";
-    Domains = ["~."];
-    FallbackDNS = ["192.168.3.1#one.one.one.one"]; # "1.0.0.1#one.one.one.one"
-    #DNSOverTLS = "true";
-    DNSOverTLS = "false";
+
+    settings = {
+      Resolve = {
+        DNS = "77.88.8.8#common.dns.yandex.ru 193.58.251.251#dns.skydns.ru";
+        FallbackDNS = "77.88.8.1#common.dns.yandex.ru";
+
+        # Перенесенные и переименованные опции (регистр важен!)
+        DNSSEC = "true";
+        DNSOverTLS = "opportunistic";
+        Domains = ["~."];
+      };
+    };
   };
   systemd.network = {
     enable = true;
