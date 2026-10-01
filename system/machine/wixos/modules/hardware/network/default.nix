@@ -76,8 +76,8 @@
     };
     networks = {
       # Add all adapters to br0 bridge
-      "br0_en-all" = {
-        matchConfig.Name = "en*";
+      "br0_enp3s0" = {
+        matchConfig.Name = "enp3s0";
         networkConfig = {
           Bridge = "br0";
           LinkLocalAddressing = "no";
@@ -114,22 +114,6 @@
   };
 
   networking.wg-quick.interfaces = {
-    wg1 = {
-      address = ["10.6.0.2/32"];
-      # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
-      #privateKeyFile = "/home/aj01/wireguard-keys/home_privatekey";
-      privateKeyFile = config.sops.secrets.home_privatekey.path;
-
-      peers = [
-        {
-          publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
-          allowedIPs = ["192.168.50.0/24" "192.168.52.0/24"];
-          endpoint = "alexdeb.ru:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
-
     wg0 = {
       address = [
         "10.66.66.18/32"
@@ -152,5 +136,34 @@
         }
       ];
     };
+
+    wg1 = {
+      address = ["10.6.0.2/32"];
+      # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
+      #privateKeyFile = "/home/aj01/wireguard-keys/home_privatekey";
+      privateKeyFile = config.sops.secrets.home_privatekey.path;
+
+      peers = [
+        {
+          publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
+          allowedIPs = ["192.168.50.0/24" "192.168.52.0/24"];
+          endpoint = "alexdeb.ru:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
+  systemd.services.wg-quick-wg0 = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+    # Add a delay if needed
+    preStart = "sleep 5";
+  };
+  systemd.services.wg-quick-wg1 = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+    # Add a delay if needed
+    preStart = "sleep 10";
   };
 }
