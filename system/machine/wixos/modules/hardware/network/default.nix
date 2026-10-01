@@ -146,7 +146,7 @@
       peers = [
         {
           publicKey = "vJJN13FxDcPMMrtnfPa+SbFIUcAENVBC3OlY4Ps88xI=";
-          allowedIPs = ["192.168.50.0/24" "192.168.52.0/24"];
+          allowedIPs = ["192.168.50.0/24" "10.6.0.0/24"];
           endpoint = "alexdeb.ru:51820";
           persistentKeepalive = 25;
         }
