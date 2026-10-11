@@ -76,10 +76,12 @@
         matchConfig.Name = "br0";
         networkConfig = {
           Address = [
-            "192.168.3.249/24"
+            #"192.168.3.249/24"
+            "192.168.50.249/24"
           ];
           IPv4Forwarding = true;
-          Gateway = "192.168.3.1";
+          #Gateway = "192.168.3.1";
+          Gateway = "192.168.50.1";
           LinkLocalAddressing = "no";
           DNS = ["77.88.8.8" "193.58.251.251"];
         };
@@ -111,12 +113,11 @@
       ];
     };
     # Home wg
+    /*
     wg1 = {
       address = [
         "10.6.0.6/32"
-        /*
-        "fd42:42:42::2/128"
-        */
+
       ];
       # dns = [ "10.0.0.1" "fdc9:281f:04d7:9ee9::1" ];
       # privateKeyFile = "/home/aj01/wireguard-keys/privatekey";
@@ -131,17 +132,21 @@
         }
       ];
     };
+    */
   };
+
   systemd.services.wg-quick-wg0 = {
     after = ["network-online.target"];
     wants = ["network-online.target"];
     # Add a delay if needed
     preStart = "sleep 5";
   };
+  /*
   systemd.services.wg-quick-wg1 = {
     after = ["network-online.target"];
     wants = ["network-online.target"];
     # Add a delay if needed
     preStart = "sleep 10";
   };
+  */
 }
